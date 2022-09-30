@@ -43,10 +43,10 @@ public class PlayerController : MonoBehaviour
         this.controller.Move(direction.normalized * Time.deltaTime * this.playerSpeed);
         
         // this.transform.rotation = Quaternion.Euler(0f,angle,0f);
-        // if (direction != Vector3.zero)
-        // {
-        //     this.gameObject.transform.forward = direction;
-        // }
+        if (direction != Vector3.zero)
+        {
+            this.gameObject.transform.forward = direction;
+        }
 
         // Changes the height position of the player..
         if (this.inputs.IsJump() && this.groundedPlayer)
