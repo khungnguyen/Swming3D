@@ -40,4 +40,8 @@ public class InputManager : MonoBehaviour
     public bool IsJump() {
         return this.inputs.Player.Jump.triggered;
     }
+    public bool IsLeftMousePress()
+    {
+        return this.inputs.Player.Mouse.IsPressed();
+    }
 }

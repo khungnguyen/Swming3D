@@ -1,5 +1,5 @@
 {
-    "name": "IA_PlayerController",
+    "name": "Inputs",
     "maps": [
         {
             "name": "Player",
@@ -28,6 +28,15 @@
                     "type": "PassThrough",
                     "id": "32f90823-da4c-4e46-8f9c-681fc9ad5908",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Mouse",
+                    "type": "Button",
+                    "id": "94a394ae-c230-439b-9f68-ac4838cc7a6c",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -110,6 +119,17 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "7415f038-4566-471c-8c72-cd06d101cd93",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
