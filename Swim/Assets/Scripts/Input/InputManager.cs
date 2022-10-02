@@ -13,12 +13,15 @@ public class InputManager : MonoBehaviour
     }
     private void Awake()
     {
-        if(_instance != null && _instance != this) {
-            Destroy(this.gameObject);
-        }
-        else {
-            _instance = this;
-        }
+        //if (_instance != null && _instance != this)
+        //{
+        //    destroy(this.gameobject);
+        //}
+        //else
+        //{
+
+        //}
+        _instance = this;
         this.inputs = new Inputs();
     }
     private void OnEnable()
