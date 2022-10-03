@@ -19,9 +19,16 @@ public class MPlayerController : MonoBehaviour
 
      [SerializeField]
      LayerMask layerGroundMask;
+
     private Vector3 movementNomalize;
+    private Vector3 velocity;
 
     private bool isGrounded = false;
+    private Camera camera;
+    private void Awake()
+    {
+        camera = Camera.main;
+    }
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -33,6 +40,7 @@ public class MPlayerController : MonoBehaviour
     {
         Look();
         Movement();
+        Shoot();
     }
     private void Look()
     {
@@ -49,21 +57,33 @@ public class MPlayerController : MonoBehaviour
     {
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         Vector3 direction = (transform.forward * input.z + transform.right * input.x).normalized;
-        Vector3 velocity = direction * moveSpeed;
+        float currentY = velocity.y;
+        velocity = direction * moveSpeed;
+        velocity.y = currentY;
         float jump = 0;
-        isGrounded = Physics.Raycast(checkGroundTrans.position,Vector3.down,2f,layerGroundMask);
+        isGrounded = Physics.Raycast(checkGroundTrans.position,Vector3.down,0.2f,layerGroundMask);
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             jump = jumpForce;
         }
-
-        velocity.y = charContr.velocity.y;
         velocity.y += jump + Physics.gravity.y * Time.deltaTime;
         if (charContr.isGrounded)
         {
             velocity.y = 0;
         }
         charContr.Move(velocity * Time.deltaTime);
-        Debug.Log(charContr.isGrounded);
+    }
+    private void Shoot()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            Ray ray = camera.ViewportPointToRay(new Vector3(camera.rect.width / 2, camera.rect.height / 2, 0));
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerGroundMask))
+            {
+                Debug.Log("Hit target" + hit.collider.gameObject.name);
+            }
+
+        }
+     
     }
 }
