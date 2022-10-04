@@ -22,18 +22,18 @@ public class SnapObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target2Snap != null && isSnapped)
-        {
-            transform.position = target2Snap.position;
-        }
-        else if (input.IsLeftMousePress())
-        {
-            isSnapped = false;
-        }
-        else
-        {
-            isSnapped = true;
-        }
+        // if (target2Snap != null && isSnapped)
+        // {
+        //     transform.position = target2Snap.position;
+        // }
+        // else if (input.IsLeftMousePress())
+        // {
+        //     isSnapped = false;
+        // }
+        // else
+        // {
+        //     isSnapped = true;
+        // }
     }
     public void EnableSnap(bool enable)
     {

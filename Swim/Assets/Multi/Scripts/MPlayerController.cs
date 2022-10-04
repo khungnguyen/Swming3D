@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class MPlayerController : MonoBehaviour
+public class MPlayerController : MonoBehaviourPunCallbacks
 {
     // Start is called before the first frame update
     public GameObject viewPoint;
@@ -17,17 +19,21 @@ public class MPlayerController : MonoBehaviour
     [SerializeField]
     Transform checkGroundTrans;
 
-     [SerializeField]
-     LayerMask layerGroundMask;
+    [SerializeField]
+    LayerMask layerGroundMask;
 
+    Camera camera;
     private Vector3 movementNomalize;
     private Vector3 velocity;
 
     private bool isGrounded = false;
-    private Camera camera;
+
     private void Awake()
     {
-        camera = Camera.main;
+        if (photonView.IsMine)
+        {
+            camera = Camera.main;
+        }
     }
     void Start()
     {
@@ -38,9 +44,25 @@ public class MPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Look();
-        Movement();
-        Shoot();
+        if (photonView.IsMine)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else if (Cursor.lockState == CursorLockMode.None && Input.GetMouseButtonDown(0))
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Debug.Log("Mouse Click");
+            }
+            if (Cursor.lockState == CursorLockMode.Locked)
+            {
+                Look();
+                Movement();
+                Shoot();
+            }
+        }
+
     }
     private void Look()
     {
@@ -52,6 +74,7 @@ public class MPlayerController : MonoBehaviour
         Vector3 curEulers = transform.rotation.eulerAngles;
         //rotate boday left and right
         transform.rotation = Quaternion.Euler(curEulers.x, curEulers.y + direction.x, curEulers.z);
+        camera.gameObject.transform.SetPositionAndRotation(viewPoint.transform.position, viewPoint.transform.rotation);
     }
     private void Movement()
     {
@@ -61,7 +84,7 @@ public class MPlayerController : MonoBehaviour
         velocity = direction * moveSpeed;
         velocity.y = currentY;
         float jump = 0;
-        isGrounded = Physics.Raycast(checkGroundTrans.position,Vector3.down,0.2f,layerGroundMask);
+        isGrounded = Physics.Raycast(checkGroundTrans.position, Vector3.down, 0.2f, layerGroundMask);
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             jump = jumpForce;
@@ -75,15 +98,26 @@ public class MPlayerController : MonoBehaviour
     }
     private void Shoot()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = camera.ViewportPointToRay(new Vector3(camera.rect.width / 2, camera.rect.height / 2, 0));
-            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, layerGroundMask))
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
             {
-                Debug.Log("Hit target" + hit.collider.gameObject.name);
+                Debug.Log(hit.collider.gameObject.name);
+                PhotonNetwork.Instantiate("ImpactVFX", hit.point, Quaternion.identity);
+                if (hit.collider.gameObject.tag == "Player")
+                {
+                    hit.collider.gameObject.GetPhotonView()?.RPC("TakeDame", RpcTarget.All, photonView.Owner.NickName);
+                }
+
             }
 
         }
-     
+
+    }
+    [PunRPC]
+    public void TakeDame(string m)
+    {
+        Debug.Log("Hit by " + m);
     }
 }
