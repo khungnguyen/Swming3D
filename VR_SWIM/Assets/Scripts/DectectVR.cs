@@ -7,6 +7,7 @@ public class DectectVR : MonoBehaviour
 {
     public GameObject xrOrigin;
     public GameObject desktopCharacter;
+    public GameObject MockHMD;
 
     void Start()
     {
@@ -26,6 +27,15 @@ public class DectectVR : MonoBehaviour
         if (xrLoader != null)
         {
             Debug.Log("Device detected" + xrLoader.name);
+            if(xrLoader.name.IndexOf("Mock HMD")!=-1)
+            {
+                Debug.Log("Using FAKE controller - MOCK HMD");
+                MockHMD.SetActive(true);
+            }
+            else
+            {
+                MockHMD.SetActive(false);
+            }
         }
         else
         {
@@ -34,7 +44,6 @@ public class DectectVR : MonoBehaviour
 
         xrOrigin.SetActive(xrLoader != null);
         desktopCharacter.SetActive(xrLoader == null);
-
 
     }
 

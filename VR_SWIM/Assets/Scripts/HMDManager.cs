@@ -9,18 +9,7 @@ public class HMDManager : MonoBehaviour
     void Start()
     {
 
-        if (!XRSettings.isDeviceActive)
-        {
-            Debug.Log("No Device");
-        }
-        else if (XRSettings.isDeviceActive && XRSettings.loadedDeviceName == "Mock HMD Loader")
-        {
-            Debug.Log("Using MOCK HMD LOADER");
-        }
-        else
-        {
-            Debug.Log("Using" + XRSettings.loadedDeviceName);
-        }
+        
     }
 
     // Update is called once per frame
