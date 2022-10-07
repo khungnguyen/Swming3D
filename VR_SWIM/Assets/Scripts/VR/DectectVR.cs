@@ -5,10 +5,16 @@ using UnityEngine.XR.Management;
 
 public class DectectVR : MonoBehaviour
 {
+    public bool noVR;
     public GameObject xrOrigin;
     public GameObject desktopCharacter;
     public GameObject MockHMD;
-
+    public static DectectVR instancne;
+    public bool isVR;
+    private void Awake()
+    {
+        instancne = this;
+    }
     void Start()
     {
         var xrSetting = XRGeneralSettings.Instance;
@@ -41,10 +47,9 @@ public class DectectVR : MonoBehaviour
         {
             Debug.Log("No VR Device detect");
         }
-
-        xrOrigin.SetActive(xrLoader != null);
-        desktopCharacter.SetActive(xrLoader == null);
-
+        isVR = xrLoader != null && !noVR;
+        //xrOrigin.SetActive(isVR);
+        desktopCharacter.SetActive(!isVR);
     }
 
 }

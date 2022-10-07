@@ -2,14 +2,43 @@
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
-
+using UnityEngine.Animations;
+[System.Serializable]
+public struct Bones
+{
+    [SerializeField]
+    public MultiAimConstraint constraint;
+    [SerializeField]
+    public TwoBoneIKConstraint ikbone;
+    public void enabled()
+    {
+        if(constraint!=null)
+        {
+            constraint.enabled = true;
+        }
+        if (ikbone != null)
+        {
+            ikbone.enabled = true;
+        }
+    }
+    public void disable()
+    {
+        if (constraint != null)
+        {
+            constraint.enabled = false;
+        }
+        if (ikbone != null)
+        {
+            ikbone.enabled = false;
+        }
+    }
+}
 public class SnapBoneInteractable : XRGrabInteractableExtends
 {
     [SerializeField]
     private Transform targetBone;
 
-    [SerializeField]
-    private TwoBoneIKConstraint rigging;
+    public Bones rigging;
     // Start is called before the first frame update
     private bool IsSnapped = true;
     void Start()
@@ -34,21 +63,24 @@ public class SnapBoneInteractable : XRGrabInteractableExtends
     public void EnableSnap()
     {
         IsSnapped = true;
-
-       // rigging.enabled = false;
+        if (useRig)
+            rigging.enabled();
     }
     public void DisableSnap()
     {
         IsSnapped = false;
-        //rigging.enabled = true;
+        if(useRig)
+        rigging.disable();
     }
-    void Update()
+    void LateUpdate()
     {
-        if(IsSnapped && targetBone!= null)
+        if(useSnap && IsSnapped && targetBone!= null)
         {
-          //  transform.position = targetBone.position;
-           // transform.rotation = targetBone.rotation;
+           transform.position = targetBone.position;
+           transform.rotation = targetBone.rotation;
            
         }
     }
+    private bool useSnap = true;
+    private bool useRig = true;
 }
