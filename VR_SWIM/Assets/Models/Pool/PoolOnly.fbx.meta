@@ -3,7 +3,57 @@ guid: 91251842cca39224d87744204fbaa803
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 2K-pool_tiles-diffuse
+    second: {fileID: 2800000, guid: 94e937eed0f062d4abefa264c78101c8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 2K-pool_tiles-normal
+    second: {fileID: 2800000, guid: 4a90b2aaa0d491342a3611431b80f36b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: floor_tiles_02_diff_2k
+    second: {fileID: 2800000, guid: af029395e9558fc44b7fad4b238a7846, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: floor_tiles_02_disp_2k
+    second: {fileID: 2800000, guid: d3238780b781d5749ab8f6d0a34731e1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: floor_tiles_02_nor_gl_2k
+    second: {fileID: 2800000, guid: c38a85e543d7edb419fff22f90ac2bda, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: floor_tiles_02_rough_2k
+    second: {fileID: 2800000, guid: 35c4cb9d9d66cf34690475aae2bc0e83, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pebble_cemented_floor_diff_2k
+    second: {fileID: 2800000, guid: e9c4012400ed32946bab2b87c9f81c69, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pebble_cemented_floor_disp_2k
+    second: {fileID: 2800000, guid: abf723f45ae562c498891e9c8b0beae2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pebble_cemented_floor_nor_gl_2k
+    second: {fileID: 2800000, guid: 2d20234cd6b0dd94d869d99e9a9819f5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pebble_cemented_floor_rough_2k
+    second: {fileID: 2800000, guid: bcd3543f49d2edf458ce5eb65fe119ab, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
