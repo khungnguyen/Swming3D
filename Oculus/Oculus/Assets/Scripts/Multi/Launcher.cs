@@ -152,7 +152,7 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.LoadLevel("bmnm");
+            ScenesManager.instance.GoTo(SCREEN.Main, true);
         }
     }
     public void FindRoom()

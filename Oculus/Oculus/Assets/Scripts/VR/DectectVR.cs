@@ -13,9 +13,6 @@ public class DectectVR : MonoBehaviour
     private void Awake()
     {
         instancne = this;
-    }
-    void Start()
-    {
         var xrSetting = XRGeneralSettings.Instance;
         if (xrSetting == null)
         {
@@ -31,22 +28,17 @@ public class DectectVR : MonoBehaviour
         var xrLoader = xrManager.activeLoader;
         if (xrLoader != null)
         {
-            Debug.Log("Device detected" + xrLoader.name);
-            //if(xrLoader.name.IndexOf("Mock HMD")!=-1)
-            //{
-            //    Debug.Log("Using FAKE controller - MOCK HMD");
-            //    MockHMD.SetActive(true);
-            //}
-            //else
-            //{
-            //    MockHMD.SetActive(false);
-            //}
+            Debug.Log("Device detected " + xrLoader.name);
+
         }
         else
         {
             Debug.Log("No VR Device detect");
         }
         isVR = xrLoader != null && !noVR;
+    }
+    void Start()
+    {
         foreach(var ob  in vrGameObject)
         {
             ob.SetActive(isVR);

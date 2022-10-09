@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
-public enum SCREEN
-{
-    MainMenu,
-    Main
-}
+
 public class MatchManager : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -16,13 +12,8 @@ public class MatchManager : MonoBehaviour
     void Start()
     {
         if(!PhotonNetwork.IsConnected) {
-            SceneManager.LoadScene(StartScene.ToString());
+            ScenesManager.instance.GoTo(StartScene);
+            Debug.Log("GO TO MAIN MENU");
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

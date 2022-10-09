@@ -7,7 +7,9 @@ public class SpawnPointManager : MonoBehaviour
     [SerializeField]
     private Transform[] StutdemtSpawnPoints;
     [SerializeField]
-    private Transform[] PlayerSpawnPoints;
+    private Transform[] XRPlayerSpawnPoints;
+    [SerializeField]
+    private Transform[] DesktopPlayerSpawnPoints;
 
     public static SpawnPointManager instance;
     private void Awake() {
@@ -16,8 +18,12 @@ public class SpawnPointManager : MonoBehaviour
     public Transform GetStudentSpawnPoint() {
         return StutdemtSpawnPoints[Random.Range(0, StutdemtSpawnPoints.Length -1)];
     }
-    public Transform GetPlayerSpawnPoint()
+    public Transform GetXRPlayerSpawnPoint()
     {
-        return PlayerSpawnPoints[Random.Range(0, PlayerSpawnPoints.Length - 1)];
+        return XRPlayerSpawnPoints[Random.Range(0, XRPlayerSpawnPoints.Length - 1)];
+    }
+    public Transform GetDesktopPlayerSpawnPoint()
+    {
+        return DesktopPlayerSpawnPoints[Random.Range(0, DesktopPlayerSpawnPoints.Length - 1)];
     }
 }
