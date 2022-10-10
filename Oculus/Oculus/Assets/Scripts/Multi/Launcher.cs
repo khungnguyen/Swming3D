@@ -9,26 +9,36 @@ public enum MENU
 {
     RoomListMenu,
     RoomMenu,
-    All
+    Loading,
+    MainMenu,
+    All,
+    None
 }
 public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
 {
     public static Launcher instance;
     [SerializeField]
+    public GameObject Mainmenu;
+    [SerializeField]
     public GameObject RoomListMenu;
 
     [SerializeField]
     public GameObject RoomMenu;
+
+    [SerializeField]
+    public GameObject Loading;
     const string ROOM_NAME = "SWIM";
 
     [SerializeField]
     GameObject RoomItemPrefab;
 
-     [SerializeField]
+    [SerializeField]
     GameObject PlayerInfoPrefab;
 
     List<RoomItem> roomItemListCached = new List<RoomItem>();
     List<PlayerInfo> playerInfoListCached = new List<PlayerInfo>();
+
+    private MENU curMenu = MENU.None;
     private void Awake()
     {
         instance = this;
@@ -38,8 +48,9 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
     {
         PhotonNetwork.ConnectUsingSettings();
         PhotonNetwork.NickName = "Guest" + Random.Range(1, 100);
-        Debug.Log("Room", RoomListMenu.transform.Find("Scroll View/Viewport/Content"));
-        ActivateMenu(MENU.All, false);
+        ActivateMenu(MENU.All, false,MENU.MainMenu);
+        ActivateMenu(MENU.Loading, true);
+
     }
 
     // Update is called once per frame
@@ -57,10 +68,12 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
     public override void OnJoinedLobby()
     {
         Debug.Log("Joined Lobby");
+        ActivateMenu(MENU.Loading, false);
 
     }
     public void CreateRoom()
     {
+        ActivateMenu(MENU.Loading, true);
         RoomOptions room = new RoomOptions();
         room.MaxPlayers = 5;
         room.IsVisible = true;
@@ -69,26 +82,34 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
     public override void OnJoinedRoom()
     {
         Debug.Log("Room Joined");
+        ActivateMenu(MENU.Loading, false);
         ActivateMenu(MENU.RoomMenu, true);
         RoomMenu.transform.Find("RoomTitle").GetComponent<TMP_Text>().text = PhotonNetwork.CurrentRoom.Name;
         ListAllPlayers();
     }
     public override void OnCreatedRoom()
     {
+        ActivateMenu(MENU.Loading, false);
         Debug.Log("Room Created");
     }
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         Debug.Log("Room Created" + returnCode + "- " + message);
+        ActivateMenu(MENU.Loading, false);
+    }
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+       ActivateMenu(MENU.Loading, false); 
+       Debug.Log("Can't connect" + cause.ToString());
     }
     public void LeaveRoom()
     {
         PhotonNetwork.LeaveRoom();
-        ActivateMenu(MENU.All, false);
+        ActivateMenu(MENU.RoomMenu, false,MENU.MainMenu);
     }
     public void CloseRoomListMenu()
     {
-        ActivateMenu(MENU.RoomListMenu, false);
+        ActivateMenu(MENU.RoomListMenu, false,MENU.MainMenu);
     }
     public override void OnLeftRoom()
     {
@@ -125,7 +146,8 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
     }
     private void ListAllPlayers()
     {
-        foreach(PlayerInfo p in playerInfoListCached) {
+        foreach (PlayerInfo p in playerInfoListCached)
+        {
             Destroy(p.gameObject);
         }
         playerInfoListCached.Clear();
@@ -164,20 +186,38 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
         Debug.Log("OnRoomButtonClick" + roomName);
         JoinRoom(roomName);
     }
-    public void ActivateMenu(MENU menu, bool ativate)
+    public void ActivateMenu(MENU menu, bool active,MENU switchTo = MENU.None)
     {
         switch (menu)
         {
             case MENU.RoomListMenu:
-                RoomListMenu.SetActive(ativate);
+                RoomListMenu.SetActive(active);
+                break;
+            case MENU.MainMenu:
+                Mainmenu.SetActive(active);
                 break;
             case MENU.RoomMenu:
-                RoomMenu.SetActive(ativate);
+                RoomMenu.SetActive(active);
+                break;
+            case MENU.Loading:
+                Loading.SetActive(active);
+                break;
+            case MENU.None:
                 break;
             default:
-                RoomListMenu.SetActive(ativate);
-                RoomMenu.SetActive(ativate);
+                RoomListMenu.SetActive(active);
+                RoomMenu.SetActive(active);
+                Loading.SetActive(active);
+                Mainmenu.SetActive(active);
                 break;
         }
+        if(switchTo != MENU.None && !active) {
+            ActivateMenu(switchTo,true,MENU.None);
+        }
+
+    }
+    public void ExitApplication()
+    {
+        Application.Quit();
     }
 }

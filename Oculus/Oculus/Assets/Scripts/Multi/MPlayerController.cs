@@ -108,6 +108,7 @@ public class MPlayerController : MonoBehaviourPunCallbacks
                 if (hit.collider.gameObject.tag == "Player")
                 {
                     hit.collider.gameObject.GetPhotonView()?.RPC("TakeDame", RpcTarget.All, photonView.Owner.NickName);
+                    Destroy(hit.collider.gameObject,3);
                 }
 
             }
