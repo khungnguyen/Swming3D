@@ -75,9 +75,9 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
     {
         ActivateMenu(MENU.Loading, true);
         RoomOptions room = new RoomOptions();
-        room.MaxPlayers = 5;
+        room.MaxPlayers = 2;
         room.IsVisible = true;
-        PhotonNetwork.CreateRoom(ROOM_NAME, room);
+        PhotonNetwork.CreateRoom(ROOM_NAME + Random.Range(0,1000), room);
     }
     public override void OnJoinedRoom()
     {
@@ -129,7 +129,8 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
             if (roomList[i].PlayerCount != roomList[i].MaxPlayers && !roomList[i].RemovedFromList)
             {
                 GameObject roomObject = Instantiate(RoomItemPrefab);
-                roomObject.transform.SetParent(RoomListMenu.transform.Find("Scroll View/Viewport/Content").transform);
+                roomObject.transform.SetParent(RoomListMenu.transform.Find("Scroll View/Viewport/Content"));
+                roomObject.transform.localScale = new Vector3(1, 1, 1);
                 RoomItem item = roomObject.GetComponent<RoomItem>();
                 item.setRoomInfo(roomList[i]);
                 item.setListener(this);
@@ -155,7 +156,8 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
         {
             Debug.Log("reach" + newPlayer.NickName);
             GameObject playerObject = Instantiate(PlayerInfoPrefab);
-            playerObject.transform.SetParent(RoomMenu.transform.Find("Scroll View/Viewport/Content").transform);
+            playerObject.transform.SetParent(RoomMenu.transform.Find("Scroll View/Viewport/Content"));
+            playerObject.transform.localScale = new Vector3(1, 1, 1);
             PlayerInfo comp = playerObject.GetComponent<PlayerInfo>();
             comp.setPlayerInfo(newPlayer);
             playerInfoListCached.Add(comp);
