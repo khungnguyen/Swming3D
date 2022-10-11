@@ -1769,6 +1769,7 @@ GameObject:
   - component: {fileID: 2655604842523916151}
   - component: {fileID: 8808251001188056643}
   - component: {fileID: 3894522940755650309}
+  - component: {fileID: 2118488819}
   m_Layer: 0
   m_Name: Student
   m_TagString: Untagged
@@ -1793,7 +1794,7 @@ Transform:
   - {fileID: 2655604842847705362}
   - {fileID: 2655604842910930404}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!95 &1790298996977255887
 Animator:
@@ -1804,11 +1805,11 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5004509687985259791}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 4ba3b359445bea34cb59a2330c0ec02b, type: 3}
+  m_Controller: {fileID: 9100000, guid: b1390db07aecb554f832c31dacee357e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1956,6 +1957,20 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 0
+--- !u!114 &2118488819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5004509687985259791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6929817e84b53941a721700c4a15720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1790298996977255887}
+  animatorAvatar: {fileID: 9000000, guid: 4ba3b359445bea34cb59a2330c0ec02b, type: 3}
 --- !u!1 &5129555060637829049
 GameObject:
   m_ObjectHideFlags: 0

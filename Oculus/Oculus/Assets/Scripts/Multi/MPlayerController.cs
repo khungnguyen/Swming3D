@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.EventSystems;
 
 public class MPlayerController : MonoBehaviourPunCallbacks
 {
@@ -37,7 +38,7 @@ public class MPlayerController : MonoBehaviourPunCallbacks
     }
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
 
     }
 
@@ -50,10 +51,9 @@ public class MPlayerController : MonoBehaviourPunCallbacks
             {
                 Cursor.lockState = CursorLockMode.None;
             }
-            else if (Cursor.lockState == CursorLockMode.None && Input.GetMouseButtonDown(0))
+            else if (Cursor.lockState == CursorLockMode.None && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
                 Cursor.lockState = CursorLockMode.Locked;
-                Debug.Log("Mouse Click");
             }
             if (Cursor.lockState == CursorLockMode.Locked)
             {
@@ -103,7 +103,6 @@ public class MPlayerController : MonoBehaviourPunCallbacks
             Ray ray = camera.ViewportPointToRay(new Vector3(camera.rect.width / 2, camera.rect.height / 2, 0));
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
             {
-                Debug.Log(hit.collider.gameObject.name);
                 PhotonNetwork.Instantiate("ImpactVFX", hit.point, Quaternion.identity);
                 if (hit.collider.gameObject.tag == "Player")
                 {
