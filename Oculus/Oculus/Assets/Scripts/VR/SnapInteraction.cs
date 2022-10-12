@@ -11,13 +11,12 @@ public class SnapInteraction : MonoBehaviour, IPointableElement
     public Transform snapTo;
 
     private bool isSnap = true;
-
+    public bool disableSnape = false;
     public event Action<PointerEvent> WhenPointerEventRaised;
-
-    void Start()
+    public void Awake()
     {
         // Find themself in parent
-        if (constraintComp == null || (!(constraintComp is  TwoBoneIKConstraint) && !(constraintComp is  MultiAimConstraint)))
+        if (constraintComp == null || (!(constraintComp is TwoBoneIKConstraint) && !(constraintComp is MultiAimConstraint)))
         {
             constraintComp = transform.parent.GetComponent<TwoBoneIKConstraint>();
             if (constraintComp == null)
@@ -26,6 +25,12 @@ public class SnapInteraction : MonoBehaviour, IPointableElement
             }
         }
         activateConstraintComp(false);
+       ((TwoBoneIKConstraint)constraintComp).weight = 0;//fds
+       
+    }
+    void Start()
+    {
+       
     }
     public void ProcessPointerEvent(PointerEvent evt)
     {
@@ -45,34 +50,37 @@ public class SnapInteraction : MonoBehaviour, IPointableElement
     {
         isSnap = false;
         activateConstraintComp(true);
-        Debug.LogError("OnSelect");
-
     }
     public void OnUnselect()
     {
         isSnap = true;
-        transform.position = snapTo.position;
-        transform.rotation = snapTo.rotation;
         activateConstraintComp(false);
     }
-    public void Update()
+    public void LateUpdate()
     {
         if (isSnap)
         {
-            //transform.position = snapTo.position;
-            //transform.rotation = snapTo.rotation;
+            if(Vector3.Distance(transform.position, snapTo.position)>=0.01)
+            {
+                transform.position = snapTo.position;
+            }
+            if (Vector3.Distance(transform.rotation.eulerAngles, snapTo.rotation.eulerAngles) >= 0.01)
+            {
+                transform.rotation = snapTo.rotation;
+            }
+
         }
     }
     private void activateConstraintComp(bool active)
     {
         if (constraintComp is TwoBoneIKConstraint)
         {
-           // ((TwoBoneIKConstraint)constraintComp).enabled = active;
-           // Debug.LogError("((TwoBoneIKConstraint)constraintComp).weight" + ((TwoBoneIKConstraint)constraintComp).weight);
+            ((TwoBoneIKConstraint)constraintComp).enabled = active;
+            ((TwoBoneIKConstraint)constraintComp).weight = 1;
         }
         else if (constraintComp is MultiAimConstraint)
         {
-           // ((MultiAimConstraint)constraintComp).enabled = active;
+            ((MultiAimConstraint)constraintComp).enabled = active;
         }
     }
     public void visible(bool a)

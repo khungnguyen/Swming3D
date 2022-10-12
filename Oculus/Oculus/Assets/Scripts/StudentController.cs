@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class StudentController : MonoBehaviour,IReciever
 {
     public Animator animator;
     public Avatar animatorAvatar;
+    public RigBuilder rig;
     public void OnActionReciver(EventCodes theEvent, object[] packages)
     {
 
