@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.40748647, g: 0.40707633, b: 0.41267133, a: 1}
+  m_IndirectSpecularColor: {r: 0.40748248, g: 0.40707508, b: 0.41266623, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -943,7 +943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &375939329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1947,7 +1947,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773871766}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4e06c6e9b64df24a8faa1dfce67d7d5, type: 3}
   m_Name: 
@@ -10483,6 +10483,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1154756507603345044}
     m_Modifications:
+    - target: {fileID: 719554475219733115, guid: a2f602e108455f3448b6a1038ba87960,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 22
+      objectReference: {fileID: 0}
     - target: {fileID: 1832725789247191718, guid: a2f602e108455f3448b6a1038ba87960,
         type: 3}
       propertyPath: sceneViewId
@@ -10492,6 +10497,11 @@ PrefabInstance:
         type: 3}
       propertyPath: sceneViewId
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244859515283148281, guid: a2f602e108455f3448b6a1038ba87960,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 2655604842523916151, guid: a2f602e108455f3448b6a1038ba87960,
         type: 3}
@@ -10517,6 +10527,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176688109853460751, guid: a2f602e108455f3448b6a1038ba87960,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 5497752294489502348, guid: a2f602e108455f3448b6a1038ba87960,
         type: 3}
@@ -10577,6 +10592,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045827476552629042, guid: a2f602e108455f3448b6a1038ba87960,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 6052235074389485763, guid: a2f602e108455f3448b6a1038ba87960,
         type: 3}

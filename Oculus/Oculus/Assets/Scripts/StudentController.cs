@@ -12,9 +12,9 @@ public class StudentController : MonoBehaviour,IReciever
         switch(theEvent)
         {
             case EventCodes.ActionPlayAnimation:
-                Debug.LogError("Calling jumpAnimation");
+                string animation = (string)packages[1];
                 animator.avatar = animatorAvatar;
-                animator.SetBool("jump", true);
+                animator.SetBool(animation, true);
                 break;
         }
     }
@@ -22,6 +22,7 @@ public class StudentController : MonoBehaviour,IReciever
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
