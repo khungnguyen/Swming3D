@@ -31,7 +31,7 @@ public class ExminerDecision : MonoBehaviour
     public void PlayClick()
     {
         SwitchDialog(DIALOG.CONFIRM);
-        sendActionPlayAnim("Quy Send Animion");
+        sendActionPlayAnim("jump");
     }
     private void SwitchDialog(DIALOG dialog)
     {

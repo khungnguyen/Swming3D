@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using Oculus.Interaction;
+using System;
 
-public class SnapInteraction : Grabbable
+public class SnapInteraction : MonoBehaviour, IPointableElement
 {
     // Start is called before the first frame update
 
@@ -12,10 +11,13 @@ public class SnapInteraction : Grabbable
     public Transform snapTo;
 
     private bool isSnap = true;
-    protected override void Start()
+
+    public event Action<PointerEvent> WhenPointerEventRaised;
+
+    void Start()
     {
         // Find themself in parent
-        if (constraintComp == null || (constraintComp is not TwoBoneIKConstraint && constraintComp is not MultiAimConstraint))
+        if (constraintComp == null || (!(constraintComp is  TwoBoneIKConstraint) && !(constraintComp is  MultiAimConstraint)))
         {
             constraintComp = transform.parent.GetComponent<TwoBoneIKConstraint>();
             if (constraintComp == null)
@@ -24,9 +26,8 @@ public class SnapInteraction : Grabbable
             }
         }
         activateConstraintComp(false);
-        base.Start();
     }
-    public override void ProcessPointerEvent(PointerEvent evt)
+    public void ProcessPointerEvent(PointerEvent evt)
     {
         switch (evt.Type)
         {
@@ -39,38 +40,39 @@ public class SnapInteraction : Grabbable
             case PointerEventType.Move:
                 break;
         }
-        base.ProcessPointerEvent(evt);
     }
     public void OnSelect()
     {
         isSnap = false;
         activateConstraintComp(true);
+        Debug.LogError("OnSelect");
 
     }
     public void OnUnselect()
     {
         isSnap = true;
-        activateConstraintComp(false);
         transform.position = snapTo.position;
         transform.rotation = snapTo.rotation;
+        activateConstraintComp(false);
     }
     public void Update()
     {
         if (isSnap)
         {
-            transform.position = snapTo.position;
-            transform.rotation = snapTo.rotation;
+            //transform.position = snapTo.position;
+            //transform.rotation = snapTo.rotation;
         }
     }
     private void activateConstraintComp(bool active)
     {
         if (constraintComp is TwoBoneIKConstraint)
         {
-            ((TwoBoneIKConstraint)constraintComp).weight = active ? 1 : 0;
+           // ((TwoBoneIKConstraint)constraintComp).enabled = active;
+           // Debug.LogError("((TwoBoneIKConstraint)constraintComp).weight" + ((TwoBoneIKConstraint)constraintComp).weight);
         }
         else if (constraintComp is MultiAimConstraint)
         {
-            ((MultiAimConstraint)constraintComp).weight = active ? 1 : 0;
+           // ((MultiAimConstraint)constraintComp).enabled = active;
         }
     }
     public void visible(bool a)
