@@ -3,6 +3,7 @@ using UnityEngine.Animations.Rigging;
 using Oculus.Interaction;
 using System;
 using Photon.Pun;
+using System.Collections;
 
 public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
 {
@@ -12,11 +13,12 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
     public Transform snapTo;
 
     private bool isSnap = true;
-    public bool disableSnape = false;
+    private bool disableSnapFunct = false;
     public event Action<PointerEvent> WhenPointerEventRaised;
     public void Awake()
     {
-        if(photonView.IsMine)
+        disableSnapFunct = !photonView.IsMine;
+        if (!disableSnapFunct)
         {
             // Find themself in parent
             if (constraintComp == null || (!(constraintComp is TwoBoneIKConstraint) && !(constraintComp is MultiAimConstraint)))
@@ -27,47 +29,73 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
                     constraintComp = transform.parent.GetComponent<MultiAimConstraint>();
                 }
             }
-            activateConstraintComp(false);
-            ((TwoBoneIKConstraint)constraintComp).weight = 0;//fds
+            //activateConstraintComp(false);
+            EnableRigWeight(false);
         }
-   
+
+    }
+
+    IEnumerator EnableWeightEnumrator(float delayTime)
+    {
+        //Wait for the specified delay time before continuing.
+        yield return new WaitForSeconds(delayTime);
+        EnableRigWeight();
+        //Do the action after the delay time has finished.
+    }
+    public void EnableRigWeight(bool enable = true)
+    {
+        if(!disableSnapFunct)
+        {
+            if (constraintComp is TwoBoneIKConstraint)
+            {
+                ((TwoBoneIKConstraint)constraintComp).weight = enable ? 1 : 0;
+            }
+            else if (constraintComp is MultiAimConstraint)
+            {
+                ((MultiAimConstraint)constraintComp).weight = enable ? 1 : 0; 
+            }
+        }
     }
     void Start()
     {
-       
+        StartCoroutine(EnableWeightEnumrator(2));
     }
     public void ProcessPointerEvent(PointerEvent evt)
     {
-        if (photonView.IsMine)
+        if(!disableSnapFunct)
         {
-            // Find themself in parent
-            switch (evt.Type)
+            if (photonView.IsMine)
             {
-                case PointerEventType.Select:
-                    OnSelect();
-                    break;
-                case PointerEventType.Unselect:
-                    OnUnselect();
-                    break;
-                case PointerEventType.Move:
-                    break;
+                // Find themself in parent
+                switch (evt.Type)
+                {
+                    case PointerEventType.Select:
+                        OnSelect();
+                        break;
+                    case PointerEventType.Unselect:
+                        OnUnselect();
+                        break;
+                    case PointerEventType.Move:
+                        break;
+                }
             }
         }
-       
+      
+
     }
     public void OnSelect()
     {
         isSnap = false;
-        activateConstraintComp(true);
+        //activateConstraintComp(true);
     }
     public void OnUnselect()
     {
         isSnap = true;
-        activateConstraintComp(false);
+       // activateConstraintComp(false);
     }
     public void LateUpdate()
     {
-        if(photonView.IsMine)
+        if (!disableSnapFunct)
         {
             if (isSnap)
             {
@@ -81,14 +109,13 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
                 }
 
             }
-        } 
+        }
     }
     private void activateConstraintComp(bool active)
     {
         if (constraintComp is TwoBoneIKConstraint)
         {
             ((TwoBoneIKConstraint)constraintComp).enabled = active;
-            ((TwoBoneIKConstraint)constraintComp).weight = 1;
         }
         else if (constraintComp is MultiAimConstraint)
         {
