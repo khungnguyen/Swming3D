@@ -1,0 +1,18 @@
+{
+	"lessonList" : [
+	{
+		"lessonName" : "Jump Squat",
+		"conditionTrigger" : {
+		"name" : "jump",
+		"value" :true
+		}
+	},
+	{
+		"lessonName" : "Jump Squat 2",
+		"conditionTrigger" : {
+		"name" : "jump2",
+		"value" : false
+		}
+	}
+	]
+}
