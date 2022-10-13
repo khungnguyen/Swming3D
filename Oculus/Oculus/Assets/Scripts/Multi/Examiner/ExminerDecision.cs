@@ -13,10 +13,12 @@ public class ExminerDecision : MonoBehaviour
     public GameObject playDialog;
     // Start is called before the first frame update
     private GameObject curDialog;
+    private LessionUnit curLesson;
     void Start()
     {
         ActivateDialog(playDialog, false);
         curDialog = confirmDialog;
+        curLesson = LessonManager.instance.GetCurLesson();
     }
 
     public void YesClick()
@@ -31,7 +33,8 @@ public class ExminerDecision : MonoBehaviour
     public void PlayClick()
     {
         SwitchDialog(DIALOG.CONFIRM);
-        sendActionPlayAnim("jump");
+
+        sendActionPlayAnim(curLesson.conditionTrigger.name);
     }
     private void SwitchDialog(DIALOG dialog)
     {
@@ -69,16 +72,18 @@ public class ExminerDecision : MonoBehaviour
     }
     public void sendActionNo()
     {
-        object[] packages = new object[2];
+        LessonManager.instance.ChangeLesson();
+        curLesson = LessonManager.instance.GetCurLesson();
+        object[] packages = new object[3];
         packages[0] = PhotonNetwork.NickName;
-        packages[1] = "ActionNo";
+        packages[1] = LessonManager.instance.GetLessonIndex();
         ConnectionManager.instance.SendAction(EventCodes.ActionNo, packages);
     }
-    public void sendActionPlayAnim(string anim = "Amimation")
+    public void sendActionPlayAnim(string trigger = "Amimation")
     {
         object[] packages = new object[2];
         packages[0] = PhotonNetwork.NickName;
-        packages[1] = anim;
+        packages[1] = trigger;
         ConnectionManager.instance.SendAction(EventCodes.ActionPlayAnimation, packages);
     }
 }

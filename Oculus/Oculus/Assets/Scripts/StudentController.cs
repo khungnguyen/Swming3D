@@ -9,6 +9,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     public Animator animator;
     public Avatar animatorAvatar;
     public RigBuilder rig;
+    public void EndIdle(int value)
+    {
+        Debug.LogError("Animation Event call" + value);
+    }
     public void OnActionReciver(EventCodes theEvent, object[] packages)
     {
 
@@ -17,7 +21,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
             case EventCodes.ActionPlayAnimation:
                 rig.enabled = false;
                 string animation = (string)packages[1];
-                animator.avatar = animatorAvatar;
+                //animator.avatar = animatorAvatar;
                 animator.SetBool(animation, true);
                 break;
         }
@@ -34,11 +38,11 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     {
         
     }
-    public void OnEnable()
+    public override void OnEnable()
     {
         ConnectionManager.AddCallbackTarget(this);
     }
-    public void OnDisable()
+    public override void OnDisable()
     {
         ConnectionManager.RemoveCallBackTarget(this);
     }

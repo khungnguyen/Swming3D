@@ -1,16 +1,23 @@
 {
 	"lessonList" : [
 	{
-		"lessonName" : "Jump Squat",
+		"lessonName" : "Stand Jump To Water",
 		"conditionTrigger" : {
-		"name" : "jump",
+		"name" : "StandJump",
 		"value" :true
 		}
 	},
 	{
-		"lessonName" : "Jump Squat 2",
+		"lessonName" : "Squat Jump To Water",
 		"conditionTrigger" : {
-		"name" : "jump2",
+		"name" : "SquatJump",
+		"value" : true
+		}
+	},
+	{
+		"lessonName" : "Slide Jump To Water",
+		"conditionTrigger" : {
+		"name" : "SlideJump",
 		"value" : false
 		}
 	}

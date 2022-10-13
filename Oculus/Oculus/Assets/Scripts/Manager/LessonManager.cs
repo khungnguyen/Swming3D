@@ -7,30 +7,45 @@ public class LessonManager : MonoBehaviour
     public TextAsset lessonData;
 
 
-    static LessonManager instance;
+    public static LessonManager instance;
 
     public LessonList lessons;
+
+    public int curLesson = 0;
 
     public void Awake()
     {
         instance = this;
+        lessons = new LessonList();
+        lessons = JsonUtility.FromJson<LessonList>(lessonData.text);
+        Debug.Log("lessons" + lessons);
     }
     // Start is called before the first frame update
     void Start()
     {
-        lessons = new LessonList();
-        lessons = JsonUtility.FromJson<LessonList>(lessonData.text);
-        Debug.Log("lessons" + lessons); 
+      
     }
-
     // Update is called once per frame
-    void Update()
+  
+    public LessionUnit GetLesson(int cur)
     {
-        
+       return lessons.lessonList[cur];
     }
-    private void CreateMission()
+    public LessionUnit GetCurLesson()
     {
+        return GetLesson(curLesson);
+    }
+    public void ChangeLesson()
+    {
+        if(curLesson < lessons.lessonList.Length-1)
+        {
+            curLesson++;
+        }
 
+    }
+    public int GetLessonIndex()
+    {
+        return curLesson;
     }
 }
 [System.Serializable]
