@@ -57,6 +57,7 @@ public class LessonList
 public class LessionUnit
 {
    public string lessonName;
+   public string starAnimation;
    public ConditionTrigger conditionTrigger;
 
 }

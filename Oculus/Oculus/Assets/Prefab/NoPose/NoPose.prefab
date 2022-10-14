@@ -36,7 +36,7 @@ Transform:
   - {fileID: 5527776333154513650}
   - {fileID: 1267544152026595464}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &8592449107786863083
 Rigidbody:
@@ -86,7 +86,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   constraintComp: {fileID: 0}
   snapTo: {fileID: 0}
-  disableSnape: 0
+  visualGameObject: {fileID: 0}
+  lockTarget: 0
 --- !u!114 &5089048524628871383
 MonoBehaviour:
   m_ObjectHideFlags: 0

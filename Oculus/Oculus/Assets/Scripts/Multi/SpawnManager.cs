@@ -27,6 +27,8 @@ public class SpawnManager : MonoBehaviour
             SpawnPlayers();
             
         }
+        //Transform point = SpawnPointManager.instance.GetStudentSpawnPoint();
+        //var gameObject = Instantiate((studentGO), point.transform.position, point.transform.rotation);
     }
 
     public void SpawnPlayers()
@@ -44,6 +46,7 @@ public class SpawnManager : MonoBehaviour
         {
             Transform transfrom = SpawnPointManager.instance.GetDesktopPlayerSpawnPoint();
             player = PhotonNetwork.Instantiate(convertPrefabPath(DesktopPlayerGO), transfrom.position, transform.rotation);
+          
         }
   
     }

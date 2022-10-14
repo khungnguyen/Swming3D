@@ -40,10 +40,6 @@ public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
         {
             EventCodes theEvent = (EventCodes)photonEvent.Code;
             object[] data = (object[])photonEvent.CustomData;
-            foreach (var re in data)
-            {
-                Debug.Log(re);
-            }
             foreach (var re in receivers)
             {
                 re.OnActionReciver(theEvent, data);

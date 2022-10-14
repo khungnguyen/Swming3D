@@ -10,14 +10,24 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
     // Start is called before the first frame update
 
     public MonoBehaviour constraintComp;
+
     public Transform snapTo;
 
+    public GameObject visualGameObject;
+
+    public bool lockTarget = false;
+
     private bool isSnap = true;
-    private bool disableSnapFunct = false;
+
+    public bool disableSnapFunct = false;
+
+    private bool enableWeight;
+
     public event Action<PointerEvent> WhenPointerEventRaised;
+
     public void Awake()
     {
-        disableSnapFunct = !photonView.IsMine;
+        disableSnapFunct = !DectectVR.instancne.isVR || !photonView.IsMine; 
         if (!disableSnapFunct)
         {
             // Find themself in parent
@@ -29,7 +39,7 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
                     constraintComp = transform.parent.GetComponent<MultiAimConstraint>();
                 }
             }
-            //activateConstraintComp(false);
+           // activateConstraintComp(false);
             EnableRigWeight(false);
         }
 
@@ -40,11 +50,12 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
         //Wait for the specified delay time before continuing.
         yield return new WaitForSeconds(delayTime);
         EnableRigWeight();
-        //Do the action after the delay time has finished.
+       //Do the action after the delay time has finished.
     }
     public void EnableRigWeight(bool enable = true)
     {
-        if(!disableSnapFunct)
+        enableWeight = enable;
+        if (!disableSnapFunct)
         {
             if (constraintComp is TwoBoneIKConstraint)
             {
@@ -55,10 +66,12 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
                 ((MultiAimConstraint)constraintComp).weight = enable ? 1 : 0; 
             }
         }
+        EnableGrabableCube(enable);
     }
+    //dssd
     void Start()
     {
-        StartCoroutine(EnableWeightEnumrator(2));
+       // StartCoroutine(EnableWeightEnumrator(2));
     }
     public void ProcessPointerEvent(PointerEvent evt)
     {
@@ -86,29 +99,45 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
     public void OnSelect()
     {
         isSnap = false;
-        //activateConstraintComp(true);
+       // activateConstraintComp(true);
     }
     public void OnUnselect()
     {
         isSnap = true;
-       // activateConstraintComp(false);
+        SnapUpdate();
+        // activateConstraintComp(false);
     }
-    public void LateUpdate()
+    /*
+     * lockTarget = true so alway snap to target, target move, cube moves
+     * lockTarget = false : cube will be static and target was locked
+     */
+    public void Update()
     {
         if (!disableSnapFunct)
         {
+            
             if (isSnap)
             {
-                if (Vector3.Distance(transform.position, snapTo.position) >= 0.01)
+                if(lockTarget && enableWeight)
                 {
-                    transform.position = snapTo.position;
+                    // do nothing
                 }
-                if (Vector3.Distance(transform.rotation.eulerAngles, snapTo.rotation.eulerAngles) >= 0.01)
+                else
                 {
-                    transform.rotation = snapTo.rotation;
+                    SnapUpdate();
                 }
-
             }
+        }
+    }
+    private void SnapUpdate()
+    {
+        if (Vector3.Distance(transform.position, snapTo.position) >= 0.01)
+        {
+            transform.position = snapTo.position;
+        }
+        if (Vector3.Distance(transform.rotation.eulerAngles, snapTo.rotation.eulerAngles) >= 0.01)
+        {
+            transform.rotation = snapTo.rotation;
         }
     }
     private void activateConstraintComp(bool active)
@@ -122,9 +151,11 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
             ((MultiAimConstraint)constraintComp).enabled = active;
         }
     }
-    public void visible(bool a)
+    public void EnableGrabableCube(bool a)
     {
-        transform.gameObject.SetActive(a);
+        Debug.Log("EnableGrabableCube" + a);
+        visualGameObject.GetComponent<MeshRenderer>().enabled = a ;
+       // GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, a?1f:0f);
     }
-
+    //
 }

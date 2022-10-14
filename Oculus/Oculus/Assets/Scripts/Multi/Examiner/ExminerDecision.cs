@@ -1,4 +1,5 @@
 using Photon.Pun;
+using TMPro;
 using UnityEngine;
 
 public class ExminerDecision : MonoBehaviour
@@ -9,8 +10,12 @@ public class ExminerDecision : MonoBehaviour
         PLAY
     }
     public GameObject panel;
+
     public GameObject confirmDialog;
+
     public GameObject playDialog;
+
+    public TMP_Text lessonName;
     // Start is called before the first frame update
     private GameObject curDialog;
     private LessionUnit curLesson;
@@ -19,6 +24,7 @@ public class ExminerDecision : MonoBehaviour
         ActivateDialog(playDialog, false);
         curDialog = confirmDialog;
         curLesson = LessonManager.instance.GetCurLesson();
+        UpdateLessonName();
     }
 
     public void YesClick()
@@ -65,9 +71,10 @@ public class ExminerDecision : MonoBehaviour
     */
     public void sendActionYes()
     {
-        object[] packages = new object[2];
+        object[] packages = new object[3];
         packages[0] = PhotonNetwork.NickName;
-        packages[1] = "ActionYes";
+        packages[1] = curLesson.lessonName;
+        packages[2] = curLesson.starAnimation;
         ConnectionManager.instance.SendAction(EventCodes.ActionYes, packages);
     }
     public void sendActionNo()
@@ -78,6 +85,7 @@ public class ExminerDecision : MonoBehaviour
         packages[0] = PhotonNetwork.NickName;
         packages[1] = LessonManager.instance.GetLessonIndex();
         ConnectionManager.instance.SendAction(EventCodes.ActionNo, packages);
+        UpdateLessonName();
     }
     public void sendActionPlayAnim(string trigger = "Amimation")
     {
@@ -85,5 +93,9 @@ public class ExminerDecision : MonoBehaviour
         packages[0] = PhotonNetwork.NickName;
         packages[1] = trigger;
         ConnectionManager.instance.SendAction(EventCodes.ActionPlayAnimation, packages);
+    }
+    public void UpdateLessonName()
+    {
+        lessonName.text = curLesson.lessonName;
     }
 }
