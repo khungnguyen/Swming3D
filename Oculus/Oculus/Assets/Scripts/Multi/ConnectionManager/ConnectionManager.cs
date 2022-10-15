@@ -74,12 +74,20 @@ public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
      */
     public void SendAction(EventCodes eventCode,object[] packages)
     {
-        PhotonNetwork.RaiseEvent(
-            (byte)eventCode,
-            packages,
-            new RaiseEventOptions { Receivers = ReceiverGroup.All },
-            new SendOptions { Reliability = true }
-            );
+        if(PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.RaiseEvent(
+                       (byte)eventCode,
+                       packages,
+                       new RaiseEventOptions { Receivers = ReceiverGroup.All },
+                       new SendOptions { Reliability = true }
+                       );
+        }
+        else
+        {
+            Debug.Log("No Connection Yet");
+        }
+       
     }
     /*
      * Recive a event YES

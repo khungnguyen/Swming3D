@@ -1,0 +1,72 @@
+{
+	"Exercise" :"1A",
+	"Buttons":[
+	{
+		"name" : "Yes",
+		"action" :"ActionYes",
+		"parent" : "",
+		"displayOrder" : 1
+	},
+	{
+		"name" : "No",
+		"action" :"NextLesson",
+		"parent" : "",
+		"displayOrder" : 1
+	},
+	{
+		"name" : "Allow",
+		"action" :"ActionPlayAnimation",
+		"parent" : "Yes",
+		"displayOrder" : 2
+	},
+	{
+		"name" : "EndLesson",
+		"action" :"NextLesson",
+		"parent" : "Yes",
+		"displayOrder" : 3
+	}
+	],
+	"Actions" : [
+	{
+		"name":"ActionYes",
+		"action":"StartLesson",
+		"showDisplayerOrder" : 2
+	},
+	{
+		"name":"NextLesson",
+		"action":"NextLesson",
+		"showDisplayerOrder" : 1
+	},
+	{
+		"name":"ActionPlayAnimation",
+		"action":"TriggerFinalAnimation",
+		"showDisplayerOrder" : 3
+	}
+	],
+	"ExerciseList" : [
+	{
+		"lessonName" : "Stand Jump To Water",
+		"starAnimation" : "StandIdle",
+		"conditionTrigger" : {
+		"name" : "StandJump",
+		"value" :true
+		}
+	},
+	{
+		"lessonName" : "Squat Jump To Water",
+		"starAnimation" : "SquatIdle",
+		"conditionTrigger" : {
+		"name" : "SquatJump",
+		"value" : true
+		}
+	},
+	{
+		"lessonName" : "Slide Jump To Water",
+		"starAnimation" : "SlideIdle",
+		"conditionTrigger" : {
+		"name" : "SlideJump",
+		"value" : false
+		}
+	}
+	]
+}

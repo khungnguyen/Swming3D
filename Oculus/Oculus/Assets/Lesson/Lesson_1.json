@@ -1,0 +1,83 @@
+{
+	"Exercise" :"1A",
+	"Buttons":[
+	{
+		"name" : "Yes",
+		"action" :"ActionYes",
+		"parent" : "",
+		"displayOrder" : 1
+	},
+	{
+		"name" : "No",
+		"action" :"NextLesson",
+		"parent" : "",
+		"displayOrder" : 1
+	},
+	{
+		"name" : "Allow",
+		"action" :"ActionPlayAnimation",
+		"parent" : "Yes",
+		"displayOrder" : 2
+	},
+	{
+		"name" : "Next Exercise",
+		"action" :"NextExercise",
+		"parent" : "Yes",
+		"displayOrder" : 3
+    },
+	{
+		"name" : "Lesson List",
+		"action" :"LessonList",
+		"parent" : "Yes",
+		"displayOrder" : 3
+	}
+	],
+	"Actions" : [
+	{
+		"name":"ActionYes",
+		"action":"StartExercise",
+		"showDisplayerOrder" : 2
+	},
+	{
+		"name":"NextExercise",
+		"action":"NextExercise",
+		"showDisplayerOrder" : 1
+	},
+	{
+		"name":"ActionPlayAnimation",
+		"action":"TriggerFinalAnimation",
+		"showDisplayerOrder" : 3
+    },
+	{
+		"name":"LessonList",
+		"action":"GoToLessonMenu",
+		"showDisplayerOrder" : 0
+	}
+	],
+	"ExerciseList" : [
+	{
+		"lessonName" : "Stand Jump To Water",
+		"starAnimation" : "StandIdle",
+		"conditionTrigger" : {
+		"name" : "StandJump",
+		"value" :true
+		}
+	},
+	{
+		"lessonName" : "Squat Jump To Water",
+		"starAnimation" : "SquatIdle",
+		"conditionTrigger" : {
+		"name" : "SquatJump",
+		"value" : true
+		}
+	},
+	{
+		"lessonName" : "Slide Jump To Water",
+		"starAnimation" : "SlideIdle",
+		"conditionTrigger" : {
+		"name" : "SlideJump",
+		"value" : false
+		}
+	}
+	]
+}

@@ -31,12 +31,12 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     public void EndIdle(AnimationEvent e)
     {
         //Debug.LogError("Animation Event call" + e.time + e.animatorClipInfo.clip.name);
+      //  EnableInteraction(true);
     }
     public void EnableInteraction(bool enable)
     {
         rig.enabled = enable;
         SnapInteraction[] listSnap = transform.GetComponentsInChildren<SnapInteraction>(true);
-        Debug.LogError("listSnap" + listSnap.Length);
         foreach (var snap in listSnap)
         {
             snap.EnableRigWeight(enable);
@@ -73,7 +73,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 break;
             case EventCodes.ActionNo:
                 int lessonIndex = (int)packages[1];
-                LessionUnit lesson = LessonManager.instance.GetLesson(lessonIndex);
+                ExerciseUnit lesson = ExerciseManager.instance.GetExercise(lessonIndex);
                 Debug.Log("Next lession is  " + lesson.lessonName);
                 EnableInteraction(false);
                 animator.SetBool(lesson.starAnimation, true);

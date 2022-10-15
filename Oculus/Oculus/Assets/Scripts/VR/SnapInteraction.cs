@@ -27,7 +27,8 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
 
     public void Awake()
     {
-        disableSnapFunct = !DectectVR.instancne.isVR || !photonView.IsMine; 
+        bool usePhotonView = !(photonView != null && photonView.IsMine);
+        disableSnapFunct = false;// !DectectVR.instancne.isVR || usePhotonView;
         if (!disableSnapFunct)
         {
             // Find themself in parent
@@ -153,9 +154,12 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
     }
     public void EnableGrabableCube(bool a)
     {
-        Debug.Log("EnableGrabableCube" + a);
         visualGameObject.GetComponent<MeshRenderer>().enabled = a ;
        // GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, a?1f:0f);
+    }
+    public override void OnDisable()
+    {
+
     }
     //
 }
