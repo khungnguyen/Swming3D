@@ -13,7 +13,9 @@ public class LessionUI : MonoBehaviour,IButtonAction
     public void OnClicked(string action)
     {
         PanleUserDecison.SetActive(true);
-        ExerciseManager.instance.SetExercises(LessonManager.instance.lessonData[int.Parse(action)].text);
+        var lessonIndex = int.Parse(action);
+        ExerciseManager.instance.SetExercises(LessonManager.instance.lessonData[lessonIndex].text);
+        SendActionInitLesson(lessonIndex);
         transform.gameObject.SetActive(false);
     }
 
@@ -29,10 +31,10 @@ public class LessionUI : MonoBehaviour,IButtonAction
             comp.OnClicked += OnClicked;
         }
     }
-
-    // Update is called once per frame
-    void Update()
+    public void SendActionInitLesson(int index)
     {
-        
+        object[] packages = new object[1];
+        packages[0] = index;
+        ConnectionManager.instance.SendAction(EventCodes.ActionInitLesson, packages);
     }
 }

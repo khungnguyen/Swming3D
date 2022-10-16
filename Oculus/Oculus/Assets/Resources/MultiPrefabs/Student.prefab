@@ -2004,7 +2004,7 @@ Transform:
   - {fileID: 5013961027502896779}
   - {fileID: 2032800584619754802}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!95 &1790298996977255887
 Animator:
@@ -2184,6 +2184,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1790298996977255887}
+  animatorData:
+  - {fileID: 9100000, guid: b1390db07aecb554f832c31dacee357e, type: 2}
+  - {fileID: 9100000, guid: 7b17dbc8929a4684088b60a618bb29a6, type: 2}
   animatorAvatar: {fileID: 9000000, guid: 4ba3b359445bea34cb59a2330c0ec02b, type: 3}
   rig: {fileID: 2655604842523916151}
 --- !u!1 &5129555060637829049

@@ -1,72 +1,280 @@
 {
-	"Exercise" :"1A",
-	"Buttons":[
-	{
-		"name" : "Yes",
-		"action" :"ActionYes",
-		"parent" : "",
-		"displayOrder" : 1
-	},
-	{
-		"name" : "No",
-		"action" :"NextLesson",
-		"parent" : "",
-		"displayOrder" : 1
-	},
-	{
-		"name" : "Allow",
-		"action" :"ActionPlayAnimation",
-		"parent" : "Yes",
-		"displayOrder" : 2
-	},
-	{
-		"name" : "EndLesson",
-		"action" :"NextLesson",
-		"parent" : "Yes",
-		"displayOrder" : 3
-	}
-	],
-	"Actions" : [
-	{
-		"name":"ActionYes",
-		"action":"StartLesson",
-		"showDisplayerOrder" : 2
-	},
-	{
-		"name":"NextLesson",
-		"action":"NextLesson",
-		"showDisplayerOrder" : 1
-	},
-	{
-		"name":"ActionPlayAnimation",
-		"action":"TriggerFinalAnimation",
-		"showDisplayerOrder" : 3
-	}
-	],
-	"ExerciseList" : [
-	{
-		"lessonName" : "Stand Jump To Water",
-		"starAnimation" : "StandIdle",
-		"conditionTrigger" : {
-		"name" : "StandJump",
-		"value" :true
-		}
-	},
-	{
-		"lessonName" : "Squat Jump To Water",
-		"starAnimation" : "SquatIdle",
-		"conditionTrigger" : {
-		"name" : "SquatJump",
-		"value" : true
-		}
-	},
-	{
-		"lessonName" : "Slide Jump To Water",
-		"starAnimation" : "SlideIdle",
-		"conditionTrigger" : {
-		"name" : "SlideJump",
-		"value" : false
-		}
-	}
-	]
+  "Exercise": "HEAD ABOVE WATER",
+   "AnimatorController" :"Case_Two",
+  "Buttons": [
+    {
+      "name": "Yes",
+      "action": "ActionYes",
+      "displayOrder": 1
+    },
+    {
+      "name": "Next Exercise",
+      "action": "NextExercise",
+      "displayOrder": 1
+    },
+    {
+      "name": "Allow",
+      "action": "ActionPlayAnimation",
+      "displayOrder": 2
+    },
+    {
+      "name": "Splash Kick",
+      "action": "SplashKickWrong",
+      "displayOrder": 2
+    },
+    {
+      "name": "Cycles Kick",
+      "action": "CycleKickWrong",
+      "displayOrder": 2
+    },
+    {
+      "name": "Incorect Position",
+      "action": "PositionWrong",
+      "displayOrder": 2
+    },
+    {
+      "name": "Lose Control",
+      "action": "LoseControl",
+      "displayOrder": 2
+    },
+    {
+      "name": "Not Follow Distance",
+      "action": "NotFollowDistance",
+      "displayOrder": 2
+    },
+    {
+      "name": "Not Follow Return",
+      "action": "TriggerAnimationNotFollowReturn",
+      "parent": "Yes",
+      "displayOrder": 2
+    },
+    {
+      "name": "Lesson List",
+      "action": "LessonList",
+      "displayOrder": 3
+    },
+    {
+      "name": "Allow-Splash Kick",
+      "action": "SplashKickRight",
+      "displayOrder": 4
+    },
+    {
+      "name": "Allow-Cycle Kick",
+      "action": "CycleKickRight",
+      "displayOrder": 5
+    },
+    {
+      "name": "Allow-Position",
+      "action": "PositionRight",
+      "displayOrder": 6
+    },
+    {
+      "name": "Allow-Control",
+      "action": "AbleToControl",
+      "displayOrder": 7
+    },
+    {
+      "name": "Allow-FollowDistance",
+      "action": "FollowDistance",
+      "displayOrder": 8
+    },
+    {
+      "name": "Allow-ReturnPool",
+      "action": "ReturnPool",
+      "displayOrder": 9
+    },
+    {
+      "name": "Return Student Pool",
+      "action": "ReturnPool",
+      "displayOrder": 10
+    }
+  ],
+  "Actions": [
+    {
+      "name": "ActionYes",
+      "action": [
+        {
+          "name": "StartExercise",
+          "property": ""
+        }
+      ],
+      "showDisplayerOrder": 2
+    },
+    {
+      "name": "NextExercise",
+      "action": [
+        {
+          "name": "NextExercise",
+          "property": ""
+        }
+      ],
+      "showDisplayerOrder": 1
+    },
+    {
+      "name": "ActionPlayAnimation",
+      "action": [
+        {
+          "name": "TriggerFinalAnimation",
+          "property": ""
+        }
+      ],
+      "showDisplayerOrder": 3
+    },
+    {
+      "name": "LessonList",
+      "action": [
+        {
+          "name": "GoToLessonMenu",
+          "property": ""
+        }
+      ],
+      "showDisplayerOrder": 0
+    },
+    {
+      "name": "SplashKickWrong",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": "SplashKickWrong"
+        }
+      ],
+      "showDisplayerOrder": 4
+    },
+    {
+      "name": "SplashKickRight",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": "SplashKickRight"
+        }
+      ],
+      "showDisplayerOrder": 3
+    },
+    {
+      "name": "CycleKickWrong",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": "CycleKickWrong"
+        }
+      ],
+      "showDisplayerOrder": 5
+    },
+    {
+      "name": "CycleKickRight",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": "CycleKickRight"
+        }
+      ],
+      "showDisplayerOrder": 3
+    },
+    {
+      "name": "PositionWrong",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": "PositionWrong"
+        }
+      ],
+      "showDisplayerOrder": 6
+    },
+    {
+      "name": "PositionRight",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": "PositionRight"
+        }
+      ],
+      "showDisplayerOrder": 3
+    },
+    {
+      "name": "LoseControl",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": "LoseControl"
+        }
+      ],
+      "showDisplayerOrder": 7
+    },
+    {
+      "name": "AbleToControl",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": "AbleToControl"
+        }
+      ],
+      "showDisplayerOrder": 3
+    },
+    {
+      "name": "NotFollowDistance",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": "NotFollowDistance"
+        }
+      ],
+      "showDisplayerOrder": 8
+    },
+    {
+      "name": "FollowDistance",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": "FollowDistance"
+        }
+      ],
+      "showDisplayerOrder": 3
+    },
+    {
+      "name": "NotReturnPool",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": "NotReturnPool"
+        }
+      ],
+      "showDisplayerOrder": 9
+    },
+    {
+      "name": "ReturnPool",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": "ReturnPool"
+        }
+      ],
+      "showDisplayerOrder": 3
+    }
+  ],
+  "ExerciseList": [
+    {
+      "lessonName": "5 meters and return",
+      "starAnimation": "StandIdle",
+      "conditionTrigger": {
+        "name": "StandJump",
+        "value": true
+      }
+    },
+    {
+      "lessonName": "15 meters and return",
+      "starAnimation": "SquatIdle",
+      "conditionTrigger": {
+        "name": "SquatJump",
+        "value": true
+      }
+    },
+    {
+      "lessonName": "25 meters and return",
+      "starAnimation": "SlideIdle",
+      "conditionTrigger": {
+        "name": "SlideJump",
+        "value": false
+      }
+    }
+  ]
 }

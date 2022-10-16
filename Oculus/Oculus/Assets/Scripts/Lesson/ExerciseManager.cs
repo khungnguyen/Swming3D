@@ -20,15 +20,12 @@ public class ExerciseManager : MonoBehaviour
     {
         instance = this;
         exercises = new Exercises();
-        Debug.Log("Create exersie instance");
-        
     }
     public void SetExercises(string text)
     {
         exercises = JsonUtility.FromJson<Exercises>(text);
         curLesson = 0;
         TriggerCallback();
-        Debug.Log("Create exersie Data");
     }
     // Start is called before the first frame update
     void Start()
@@ -88,6 +85,7 @@ public class Exercises
     public string Exercise;
     public UIButton[] Buttons;
     public ButtonActions[] Actions;
+    public string AnimatorController;
 }
 [System.Serializable]
 public class ExerciseUnit
@@ -114,6 +112,12 @@ public class UIButton
 public class ButtonActions
 {
     public string name;
-    public string action;
+    public ActionProperty[] action;
     public int showDisplayerOrder;
+}
+[System.Serializable]
+public class ActionProperty
+{
+    public string name;
+    public string property;
 }

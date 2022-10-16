@@ -28,7 +28,7 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
     public void Awake()
     {
         bool usePhotonView = !(photonView != null && photonView.IsMine);
-        disableSnapFunct = false;// !DectectVR.instancne.isVR || usePhotonView;
+        disableSnapFunct = !DectectVR.instancne.isVR || usePhotonView;
         if (!disableSnapFunct)
         {
             // Find themself in parent

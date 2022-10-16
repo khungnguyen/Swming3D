@@ -8,6 +8,9 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
 {
     public Animator animator;
 
+    [SerializeField]
+    public RuntimeAnimatorController[] animatorData;
+
     public Avatar animatorAvatar;
 
     public RigBuilder rig;
@@ -62,14 +65,14 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 Debug.Log("Play Animaton" + animation);
                 EnableInteraction(false);
                 animator.SetBool(animation, true);
+                UpdateStudentBehavior(animation);
                 break;
             case EventCodes.ActionYes:
                 string lessonName = (string)packages[1];
                 string startAnimaiton = (string)packages[2];
+                string Animator = (string)packages[3];
                 Debug.Log("Lesson Accept" + lessonName);
-                EnableInteraction(true);
-                
-                //  animator.SetBool(startAnimaiton, true);
+                SetAnimator(Animator);
                 break;
             case EventCodes.ActionNo:
                 int lessonIndex = (int)packages[1];
@@ -80,12 +83,42 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 transform.position = curTransform.position;
                 transform.rotation = curTransform.rotation;
                 break;
+            case EventCodes.ActionEnableInteractable:
+                EnableInteraction(true);
+                break;
 
         }
     }
-   
+   private void UpdateStudentBehavior(string behavior)
+   {
+        if (behavior == "NotFollowDistance")
+        {
+            StartCoroutine(StopSwimInSecond(2));
+        } 
+   }
+    IEnumerator StopSwimInSecond(float second)
+    {
+        yield return new WaitForSeconds(second);
+        animator.StopPlayback();
+    }
+    private void SetAnimator(string animatorName) 
+    {
+         if(animatorName!= animator.runtimeAnimatorController.name)
+        {
+            var find = (new List<RuntimeAnimatorController>(animatorData)).Find(e => e.name == animatorName);
+            if (find != null)
+            {
 
-
+                animator.runtimeAnimatorController = find;
+                Debug.Log("Reset Animator to" + animatorName);
+            }
+            else
+            {
+                Debug.LogError("Couldn't find Animator Controller " + animatorName);
+            }
+        }
+    }
+    
     public override void OnEnable()
     {
         ConnectionManager.AddCallbackTarget(this);

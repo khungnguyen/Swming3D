@@ -1,14 +1,18 @@
 using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
 public enum BUTTON_ACTIONS {
 
     StartExercise,
     TriggerFinalAnimation,
     TriggerAnimation,
     NextExercise,
-    GoToLessonMenu
+    GoToLessonMenu,
+    EnableInteractable
 }
 public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLoaded
 {
@@ -26,6 +30,8 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     public GameObject buttonPrefab;
 
     public TMP_Text lessonName;
+
+    public TMP_Text exerciseName;
 
     private ExerciseUnit curExercise;
 
@@ -46,6 +52,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     }
     public void CreateButtonDialog(int level = 1)
     {
+        
         var buttons = ExerciseManager.instance.exercises.Buttons;
         for(int g =0; g < lessonUISpace.transform.childCount;g++)
         {
@@ -61,7 +68,15 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 newbt.GetComponent<ExerciseButton>().OnClicked += HandlerAction;
             }
         }
-
+        StartCoroutine(AddContentFitter());
+    }
+    IEnumerator AddContentFitter()
+    {
+        yield return new WaitForEndOfFrame();
+        lessonUISpace.GetComponent<VerticalLayoutGroup>().enabled = false;
+        lessonUISpace.GetComponent<VerticalLayoutGroup>().enabled = true;
+        GetComponent<VerticalLayoutGroup>().enabled = false;
+        GetComponent<VerticalLayoutGroup>().enabled = true;
     }
     public void HandlerAction(string action)
     {
@@ -69,25 +84,33 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         ButtonActions ac = GetButtonAction(action);
         if(ac != null)
         {
-            if(ac.action == BUTTON_ACTIONS.StartExercise.ToString())
+            foreach(ActionProperty actionProperty in ac.action)
             {
-                StartLesson();
-            }
-            else if(ac.action == BUTTON_ACTIONS.TriggerFinalAnimation.ToString())
-            {
-                StartAnimtion();
-            }
-            else if(ac.action == BUTTON_ACTIONS.NextExercise.ToString())
-            {
-                NextLesson();
-            }
-            else if(ac.action == BUTTON_ACTIONS.TriggerAnimation.ToString())
-            {
-                StartAnimtion();
-            }
-            else if(ac.action == BUTTON_ACTIONS.GoToLessonMenu.ToString())
-            {
-                GoToLessonUI();
+                string miniAction = actionProperty.name;
+                if (miniAction == BUTTON_ACTIONS.StartExercise.ToString())
+                {
+                    StartLesson();
+                }
+                else if (miniAction == BUTTON_ACTIONS.TriggerFinalAnimation.ToString())
+                {
+                    StartAnimtion();
+                }
+                else if (miniAction == BUTTON_ACTIONS.NextExercise.ToString())
+                {
+                    NextLesson();
+                }
+                else if (miniAction == BUTTON_ACTIONS.TriggerAnimation.ToString())
+                {
+                    StartAnimtion(actionProperty.property);
+                }
+                else if (miniAction == BUTTON_ACTIONS.GoToLessonMenu.ToString())
+                {
+                    GoToLessonUI();
+                }
+                else if (miniAction == BUTTON_ACTIONS.EnableInteractable.ToString())
+                {
+                    EnableInteractable();
+                }
             }
             if(ac.showDisplayerOrder != 0)
             {
@@ -110,18 +133,28 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         var actions = ExerciseManager.instance.exercises.Actions;
         return (new List<ButtonActions>(actions)).Find(e => e.name == name);
     }
-
+    public void EnableInteractable()
+    {
+        object[] packages = new object[1];
+        packages[0] = PhotonNetwork.NickName;
+        ConnectionManager.instance.SendAction(EventCodes.ActionEnableInteractable, packages);
+    }
     public void StartLesson()
     {
-        object[] packages = new object[3];
+        object[] packages = new object[4];
         packages[0] = PhotonNetwork.NickName;
         packages[1] = curExercise.lessonName;
         packages[2] = curExercise.starAnimation;
+        packages[3] = ExerciseManager.instance.exercises.AnimatorController;
         ConnectionManager.instance.SendAction(EventCodes.ActionYes, packages);
     }
     public void StartAnimtion()
     {
         sendActionPlayAnim(curExercise.conditionTrigger.name);
+    }
+    public void StartAnimtion(string name)
+    {
+        sendActionPlayAnim(name);
     }
     public void NextLesson()
     {
@@ -142,7 +175,8 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     }
     public void UpdateLessonName()
     {
-        lessonName.text = curExercise.lessonName;
+        lessonName.text = ExerciseManager.instance.exercises.Exercise;
+        exerciseName.text = curExercise.lessonName;
     }
 
     public void OnClicked(string action)

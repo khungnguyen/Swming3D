@@ -8,7 +8,10 @@ public enum EventCodes : byte
 {
     ActionYes,
     ActionNo,
-    ActionPlayAnimation
+    ActionPlayAnimation,
+    ActionEnableInteractable,
+    ActionSwimDistance,
+    ActionInitLesson,
 }
 public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
 {
