@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: e61db4f985b62ac4f979bcaae9957ea6
+guid: 6471e53efa4257e47b5a8686568ec01f
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable:
   - first:
-      74: 1827226128182048838
-    second: Slide-In
-  - first:
-      74: 5831052501616065411
-    second: Slide-In-Idle
+      74: 935402841803976653
+    second: Squat_Sit
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -39,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Slide-In
-      takeName: Take 001
+      name: Squat_Sit
+      takeName: Squat_Sit
       internalID: 0
-      firstFrame: 45
-      lastFrame: 171
+      firstFrame: 0
+      lastFrame: 63
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -63,42 +60,6 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Slide-In-Idle
-      takeName: Take 001
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events:
-      - time: 1
-        functionName: EndIdle
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -569,19 +530,19 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Slide-In(Clone)
+    - name: Squat_Sit(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0.70710665, z: 0, w: 0.7071069}
       scale: {x: 1, y: 1, z: 1}
     - name: Bip001
-      parentName: Slide-In(Clone)
+      parentName: Squat_Sit(Clone)
       position: {x: 0.41, y: 0.17000732, z: 0}
       rotation: {x: -0.7065757, y: 0.027400527, z: -0.027400527, w: 0.7065757}
       scale: {x: 1, y: 1, z: 1}
     - name: Bip001 Footsteps
       parentName: Bip001
-      position: {x: 0.08847201, y: 0.00000003433383, z: -1.1389959}
+      position: {x: 0.013043344, y: 0.000000005061806, z: -0.16792114}
       rotation: {x: 0.000000015066368, y: -0.0387502, z: -7.3139106e-10, w: 0.999249}
       scale: {x: 1.0000001, y: 1, z: 1.0000001}
     - name: Bip001 Pelvis
@@ -848,12 +809,12 @@ ModelImporter:
       parentName: Bip001 Spine2
       position: {x: -0.13244507, y: -0.00534755, z: -0.000000007578365}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1.0000004, y: 1.0000007, z: 1.0000002}
+      scale: {x: 1.0000002, y: 1.0000006, z: 1.0000002}
     - name: Bip001 Head
       parentName: Bip001 Neck
-      position: {x: -0.066535816, y: 0.000000059604645, z: 1.1368684e-13}
+      position: {x: -0.066535816, y: 0, z: 1.1368684e-13}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1.0000004, y: 1.0000005, z: 1.0000005}
+      scale: {x: 1.0000004, y: 1.0000005, z: 1.0000007}
     - name: Bip001 HeadNub
       parentName: Bip001 Head
       position: {x: -0.18059978, y: 0, z: 2.2737368e-13}
@@ -910,7 +871,7 @@ ModelImporter:
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: -1, y: -0.99999994, z: -1}
     - name: FChild_Body
-      parentName: Slide-In(Clone)
+      parentName: Squat_Sit(Clone)
       position: {x: -0.0000000015889879, y: -0.004223004, z: 0.006619586}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}

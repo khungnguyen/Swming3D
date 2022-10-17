@@ -84,9 +84,16 @@
       "displayOrder": 9
     },
     {
+
       "name": "Return Student Pool",
       "action": "ReturnPool",
       "displayOrder": 10
+    },
+    {
+
+      "name": "Finish",
+      "action": "GetOutPool",
+      "displayOrder": 11
     }
   ],
   "Actions": [
@@ -148,7 +155,7 @@
           "property": "SplashKickRight"
         }
       ],
-      "showDisplayerOrder": 3
+      "showDisplayerOrder": 11
     },
     {
       "name": "CycleKickWrong",
@@ -168,7 +175,7 @@
           "property": "CycleKickRight"
         }
       ],
-      "showDisplayerOrder": 3
+      "showDisplayerOrder": 11
     },
     {
       "name": "PositionWrong",
@@ -188,7 +195,7 @@
           "property": "PositionRight"
         }
       ],
-      "showDisplayerOrder": 3
+      "showDisplayerOrder": 11
     },
     {
       "name": "LoseControl",
@@ -208,7 +215,7 @@
           "property": "AbleToControl"
         }
       ],
-      "showDisplayerOrder": 3
+      "showDisplayerOrder": 11
     },
     {
       "name": "NotFollowDistance",
@@ -228,7 +235,7 @@
           "property": "FollowDistance"
         }
       ],
-      "showDisplayerOrder": 3
+      "showDisplayerOrder": 11
     },
     {
       "name": "NotReturnPool",
@@ -248,7 +255,17 @@
           "property": "ReturnPool"
         }
       ],
-      "showDisplayerOrder": 3
+      "showDisplayerOrder": 11
+    },
+    {
+      "name": "GetOutPool",
+      "action": [
+        {
+          "name": "TriggerFinalAnimation",
+          "property": ""
+        }
+      ],
+      "showDisplayerOrder": 2
     }
   ],
   "ExerciseList": [

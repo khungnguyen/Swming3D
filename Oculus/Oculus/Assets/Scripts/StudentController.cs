@@ -17,11 +17,11 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
 
     private Avatar curAvatar;
 
-    
+
     struct TransformInfor
     {
-       public Vector3 position;
-       public Quaternion rotation;
+        public Vector3 position;
+        public Quaternion rotation;
     }
     private TransformInfor curTransform;
     // Start is called before the first frame update
@@ -31,10 +31,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         curTransform.rotation = transform.rotation;
     }
 
-    public void EndIdle(AnimationEvent e)
+    public void NofityEnableInteraction(AnimationEvent e)
     {
         //Debug.LogError("Animation Event call" + e.time + e.animatorClipInfo.clip.name);
-      //  EnableInteraction(true);
+        EnableInteraction(true);
     }
     public void EnableInteraction(bool enable)
     {
@@ -49,7 +49,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     {
 
     }
-    IEnumerator DelayActiveRig (float delayTime)
+    IEnumerator DelayActiveRig(float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
         EnableInteraction(true);
@@ -57,7 +57,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     public void OnActionReciver(EventCodes theEvent, object[] packages)
     {
 
-        switch(theEvent)
+        switch (theEvent)
         {
             case EventCodes.ActionPlayAnimation:
                 string animation = (string)packages[1];
@@ -80,8 +80,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 Debug.Log("Next lession is  " + lesson.lessonName);
                 EnableInteraction(false);
                 animator.SetBool(lesson.starAnimation, true);
-                transform.position = curTransform.position;
-                transform.rotation = curTransform.rotation;
+                ResetTransform();
                 break;
             case EventCodes.ActionEnableInteractable:
                 EnableInteraction(true);
@@ -89,21 +88,21 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
 
         }
     }
-   private void UpdateStudentBehavior(string behavior)
-   {
+    private void UpdateStudentBehavior(string behavior)
+    {
         if (behavior == "NotFollowDistance")
         {
             StartCoroutine(StopSwimInSecond(2));
-        } 
-   }
+        }
+    }
     IEnumerator StopSwimInSecond(float second)
     {
         yield return new WaitForSeconds(second);
         animator.StopPlayback();
     }
-    private void SetAnimator(string animatorName) 
+    private void SetAnimator(string animatorName)
     {
-         if(animatorName!= animator.runtimeAnimatorController.name)
+        if (animatorName != animator.runtimeAnimatorController.name)
         {
             var find = (new List<RuntimeAnimatorController>(animatorData)).Find(e => e.name == animatorName);
             if (find != null)
@@ -118,7 +117,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
             }
         }
     }
-    
+
     public override void OnEnable()
     {
         ConnectionManager.AddCallbackTarget(this);
@@ -126,5 +125,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     public override void OnDisable()
     {
         ConnectionManager.RemoveCallBackTarget(this);
+    }
+    private void ResetTransform()
+    {
+        transform.position = curTransform.position;
+        transform.rotation = curTransform.rotation;
     }
 }
