@@ -91,7 +91,9 @@ public class Exercises
 public class ExerciseUnit
 {
    public string lessonName;
-   public string starAnimation;
+   public string startAnimation;
+
+   public string startExerciseAnimation;
    public ConditionTrigger conditionTrigger;
 
 }

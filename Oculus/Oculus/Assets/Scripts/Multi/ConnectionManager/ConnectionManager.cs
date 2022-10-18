@@ -10,6 +10,7 @@ public enum EventCodes : byte
     ActionNo,
     ActionPlayAnimation,
     ActionEnableInteractable,
+    ActionDisableInteractable,
     ActionSwimDistance,
     ActionInitLesson,
 }

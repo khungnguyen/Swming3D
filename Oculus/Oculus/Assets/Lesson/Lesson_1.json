@@ -4,12 +4,12 @@
   "Buttons": [
     {
       "name": "Yes",
-      "action": "ActionYes",
+      "action": "StartExercise",
       "parent": "",
       "displayOrder": 1
     },
     {
-      "name": "No",
+      "name": "Next Exercise",
       "action": "NextExercise",
       "parent": "",
       "displayOrder": 1
@@ -35,15 +35,15 @@
   ],
   "Actions": [
     {
-      "name": "ActionYes",
+      "name": "StartExercise",
       "action": [
         {
           "name": "StartExercise",
           "property": ""
         },
-		{
+		    {
           "name": "EnableInteractable",
-          "property": ""
+          "property": "DelayAfterAnim"
         }
       ],
       "showDisplayerOrder": 2
@@ -82,7 +82,7 @@
   "ExerciseList": [
     {
       "lessonName": "Stand Jump To Water",
-      "starAnimation": "StandIdle",
+      "startAnimation": "StandIdle",
       "conditionTrigger": {
         "name": "StandJump",
         "value": true
@@ -90,7 +90,7 @@
     },
     {
       "lessonName": "Squat Jump To Water",
-      "starAnimation": "SquatIdle",
+      "startAnimation": "SquatIdle",
       "conditionTrigger": {
         "name": "SquatJump",
         "value": true
@@ -98,7 +98,7 @@
     },
     {
       "lessonName": "Slide Jump To Water",
-      "starAnimation": "SlideIdle",
+      "startAnimation": "SlideIdle",
       "conditionTrigger": {
         "name": "SlideJump",
         "value": false

@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
+using System;
 
 public class StudentController : MonoBehaviourPunCallbacks, IReciever
 {
     public Animator animator;
 
-    [SerializeField]
     public RuntimeAnimatorController[] animatorData;
 
     public Avatar animatorAvatar;
@@ -30,11 +30,19 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         curTransform.position = transform.position;
         curTransform.rotation = transform.rotation;
     }
-
-    public void NofityEnableInteraction(AnimationEvent e)
+    private bool delayActiveInteraction = false;
+    private bool delayInactiveInteraction = false;
+    public void NotifityEndAnimationState(AnimationEvent e)
     {
-        //Debug.LogError("Animation Event call" + e.time + e.animatorClipInfo.clip.name);
-        EnableInteraction(true);
+        Debug.LogError("Animation Event call" + e.time + e.animatorClipInfo.clip.name);
+        if(delayActiveInteraction){
+            StartCoroutine(DelayEnableInteraction(0.5f,true));
+            delayActiveInteraction = false;
+        }
+        else if(delayInactiveInteraction){
+            StartCoroutine(DelayEnableInteraction(0.5f,false));
+            delayActiveInteraction = false;
+        }
     }
     public void EnableInteraction(bool enable)
     {
@@ -45,12 +53,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
             snap.EnableRigWeight(enable);
         }
     }
-    public void DisableInteraction()
+    IEnumerator DelayEnableInteraction(float delayTime,bool enable)
     {
-
-    }
-    IEnumerator DelayActiveRig(float delayTime)
-    {
+        delayActiveInteraction = false;
+        delayInactiveInteraction= false;
         yield return new WaitForSeconds(delayTime);
         EnableInteraction(true);
     }
@@ -64,26 +70,56 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 //animator.avatar = animatorAvatar;
                 Debug.Log("Play Animaton" + animation);
                 EnableInteraction(false);
-                animator.SetBool(animation, true);
+                TriggerAnimation(animation);
                 UpdateStudentBehavior(animation);
                 break;
             case EventCodes.ActionYes:
                 string lessonName = (string)packages[1];
-                string startAnimaiton = (string)packages[2];
-                string Animator = (string)packages[3];
+                string animator = (string)packages[3];
+                string startExerciseAnimation = (string)packages[4];
                 Debug.Log("Lesson Accept" + lessonName);
-                SetAnimator(Animator);
+                SetAnimator(animator);
+                if(startExerciseAnimation!=null){
+                    TriggerAnimation(startExerciseAnimation);
+                }
+                else {
+                    StartCoroutine(DelayEnableInteraction(0.5f,true));
+                }
                 break;
             case EventCodes.ActionNo:
+                EnableInteraction(false);
+                ResetTransform();
                 int lessonIndex = (int)packages[1];
                 ExerciseUnit lesson = ExerciseManager.instance.GetExercise(lessonIndex);
                 Debug.Log("Next lession is  " + lesson.lessonName);
-                EnableInteraction(false);
-                animator.SetBool(lesson.starAnimation, true);
-                ResetTransform();
+                TriggerAnimation(lesson.startAnimation);
                 break;
             case EventCodes.ActionEnableInteractable:
-                EnableInteraction(true);
+                //Delay after finishing Animation
+                if((bool)packages[1]) {
+                    // StartCoroutine(IsCurrentAnimationCompleted(()=>{
+                    //     EnableInteraction(true);
+                        Debug.Log("Enable Interaction after Animation Compleated"); 
+                    // }));
+                    delayActiveInteraction = true;
+                }
+                else {
+                    Debug.Log("Enable Interaction immediately"); 
+                    EnableInteraction(true);
+                }
+                break;
+            case EventCodes.ActionDisableInteractable:
+                if((bool)packages[1]) {
+                    // StartCoroutine(IsCurrentAnimationCompleted(()=>{
+                    //     EnableInteraction(false);
+                    Debug.Log("Disable Interaction after Animation Compleated"); 
+                    // }));
+                    delayInactiveInteraction = true;
+                }
+                else {
+                    Debug.Log("Disable Interaction immediately"); 
+                    EnableInteraction(false);
+                }
                 break;
 
         }
@@ -128,7 +164,19 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     }
     private void ResetTransform()
     {
-        transform.position = curTransform.position;
-        transform.rotation = curTransform.rotation;
+        transform.SetPositionAndRotation(curTransform.position,curTransform.rotation);
+    } 
+    private void TriggerAnimation(string trigger) {
+       animator.SetTrigger(trigger);
+    }
+    private IEnumerator IsCurrentAnimationCompleted(Action onCompleted) {
+        Debug.Log("IsCurrentAnimationCompleted =" +animator.GetCurrentAnimatorStateInfo(0).IsName("StandJump") +"-" +animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        while(animator.GetCurrentAnimatorStateInfo(0).IsName("StandJump") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) {
+          yield return new WaitForFixedUpdate();
+          Debug.Log("Iam running" + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        }
+       if(onCompleted!= null) {
+            onCompleted();
+       }
     }
 }

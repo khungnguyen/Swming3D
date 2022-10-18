@@ -5,14 +5,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum BUTTON_ACTIONS {
+public enum ExaminorAction {
 
     StartExercise,
     TriggerFinalAnimation,
     TriggerAnimation,
     NextExercise,
     GoToLessonMenu,
-    EnableInteractable
+    EnableInteractable,
+    DisableInteractable,
+}
+
+public enum ActionPropertyType {
+    DelayAfterAnim,
 }
 public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLoaded
 {
@@ -87,29 +92,43 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
             foreach(ActionProperty actionProperty in ac.action)
             {
                 string miniAction = actionProperty.name;
-                if (miniAction == BUTTON_ACTIONS.StartExercise.ToString())
+                if (miniAction == ExaminorAction.StartExercise.ToString())
                 {
                     StartLesson();
                 }
-                else if (miniAction == BUTTON_ACTIONS.TriggerFinalAnimation.ToString())
+                else if (miniAction == ExaminorAction.TriggerFinalAnimation.ToString())
                 {
-                    StartAnimtion();
+                    FinalAnimation();
                 }
-                else if (miniAction == BUTTON_ACTIONS.NextExercise.ToString())
+                else if (miniAction == ExaminorAction.NextExercise.ToString())
                 {
                     NextLesson();
                 }
-                else if (miniAction == BUTTON_ACTIONS.TriggerAnimation.ToString())
+                else if (miniAction == ExaminorAction.TriggerAnimation.ToString())
                 {
                     StartAnimtion(actionProperty.property);
                 }
-                else if (miniAction == BUTTON_ACTIONS.GoToLessonMenu.ToString())
+                else if (miniAction == ExaminorAction.GoToLessonMenu.ToString())
                 {
                     GoToLessonUI();
                 }
-                else if (miniAction == BUTTON_ACTIONS.EnableInteractable.ToString())
+                else if (miniAction == ExaminorAction.EnableInteractable.ToString())
                 {
-                    EnableInteractable();
+                    bool OnlyAfterAnim = false;
+                    if(actionProperty.property == ActionPropertyType.DelayAfterAnim.ToString())
+                    {
+                        OnlyAfterAnim = true;
+                    }
+                    EnableInteractable(OnlyAfterAnim);
+                } 
+                else if (miniAction == ExaminorAction.DisableInteractable.ToString())
+                {
+                    bool OnlyAfterAnim = false;
+                    if(actionProperty.property == ActionPropertyType.DelayAfterAnim.ToString())
+                    {
+                        OnlyAfterAnim = true;
+                    }
+                    DisableInteractable(OnlyAfterAnim);
                 }
             }
             if(ac.showDisplayerOrder != 0)
@@ -133,22 +152,31 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         var actions = ExerciseManager.instance.exercises.Actions;
         return (new List<ButtonActions>(actions)).Find(e => e.name == name);
     }
-    public void EnableInteractable()
+    public void EnableInteractable(bool OnlyAfterAnim)
     {
-        object[] packages = new object[1];
+        object[] packages = new object[2];
         packages[0] = PhotonNetwork.NickName;
+        packages[1] = OnlyAfterAnim;
         ConnectionManager.instance.SendAction(EventCodes.ActionEnableInteractable, packages);
+    }
+    public void DisableInteractable(bool OnlyAfterAnim)
+    {
+        object[] packages = new object[2];
+        packages[0] = PhotonNetwork.NickName;
+        packages[1] = OnlyAfterAnim;
+        ConnectionManager.instance.SendAction(EventCodes.ActionDisableInteractable, packages);
     }
     public void StartLesson()
     {
-        object[] packages = new object[4];
+        object[] packages = new object[5];
         packages[0] = PhotonNetwork.NickName;
         packages[1] = curExercise.lessonName;
-        packages[2] = curExercise.starAnimation;
+        packages[2] = curExercise.startAnimation;
         packages[3] = ExerciseManager.instance.exercises.AnimatorController;
+        packages[4] = curExercise.startExerciseAnimation;
         ConnectionManager.instance.SendAction(EventCodes.ActionYes, packages);
     }
-    public void StartAnimtion()
+    public void FinalAnimation()
     {
         sendActionPlayAnim(curExercise.conditionTrigger.name);
     }
