@@ -172,7 +172,7 @@
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": "CycleKickRight"
+          "property": "CorrectFlutter"
         }
       ],
       "showDisplayerOrder": 11
@@ -192,7 +192,7 @@
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": "PositionRight"
+          "property": "CorrectFlutter"
         }
       ],
       "showDisplayerOrder": 11
@@ -212,7 +212,7 @@
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": "AbleToControl"
+          "property": "CorrectFlutter"
         }
       ],
       "showDisplayerOrder": 11
@@ -275,7 +275,8 @@
       "conditionTrigger": {
         "name": "StandJump",
         "value": true
-      }
+      },
+      "startPointName":"Lesson_2_Ex_All_Pos"
     },
     {
       "lessonName": "15 meters and return",
@@ -283,7 +284,8 @@
       "conditionTrigger": {
         "name": "SquatJump",
         "value": true
-      }
+      },
+      "startPointName":"Lesson_2_Ex_All_Pos"
     },
     {
       "lessonName": "25 meters and return",
@@ -291,7 +293,8 @@
       "conditionTrigger": {
         "name": "SlideJump",
         "value": false
-      }
+      },
+      "startPointName":"Lesson_2_Ex_All_Pos"
     }
   ]
 }

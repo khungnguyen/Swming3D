@@ -23,24 +23,25 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         public Vector3 position;
         public Quaternion rotation;
     }
-    private TransformInfor curTransform;
     // Start is called before the first frame update
     void Start()
     {
-        curTransform.position = transform.position;
-        curTransform.rotation = transform.rotation;
+       
     }
     private bool delayActiveInteraction = false;
     private bool delayInactiveInteraction = false;
-    public void NotifityEndAnimationState(AnimationEvent e)
+    public void NotifityEndAnimationStatet(AnimationEvent e)
     {
         Debug.LogError("Animation Event call" + e.time + e.animatorClipInfo.clip.name);
-        if(delayActiveInteraction){
-            StartCoroutine(DelayEnableInteraction(0.5f,true));
+        // StartCoroutine(DelayEnableInteraction(0.5f,true));
+        if (delayActiveInteraction)
+        {
+            StartCoroutine(DelayEnableInteraction(0.5f, true));
             delayActiveInteraction = false;
         }
-        else if(delayInactiveInteraction){
-            StartCoroutine(DelayEnableInteraction(0.5f,false));
+        else if (delayInactiveInteraction)
+        {
+            StartCoroutine(DelayEnableInteraction(0.5f, false));
             delayActiveInteraction = false;
         }
     }
@@ -53,10 +54,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
             snap.EnableRigWeight(enable);
         }
     }
-    IEnumerator DelayEnableInteraction(float delayTime,bool enable)
+    IEnumerator DelayEnableInteraction(float delayTime, bool enable)
     {
         delayActiveInteraction = false;
-        delayInactiveInteraction= false;
+        delayInactiveInteraction = false;
         yield return new WaitForSeconds(delayTime);
         EnableInteraction(true);
     }
@@ -74,50 +75,60 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 UpdateStudentBehavior(animation);
                 break;
             case EventCodes.ActionYes:
-                string lessonName = (string)packages[1];
-                string animator = (string)packages[3];
-                string startExerciseAnimation = (string)packages[4];
+                int exerciseIndex = (int)packages[1];
+                ExerciseUnit unit = ExerciseManager.instance.GetExercise(exerciseIndex);
+                string lessonName = unit.lessonName;
+                string animator = ExerciseManager.instance.GetAnimator();
+                string startExerciseAnimation = unit.startExerciseAnimation;
+                string startPointName = unit.startPointName;
+                InitTransform(startPointName);
                 Debug.Log("Lesson Accept" + lessonName);
                 SetAnimator(animator);
-                if(startExerciseAnimation!=null){
+                if (startExerciseAnimation != null)
+                {
                     TriggerAnimation(startExerciseAnimation);
                 }
-                else {
-                    StartCoroutine(DelayEnableInteraction(0.5f,true));
+                else
+                {
+                    //StartCoroutine(DelayEnableInteraction(0.5f, true));
                 }
                 break;
             case EventCodes.ActionNo:
                 EnableInteraction(false);
-                ResetTransform();
-                int lessonIndex = (int)packages[1];
-                ExerciseUnit lesson = ExerciseManager.instance.GetExercise(lessonIndex);
-                Debug.Log("Next lession is  " + lesson.lessonName);
-                TriggerAnimation(lesson.startAnimation);
+                int excerciseIndex = (int)packages[1];
+                ExerciseUnit muyUnit = ExerciseManager.instance.GetExercise(excerciseIndex);
+                Debug.Log("Next lession is  " + muyUnit.lessonName);
+                InitTransform(muyUnit.startPointName);
+                TriggerAnimation(muyUnit.startAnimation);
                 break;
             case EventCodes.ActionEnableInteractable:
                 //Delay after finishing Animation
-                if((bool)packages[1]) {
+                if ((bool)packages[1])
+                {
                     // StartCoroutine(IsCurrentAnimationCompleted(()=>{
                     //     EnableInteraction(true);
-                        Debug.Log("Enable Interaction after Animation Compleated"); 
+                    Debug.Log("Enable Interaction after Animation Compleated");
                     // }));
                     delayActiveInteraction = true;
                 }
-                else {
-                    Debug.Log("Enable Interaction immediately"); 
+                else
+                {
+                    Debug.Log("Enable Interaction immediately");
                     EnableInteraction(true);
                 }
                 break;
             case EventCodes.ActionDisableInteractable:
-                if((bool)packages[1]) {
+                if ((bool)packages[1])
+                {
                     // StartCoroutine(IsCurrentAnimationCompleted(()=>{
                     //     EnableInteraction(false);
-                    Debug.Log("Disable Interaction after Animation Compleated"); 
+                    Debug.Log("Disable Interaction after Animation Compleated");
                     // }));
                     delayInactiveInteraction = true;
                 }
-                else {
-                    Debug.Log("Disable Interaction immediately"); 
+                else
+                {
+                    Debug.Log("Disable Interaction immediately");
                     EnableInteraction(false);
                 }
                 break;
@@ -128,7 +139,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     {
         if (behavior == "NotFollowDistance")
         {
-            StartCoroutine(StopSwimInSecond(2));
+          //  StartCoroutine(StopSwimInSecond(2));
         }
     }
     IEnumerator StopSwimInSecond(float second)
@@ -162,21 +173,28 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     {
         ConnectionManager.RemoveCallBackTarget(this);
     }
-    private void ResetTransform()
+    private void InitTransform(string name)
     {
-        transform.SetPositionAndRotation(curTransform.position,curTransform.rotation);
-    } 
-    private void TriggerAnimation(string trigger) {
-       animator.SetTrigger(trigger);
-    }
-    private IEnumerator IsCurrentAnimationCompleted(Action onCompleted) {
-        Debug.Log("IsCurrentAnimationCompleted =" +animator.GetCurrentAnimatorStateInfo(0).IsName("StandJump") +"-" +animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
-        while(animator.GetCurrentAnimatorStateInfo(0).IsName("StandJump") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) {
-          yield return new WaitForFixedUpdate();
-          Debug.Log("Iam running" + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        Transform init = SpawnPointManager.instance.GetStudentSpawnPointByName(name);
+        if (init != null) {
+            transform.SetPositionAndRotation(init.position,init.rotation);
         }
-       if(onCompleted!= null) {
+    }
+    private void TriggerAnimation(string trigger)
+    {
+        animator.SetTrigger(trigger);
+    }
+    private IEnumerator IsCurrentAnimationCompleted(Action onCompleted)
+    {
+        Debug.Log("IsCurrentAnimationCompleted =" + animator.GetCurrentAnimatorStateInfo(0).IsName("StandJump") + "-" + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        while (animator.GetCurrentAnimatorStateInfo(0).IsName("StandJump") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
+        {
+            yield return new WaitForFixedUpdate();
+            Debug.Log("Iam running" + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        }
+        if (onCompleted != null)
+        {
             onCompleted();
-       }
+        }
     }
 }

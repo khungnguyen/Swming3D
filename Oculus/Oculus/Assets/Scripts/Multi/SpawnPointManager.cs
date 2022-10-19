@@ -26,4 +26,7 @@ public class SpawnPointManager : MonoBehaviour
     {
         return DesktopPlayerSpawnPoints[Random.Range(0, DesktopPlayerSpawnPoints.Length - 1)];
     }
+    public Transform GetStudentSpawnPointByName(string name) {
+        return (new List<Transform>(StutdemtSpawnPoints)).Find(e=>e.name==name);
+    }
 }

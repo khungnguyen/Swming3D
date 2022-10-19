@@ -168,12 +168,9 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     }
     public void StartLesson()
     {
-        object[] packages = new object[5];
+        object[] packages = new object[2];
         packages[0] = PhotonNetwork.NickName;
-        packages[1] = curExercise.lessonName;
-        packages[2] = curExercise.startAnimation;
-        packages[3] = ExerciseManager.instance.exercises.AnimatorController;
-        packages[4] = curExercise.startExerciseAnimation;
+        packages[1] =  ExerciseManager.instance.GetExerciseIndex(); 
         ConnectionManager.instance.SendAction(EventCodes.ActionYes, packages);
     }
     public void FinalAnimation()

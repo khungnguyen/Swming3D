@@ -42,6 +42,7 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
             }
            // activateConstraintComp(false);
             EnableRigWeight(false);
+            //ádasd
         }
 
     }

@@ -38,6 +38,10 @@ public class ExerciseManager : MonoBehaviour
     {
        return exercises.ExerciseList[cur];
     }
+
+    public string GetAnimator() {
+        return exercises.AnimatorController;
+    }
     public ExerciseUnit GetCurxercise()
     {
         return GetExercise(curLesson);
@@ -92,9 +96,10 @@ public class ExerciseUnit
 {
    public string lessonName;
    public string startAnimation;
-
    public string startExerciseAnimation;
    public ConditionTrigger conditionTrigger;
+
+   public string startPointName;
 
 }
 [System.Serializable]
