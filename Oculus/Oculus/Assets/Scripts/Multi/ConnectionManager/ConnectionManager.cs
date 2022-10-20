@@ -66,14 +66,14 @@ public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
      * eve : EventCodes
      * data : should be Animation Info
      */
-    public void SendAction(EventCodes eventCode,object[] packages)
+    public void SendAction(EventCodes eventCode,object[] packages,ReceiverGroup group = ReceiverGroup.All)
     {
         if(PhotonNetwork.IsConnected)
         {
             PhotonNetwork.RaiseEvent(
                        (byte)eventCode,
                        packages,
-                       new RaiseEventOptions { Receivers = ReceiverGroup.All },
+                       new RaiseEventOptions { Receivers = group },
                        new SendOptions { Reliability = true }
                        );
         }

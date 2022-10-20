@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Realtime;
 
 public class LessionUI : MonoBehaviour,IButtonAction
 {
@@ -12,10 +13,10 @@ public class LessionUI : MonoBehaviour,IButtonAction
 
     public void OnClicked(string action)
     {
-        PanleUserDecison.SetActive(true);
         var lessonIndex = int.Parse(action);
-        ExerciseManager.instance.SetExercises(LessonManager.instance.lessonData[lessonIndex].text);
         SendActionInitLesson(lessonIndex);
+        PanleUserDecison.SetActive(true);
+        ExerciseManager.instance.SetExercises(LessonManager.instance.lessonData[lessonIndex].text,lessonIndex);
         transform.gameObject.SetActive(false);
     }
 
@@ -35,6 +36,6 @@ public class LessionUI : MonoBehaviour,IButtonAction
     {
         object[] packages = new object[1];
         packages[0] = index;
-        ConnectionManager.instance.SendAction(EventCodes.ActionInitLesson, packages);
+        ConnectionManager.instance.SendAction(EventCodes.ActionInitLesson, packages,ReceiverGroup.Others);
     }
 }

@@ -46,7 +46,7 @@ public class SpawnManager : MonoBehaviour
         {
             Transform transfrom = SpawnPointManager.instance.GetDesktopPlayerSpawnPoint();
             player = PhotonNetwork.Instantiate(convertPrefabPath(DesktopPlayerGO), transfrom.position, transform.rotation);
-          
+            player.transform.rotation = transform.rotation;
         }
   
     }

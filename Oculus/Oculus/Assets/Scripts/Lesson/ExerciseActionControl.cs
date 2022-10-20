@@ -52,13 +52,13 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
      * Function called when Exercise was loaded fully
      * Create 1st UI
      */
-    public void OnLoaded()
+    public void OnLoaded(int lesson)
     {
         curExercise = ExerciseManager.instance.GetCurxercise();
 
         CreateButtonDialog();
         UpdateLessonName();
-        SettingUpLesson();
+        SettingUpLesson(lesson);
     }
     public void CreateButtonDialog(int level = 1)
     {
@@ -196,10 +196,10 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         ConnectionManager.instance.SendAction(EventCodes.ActionStartExercise, packages);
     }
 
-    public void SettingUpLesson()
+    public void SettingUpLesson(int lessonIndex)
     {
-        object[] packages = new object[2];
-        packages[0] = PhotonNetwork.NickName;
+        object[] packages = new object[1];
+        packages[0] = lessonIndex;
         ConnectionManager.instance.SendAction(EventCodes.ActionSettingUpLesson, packages);
     }
     public void FinalAnimation()

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public interface IOnExerciseLoaded
 {
-    void OnLoaded();
+    void OnLoaded(int lessonIndex);
 }
 public class ExerciseManager : MonoBehaviour
 {
@@ -15,16 +15,18 @@ public class ExerciseManager : MonoBehaviour
     public Exercises exercises;
 
     public int curLesson = 0;
+    public int curExercise= 0;
 
     public void Awake()
     {
         instance = this;
         exercises = new Exercises();
     }
-    public void SetExercises(string text)
+    public void SetExercises(string text,int lessonIndex)
     {
         exercises = JsonUtility.FromJson<Exercises>(text);
-        curLesson = 0;
+        curLesson = lessonIndex;
+        curExercise = 0;
         TriggerCallback();
     }
     // Start is called before the first frame update
@@ -50,18 +52,18 @@ public class ExerciseManager : MonoBehaviour
     public ExerciseUnit ChangeNextExercise()
     {
 
-        if (curLesson < exercises.ExerciseList.Length - 1)
+        if (curExercise < exercises.ExerciseList.Length - 1)
         {
-            curLesson++;
+            curExercise++;
 
         }
         return GetCurxercise();
     }
     public ExerciseUnit ChangeExercise(int index)
     {
-        if (curLesson != index && index < exercises.ExerciseList.Length - 1)
+        if (curExercise != index && index < exercises.ExerciseList.Length - 1)
         {
-            curLesson = index;
+            curExercise = index;
         }
         return GetCurxercise();
     }
@@ -93,11 +95,11 @@ public class ExerciseManager : MonoBehaviour
             OnLoadCallbacks.RemoveAt(index);
         }
     }
-    public static void TriggerCallback()
+    public void TriggerCallback()
     {
         foreach (var re in OnLoadCallbacks)
         {
-            re.OnLoaded();
+            re.OnLoaded(curLesson);
         }
     }
 }

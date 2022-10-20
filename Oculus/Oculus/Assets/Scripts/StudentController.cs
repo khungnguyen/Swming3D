@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using System;
-
+public enum LessonID {
+    Lesson_1,
+    Lesson_2
+}
 public class StudentController : MonoBehaviourPunCallbacks, IReciever
 {
     public Animator animator;
@@ -15,8 +18,13 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
 
     public RigBuilder rig;
 
+    public Transform kickBoard;
+    public Transform boardHolderWrong;
+    public Transform boardHolderRight;
+
     private Avatar curAvatar;
 
+    private int curLesson;
 
     struct TransformInfor
     {
@@ -26,7 +34,8 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     // Start is called before the first frame update
     void Start()
     {
-
+        var starTransfrom = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
+        transform.SetPositionAndRotation(starTransfrom.position,starTransfrom.rotation);
     }
     private bool delayActiveInteraction = false;
     private bool delayInactiveInteraction = false;
@@ -70,6 +79,8 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         switch (theEvent)
         {
             case EventCodes.ActionSettingUpLesson:
+                curLesson = (int)packages[0];
+                SettupStudent(curLesson);
                 InitTransform(ExerciseManager.instance.GetStartPoint());
                 SetAnimator(ExerciseManager.instance.GetAnimator());
                 Debug.LogError("Setting Up for lesson");
@@ -180,21 +191,25 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     {
         if (trigger != null && trigger.Length > 0)
         {
+            BeforeTriggerAnim(trigger);
             animator.SetTrigger(trigger);
         }
 
     }
-    private IEnumerator IsCurrentAnimationCompleted(Action onCompleted)
-    {
-        Debug.Log("IsCurrentAnimationCompleted =" + animator.GetCurrentAnimatorStateInfo(0).IsName("StandJump") + "-" + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
-        while (animator.GetCurrentAnimatorStateInfo(0).IsName("StandJump") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
-        {
-            yield return new WaitForFixedUpdate();
-            Debug.Log("Iam running" + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+    private void BeforeTriggerAnim(string trigger) {
+        if(trigger == "PositionWrong") {
+            kickBoard.SetPositionAndRotation(boardHolderWrong.position,boardHolderWrong.rotation);
         }
-        if (onCompleted != null)
-        {
-            onCompleted();
+        else if(trigger == "CorectFlutter"){
+           kickBoard.SetPositionAndRotation(boardHolderRight.position,boardHolderRight.rotation); 
+        }
+    }
+    private void SettupStudent(int lesson) {
+        if(lesson == (int)LessonID.Lesson_1) {
+            kickBoard.gameObject.SetActive(false);
+        }
+         if(lesson == (int)LessonID.Lesson_2) {
+            kickBoard.gameObject.SetActive(true);
         }
     }
 }

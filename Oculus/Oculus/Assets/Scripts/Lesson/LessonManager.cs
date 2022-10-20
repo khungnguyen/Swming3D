@@ -28,8 +28,10 @@ public class LessonManager : MonoBehaviour,IReciever
         switch (theEvent)
         {
             case EventCodes.ActionInitLesson:
+                
                 var index = (int)packages[0];
-                ExerciseManager.instance.SetExercises(lessonData[index].text);
+                Debug.LogError("Init Lesson Index" + index);
+                ExerciseManager.instance.SetExercises(lessonData[index].text,index);
                 break;
            
         }
