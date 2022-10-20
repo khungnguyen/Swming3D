@@ -29,4 +29,7 @@ public class SpawnPointManager : MonoBehaviour
     public Transform GetStudentSpawnPointByName(string name) {
         return (new List<Transform>(StutdemtSpawnPoints)).Find(e=>e.name==name);
     }
+    public Transform GetXRPlayerSpawnPointByName(string name) {
+        return (new List<Transform>(XRPlayerSpawnPoints)).Find(e=>e.name==name);
+    }
 }

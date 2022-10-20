@@ -1,29 +1,26 @@
 {
   "Exercise": "1A",
   "AnimatorController" :"Case_One",
+  "startPointName" :"Lesson_1_Ex_All_Pos",
   "Buttons": [
     {
       "name": "Yes",
       "action": "StartExercise",
-      "parent": "",
       "displayOrder": 1
     },
     {
       "name": "Next Exercise",
       "action": "NextExercise",
-      "parent": "",
       "displayOrder": 1
     },
     {
       "name": "Allow",
       "action": "ActionPlayAnimation",
-      "parent": "Yes",
       "displayOrder": 2
     },
     {
       "name": "Next Exercise",
       "action": "NextExercise",
-      "parent": "Yes",
       "displayOrder": 3
     },
     {
@@ -43,7 +40,7 @@
         },
 		    {
           "name": "EnableInteractable",
-          "property": "DelayAfterAnim"
+          "property": ""
         }
       ],
       "showDisplayerOrder": 2

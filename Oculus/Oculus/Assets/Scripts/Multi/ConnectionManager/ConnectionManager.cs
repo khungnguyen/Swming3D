@@ -6,13 +6,15 @@ using Photon.Realtime;
 using ExitGames.Client.Photon;
 public enum EventCodes : byte
 {
-    ActionYes,
-    ActionNo,
+    ActionStartExercise,
+    ActionNextExercise,
     ActionPlayAnimation,
     ActionEnableInteractable,
     ActionDisableInteractable,
     ActionSwimDistance,
     ActionInitLesson,
+    ActionInitStartPoint,
+    ActionSettingUpLesson,
 }
 public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
 {
@@ -48,18 +50,6 @@ public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
             {
                 re.OnActionReciver(theEvent, data);
             }
-            switch(theEvent)
-            {
-                case EventCodes.ActionNo:
-                    OnAcionNo(data);
-                    break;
-                case EventCodes.ActionYes:
-                    OnAcionYes(data);
-                    break;
-                case EventCodes.ActionPlayAnimation:
-                    OnAcionPlayAnimaiton(data);
-                    break;
-            }
         }
     }
     public override void OnEnable()
@@ -93,21 +83,6 @@ public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
         }
        
     }
-    /*
-     * Recive a event YES
-     */
-    public void OnAcionYes(object[] data)
-    {
-    }
-    public void OnAcionNo(object[] data)
-    {
-
-    }
-    public void OnAcionPlayAnimaiton(object[] data)
-    {
-
-    }
-   
     public static void AddCallbackTarget(IReciever re)
     {
         IReciever  reuslt = receivers.Find(e => e == re);

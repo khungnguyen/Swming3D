@@ -30,33 +30,52 @@ public class ExerciseManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+
     }
     // Update is called once per frame
-  
+
     public ExerciseUnit GetExercise(int cur)
     {
-       return exercises.ExerciseList[cur];
+        return exercises.ExerciseList[cur];
     }
 
-    public string GetAnimator() {
+    public string GetAnimator()
+    {
         return exercises.AnimatorController;
     }
     public ExerciseUnit GetCurxercise()
     {
         return GetExercise(curLesson);
     }
-    public void ChangeNextExercise()
+    public ExerciseUnit ChangeNextExercise()
     {
-        if(curLesson < exercises.ExerciseList.Length-1)
+
+        if (curLesson < exercises.ExerciseList.Length - 1)
         {
             curLesson++;
-        }
 
+        }
+        return GetCurxercise();
+    }
+    public ExerciseUnit ChangeExercise(int index)
+    {
+        if (curLesson != index && index < exercises.ExerciseList.Length - 1)
+        {
+            curLesson = index;
+        }
+        return GetCurxercise();
     }
     public int GetExerciseIndex()
     {
         return curLesson;
+    }
+    public int GetTotalExerciseLength()
+    {
+        return exercises.ExerciseList.Length;
+    }
+    public string GetStartPoint()
+    {
+        return exercises.startPointName;
     }
     public static void AddCallbackTarget(IOnExerciseLoaded re)
     {
@@ -90,16 +109,18 @@ public class Exercises
     public UIButton[] Buttons;
     public ButtonActions[] Actions;
     public string AnimatorController;
+
+    public string startPointName;
 }
 [System.Serializable]
 public class ExerciseUnit
 {
-   public string lessonName;
-   public string startAnimation;
-   public string startExerciseAnimation;
-   public ConditionTrigger conditionTrigger;
+    public string lessonName;
+    public string startAnimation;
+    public string startExerciseAnimation;
+    public ConditionTrigger conditionTrigger;
 
-   public string startPointName;
+    public string startPointName;
 
 }
 [System.Serializable]

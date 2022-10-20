@@ -1,72 +1,63 @@
 {
   "Exercise": "HEAD ABOVE WATER",
-   "AnimatorController" :"Case_Two",
+  "AnimatorController" :"Case_Two",
+  "startPointName" :"Lesson_2_Ex_All_Pos",
   "Buttons": [
     {
-      "name": "Yes",
-      "action": "ActionYes",
+      "name": "Correct Anim",
+      "action": "PlayCorrectAnimFlutter",
       "displayOrder": 1
-    },
-    {
-      "name": "Next Exercise",
-      "action": "NextExercise",
-      "displayOrder": 1
-    },
-    {
-      "name": "Allow",
-      "action": "ActionPlayAnimation",
-      "displayOrder": 2
     },
     {
       "name": "Splash Kick",
       "action": "SplashKickWrong",
-      "displayOrder": 2
+      "displayOrder": 1
     },
     {
       "name": "Cycles Kick",
       "action": "CycleKickWrong",
-      "displayOrder": 2
+      "displayOrder": 1
     },
     {
       "name": "Incorect Position",
       "action": "PositionWrong",
-      "displayOrder": 2
+      "displayOrder": 1
+    },
+    {
+      "name": "Correct Anim",
+      "action": "PlayCorrectAnimFlutter",
+      "displayOrder": 3
+    },
+    {
+      "name": "5 metters",
+      "action": "GoToExercise_1",
+      "displayOrder": 4
+    },
+    {
+      "name": "15 metters",
+      "action": "GoToExercise_2",
+      "displayOrder": 4
+    },
+    {
+      "name": "20 metters",
+      "action": "GoToExercise_3",
+      "displayOrder": 4
     },
     {
       "name": "Lose Control",
       "action": "LoseControl",
-      "displayOrder": 2
+      "displayOrder": 5
     },
     {
       "name": "Not Follow Distance",
       "action": "NotFollowDistance",
-      "displayOrder": 2
+      "displayOrder": 5
     },
     {
       "name": "Not Follow Return",
       "action": "TriggerAnimationNotFollowReturn",
       "parent": "Yes",
-      "displayOrder": 2
-    },
-    {
-      "name": "Lesson List",
-      "action": "LessonList",
-      "displayOrder": 3
-    },
-    {
-      "name": "Allow-Splash Kick",
-      "action": "SplashKickRight",
-      "displayOrder": 4
-    },
-    {
-      "name": "Allow-Cycle Kick",
-      "action": "CycleKickRight",
       "displayOrder": 5
-    },
-    {
-      "name": "Allow-Position",
-      "action": "PositionRight",
-      "displayOrder": 6
     },
     {
       "name": "Allow-Control",
@@ -145,17 +136,7 @@
           "property": "SplashKickWrong"
         }
       ],
-      "showDisplayerOrder": 4
-    },
-    {
-      "name": "SplashKickRight",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": "SplashKickRight"
-        }
-      ],
-      "showDisplayerOrder": 11
+      "showDisplayerOrder": 3
     },
     {
       "name": "CycleKickWrong",
@@ -165,17 +146,7 @@
           "property": "CycleKickWrong"
         }
       ],
-      "showDisplayerOrder": 5
-    },
-    {
-      "name": "CycleKickRight",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": "CorrectFlutter"
-        }
-      ],
-      "showDisplayerOrder": 11
+      "showDisplayerOrder": 3
     },
     {
       "name": "PositionWrong",
@@ -185,17 +156,17 @@
           "property": "PositionWrong"
         }
       ],
-      "showDisplayerOrder": 6
+      "showDisplayerOrder": 3
     },
     {
-      "name": "PositionRight",
+      "name": "PlayCorrectAnimFlutter",
       "action": [
         {
           "name": "TriggerAnimation",
           "property": "CorrectFlutter"
         }
       ],
-      "showDisplayerOrder": 11
+      "showDisplayerOrder": 4
     },
     {
       "name": "LoseControl",
@@ -206,16 +177,6 @@
         }
       ],
       "showDisplayerOrder": 7
-    },
-    {
-      "name": "AbleToControl",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": "CorrectFlutter"
-        }
-      ],
-      "showDisplayerOrder": 11
     },
     {
       "name": "NotFollowDistance",
@@ -266,7 +227,38 @@
         }
       ],
       "showDisplayerOrder": 2
+    },
+    {
+      "name": "GoToExercise_1",
+      "action": [
+        {
+          "name": "GoToExercise",
+          "property": "0"
+        }
+      ],
+      "showDisplayerOrder": 5
+    },
+    {
+      "name": "GoToExercise_2",
+      "action": [
+        {
+          "name": "GoToExercise",
+          "property": "1"
+        }
+      ],
+      "showDisplayerOrder": 5
+    },
+    {
+      "name": "GoToExercise_3",
+      "action": [
+        {
+          "name": "GoToExercise",
+          "property": "2"
+        }
+      ],
+      "showDisplayerOrder": 5
     }
+    
   ],
   "ExerciseList": [
     {
