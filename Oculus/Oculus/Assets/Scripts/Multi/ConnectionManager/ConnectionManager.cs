@@ -15,6 +15,9 @@ public enum EventCodes : byte
     ActionInitLesson,
     ActionInitStartPoint,
     ActionSettingUpLesson,
+    ActionReplaceModel,
+
+    ActionResetModel
 }
 public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
 {

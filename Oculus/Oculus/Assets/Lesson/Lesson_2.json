@@ -1,7 +1,7 @@
 {
   "Exercise": "HEAD ABOVE WATER",
-  "AnimatorController" :"Case_Two",
-  "startPointName" :"Lesson_2_Ex_All_Pos",
+  "AnimatorController": "Case_Two",
+  "startPointName": "Lesson_2_Ex_All_Pos",
   "Buttons": [
     {
       "name": "Correct Anim",
@@ -44,52 +44,40 @@
       "displayOrder": 4
     },
     {
-      "name": "Correct Anim",
-      "action": "PlayCorrectAnimSwim",
+      "name": "Swim Back",
+      "action": "SwimBack",
       "displayOrder": 5
+    },
+    {
+      "name": "Walk Back",
+      "action": "WalkBack",
+      "displayOrder": 5
+    },
+    {
+      "name": "Correct Anim",
+      "action": "PlayCorrectAnimSwimOrWalkBack",
+      "displayOrder": 6
+    },
+    
+    {
+      "name": "Not Follow Distance",
+      "action": "NotFollowDistance",
+      "displayOrder": 6
+    },
+    {
+      "name": "Not Follow Return",
+      "action": "NotFollowReturn",
+      "displayOrder": 6
     },
     {
       "name": "Lose Control",
       "action": "LoseControl",
-      "displayOrder": 5
+      "displayOrder": 6
     },
     {
-      "name": "Not Follow Distance",
-      "action": "NotFollowDistance",
-      "displayOrder": 5
-    },
-    {
-      "name": "Not Follow Return",
-      "action": "TriggerAnimationNotFollowReturn",
-      "parent": "Yes",
-      "displayOrder": 5
-    },
-    {
-      "name": "Allow-Control",
-      "action": "AbleToControl",
-      "displayOrder": 7
-    },
-    {
-      "name": "Allow-FollowDistance",
-      "action": "FollowDistance",
-      "displayOrder": 8
-    },
-    {
-      "name": "Allow-ReturnPool",
-      "action": "ReturnPool",
-      "displayOrder": 9
-    },
-    {
-
-      "name": "Return Student Pool",
-      "action": "ReturnPool",
-      "displayOrder": 10
-    },
-    {
-
       "name": "Finish",
       "action": "GetOutPool",
-      "displayOrder": 6
+      "displayOrder": 7
     }
   ],
   "Actions": [
@@ -98,7 +86,9 @@
       "action": [
         {
           "name": "StartExercise",
-          "property": ""
+          "property": [
+            ""
+          ]
         }
       ],
       "showDisplayerOrder": 2
@@ -108,7 +98,9 @@
       "action": [
         {
           "name": "NextExercise",
-          "property": ""
+          "property": [
+            ""
+          ]
         }
       ],
       "showDisplayerOrder": 1
@@ -118,7 +110,9 @@
       "action": [
         {
           "name": "TriggerFinalAnimation",
-          "property": ""
+          "property": [
+            ""
+          ]
         }
       ],
       "showDisplayerOrder": 3
@@ -128,7 +122,9 @@
       "action": [
         {
           "name": "GoToLessonMenu",
-          "property": ""
+          "property": [
+            ""
+          ]
         }
       ],
       "showDisplayerOrder": 0
@@ -138,11 +134,15 @@
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": "SplashKickWrong"
+          "property": [
+            "SplashKickWrong"
+          ]
         },
-		    {
+        {
           "name": "EnableInteractable",
-          "property": "DelayAfterAnim"
+          "property": [
+            "DelayAfterAnim"
+          ]
         }
       ],
       "showDisplayerOrder": 3
@@ -152,11 +152,15 @@
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": "CycleKickWrong"
+          "property": [
+            "CycleKickWrong"
+          ]
         },
-		    {
+        {
           "name": "EnableInteractable",
-          "property": "DelayAfterAnim"
+          "property": [
+            "DelayAfterAnim"
+          ]
         }
       ],
       "showDisplayerOrder": 3
@@ -166,11 +170,15 @@
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": "PositionWrong"
+          "property": [
+            "PositionWrong"
+          ]
         },
-		    {
+        {
           "name": "EnableInteractable",
-          "property": "DelayAfterAnim"
+          "property": [
+            "DelayAfterAnim"
+          ]
         }
       ],
       "showDisplayerOrder": 3
@@ -180,7 +188,9 @@
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": "CorrectFlutter"
+          "property": [
+            "CorrectFlutter"
+          ]
         }
       ],
       "showDisplayerOrder": 4
@@ -190,7 +200,9 @@
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": "LoseControl"
+          "property": [
+            "LoseControl"
+          ]
         }
       ],
       "showDisplayerOrder": 7
@@ -199,58 +211,40 @@
       "name": "NotFollowDistance",
       "action": [
         {
-          "name": "TriggerAnimation",
-          "property": "5mGo"
+          "name": "ReplaceModel",
+          "property": [
+            "ReplaceByInCorrectModel"
+          ]
+        },
+        {
+          "name": "TriggerAnimationReplaceModel",
+          "property": [
+            "Swim"
+          ]
         }
       ],
-      "showDisplayerOrder": 6
+      "showDisplayerOrder": 0
     },
     {
-      "name": "FollowDistance",
+      "name": "NotFollowReturn",
       "action": [
         {
-          "name": "TriggerAnimation",
-          "property": "FollowDistance"
+          "name": "ReplaceModel",
+          "property": [
+            "ReplaceByInCorrectModel"
+          ]
         }
       ],
-      "showDisplayerOrder": 11
-    },
-    {
-      "name": "NotReturnPool",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": "NotReturnPool"
-        }
-      ],
-      "showDisplayerOrder": 9
-    },
-    {
-      "name": "ReturnPool",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": "ReturnPool"
-        }
-      ],
-      "showDisplayerOrder": 11
-    },
-    {
-      "name": "GetOutPool",
-      "action": [
-        {
-          "name": "TriggerFinalAnimation",
-          "property": ""
-        }
-      ],
-      "showDisplayerOrder": 2
+      "showDisplayerOrder": 0
     },
     {
       "name": "GoToExercise_1",
       "action": [
         {
           "name": "GoToExercise",
-          "property": "0"
+          "property": [
+            "0"
+          ]
         }
       ],
       "showDisplayerOrder": 5
@@ -260,7 +254,9 @@
       "action": [
         {
           "name": "GoToExercise",
-          "property": "1"
+          "property": [
+            "1"
+          ]
         }
       ],
       "showDisplayerOrder": 5
@@ -270,12 +266,37 @@
       "action": [
         {
           "name": "GoToExercise",
-          "property": "2"
+          "property": [
+            "2"
+          ]
         }
       ],
       "showDisplayerOrder": 5
+    },
+    {
+      "name": "SwimBack",
+      "action": [
+        {
+          "name": "StudentBehavior",
+          "property": [
+            "Swmin"
+          ]
+        }
+      ],
+      "showDisplayerOrder": 6
+    },
+    {
+      "name": "WalkBack",
+      "action": [
+        {
+          "name": "StudentBehavior",
+          "property": [
+            "Walk"
+          ]
+        }
+      ],
+      "showDisplayerOrder": 6
     }
-    
   ],
   "ExerciseList": [
     {
@@ -285,7 +306,12 @@
         "name": "StandJump",
         "value": true
       },
-      "startPointName":"Lesson_2_Ex_All_Pos"
+      "startPointName": "Lesson_2_Ex_All_Pos",
+      "property": [
+        "ReplaceByModel","Flutter Kick 5 Meters",
+        "ReplaceByInCorrectModel","Flutter Kick 15 Meters",
+        "ReplaceByInCorrectModel","Flutter Kick 25 Meters"
+      ]
     },
     {
       "lessonName": "15 meters and return",
@@ -294,7 +320,12 @@
         "name": "SquatJump",
         "value": true
       },
-      "startPointName":"Lesson_2_Ex_All_Pos"
+      "startPointName": "Lesson_2_Ex_All_Pos",
+      "property": [
+        "ReplaceByModel","Flutter Kick 15 Meters",
+        "ReplaceByInCorrectModel","Flutter Kick 5 Meters",
+        "ReplaceByInCorrectModel","Flutter Kick 25 Meters"
+      ]
     },
     {
       "lessonName": "25 meters and return",
@@ -303,7 +334,12 @@
         "name": "SlideJump",
         "value": false
       },
-      "startPointName":"Lesson_2_Ex_All_Pos"
+      "startPointName": "Lesson_2_Ex_All_Pos",
+      "property": [
+        "ReplaceByModel","Flutter Kick 25 Meters",
+        "ReplaceByInCorrectModel","Flutter Kick 15 Meters",
+        "ReplaceByInCorrectModel","Flutter Kick 5 Meters"
+      ]
     }
   ]
 }

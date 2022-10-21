@@ -11,6 +11,9 @@ public class SpawnPointManager : MonoBehaviour
     [SerializeField]
     private Transform[] DesktopPlayerSpawnPoints;
 
+    [SerializeField]
+    private List<Transform> ModelReplaceSpawnPoints;
+
     public static SpawnPointManager instance;
     private void Awake() {
         instance = this;
@@ -31,5 +34,8 @@ public class SpawnPointManager : MonoBehaviour
     }
     public Transform GetXRPlayerSpawnPointByName(string name) {
         return (new List<Transform>(XRPlayerSpawnPoints)).Find(e=>e.name==name);
+    }
+    public Transform GetReplaceModelSpawnPointByName(string name) {
+        return ModelReplaceSpawnPoints.Find(e=>e.name==name);
     }
 }

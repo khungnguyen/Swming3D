@@ -47,7 +47,7 @@ public class ExerciseManager : MonoBehaviour
     }
     public ExerciseUnit GetCurxercise()
     {
-        return GetExercise(curLesson);
+        return GetExercise(curExercise);
     }
     public ExerciseUnit ChangeNextExercise()
     {
@@ -69,7 +69,7 @@ public class ExerciseManager : MonoBehaviour
     }
     public int GetExerciseIndex()
     {
-        return curLesson;
+        return curExercise;
     }
     public int GetTotalExerciseLength()
     {
@@ -124,6 +124,10 @@ public class ExerciseUnit
 
     public string startPointName;
 
+    public string modelReplaceName;
+
+    public string[] property;
+
 }
 [System.Serializable]
 public class ConditionTrigger
@@ -149,5 +153,5 @@ public class ButtonActions
 public class ActionProperty
 {
     public string name;
-    public string property;
+    public string[] property;
 }

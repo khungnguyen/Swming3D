@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using System;
-public enum LessonID {
+public enum LessonID
+{
     Lesson_1,
     Lesson_2
 }
@@ -21,7 +22,12 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     public Transform kickBoard;
     public Transform boardHolderWrong;
     public Transform boardHolderRight;
+    public Transform boardHolderSwim;
 
+    public Transform replaceModelPoint;
+
+    public GameObject currentModel;
+    private GameObject replaceModel;
     private Avatar curAvatar;
 
     private int curLesson;
@@ -35,7 +41,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     void Start()
     {
         var starTransfrom = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
-        transform.SetPositionAndRotation(starTransfrom.position,starTransfrom.rotation);
+        transform.SetPositionAndRotation(starTransfrom.position, starTransfrom.rotation);
     }
     private bool delayActiveInteraction = false;
     private bool delayInactiveInteraction = false;
@@ -79,6 +85,9 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         switch (theEvent)
         {
             case EventCodes.ActionSettingUpLesson:
+                transform.gameObject.SetActive(false);
+                transform.gameObject.SetActive(true);
+                //animator.enabled = true;
                 curLesson = (int)packages[0];
                 SettupStudent(curLesson);
                 InitTransform(ExerciseManager.instance.GetStartPoint());
@@ -87,22 +96,30 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 break;
             case EventCodes.ActionPlayAnimation:
                 string animation = (string)packages[1];
+                bool useReplaceModel = (bool)packages[0];
                 //animator.avatar = animatorAvatar;
                 Debug.Log("Play Animaton" + animation);
+
                 EnableInteraction(false);
-                TriggerAnimation(animation);
+                if (useReplaceModel)
+                {
+                    TriggerReplaceAnimation(animation);
+                }
+                else
+                {
+                    TriggerAnimation(animation);
+                }
                 UpdateStudentBehavior(animation);
                 break;
             case EventCodes.ActionStartExercise:
                 int exerciseIndex = (int)packages[1];
                 ExerciseUnit unit = ExerciseManager.instance.GetExercise(exerciseIndex);
                 string lessonName = unit.lessonName;
-                string animator = ExerciseManager.instance.GetAnimator();
                 string startExerciseAnimation = unit.startExerciseAnimation;
                 // string startPointName = unit.startPointName;
                 // InitTransform(startPointName);
                 Debug.Log("Lesson Accept" + lessonName);
-                SetAnimator(animator);
+                SetAnimator(ExerciseManager.instance.GetAnimator());
                 TriggerAnimation(startExerciseAnimation);
                 break;
             case EventCodes.ActionNextExercise:
@@ -138,6 +155,21 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                     EnableInteraction(false);
                 }
                 break;
+            case EventCodes.ActionReplaceModel:
+                string modelName = (string)packages[0];
+                GameObject model = ModelHolder.instance.FindModelByName(modelName);
+                if (model != null)
+                {
+                    replaceModel = Instantiate(model);
+                    replaceModel.transform.SetParent(transform);
+                    replaceModel.transform.SetPositionAndRotation(replaceModelPoint.position, replaceModelPoint.rotation);
+                    SwapModel(true);
+                }
+                break;
+            case EventCodes.ActionResetModel:
+                SwapModel(false);
+                Destroy(replaceModel);
+                break;
 
         }
     }
@@ -155,7 +187,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     }
     private void SetAnimator(string animatorName)
     {
-        if (animatorName != animator.runtimeAnimatorController.name)
+        // if (animatorName != animator.runtimeAnimatorController.name)
         {
             var find = (new List<RuntimeAnimatorController>(animatorData)).Find(e => e.name == animatorName);
             if (find != null)
@@ -196,23 +228,47 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         }
 
     }
-    private void BeforeTriggerAnim(string trigger) {
-        if(trigger == "PositionWrong") {
+    private void BeforeTriggerAnim(string trigger)
+    {
+        if (trigger == "PositionWrong")
+        {
             kickBoard.GetComponent<SnapTo>().setTarget(boardHolderWrong);
+
         }
-        else if(trigger == "5mGo") {
-            kickBoard.GetComponent<SnapTo>().setTarget(null);
-        }
-        else {
-           //kickBoard.SetPositionAndRotation(boardHolderRight.position,boardHolderRight.rotation); 
-           kickBoard.GetComponent<SnapTo>().setTarget(boardHolderRight);
+        else
+        {
+            kickBoard.GetComponent<SnapTo>().setTarget(boardHolderRight);
         }
     }
-    private void SettupStudent(int lesson) {
-        if(lesson == (int)LessonID.Lesson_1) {
+    private void SwapModel(bool useReplace)
+    {
+        if (replaceModel != null)
+        {
+            currentModel.SetActive(!useReplace);
+            replaceModel.SetActive(useReplace);
+        }
+        else
+        {
+            currentModel.SetActive(true);
+        }
+
+    }
+    private void TriggerReplaceAnimation(string trigger)
+    {
+        if (trigger != null && trigger.Length > 0)
+        {
+            replaceModel?.GetComponent<Animator>().SetTrigger(trigger);
+        }
+
+    }
+    private void SettupStudent(int lesson)
+    {
+        if (lesson == (int)LessonID.Lesson_1)
+        {
             kickBoard.gameObject.SetActive(false);
         }
-         if(lesson == (int)LessonID.Lesson_2) {
+        if (lesson == (int)LessonID.Lesson_2)
+        {
             kickBoard.gameObject.SetActive(true);
         }
     }

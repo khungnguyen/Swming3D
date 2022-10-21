@@ -16,11 +16,15 @@ public enum ExaminorAction
     GoToLessonMenu,
     EnableInteractable,
     DisableInteractable,
+    StudentBehavior,
+    ReplaceModel,
+    TriggerAnimationReplaceModel
 }
-
 public enum ActionPropertyType
 {
     DelayAfterAnim,
+    ReplaceByModel,
+    ReplaceByInCorrectModel
 }
 public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLoaded
 {
@@ -122,7 +126,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 }
                 else if (miniAction == ExaminorAction.TriggerAnimation.ToString())
                 {
-                    StartAnimtion(actionProperty.property);
+                    StartAnimtion(actionProperty.property[0]);
                 }
                 else if (miniAction == ExaminorAction.GoToLessonMenu.ToString())
                 {
@@ -131,7 +135,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 else if (miniAction == ExaminorAction.EnableInteractable.ToString())
                 {
                     bool OnlyAfterAnim = false;
-                    if (actionProperty.property == ActionPropertyType.DelayAfterAnim.ToString())
+                    if (actionProperty.property[0] == ActionPropertyType.DelayAfterAnim.ToString())
                     {
                         OnlyAfterAnim = true;
                     }
@@ -140,7 +144,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 else if (miniAction == ExaminorAction.DisableInteractable.ToString())
                 {
                     bool OnlyAfterAnim = false;
-                    if (actionProperty.property == ActionPropertyType.DelayAfterAnim.ToString())
+                    if (actionProperty.property[0] == ActionPropertyType.DelayAfterAnim.ToString())
                     {
                         OnlyAfterAnim = true;
                     }
@@ -149,9 +153,30 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 else if (miniAction == ExaminorAction.GoToExercise.ToString())
                 {
 
-                    int newExerscise = int.Parse(actionProperty.property);
+                    int newExerscise = int.Parse(actionProperty.property[0]);
                     NextExercise(newExerscise);
                 }
+                else if (miniAction == ExaminorAction.ReplaceModel.ToString())
+                {
+                    string modelFilter = actionProperty.property[0];
+                    ExerciseUnit unit = ExerciseManager.instance.GetCurxercise();
+                    List<string> choices = new List<string>();
+                    for (int i = 0; i < unit.property.Length; i += 2)
+                    {
+                        if (unit.property[i] == modelFilter)
+                        {
+                            choices.Add(unit.property[i + 1]);
+                        }
+                    }
+                    int randomOne = Random.Range(0, choices.Count);
+                    Debug.LogError("ReplaceModel" + choices[randomOne]);
+                    ReplaceModel(choices[randomOne]);
+                }
+                else if (miniAction == ExaminorAction.TriggerAnimationReplaceModel.ToString())
+                {
+                   StartAnimtion(actionProperty.property[0],true);
+                }
+
             }
             if (ac.showDisplayerOrder != 0)
             {
@@ -173,6 +198,12 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     {
         var actions = ExerciseManager.instance.exercises.Actions;
         return (new List<ButtonActions>(actions)).Find(e => e.name == name);
+    }
+    public void ReplaceModel(string newModelName)
+    {
+        object[] packages = new object[2];
+        packages[0] = newModelName;
+        ConnectionManager.instance.SendAction(EventCodes.ActionReplaceModel, packages);
     }
     public void EnableInteractable(bool OnlyAfterAnim)
     {
@@ -204,34 +235,34 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     }
     public void FinalAnimation()
     {
-        sendActionPlayAnim(curExercise.conditionTrigger.name);
+        StartAnimtion(curExercise.conditionTrigger.name);
     }
-    public void StartAnimtion(string name)
+    public void StartAnimtion(string name,bool useReplaceModel = false)
     {
-        sendActionPlayAnim(name);
+        sendActionPlayAnim(name,useReplaceModel);
     }
     public void NextExercise(int index = -1)
     {
         if (index == -1)
         {
             ExerciseManager.instance.ChangeNextExercise();
-           
+
         }
         else
         {
             ExerciseManager.instance.ChangeExercise(index);
         }
-         curExercise = ExerciseManager.instance.GetCurxercise();
+        curExercise = ExerciseManager.instance.GetCurxercise();
         object[] packages = new object[3];
         packages[0] = PhotonNetwork.NickName;
         packages[1] = ExerciseManager.instance.GetExerciseIndex();
         ConnectionManager.instance.SendAction(EventCodes.ActionNextExercise, packages);
         UpdateLessonName();
     }
-    public void sendActionPlayAnim(string trigger = "Amimation")
+    public void sendActionPlayAnim(string trigger,bool forReplaceModel)
     {
         object[] packages = new object[2];
-        packages[0] = PhotonNetwork.NickName;
+        packages[0] = forReplaceModel;
         packages[1] = trigger;
         ConnectionManager.instance.SendAction(EventCodes.ActionPlayAnimation, packages);
     }
