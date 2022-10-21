@@ -44,6 +44,11 @@
       "displayOrder": 4
     },
     {
+      "name": "Correct Anim",
+      "action": "PlayCorrectAnimSwim",
+      "displayOrder": 5
+    },
+    {
       "name": "Lose Control",
       "action": "LoseControl",
       "displayOrder": 5
@@ -84,7 +89,7 @@
 
       "name": "Finish",
       "action": "GetOutPool",
-      "displayOrder": 11
+      "displayOrder": 6
     }
   ],
   "Actions": [
@@ -195,10 +200,10 @@
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": "NotFollowDistance"
+          "property": "5mGo"
         }
       ],
-      "showDisplayerOrder": 8
+      "showDisplayerOrder": 6
     },
     {
       "name": "FollowDistance",

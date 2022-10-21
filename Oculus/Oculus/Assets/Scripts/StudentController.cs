@@ -198,10 +198,14 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     }
     private void BeforeTriggerAnim(string trigger) {
         if(trigger == "PositionWrong") {
-            kickBoard.SetPositionAndRotation(boardHolderWrong.position,boardHolderWrong.rotation);
+            kickBoard.GetComponent<SnapTo>().setTarget(boardHolderWrong);
         }
-        else if(trigger == "CorectFlutter"){
-           kickBoard.SetPositionAndRotation(boardHolderRight.position,boardHolderRight.rotation); 
+        else if(trigger == "5mGo") {
+            kickBoard.GetComponent<SnapTo>().setTarget(null);
+        }
+        else {
+           //kickBoard.SetPositionAndRotation(boardHolderRight.position,boardHolderRight.rotation); 
+           kickBoard.GetComponent<SnapTo>().setTarget(boardHolderRight);
         }
     }
     private void SettupStudent(int lesson) {
