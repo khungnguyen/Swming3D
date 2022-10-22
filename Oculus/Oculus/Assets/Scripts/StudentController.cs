@@ -114,10 +114,8 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 ExerciseUnit unit = ExerciseManager.instance.GetExercise(exerciseIndex);
                 string lessonName = unit.lessonName;
                 string startExerciseAnimation = unit.startExerciseAnimation;
-                // string startPointName = unit.startPointName;
-                // InitTransform(startPointName);
                 Debug.Log(TAG + "Lesson Accept" + lessonName);
-                SetAnimator(ExerciseManager.instance.GetAnimator());
+                //SetAnimator(ExerciseManager.instance.GetAnimator());
                 TriggerAnimation(startExerciseAnimation);
                 break;
             case EventCodes.ActionNextExercise:
@@ -171,7 +169,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 break;
             //End Unused Cases
             case EventCodes.ActionChangeController:
-                SetAnimator((string)packages[0]);
+                SetAnimator((string)packages[0],true);
                 break;
             case EventCodes.ActionCorrectTransform:
                 CorrectTransform((string)packages[0]);
@@ -181,26 +179,30 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     }
     private void UpdateStudentBehavior(string behavior)
     {
-        if (behavior == "Swim" || behavior == "Walk")
+        if (curLesson == (int)LessonID.Lesson_2)
         {
-            //  StartCoroutine(StopSwimInSecond(2));
-            boardHolderSwim.gameObject.SetActive(true);
-            kickBoard.gameObject.SetActive(false);
+            if (behavior == "Swim" || behavior == "Walk")
+            {
+                //  StartCoroutine(StopSwimInSecond(2));
+                boardHolderSwim.gameObject.SetActive(true);
+                kickBoard.gameObject.SetActive(false);
+            }
+            else
+            {
+                boardHolderSwim.gameObject.SetActive(false);
+                kickBoard.gameObject.SetActive(true);
+            }
         }
-        else
-        {
-            boardHolderSwim.gameObject.SetActive(false);
-            kickBoard.gameObject.SetActive(true);
-        }
+
     }
     IEnumerator StopSwimInSecond(float second)
     {
         yield return new WaitForSeconds(second);
         animator.StopPlayback();
     }
-    private void SetAnimator(string animatorName)
+    private void SetAnimator(string animatorName, bool force = false)
     {
-        //if (animatorName != animator?.runtimeAnimatorController?.name)
+        if (animatorName != animator?.runtimeAnimatorController?.name || force)
         {
             AnimationDataItem find = AnimationDataHolder.instance.GetAnimationDataByControllerName(animatorName);
             {
@@ -214,11 +216,12 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                     animator.avatar = find.avatar;
                     Debug.Log(TAG + "Reset Avatar to" + find.avatar.name);
                 }
-                
+
             }
             ReActivate();
+            ResetAnimatorTriggers();
         }
-        ResetAnimatorTriggers();
+        
     }
 
     public override void OnEnable()
@@ -305,12 +308,12 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     }
     private void ResetAnimatorTriggers()
     {
-       foreach (var trigger in animator.parameters)
+        foreach (var trigger in animator.parameters)
+        {
+            if (trigger.type == AnimatorControllerParameterType.Trigger)
             {
-                if (trigger.type == AnimatorControllerParameterType.Trigger)
-                {
-                    animator.ResetTrigger(trigger.name);
-                }
+                animator.ResetTrigger(trigger.name);
             }
+        }
     }
 }
