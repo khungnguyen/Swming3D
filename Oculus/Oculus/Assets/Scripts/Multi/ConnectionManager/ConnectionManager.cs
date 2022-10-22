@@ -17,13 +17,17 @@ public enum EventCodes : byte
     ActionSettingUpLesson,
     ActionReplaceModel,
 
+    ActionChangeController,
+    ActionCorrectTransform,
+
     ActionResetModel
 }
 public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
 {
     public static ConnectionManager instance;
     private static List<IReciever> receivers = new List<IReciever>();
-   
+    
+    const string TAG="[ConnectionManager]";
     public void Awake()
     {
         instance = this;
@@ -33,7 +37,7 @@ public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
     {
         if(!PhotonNetwork.IsConnected)
         {
-            Debug.LogError("Photon Doesn't connect to server");
+            Debug.LogError(TAG +"Photon Doesn't connect to server");
         }
     }
 
@@ -82,7 +86,7 @@ public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
         }
         else
         {
-            Debug.Log("No Connection Yet");
+            Debug.Log(TAG+"No Connection Yet");
         }
        
     }
@@ -92,7 +96,7 @@ public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
         if(reuslt == null)
         {
             receivers.Add(re);
-            Debug.LogError("Adding callback" + re);
+            Debug.LogError(TAG+"Adding callback" + re);
         }
     }
     public static void RemoveCallBackTarget(IReciever re)
@@ -101,6 +105,7 @@ public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
         if(index != -1)
         {
             receivers.RemoveAt(index);
+            Debug.LogError(TAG+" Removing callback" + re);
         }
     }
 }

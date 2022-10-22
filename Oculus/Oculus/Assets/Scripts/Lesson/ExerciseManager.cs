@@ -9,6 +9,7 @@ public interface IOnExerciseLoaded
 }
 public class ExerciseManager : MonoBehaviour
 {
+    const string TAG="[ExerciseManager] ";
     static List<IOnExerciseLoaded> OnLoadCallbacks = new List<IOnExerciseLoaded>();
     public static ExerciseManager instance;
 
@@ -120,6 +121,8 @@ public class ExerciseUnit
     public string lessonName;
     public string startAnimation;
     public string startExerciseAnimation;
+
+    public string startController;
     public ConditionTrigger conditionTrigger;
 
     public string startPointName;

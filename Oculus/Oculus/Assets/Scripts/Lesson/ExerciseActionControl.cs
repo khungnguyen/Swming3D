@@ -16,7 +16,11 @@ public enum ExaminorAction
     GoToLessonMenu,
     EnableInteractable,
     DisableInteractable,
-    StudentBehavior,
+    SaveDataValue,
+    ChangeAnimController,
+    CorrectTransform,
+    TriggerAnimationWithSaveKey,
+    TriggerAnimationWithOutSaveKey,
     ReplaceModel,
     TriggerAnimationReplaceModel
 }
@@ -28,6 +32,14 @@ public enum ActionPropertyType
 }
 public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLoaded
 {
+    const string TAG="[ExerciseActionControl] ";
+    struct DataSave
+    {
+        public string key;
+        public string value;
+    };
+
+    private List<DataSave> dataSave = new List<DataSave>();
     enum DIALOG
     {
         CONFIRM,
@@ -80,8 +92,8 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 {
                     int currentExerciseIndex = ExerciseManager.instance.GetExerciseIndex();
                     int totalExerciseLength = ExerciseManager.instance.GetTotalExerciseLength();
-                    Debug.Log("currentExerciseIndex" + currentExerciseIndex);
-                    Debug.Log("totalExerciseLength" + (totalExerciseLength - 1));
+                    Debug.Log(TAG+"currentExerciseIndex" + currentExerciseIndex);
+                    Debug.Log(TAG+"totalExerciseLength" + (totalExerciseLength - 1));
                     if (currentExerciseIndex == totalExerciseLength - 1)
                     {
                         continue;
@@ -105,7 +117,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     }
     public void HandlerAction(string action)
     {
-        Debug.LogError("Button Click With Action" + action);
+        Debug.LogError(TAG+"Button Click With Action" + action);
         ButtonActions ac = GetButtonAction(action);
         if (ac != null)
         {
@@ -156,26 +168,78 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     int newExerscise = int.Parse(actionProperty.property[0]);
                     NextExercise(newExerscise);
                 }
+                else if (miniAction == ExaminorAction.SaveDataValue.ToString())
+                {
+
+                    for (int i = 0; i < actionProperty.property.Length; i += 2)
+                    {
+                        DataSave data;
+                        data.key = actionProperty.property[i];
+                        data.value = actionProperty.property[i + 1];
+                        SaveData(data);
+                    }
+                }
+                else if (miniAction == ExaminorAction.ChangeAnimController.ToString())
+                {
+                    string key = actionProperty.property[0];
+                    List<string> choices = GetExercisePropertiesByName(key);
+                    if (choices.Count > 0)
+                    {
+                        int ran = Random.Range(0,choices.Count-1);
+                        Debug.Log(TAG+"Select right controller by key" + choices[ran]);
+                        ChangeController(choices[ran]);
+                    }
+                    else {
+                        Debug.LogError(TAG+"No property in Exercise" + key);
+                    }
+
+                }
+                else if (miniAction == ExaminorAction.TriggerAnimationWithSaveKey.ToString())
+                {
+                    string key = actionProperty.property[0];
+                    string saveValue = GetDataSaveByKey(key).value;
+                    if(saveValue!=null && saveValue.Length>0){
+                        StartAnimtion(saveValue);
+                    }
+                    else {
+                        Debug.LogError(TAG+"Could not find Save Key " + key);
+                    }
+                }
+                else if (miniAction == ExaminorAction.TriggerAnimationWithOutSaveKey.ToString())
+                {
+                    string key = actionProperty.property[0];
+                    string saveValue = GetDataSaveByKey(key).value;
+                    if(saveValue!=null && saveValue.Length>0){
+                        List<string> l = GetExercisePropertiesByName("TriggerName");
+                        foreach(string i in l){
+                            if(i != saveValue) {
+                                StartAnimtion(i);
+                            }
+                        }
+                    }
+                    else {
+                        Debug.LogError(TAG+"Could not find Save Key " + key);
+                    }
+                }
+                else if (miniAction == ExaminorAction.CorrectTransform.ToString())
+                {
+                    string key = actionProperty.property[0];
+                    CorrectTransform(key);
+                }
+                // We not use any more action
                 else if (miniAction == ExaminorAction.ReplaceModel.ToString())
                 {
                     string modelFilter = actionProperty.property[0];
-                    ExerciseUnit unit = ExerciseManager.instance.GetCurxercise();
-                    List<string> choices = new List<string>();
-                    for (int i = 0; i < unit.property.Length; i += 2)
-                    {
-                        if (unit.property[i] == modelFilter)
-                        {
-                            choices.Add(unit.property[i + 1]);
-                        }
-                    }
+                    List<string> choices = GetExercisePropertiesByName(modelFilter);
                     int randomOne = Random.Range(0, choices.Count);
-                    Debug.LogError("ReplaceModel" + choices[randomOne]);
+                    Debug.LogError(TAG+"ReplaceModel" + choices[randomOne]);
                     ReplaceModel(choices[randomOne]);
                 }
                 else if (miniAction == ExaminorAction.TriggerAnimationReplaceModel.ToString())
                 {
-                   StartAnimtion(actionProperty.property[0],true);
+                    StartAnimtion(actionProperty.property[0], true);
                 }
+                // End No Use actions
 
             }
             if (ac.showDisplayerOrder != 0)
@@ -199,11 +263,25 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         var actions = ExerciseManager.instance.exercises.Actions;
         return (new List<ButtonActions>(actions)).Find(e => e.name == name);
     }
+    // Unused this Action Any more
     public void ReplaceModel(string newModelName)
     {
         object[] packages = new object[2];
         packages[0] = newModelName;
         ConnectionManager.instance.SendAction(EventCodes.ActionReplaceModel, packages);
+    }
+    // End Unused
+    public void ChangeController(string controllerName)
+    {
+        object[] packages = new object[1];
+        packages[0] = controllerName;
+        ConnectionManager.instance.SendAction(EventCodes.ActionChangeController, packages);
+    }
+    public void CorrectTransform(string snapToTransform)
+    {
+        object[] packages = new object[1];
+        packages[0] = snapToTransform;
+        ConnectionManager.instance.SendAction(EventCodes.ActionCorrectTransform, packages);
     }
     public void EnableInteractable(bool OnlyAfterAnim)
     {
@@ -237,9 +315,9 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     {
         StartAnimtion(curExercise.conditionTrigger.name);
     }
-    public void StartAnimtion(string name,bool useReplaceModel = false)
+    public void StartAnimtion(string name, bool useReplaceModel = false)
     {
-        sendActionPlayAnim(name,useReplaceModel);
+        sendActionPlayAnim(name, useReplaceModel);
     }
     public void NextExercise(int index = -1)
     {
@@ -259,7 +337,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         ConnectionManager.instance.SendAction(EventCodes.ActionNextExercise, packages);
         UpdateLessonName();
     }
-    public void sendActionPlayAnim(string trigger,bool forReplaceModel)
+    public void sendActionPlayAnim(string trigger, bool forReplaceModel)
     {
         object[] packages = new object[2];
         packages[0] = forReplaceModel;
@@ -284,5 +362,27 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     {
         ExerciseManager.RemoveCallBackTarget(this);
     }
-
+    private List<string> GetExercisePropertiesByName(string filter)
+    {
+        ExerciseUnit unit = ExerciseManager.instance.GetCurxercise();
+        List<string> choices = new List<string>();
+        for (int i = 0; i < unit.property.Length; i += 2)
+        {
+            if (unit.property[i] == filter)
+            {
+                choices.Add(unit.property[i + 1]);
+            }
+        }
+        return choices;
+    }
+    private DataSave GetDataSaveByKey(string key) {
+        return dataSave.Find(e=>e.key==key);
+    }
+    private void SaveData(DataSave data) {
+        Debug.Log(TAG +"Saving key"+ data.key +"value" + data.value);
+        dataSave.Add(data);
+    }
+    private void ClearDataSavea() {
+        dataSave.Clear();
+    }
 }

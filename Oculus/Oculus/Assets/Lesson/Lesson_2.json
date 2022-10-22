@@ -207,36 +207,7 @@
       ],
       "showDisplayerOrder": 7
     },
-    {
-      "name": "NotFollowDistance",
-      "action": [
-        {
-          "name": "ReplaceModel",
-          "property": [
-            "ReplaceByInCorrectModel"
-          ]
-        },
-        {
-          "name": "TriggerAnimationReplaceModel",
-          "property": [
-            "Swim"
-          ]
-        }
-      ],
-      "showDisplayerOrder": 0
-    },
-    {
-      "name": "NotFollowReturn",
-      "action": [
-        {
-          "name": "ReplaceModel",
-          "property": [
-            "ReplaceByInCorrectModel"
-          ]
-        }
-      ],
-      "showDisplayerOrder": 0
-    },
+    
     {
       "name": "GoToExercise_1",
       "action": [
@@ -277,9 +248,9 @@
       "name": "SwimBack",
       "action": [
         {
-          "name": "StudentBehavior",
+          "name": "SaveDataValue",
           "property": [
-            "Swmin"
+            "Key_RightAnimation","Swim"
           ]
         }
       ],
@@ -289,13 +260,86 @@
       "name": "WalkBack",
       "action": [
         {
-          "name": "StudentBehavior",
+          "name": "SaveDataValue",
           "property": [
-            "Walk"
+            "Key_RightAnimation","Walk"
           ]
         }
       ],
       "showDisplayerOrder": 6
+    },
+    {
+      "name": "PlayCorrectAnimSwimOrWalkBack",
+      "action": [
+        {
+          "name": "ChangeAnimController",
+          "property": [
+            "RightController"
+          ]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": [
+            "SwimStartPoint"
+          ]
+        }
+        ,
+        {
+          "name": "TriggerAnimationWithSaveKey",
+          "property": [
+            "Key_RightAnimation"
+          ]
+        }
+      ],
+      "showDisplayerOrder": 6
+    },
+    {
+      "name": "NotFollowDistance",
+      "action": [
+        {
+          "name": "ChangeAnimController",
+          "property": [
+            "WrongController"
+          ]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": [
+            "SwimStartPoint"
+          ]
+        },
+        {
+          "name": "TriggerAnimation",
+          "property": [
+            "Swim"
+          ]
+        }
+      ],
+      "showDisplayerOrder": 0
+    },
+    {
+      "name": "NotFollowReturn",
+      "action": [
+        {
+          "name": "ChangeAnimController",
+          "property": [
+            "RightController"
+          ]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": [
+            "SwimStartPoint"
+          ]
+        },
+        {
+          "name": "TriggerAnimationWithOutSaveKey",
+          "property": [
+            "Key_RightAnimation"
+          ]
+        }
+      ],
+      "showDisplayerOrder": 0
     }
   ],
   "ExerciseList": [
@@ -307,10 +351,13 @@
         "value": true
       },
       "startPointName": "Lesson_2_Ex_All_Pos",
+      "startController": "5Metters",
       "property": [
-        "ReplaceByModel","Flutter Kick 5 Meters",
-        "ReplaceByInCorrectModel","Flutter Kick 15 Meters",
-        "ReplaceByInCorrectModel","Flutter Kick 25 Meters"
+        "RightController","5Metters",
+        "WrongController","15Metters",
+        "WrongController","25Metters",
+        "TriggerName","Swim",
+        "TriggerName","Walk"
       ]
     },
     {
@@ -320,25 +367,31 @@
         "name": "SquatJump",
         "value": true
       },
+      "startController": "15Metters",
       "startPointName": "Lesson_2_Ex_All_Pos",
       "property": [
-        "ReplaceByModel","Flutter Kick 15 Meters",
-        "ReplaceByInCorrectModel","Flutter Kick 5 Meters",
-        "ReplaceByInCorrectModel","Flutter Kick 25 Meters"
+        "RightController","15Metters",
+        "WrongController","5Metters",
+        "WrongController","25Metters",
+        "TriggerName","Swim",
+        "TriggerName","Walk"
       ]
     },
     {
       "lessonName": "25 meters and return",
       "starAnimation": "SlideIdle",
+      "startController": "25Metters",
       "conditionTrigger": {
         "name": "SlideJump",
         "value": false
       },
       "startPointName": "Lesson_2_Ex_All_Pos",
       "property": [
-        "ReplaceByModel","Flutter Kick 25 Meters",
-        "ReplaceByInCorrectModel","Flutter Kick 15 Meters",
-        "ReplaceByInCorrectModel","Flutter Kick 5 Meters"
+        "RightController","25Metters",
+        "WrongController","5Metters",
+        "WrongController","15Metters",
+        "TriggerName","Swim",
+        "TriggerName","Walk"
       ]
     }
   ]
