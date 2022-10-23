@@ -143,7 +143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7979700942091373877}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 986191884237116733}
   - component: {fileID: 4869426342527422771}
   - component: {fileID: 9105114342064477643}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicGrabReleaseAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -526,7 +526,7 @@ GameObject:
   - component: {fileID: 751912345181078076}
   - component: {fileID: 2578273107990197456}
   - component: {fileID: 3179095632584207110}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicGrabPickupAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,7 +955,7 @@ GameObject:
   - component: {fileID: 2299683045980831927}
   - component: {fileID: 3727493524388467124}
   - component: {fileID: 7278108733037576783}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1121,7 +1121,7 @@ GameObject:
   - component: {fileID: 8009789062198395873}
   - component: {fileID: 7878398507493873381}
   - component: {fileID: 521480985631196885}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NoPose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1194,7 +1194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   constraintComp: {fileID: 1033683124426422101}
   snapTo: {fileID: 1346851865977491623}
-  visualGameObject: {fileID: 3722878671965547267}
+  visualGameObject: {fileID: 6189425136451472449}
   lockTarget: 0
   disableSnapFunct: 0
 --- !u!114 &8009789062198395873
@@ -1275,7 +1275,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 521480985631196885}
-  sceneViewId: 0
+  sceneViewId: 26
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &521480985631196885
@@ -1303,7 +1303,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9035976980454246010}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1560,7 +1560,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7024630625383051002}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1579,7 +1579,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6478527444343322655}
+  - {fileID: 4257859925448546175}
   m_Father: {fileID: 4560181517865623691}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1664,7 +1664,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8261639872052260954}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1697,7 +1697,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8261639873396580063}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1731,7 +1731,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2326002319747068928}
   - component: {fileID: 2326002319747068931}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HandGrabInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1802,7 +1802,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6456545783556465805}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1837,7 +1837,7 @@ GameObject:
   - component: {fileID: 7991537919227320780}
   - component: {fileID: 4925679228950284965}
   - component: {fileID: 3303794091751506082}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: simpleGrabUIObjectMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1934,7 +1934,7 @@ GameObject:
   - component: {fileID: 7991537920550549321}
   - component: {fileID: 4925679228042306592}
   - component: {fileID: 3303794091015499303}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: simpleGrabUIObjectMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2031,7 +2031,7 @@ GameObject:
   - component: {fileID: 7000465073389842412}
   - component: {fileID: 5447815855460056197}
   - component: {fileID: 2456836439449007746}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: simpleGrabUIObjectMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2125,7 +2125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5008283483327532045}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2158,7 +2158,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6222640633783784109}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2190,7 +2190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6222640632389270568}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2223,7 +2223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3142764477000168133}
   - component: {fileID: 6864990786381591076}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HandGrabInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2295,7 +2295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3424598598834629797}
   - component: {fileID: 3424598598834629798}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HandGrabInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2367,7 +2367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3424598599116830715}
   - component: {fileID: 3424598599116830712}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HandGrabInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2439,7 +2439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3424598600116060704}
   - component: {fileID: 3424598600116060707}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HandGrabInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2501,103 +2501,6 @@ MonoBehaviour:
   _movementProvider: {fileID: 0}
   _handAligment: 0
   _handGrabPoses: []
---- !u!1 &3722878671965547267
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7138486509815200086}
-  - component: {fileID: 3074801237732011850}
-  - component: {fileID: 3277481861920981459}
-  - component: {fileID: 888094327136801578}
-  m_Layer: 0
-  m_Name: simpleGrabUIObjectMesh
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7138486509815200086
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3722878671965547267}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2079772093818104137}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &3074801237732011850
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3722878671965547267}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: d07b4fe945f100f4494504db069cf356, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &3277481861920981459
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3722878671965547267}
-  m_Mesh: {fileID: 2140363256473165317, guid: f5ceaf081c5af184cb5b44b9e95931f8, type: 3}
---- !u!65 &888094327136801578
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3722878671965547267}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.05, z: 0.05}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4178191345570524804
 GameObject:
   m_ObjectHideFlags: 0
@@ -2613,7 +2516,7 @@ GameObject:
   - component: {fileID: 1042807095159095483}
   - component: {fileID: 4495093382827163501}
   - component: {fileID: 6013426363507481447}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NoPose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2783,9 +2686,106 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 4495093382827163501}
-  sceneViewId: 0
+  sceneViewId: 21
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!1 &4574631708165220961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4257859925448546175}
+  - component: {fileID: 6503412224344774141}
+  - component: {fileID: 2896591758184904717}
+  - component: {fileID: 3018629133239960776}
+  m_Layer: 7
+  m_Name: simpleGrabUIObjectMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4257859925448546175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4574631708165220961}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7024630625383051002}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &6503412224344774141
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4574631708165220961}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: d07b4fe945f100f4494504db069cf356, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2896591758184904717
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4574631708165220961}
+  m_Mesh: {fileID: 2140363256473165317, guid: f5ceaf081c5af184cb5b44b9e95931f8, type: 3}
+--- !u!65 &3018629133239960776
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4574631708165220961}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05, y: 0.05, z: 0.05}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4652298602658790860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2797,7 +2797,7 @@ GameObject:
   - component: {fileID: 4677202994256336733}
   - component: {fileID: 7584143857169179057}
   - component: {fileID: 7393219258820886119}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicGrabPickupAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2958,7 +2958,7 @@ GameObject:
   - component: {fileID: 4677202995495811544}
   - component: {fileID: 7584143855824850740}
   - component: {fileID: 7393219259607355618}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicGrabPickupAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3120,7 +3120,7 @@ GameObject:
   - component: {fileID: 6155728648842869587}
   - component: {fileID: 8736174589583436368}
   - component: {fileID: 3424598600230631851}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3283,7 +3283,7 @@ GameObject:
   - component: {fileID: 6155728647368480214}
   - component: {fileID: 8736174588780299477}
   - component: {fileID: 3424598598986929966}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3449,7 +3449,7 @@ GameObject:
   - component: {fileID: 2715648215865104000}
   - component: {fileID: 7406463494151515494}
   - component: {fileID: 9108526826466261020}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NoPose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3603,7 +3603,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 9108526826466261020}
-  sceneViewId: 0
+  sceneViewId: 24
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &9108526826466261020
@@ -3637,7 +3637,7 @@ GameObject:
   - component: {fileID: 2715648217289160709}
   - component: {fileID: 3928824494677777095}
   - component: {fileID: 9071712337392296447}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NoPose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3791,7 +3791,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 9071712337392296447}
-  sceneViewId: 0
+  sceneViewId: 23
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &9071712337392296447
@@ -3821,7 +3821,7 @@ GameObject:
   - component: {fileID: 5192101309344323328}
   - component: {fileID: 7036458053809627628}
   - component: {fileID: 7962137954638216762}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicGrabReleaseAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3986,7 +3986,7 @@ GameObject:
   - component: {fileID: 3057639767803203109}
   - component: {fileID: 8754751797333800745}
   - component: {fileID: 9048306173592622065}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NoPose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4140,7 +4140,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 9048306173592622065}
-  sceneViewId: 0
+  sceneViewId: 25
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &9048306173592622065
@@ -4171,7 +4171,7 @@ GameObject:
   - component: {fileID: 6533748986947079539}
   - component: {fileID: 8573762982203350128}
   - component: {fileID: 2326002319566442379}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4333,7 +4333,7 @@ GameObject:
   - component: {fileID: 5704305729576259576}
   - component: {fileID: 7386266394936162580}
   - component: {fileID: 7591095621340948162}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicGrabPickupAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4592,7 +4592,7 @@ GameObject:
   - component: {fileID: 3757057098157760263}
   - component: {fileID: 8299539546543656516}
   - component: {fileID: 1043932053894928835}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: simpleGrabUIObjectMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4611,7 +4611,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7024630625383051002}
+  m_Father: {fileID: 2079772093818104137}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &3757057098157760263
@@ -4743,7 +4743,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4044420128466832318}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4777,7 +4777,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7278108733188848068}
   - component: {fileID: 7278108733188848071}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HandGrabInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4848,7 +4848,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2079772093818104137}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4867,7 +4867,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7138486509815200086}
+  - {fileID: 6478527444343322655}
   m_Father: {fileID: 201807412474207226}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4883,7 +4883,7 @@ GameObject:
   - component: {fileID: 2621150479355191848}
   - component: {fileID: 1070748635308650817}
   - component: {fileID: 7448663668792130374}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: simpleGrabUIObjectMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4979,7 +4979,7 @@ GameObject:
   - component: {fileID: 5714955701028767821}
   - component: {fileID: 3650651794102748927}
   - component: {fileID: 5264831918589309555}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicGrabReleaseAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5140,7 +5140,7 @@ GameObject:
   - component: {fileID: 8135980165326675319}
   - component: {fileID: 6431218517204724635}
   - component: {fileID: 6240282863593927757}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicGrabReleaseAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5305,7 +5305,7 @@ GameObject:
   - component: {fileID: 1335362714492470354}
   - component: {fileID: 2557663197245855121}
   - component: {fileID: 8192469491367271912}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NoPose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5378,7 +5378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   constraintComp: {fileID: 8079810989989623709}
   snapTo: {fileID: 6139346781567578723}
-  visualGameObject: {fileID: 6189425136451472449}
+  visualGameObject: {fileID: 4574631708165220961}
   lockTarget: 0
   disableSnapFunct: 0
 --- !u!114 &1335362714492470354
@@ -5459,7 +5459,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 8192469491367271912}
-  sceneViewId: 0
+  sceneViewId: 22
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &8192469491367271912
@@ -5490,7 +5490,7 @@ GameObject:
   - component: {fileID: 7082552999031604996}
   - component: {fileID: 5628059701426738695}
   - component: {fileID: 1774801649158227452}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5622,7 +5622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderers:
-  - {fileID: 3074801237732011850}
+  - {fileID: 3757057098157760263}
   _vectorProperties: []
   _colorProperties: []
   _floatProperties: []
@@ -5650,7 +5650,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6438543918387395579}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5684,7 +5684,7 @@ GameObject:
   - component: {fileID: 1346821439810499824}
   - component: {fileID: 8226361742620847952}
   - component: {fileID: 7103381748277010374}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicGrabPickupAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5845,7 +5845,7 @@ GameObject:
   - component: {fileID: 8633120857481987471}
   - component: {fileID: 6802555697565774691}
   - component: {fileID: 5890214927941528757}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicGrabPickupAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6007,7 +6007,7 @@ GameObject:
   - component: {fileID: 7882152863257398036}
   - component: {fileID: 8129025281180849413}
   - component: {fileID: 801732780265207916}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6139,7 +6139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderers:
-  - {fileID: 3757057098157760263}
+  - {fileID: 6503412224344774141}
   _vectorProperties: []
   _colorProperties: []
   _floatProperties: []
@@ -6169,7 +6169,7 @@ GameObject:
   - component: {fileID: 9163081809775232466}
   - component: {fileID: 6233342162989380414}
   - component: {fileID: 6438160316985355496}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicGrabReleaseAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6330,7 +6330,7 @@ GameObject:
   - component: {fileID: 9163081810465155927}
   - component: {fileID: 6233342162169437627}
   - component: {fileID: 6438160318296015469}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BasicGrabReleaseAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6556,7 +6556,7 @@ PrefabInstance:
     - target: {fileID: 742114004303857659, guid: df6f3e16a97c21e4995d73e89ca61c91,
         type: 3}
       propertyPath: sceneViewId
-      value: 0
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 1465074703684938113, guid: df6f3e16a97c21e4995d73e89ca61c91,
         type: 3}
@@ -6857,7 +6857,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 5901751119908455610}
-  sceneViewId: 0
+  sceneViewId: 27
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!4 &893227225305845575 stripped
@@ -7088,7 +7088,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 7440151648502805998}
-  sceneViewId: 0
+  sceneViewId: 29
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &7440151648502805998
