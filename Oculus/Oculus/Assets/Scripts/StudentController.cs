@@ -88,15 +88,15 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 //animator.enabled = true;
                 curLesson = (int)packages[0];
                 SettupStudent(curLesson);
-                InitTransform(ExerciseManager.instance.GetStartPoint());
+                CorrectTransform(ExerciseManager.instance.GetStartPoint());
                 SetAnimator(ExerciseManager.instance.GetAnimator());
-                Debug.LogError(TAG + "Setting Up for lesson");
+                Debug.LogError(TAG + "ActionSettingUpLesson");
                 break;
             case EventCodes.ActionPlayAnimation:
                 string animation = (string)packages[1];
                 bool useReplaceModel = (bool)packages[0];
                 //animator.avatar = animatorAvatar;
-                Debug.Log(TAG + "Play Animaton" + animation);
+                Debug.Log(TAG + "ActionPlayAnimation " + animation);
 
                 EnableInteraction(false);
                 if (useReplaceModel)
@@ -114,7 +114,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 ExerciseUnit unit = ExerciseManager.instance.GetExercise(exerciseIndex);
                 string lessonName = unit.lessonName;
                 string startExerciseAnimation = unit.startExerciseAnimation;
-                Debug.Log(TAG + "Lesson Accept" + lessonName);
+                Debug.Log(TAG + "ActionStartExercise" + lessonName);
                 //SetAnimator(ExerciseManager.instance.GetAnimator());
                 TriggerAnimation(startExerciseAnimation);
                 break;
@@ -122,8 +122,8 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 EnableInteraction(false);
                 int excerciseIndex = (int)packages[1];
                 ExerciseUnit muyUnit = ExerciseManager.instance.GetExercise(excerciseIndex);
-                Debug.Log(TAG + "Next lession is  " + muyUnit.lessonName);
-                InitTransform(muyUnit.startPointName);
+                Debug.Log(TAG + "ActionNextExercise" + muyUnit.lessonName);
+                CorrectTransform(muyUnit.startPointName);
                 TriggerAnimation(muyUnit.startAnimation);
                 break;
             case EventCodes.ActionEnableInteractable:
@@ -169,9 +169,11 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 break;
             //End Unused Cases
             case EventCodes.ActionChangeController:
+                Debug.Log(TAG + "ActionChangeController" + (string)packages[0]);
                 SetAnimator((string)packages[0],true);
                 break;
             case EventCodes.ActionCorrectTransform:
+                Debug.Log(TAG + "ActionCorrectTransform" + (string)packages[0]);
                 CorrectTransform((string)packages[0]);
                 break;
 
@@ -231,14 +233,6 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     public override void OnDisable()
     {
         ConnectionManager.RemoveCallBackTarget(this);
-    }
-    private void InitTransform(string name)
-    {
-        Transform init = SpawnPointManager.instance.GetStudentSpawnPointByName(name);
-        if (init != null)
-        {
-            transform.SetPositionAndRotation(init.position, init.rotation);
-        }
     }
     private void TriggerAnimation(string trigger)
     {
@@ -300,10 +294,11 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     }
     private void CorrectTransform(string name)
     {
-        Transform snapTo = SpawnPointManager.instance.GetTransformByName(name);
-        if (snapTo != null)
+        Transform init = SpawnPointManager.instance.GetStudentSpawnPointByName(name);
+        if (init != null)
         {
-            transform.SetPositionAndRotation(snapTo.position, snapTo.rotation);
+            Debug.Log(TAG + "CorrectTransform" + name);
+            transform.SetPositionAndRotation(init.position, init.rotation);
         }
     }
     private void ResetAnimatorTriggers()

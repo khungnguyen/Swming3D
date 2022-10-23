@@ -75,8 +75,13 @@
       "displayOrder": 6
     },
     {
-      "name": "Finish",
-      "action": "GetOutPool",
+      "name": "Back To Exercise",
+      "action": "BackToExercise",
+      "displayOrder": 7
+    },
+    {
+      "name": "Lesson List",
+      "action": "GoToLessonMenu",
       "displayOrder": 7
     }
   ],
@@ -196,19 +201,6 @@
       "showDisplayerOrder": 4
     },
     {
-      "name": "LoseControl",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": [
-            "LoseControl"
-          ]
-        }
-      ],
-      "showDisplayerOrder": 7
-    },
-    
-    {
       "name": "GoToExercise_1",
       "action": [
         {
@@ -291,7 +283,7 @@
           ]
         }
       ],
-      "showDisplayerOrder": 6
+      "showDisplayerOrder": 7
     },
     {
       "name": "NotFollowDistance",
@@ -315,7 +307,7 @@
           ]
         }
       ],
-      "showDisplayerOrder": 0
+      "showDisplayerOrder": 7
     },
     {
       "name": "NotFollowReturn",
@@ -339,7 +331,73 @@
           ]
         }
       ],
+      "showDisplayerOrder": 7
+    },
+    {
+      "name": "LoseControl",
+      "action": [
+        {
+          "name": "ChangeAnimController",
+          "property": [
+            "LoseController"
+          ]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": [
+            "Lesson_2_Ex_All_Pos"
+          ]
+        },
+        {
+          "name": "TriggerAnimation",
+          "property": [
+            "LoseControl"
+          ]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": [
+            "DelayAfterAnim"
+          ]
+        }
+      ],
+      "showDisplayerOrder": 7
+    },
+    {
+      "name": "GoToLessonMenu",
+      "action": [
+        {
+          "name": "GoToLessonMenu",
+          "property": [
+            ""
+          ]
+        }
+      ],
       "showDisplayerOrder": 0
+    },
+    {
+      "name": "BackToExercise",
+      "action": [
+        {
+          "name": "ClearDataSave",
+          "property": [
+            ""
+          ]
+        },
+        {
+          "name": "ChangeAnimController",
+          "property": [
+            "LoseController"
+          ]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": [
+            "Lesson_2_Ex_All_Pos"
+          ]
+        }
+      ],
+      "showDisplayerOrder": 4
     }
   ],
   "ExerciseList": [
@@ -353,6 +411,7 @@
       "startPointName": "Lesson_2_Ex_All_Pos",
       "startController": "5Metters",
       "property": [
+        "LoseController","Case_Two",
         "RightController","5Metters",
         "WrongController","15Metters",
         "WrongController","25Metters",
@@ -370,6 +429,7 @@
       "startController": "15Metters",
       "startPointName": "Lesson_2_Ex_All_Pos",
       "property": [
+        "LoseController","Case_Two",
         "RightController","15Metters",
         "WrongController","5Metters",
         "WrongController","25Metters",
@@ -387,6 +447,7 @@
       },
       "startPointName": "Lesson_2_Ex_All_Pos",
       "property": [
+        "LoseController","Case_Two",
         "RightController","25Metters",
         "WrongController","5Metters",
         "WrongController","15Metters",

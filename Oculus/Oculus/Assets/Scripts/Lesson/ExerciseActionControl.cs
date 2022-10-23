@@ -21,6 +21,7 @@ public enum ExaminorAction
     CorrectTransform,
     TriggerAnimationWithSaveKey,
     TriggerAnimationWithOutSaveKey,
+    ClearDataSave,
     ReplaceModel,
     TriggerAnimationReplaceModel
 }
@@ -239,6 +240,10 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 {
                     StartAnimtion(actionProperty.property[0], true);
                 }
+                else if (miniAction == ExaminorAction.ClearDataSave.ToString())
+                {
+                   ClearDataSave();
+                }
                 // End No Use actions
 
             }
@@ -382,7 +387,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         Debug.Log(TAG +"Saving key"+ data.key +"value" + data.value);
         dataSave.Add(data);
     }
-    private void ClearDataSavea() {
+    private void ClearDataSave() {
         dataSave.Clear();
     }
 }
