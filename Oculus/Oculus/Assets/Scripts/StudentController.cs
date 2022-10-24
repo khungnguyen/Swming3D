@@ -42,6 +42,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         var starTransfrom = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
         SetAnimator("Case_One");
         transform.SetPositionAndRotation(starTransfrom.position, starTransfrom.rotation);
+        // StartCoroutine(DelayEnableInteraction(2,true));
     }
     private bool delayActiveInteraction = false;
     private bool delayInactiveInteraction = false;
@@ -52,12 +53,12 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         if (delayActiveInteraction)
         {
             // Debug.LogError("Animation Event call" + e.time + e.animatorClipInfo.clip.name);
-            StartCoroutine(DelayEnableInteraction(0.5f, true));
+            StartCoroutine(DelayEnableInteraction(1f, true));
             delayActiveInteraction = false;
         }
         else if (delayInactiveInteraction)
         {
-            StartCoroutine(DelayEnableInteraction(0.5f, false));
+            StartCoroutine(DelayEnableInteraction(1f, false));
             delayActiveInteraction = false;
         }
     }
