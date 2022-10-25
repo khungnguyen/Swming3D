@@ -42,7 +42,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         var starTransfrom = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
         SetAnimator("Case_One");
         transform.SetPositionAndRotation(starTransfrom.position, starTransfrom.rotation);
-        // StartCoroutine(DelayEnableInteraction(2,true));
+         StartCoroutine(DelayEnableInteraction(2,true));
     }
     private bool delayActiveInteraction = false;
     private bool delayInactiveInteraction = false;
