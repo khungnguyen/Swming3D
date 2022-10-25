@@ -21,11 +21,15 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
 
     public bool disableSnapFunct = false;
 
-    private bool enableWeight;
+    public bool enableWeight;
+
+    public bool lockRotation;
 
     public event Action<PointerEvent> WhenPointerEventRaised;
 
-    public void Awake()
+
+    private Vector3 orginalRotation;
+        public void Awake()
     {
         bool usePhotonView = !(photonView != null && photonView.IsMine);
         //disableSnapFunct = false;
@@ -41,7 +45,7 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
                     constraintComp = transform.parent.GetComponent<MultiAimConstraint>();
                 }
             }
-           // activateConstraintComp(false);
+            // activateConstraintComp(false);
             EnableRigWeight(false);
             //ádasd
         }
@@ -53,7 +57,7 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
         //Wait for the specified delay time before continuing.
         yield return new WaitForSeconds(delayTime);
         EnableRigWeight();
-       //Do the action after the delay time has finished.
+        //Do the action after the delay time has finished.
     }
     public void EnableRigWeight(bool enable = true)
     {
@@ -66,19 +70,22 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
             }
             else if (constraintComp is MultiAimConstraint)
             {
-                ((MultiAimConstraint)constraintComp).weight = enable ? 1 : 0; 
+                ((MultiAimConstraint)constraintComp).weight = enable ? 1 : 0;
             }
         }
-        EnableGrabableCube(enable);
+    }
+
+    private void GetOriginalRoation() {
+        orginalRotation = snapTo.rotation.eulerAngles;
     }
     //dssd
     void Start()
     {
-       // StartCoroutine(EnableWeightEnumrator(2));
+        // StartCoroutine(EnableWeightEnumrator(2));
     }
     public void ProcessPointerEvent(PointerEvent evt)
     {
-        if(!disableSnapFunct)
+        if (!disableSnapFunct)
         {
             if (photonView.IsMine)
             {
@@ -96,13 +103,14 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
                 }
             }
         }
-      
+
 
     }
     public void OnSelect()
     {
         isSnap = false;
-       // activateConstraintComp(true);
+        GetOriginalRoation();
+        // activateConstraintComp(true);
     }
     public void OnUnselect()
     {
@@ -118,10 +126,10 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
     {
         if (!disableSnapFunct)
         {
-            
+
             if (isSnap)
             {
-                if(lockTarget && enableWeight)
+                if (lockTarget && enableWeight)
                 {
                     // do nothing
                 }
@@ -130,6 +138,9 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
                     SnapUpdate();
                 }
             }
+        }
+        if(lockRotation && !isSnap) {
+            transform.rotation = Quaternion.Euler(orginalRotation);
         }
     }
     private void SnapUpdate()
@@ -156,8 +167,8 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
     }
     public void EnableGrabableCube(bool a)
     {
-        visualGameObject.GetComponent<MeshRenderer>().enabled = a ;
-       // GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, a?1f:0f);
+        visualGameObject.GetComponent<MeshRenderer>().enabled = a;
+        // GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, a?1f:0f);
     }
     public override void OnDisable()
     {

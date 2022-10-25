@@ -406,7 +406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1530388049298645732}
   - component: {fileID: 1530388049298645731}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: GripPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1530388050178778235}
   - component: {fileID: 1530388050178778236}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: GripPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 5991177762673833567}
   - component: {fileID: 855195460619287307}
   - component: {fileID: 3663342932555971738}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: PinchArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 5991177763707351232}
   - component: {fileID: 855195461599329684}
   - component: {fileID: 3663342931407141381}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: PinchArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3981,7 +3981,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7902654632726598330}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4013,7 +4013,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7902654633894073381}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4411,7 +4411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8293426779395384256
 Transform:
   m_ObjectHideFlags: 0
@@ -9882,7 +9882,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9190205867388851039}
   - component: {fileID: 4613781124810998199}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: HandGrabVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9928,7 +9928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9190205866273805760}
   - component: {fileID: 4613781123780658984}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: HandGrabVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9974,7 +9974,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4085077033547146730}
   - component: {fileID: 4085077033547146731}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Rigidbody
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -10027,7 +10027,7 @@ GameObject:
   - component: {fileID: 7173847974415497417}
   - component: {fileID: 2478466583843844641}
   - component: {fileID: 7365206836024477961}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: HandGrabInteractor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10136,7 +10136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4085077034562577269}
   - component: {fileID: 4085077034562577268}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Rigidbody
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -10189,7 +10189,7 @@ GameObject:
   - component: {fileID: 7173847973249072726}
   - component: {fileID: 2478466582543234238}
   - component: {fileID: 7365206835027955608}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: HandGrabInteractor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13491,7 +13491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 703148221231587544}
   - component: {fileID: 2031491458887436117}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: PinchPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13539,7 +13539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 703148219964499527}
   - component: {fileID: 2031491458005172682}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: PinchPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14637,8 +14637,8 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.5
-  m_Radius: 0.2
+  m_Height: 0.5
+  m_Radius: 0.1
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -14656,7 +14656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0950df82e7936c84983497630bde5b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Acceleration: 0.02
+  Acceleration: 0.05
   Damping: 0.3
   BackAndSideDampen: 0.5
   JumpForce: 0.3
@@ -14735,7 +14735,7 @@ GameObject:
   - component: {fileID: 499582603746335401}
   - component: {fileID: 806464672002465173}
   - component: {fileID: 68729234675937123}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: HandGrabAPI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14794,7 +14794,7 @@ GameObject:
   - component: {fileID: 499582605047995446}
   - component: {fileID: 806464673015765770}
   - component: {fileID: 2534820266991971890}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: HandGrabAPI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14956,7 +14956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6776364458191714155
 Transform:
   m_ObjectHideFlags: 0
@@ -15064,7 +15064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6776364458368975569
 Transform:
   m_ObjectHideFlags: 0
@@ -18316,7 +18316,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactors:
-  - {fileID: 1409141941082066763}
   - {fileID: 7173847974415497417}
   _interactorComparer: {fileID: 0}
   MaxIterationsPerFrame: 3
@@ -18434,7 +18433,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactors:
-  - {fileID: 1409141941328558833}
   - {fileID: 7173847973249072726}
   _interactorComparer: {fileID: 0}
   MaxIterationsPerFrame: 3
@@ -18776,7 +18774,7 @@ GameObject:
   - component: {fileID: 1865552776942151637}
   - component: {fileID: 4204407749730875427}
   - component: {fileID: 4428744685537672963}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18835,7 +18833,7 @@ GameObject:
   - component: {fileID: 1865552776063033674}
   - component: {fileID: 4204407750576438972}
   - component: {fileID: 4428744686702000540}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18945,7 +18943,7 @@ GameObject:
   - component: {fileID: 5377676271293374616}
   - component: {fileID: 5536439605369349721}
   - component: {fileID: 7273606248803561060}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19004,7 +19002,7 @@ GameObject:
   - component: {fileID: 5377676272290194951}
   - component: {fileID: 5536439604119068870}
   - component: {fileID: 7273606249917524219}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
