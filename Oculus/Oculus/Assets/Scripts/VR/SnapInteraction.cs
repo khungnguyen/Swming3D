@@ -8,7 +8,7 @@ using System.Collections;
 public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
 {
     // Start is called before the first frame update
-
+    const string TAG = "[SnapInteraction]";
     public MonoBehaviour constraintComp;
 
     public Transform snapTo;
@@ -29,12 +29,11 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
 
 
     private Vector3 orginalRotation;
-        public void Awake()
+    public void Awake()
     {
         bool usePhotonView = !(photonView != null && photonView.IsMine);
-        //disableSnapFunct = false;
-        disableSnapFunct = !DectectVR.instancne.isVR || usePhotonView;
-        if (!disableSnapFunct)
+        disableSnapFunct = false;
+       // disableSnapFunct = !DectectVR.instancne.isVR || usePhotonView;
         {
             // Find themself in parent
             if (constraintComp == null || (!(constraintComp is TwoBoneIKConstraint) && !(constraintComp is MultiAimConstraint)))
@@ -45,11 +44,9 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
                     constraintComp = transform.parent.GetComponent<MultiAimConstraint>();
                 }
             }
-            // activateConstraintComp(false);
-            EnableRigWeight(false);
-            //ádasd
+            EnableRigWeight(false,true);
         }
-
+        
     }
 
     IEnumerator EnableWeightEnumrator(float delayTime)
@@ -59,10 +56,11 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
         EnableRigWeight();
         //Do the action after the delay time has finished.
     }
-    public void EnableRigWeight(bool enable = true)
+    public void EnableRigWeight(bool enable = true, bool force = false)
     {
+        Debug.LogError(TAG + "EnableRigWeight" + enable +"disableSnapFunct" + disableSnapFunct);
         enableWeight = enable;
-        if (!disableSnapFunct)
+        if (!disableSnapFunct || force)
         {
             if (constraintComp is TwoBoneIKConstraint)
             {
@@ -73,9 +71,11 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
                 ((MultiAimConstraint)constraintComp).weight = enable ? 1 : 0;
             }
         }
+        EnableGrabBableCube(enable);
     }
 
-    private void GetOriginalRoation() {
+    private void GetOriginalRoation()
+    {
         orginalRotation = snapTo.rotation.eulerAngles;
     }
     //dssd
@@ -139,7 +139,8 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
                 }
             }
         }
-        if(lockRotation && !isSnap) {
+        if (lockRotation && !isSnap)
+        {
             transform.rotation = Quaternion.Euler(orginalRotation);
         }
     }
@@ -165,7 +166,7 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
             ((MultiAimConstraint)constraintComp).enabled = active;
         }
     }
-    public void EnableGrabableCube(bool a)
+    public void EnableGrabBableCube(bool a)
     {
         visualGameObject.GetComponent<MeshRenderer>().enabled = a;
         // GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, a?1f:0f);
