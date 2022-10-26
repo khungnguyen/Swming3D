@@ -10,7 +10,7 @@ public class InvisibleIfVR : MonoBehaviour
     void Start()
     {
 
-        gameObject.SetActive(!DectectVR.instancne.isVR);
+       gameObject.SetActive(!DectectVR.instancne.isVR);
     }
 
 }

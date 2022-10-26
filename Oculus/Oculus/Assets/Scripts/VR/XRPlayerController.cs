@@ -5,14 +5,19 @@ using UnityEngine;
 
 public class XRPlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    /*
+    * Handle Disable/enable Camera Rig
+    * Adding input interaction
+    */
     [SerializeField]
     private GameObject trackkingSpace;
 
+    [SerializeField]
+    private Transform cameraOffset;
 
-    //[SerializeField]
-    //private ContinousMove locomotion;
 
+    public float speedY = 0.5f;
+    private Vector3 curCameraPos;
     void Start()
     {
         if (!DectectVR.instancne.isVR)
@@ -30,4 +35,34 @@ public class XRPlayerController : MonoBehaviour
 
     }
 
+    public void Update()
+    {
+        if (DectectVR.instancne.isVR)
+        {
+            Input();
+        }
+
+    }
+    /** 
+    * Handle Input of button 
+    * A - X to move camera up down
+    * B - Y to move camera up up
+    */
+    private void Input()
+    {
+        if (OVRInput.Get(OVRInput.Button.One) || OVRInput.Get(OVRInput.Button.Three))
+        {
+            Debug.Log("Button One Three Press");
+            curCameraPos = cameraOffset.transform.position;
+            curCameraPos.y -= speedY * Time.deltaTime;
+            cameraOffset.transform.position = curCameraPos;
+        }
+        else if (OVRInput.Get(OVRInput.Button.Two) || OVRInput.Get(OVRInput.Button.Four))
+        {
+            Debug.Log("Button One Two Four Press");
+            curCameraPos = cameraOffset.transform.position;
+            curCameraPos.y += speedY * Time.deltaTime;
+            cameraOffset.transform.position = curCameraPos;
+        }
+    }
 }

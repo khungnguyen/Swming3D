@@ -174,7 +174,7 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
     }
     public void StartGame()
     {
-        if (!DectectVR.instancne.isVR)
+        if (PhotonNetwork.IsMasterClient)
         {
             ScenesManager.instance.GoTo(SCREEN.Main, true);
         }
