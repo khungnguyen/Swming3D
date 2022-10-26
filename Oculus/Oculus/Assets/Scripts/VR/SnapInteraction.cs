@@ -7,7 +7,7 @@ using System.Collections;
 
 public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
 {
-    // Start is called before the first frame update
+
     const string TAG = "[SnapInteraction]";
     public MonoBehaviour constraintComp;
 
