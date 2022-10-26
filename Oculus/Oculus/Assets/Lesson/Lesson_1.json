@@ -1,20 +1,20 @@
 {
-  "Exercise": "1A",
+  "Exercise": "TIME 00-10 Miutes Exercise 1",
   "AnimatorController" :"Case_One",
   "startPointName" :"Lesson_1_Ex_All_Pos",
   "Buttons": [
     {
-      "name": "Yes",
+      "name": "Allow Student to Execute",
       "action": "StartExercise",
       "displayOrder": 1
     },
     {
-      "name": "Next Exercise",
+      "name": "Do Not Allow Student to Execute",
       "action": "NextExercise",
       "displayOrder": 1
     },
     {
-      "name": "Allow",
+      "name": "Execute Action",
       "action": "ActionPlayAnimation",
       "displayOrder": 2
     },
@@ -78,7 +78,7 @@
   ],
   "ExerciseList": [
     {
-      "lessonName": "Stand Jump To Water",
+      "lessonName": "Standing Jump Entry",
       "startAnimation": "StandIdle",
       "conditionTrigger": {
         "name": "StandJump",
@@ -87,7 +87,7 @@
       "startPointName" :"Lesson_1_Ex_All_Pos"
     },
     {
-      "lessonName": "Squat Jump To Water",
+      "lessonName": "Squat Jump Entry",
       "startAnimation": "SquatIdle",
       "conditionTrigger": {
         "name": "SquatJump",
@@ -96,7 +96,7 @@
       "startPointName" :"Lesson_1_Ex_All_Pos"
     },
     {
-      "lessonName": "Slide Jump To Water",
+      "lessonName": "Slide In Entry",
       "startAnimation": "SlideIdle",
       "conditionTrigger": {
         "name": "SlideJump",

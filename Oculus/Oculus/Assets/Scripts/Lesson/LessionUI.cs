@@ -11,6 +11,7 @@ public class LessionUI : MonoBehaviour,IButtonAction
 
     public Transform scrollContent;
 
+
     public void OnClicked(string action)
     {
         var lessonIndex = int.Parse(action);
@@ -23,13 +24,14 @@ public class LessionUI : MonoBehaviour,IButtonAction
     // Start is called before the first frame update
     void Start()
     {
-       for(var i = 0; i < LessonManager.instance.lessonData.Length; i++ )
+       for(var i = 0; i < LessonManager.instance.GetLessons().Count; i++ )
         {
            var go = Instantiate(lessonButtonPrefab, scrollContent);
             var comp = go.GetComponent<LessonButton>();
-            comp.SetText(LessonManager.instance.lessonData[i].name);
+            comp.SetText(LessonManager.instance.GetLessons()[i].Exercise);
             comp.SetButtonInfo(i);
             comp.OnClicked += OnClicked;
+            
         }
     }
     public void SendActionInitLesson(int index)

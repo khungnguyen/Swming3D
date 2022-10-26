@@ -18,15 +18,15 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
 {
     public static Launcher instance;
     [SerializeField]
-    public GameObject Mainmenu;
+    private GameObject Mainmenu;
     [SerializeField]
-    public GameObject RoomListMenu;
+    private GameObject RoomListMenu;
 
     [SerializeField]
-    public GameObject RoomMenu;
+    private GameObject RoomMenu;
 
     [SerializeField]
-    public GameObject Loading;
+    private GameObject Loading;
     const string ROOM_NAME = "SWIM";
 
     [SerializeField]
@@ -48,7 +48,7 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
     {
         PhotonNetwork.ConnectUsingSettings();
         PhotonNetwork.NickName = "Guest" + Random.Range(1, 100);
-        ActivateMenu(MENU.All, false,MENU.MainMenu);
+        ActivateMenu(MENU.All, false, MENU.MainMenu);
         ActivateMenu(MENU.Loading, true);
 
     }
@@ -77,7 +77,7 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
         RoomOptions room = new RoomOptions();
         room.MaxPlayers = 2;
         room.IsVisible = true;
-        PhotonNetwork.CreateRoom(ROOM_NAME + Random.Range(0,1000), room);
+        PhotonNetwork.CreateRoom(ROOM_NAME + Random.Range(0, 1000), room);
     }
     public override void OnJoinedRoom()
     {
@@ -99,17 +99,17 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
     }
     public override void OnDisconnected(DisconnectCause cause)
     {
-       ActivateMenu(MENU.Loading, false); 
-       Debug.Log("Can't connect" + cause.ToString());
+        ActivateMenu(MENU.Loading, false);
+        Debug.Log("Can't connect" + cause.ToString());
     }
     public void LeaveRoom()
     {
         PhotonNetwork.LeaveRoom();
-        ActivateMenu(MENU.RoomMenu, false,MENU.MainMenu);
+        ActivateMenu(MENU.RoomMenu, false, MENU.MainMenu);
     }
     public void CloseRoomListMenu()
     {
-        ActivateMenu(MENU.RoomListMenu, false,MENU.MainMenu);
+        ActivateMenu(MENU.RoomListMenu, false, MENU.MainMenu);
     }
     public override void OnLeftRoom()
     {
@@ -174,7 +174,7 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
     }
     public void StartGame()
     {
-        if (PhotonNetwork.IsMasterClient)
+        if (!DectectVR.instancne.isVR)
         {
             ScenesManager.instance.GoTo(SCREEN.Main, true);
         }
@@ -188,7 +188,7 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
         Debug.Log("OnRoomButtonClick" + roomName);
         JoinRoom(roomName);
     }
-    public void ActivateMenu(MENU menu, bool active,MENU switchTo = MENU.None)
+    public void ActivateMenu(MENU menu, bool active, MENU switchTo = MENU.None)
     {
         switch (menu)
         {
@@ -213,8 +213,9 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
                 Mainmenu.SetActive(active);
                 break;
         }
-        if(switchTo != MENU.None && !active) {
-            ActivateMenu(switchTo,true,MENU.None);
+        if (switchTo != MENU.None && !active)
+        {
+            ActivateMenu(switchTo, true, MENU.None);
         }
 
     }
