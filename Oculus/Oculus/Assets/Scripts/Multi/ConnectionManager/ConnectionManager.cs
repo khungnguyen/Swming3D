@@ -96,7 +96,7 @@ public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
         if(reuslt == null)
         {
             receivers.Add(re);
-            Debug.LogError(TAG+"Adding callback" + re);
+            // Debug.LogError(TAG+"Adding callback" + re);
         }
     }
     public static void RemoveCallBackTarget(IReciever re)
@@ -105,7 +105,7 @@ public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
         if(index != -1)
         {
             receivers.RemoveAt(index);
-            Debug.LogError(TAG+" Removing callback" + re);
+            // Debug.LogError(TAG+" Removing callback" + re);
         }
     }
 }

@@ -23,7 +23,8 @@ public enum ExaminorAction
     TriggerAnimationWithOutSaveKey,
     ClearDataSave,
     ReplaceModel,
-    TriggerAnimationReplaceModel
+    TriggerAnimationReplaceModel,
+    SettingUpLesson
 }
 public enum ActionPropertyType
 {
@@ -60,6 +61,8 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
 
     private ExerciseUnit curExercise;
 
+    private int currentLessonIndex;
+
     void Start()
     {
 
@@ -72,7 +75,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     public void OnLoaded(int lesson)
     {
         curExercise = ExerciseManager.instance.GetCurxercise();
-
+        currentLessonIndex = lesson;
         CreateButtonDialog();
         UpdateLessonName();
         SettingUpLesson(lesson);
@@ -243,6 +246,10 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 else if (miniAction == ExaminorAction.ClearDataSave.ToString())
                 {
                    ClearDataSave();
+                }
+                else if (miniAction == ExaminorAction.SettingUpLesson.ToString())
+                {
+                  SettingUpLesson(currentLessonIndex);
                 }
                 // End No Use actions
 

@@ -4,7 +4,7 @@
   "startPointName": "Lesson_2_Ex_All_Pos",
   "Buttons": [
     {
-      "name": "Correct Anim",
+      "name": "Execute Action",
       "action": "PlayCorrectAnimFlutter",
       "displayOrder": 1
     },
@@ -19,12 +19,12 @@
       "displayOrder": 1
     },
     {
-      "name": "Incorect Position",
+      "name": "Incorrect Position",
       "action": "PositionWrong",
       "displayOrder": 1
     },
     {
-      "name": "Correct Anim",
+      "name": "Execute Action",
       "action": "PlayCorrectAnimFlutter",
       "displayOrder": 3
     },
@@ -54,7 +54,7 @@
       "displayOrder": 5
     },
     {
-      "name": "Correct Anim",
+      "name": "Execute Action",
       "action": "PlayCorrectAnimSwimOrWalkBack",
       "displayOrder": 6
     },
@@ -75,14 +75,19 @@
       "displayOrder": 6
     },
     {
+      "name": "Execute Action",
+      "action": "PlayCorrectAnimSwimOrWalkBackAndFinish",
+      "displayOrder": 7
+    },
+    {
       "name": "Back To Exercise",
       "action": "BackToExercise",
-      "displayOrder": 7
+      "displayOrder": 8
     },
     {
       "name": "Lesson List",
       "action": "GoToLessonMenu",
-      "displayOrder": 7
+      "displayOrder": 8
     }
   ],
   "Actions": [
@@ -283,7 +288,7 @@
           ]
         }
       ],
-      "showDisplayerOrder": 7
+      "showDisplayerOrder": 8
     },
     {
       "name": "NotFollowDistance",
@@ -364,10 +369,41 @@
       "showDisplayerOrder": 7
     },
     {
+      "name": "PlayCorrectAnimSwimOrWalkBackAndFinish",
+      "action": [
+        {
+          "name": "ChangeAnimController",
+          "property": [
+            "RightController"
+          ]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": [
+            "SwimStartPoint"
+          ]
+        }
+        ,
+        {
+          "name": "TriggerAnimationWithSaveKey",
+          "property": [
+            "Key_RightAnimation"
+          ]
+        }
+      ],
+      "showDisplayerOrder": 8
+    },
+    {
       "name": "GoToLessonMenu",
       "action": [
         {
           "name": "GoToLessonMenu",
+          "property": [
+            ""
+          ]
+        },
+        {
+          "name": "DisableInteractable",
           "property": [
             ""
           ]
@@ -385,9 +421,9 @@
           ]
         },
         {
-          "name": "EnableInteractable",
+          "name": "DisableInteractable",
           "property": [
-            "DelayAfterAnim"
+            ""
           ]
         },
         {
@@ -401,9 +437,15 @@
           "property": [
             "Lesson_2_Ex_All_Pos"
           ]
+        },
+        {
+          "name": "SettingUpLesson",
+          "property": [
+            ""
+          ]
         }
       ],
-      "showDisplayerOrder": 4
+      "showDisplayerOrder": 1
     }
   ],
   "ExerciseList": [

@@ -52,7 +52,7 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
     }
     public void EnableRigWeight(bool enable = true, bool force = false)
     {
-        Debug.LogError(TAG + "EnableRigWeight" + enable + "disableSnapFunct" + disableSnapFunct);
+       // Debug.LogError(TAG + "EnableRigWeight" + enable + "disableSnapFunct" + disableSnapFunct);
         enableWeight = enable;
         if (!disableSnapFunct || force)
         {

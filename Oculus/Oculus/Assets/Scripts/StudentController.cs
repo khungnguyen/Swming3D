@@ -21,6 +21,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     public Transform kickBoard;
     public Transform boardHolderWrong;
     public Transform boardHolderRight;
+    public Transform boardHolderSplashKick;
     public Transform boardHolderSwim;
 
     public Transform replaceModelPoint;
@@ -39,10 +40,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     // Start is called before the first frame update
     void Start()
     {
-        // var starTransfrom = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
-        // SetAnimator("Case_One");
-        // transform.SetPositionAndRotation(starTransfrom.position, starTransfrom.rotation);
-       // StartCoroutine(DelayEnableInteraction(2,true));
+        var starTransfrom = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
+        SetAnimator("Case_One");
+        transform.SetPositionAndRotation(starTransfrom.position, starTransfrom.rotation);
+        // StartCoroutine(DelayEnableInteraction(2,true));
     }
     private bool delayActiveInteraction = false;
     private bool delayInactiveInteraction = false;
@@ -52,14 +53,15 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         // StartCoroutine(DelayEnableInteraction(0.5f,true));
         if (delayActiveInteraction)
         {
-            // Debug.LogError("Animation Event call" + e.time + e.animatorClipInfo.clip.name);
+            Debug.LogError("Animation Event call Enable" + e.animatorClipInfo.clip.name);
             StartCoroutine(DelayEnableInteraction(1f, true));
             delayActiveInteraction = false;
         }
         else if (delayInactiveInteraction)
         {
+            Debug.LogError("Animation Event call Disable" + e.animatorClipInfo.clip.name);
             StartCoroutine(DelayEnableInteraction(1f, false));
-            delayActiveInteraction = false;
+            delayInactiveInteraction = false;
         }
     }
     public void EnableInteraction(bool enable)
@@ -89,9 +91,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 //animator.enabled = true;
                 curLesson = (int)packages[0];
                 SettupStudent(curLesson);
+                StopAllCoroutines();
                 CorrectTransform(ExerciseManager.instance.GetStartPoint());
                 SetAnimator(ExerciseManager.instance.GetAnimator());
-                Debug.LogError(TAG + "ActionSettingUpLesson");
+                Debug.LogError(TAG + "ActionSettingUpLesson " + curLesson);
                 break;
             case EventCodes.ActionPlayAnimation:
                 string animation = (string)packages[1];
@@ -129,6 +132,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 break;
             case EventCodes.ActionEnableInteractable:
                 //Delay after finishing Animation
+                delayInactiveInteraction = false;
                 if ((bool)packages[1])
                 {
                     Debug.Log(TAG + "Enable Interaction after Animation Compleated");
@@ -141,6 +145,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 }
                 break;
             case EventCodes.ActionDisableInteractable:
+                delayActiveInteraction = false;
                 if ((bool)packages[1])
                 {
                     Debug.Log(TAG + "Disable Interaction after Animation Compleated");
@@ -171,7 +176,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
             //End Unused Cases
             case EventCodes.ActionChangeController:
                 Debug.Log(TAG + "ActionChangeController" + (string)packages[0]);
-                SetAnimator((string)packages[0],true);
+                SetAnimator((string)packages[0], true);
                 break;
             case EventCodes.ActionCorrectTransform:
                 Debug.Log(TAG + "ActionCorrectTransform" + (string)packages[0]);
@@ -221,10 +226,9 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 }
 
             }
-            ReActivate();
-            ResetAnimatorTriggers();
         }
-        
+        ReActivate();
+        ResetAnimatorTriggers();
     }
 
     public override void OnEnable()
@@ -249,6 +253,11 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         if (trigger == "PositionWrong")
         {
             kickBoard.GetComponent<SnapTo>().setTarget(boardHolderWrong);
+
+        }
+        else if (trigger == "SplashKickWrong")
+        {
+            kickBoard.GetComponent<SnapTo>().setTarget(boardHolderSplashKick);
 
         }
         else
@@ -281,11 +290,13 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     {
         if (lesson == (int)LessonID.Lesson_1)
         {
+            boardHolderSwim.gameObject.SetActive(false);
             kickBoard.gameObject.SetActive(false);
         }
         if (lesson == (int)LessonID.Lesson_2)
         {
             kickBoard.gameObject.SetActive(true);
+            boardHolderSwim.gameObject.SetActive(false);
         }
     }
     private void ReActivate()

@@ -21,7 +21,7 @@ public class SnapTo : MonoBehaviour
             transform.SetPositionAndRotation(target.position, target.rotation);
         }
     }
-    public void setTarget(Transform target,bool keepUpdating = true)
+    public void setTarget(Transform target,bool keepUpdating = false)
     {
         this.target = target;
         this.keepUpdating = keepUpdating;

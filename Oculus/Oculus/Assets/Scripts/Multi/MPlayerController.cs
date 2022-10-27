@@ -23,6 +23,8 @@ public class MPlayerController : MonoBehaviourPunCallbacks
     [SerializeField]
     LayerMask layerGroundMask;
 
+    public bool useGravity = false;
+
     Camera camera;
     private Vector3 movementNomalize;
     private Vector3 velocity;
@@ -39,7 +41,7 @@ public class MPlayerController : MonoBehaviourPunCallbacks
     void Start()
     {
         //Cursor.lockState = CursorLockMode.Locked;
-        camera.transform.rotation = Quaternion.Euler(0,90,0);
+        camera.transform.rotation = Quaternion.Euler(0, 90, 0);
 
     }
 
@@ -60,7 +62,7 @@ public class MPlayerController : MonoBehaviourPunCallbacks
             {
                 Look();
                 Movement();
-               // Shoot();
+                // Shoot();
             }
         }
 
@@ -84,17 +86,21 @@ public class MPlayerController : MonoBehaviourPunCallbacks
         float currentY = velocity.y;
         velocity = direction * moveSpeed;
         velocity.y = currentY;
-        float jump = 0;
-        isGrounded = Physics.Raycast(checkGroundTrans.position, Vector3.down, 0.2f, layerGroundMask);
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (useGravity)
         {
-            jump = jumpForce;
+            float jump = 0;
+            isGrounded = Physics.Raycast(checkGroundTrans.position, Vector3.down, 0.2f, layerGroundMask);
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                jump = jumpForce;
+            }
+            velocity.y += jump + Physics.gravity.y * Time.deltaTime;
+            if (charContr.isGrounded)
+            {
+                velocity.y = 0;
+            }
         }
-        velocity.y += jump + Physics.gravity.y * Time.deltaTime;
-        if (charContr.isGrounded)
-        {
-            velocity.y = 0;
-        }
+
         charContr.Move(velocity * Time.deltaTime);
     }
     private void Shoot()
@@ -108,7 +114,7 @@ public class MPlayerController : MonoBehaviourPunCallbacks
                 if (hit.collider.gameObject.tag == "Player")
                 {
                     hit.collider.gameObject.GetPhotonView()?.RPC("TakeDame", RpcTarget.All, photonView.Owner.NickName);
-                    Destroy(hit.collider.gameObject,3);
+                    Destroy(hit.collider.gameObject, 3);
                 }
 
             }
