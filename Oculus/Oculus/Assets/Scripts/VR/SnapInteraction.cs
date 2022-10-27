@@ -5,7 +5,7 @@ using System;
 using Photon.Pun;
 using System.Collections;
 
-public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
+public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IInteraction
 {
 
     const string TAG = "[SnapInteraction]";
@@ -33,9 +33,7 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
     {
         bool usePhotonView = !(photonView != null && photonView.IsMine);
         disableSnapFunct = false;
-       // disableSnapFunct = !DectectVR.instancne.isVR || usePhotonView;
-        {
-            // Find themself in parent
+
             if (constraintComp == null || (!(constraintComp is TwoBoneIKConstraint) && !(constraintComp is MultiAimConstraint)))
             {
                 constraintComp = transform.parent.GetComponent<TwoBoneIKConstraint>();
@@ -44,21 +42,17 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
                     constraintComp = transform.parent.GetComponent<MultiAimConstraint>();
                 }
             }
-            EnableRigWeight(false,true);
-        }
-        
+            EnableRigWeight(false, true);
     }
 
     IEnumerator EnableWeightEnumrator(float delayTime)
     {
-        //Wait for the specified delay time before continuing.
         yield return new WaitForSeconds(delayTime);
         EnableRigWeight();
-        //Do the action after the delay time has finished.
     }
     public void EnableRigWeight(bool enable = true, bool force = false)
     {
-        Debug.LogError(TAG + "EnableRigWeight" + enable +"disableSnapFunct" + disableSnapFunct);
+        Debug.LogError(TAG + "EnableRigWeight" + enable + "disableSnapFunct" + disableSnapFunct);
         enableWeight = enable;
         if (!disableSnapFunct || force)
         {
@@ -89,7 +83,6 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
         {
             if (photonView.IsMine)
             {
-                // Find themself in parent
                 switch (evt.Type)
                 {
                     case PointerEventType.Select:
@@ -118,6 +111,7 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
         SnapUpdate();
         // activateConstraintComp(false);
     }
+
     /*
      * lockTarget = true so alway snap to target, target move, cube moves
      * lockTarget = false : cube will be static and target was locked
@@ -169,11 +163,14 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement
     public void EnableGrabBableCube(bool a)
     {
         visualGameObject.GetComponent<MeshRenderer>().enabled = a;
-        // GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, a?1f:0f);
     }
     public override void OnDisable()
     {
 
     }
-    //
+    public void EnableInteraction(bool enable)
+    {
+        EnableRigWeight(enable);
+    }
+
 }

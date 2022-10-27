@@ -39,9 +39,9 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     // Start is called before the first frame update
     void Start()
     {
-        var starTransfrom = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
-        SetAnimator("Case_One");
-        transform.SetPositionAndRotation(starTransfrom.position, starTransfrom.rotation);
+        // var starTransfrom = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
+        // SetAnimator("Case_One");
+        // transform.SetPositionAndRotation(starTransfrom.position, starTransfrom.rotation);
        // StartCoroutine(DelayEnableInteraction(2,true));
     }
     private bool delayActiveInteraction = false;
@@ -65,10 +65,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     public void EnableInteraction(bool enable)
     {
         rig.enabled = enable;
-        SnapInteraction[] listSnap = transform.GetComponentsInChildren<SnapInteraction>(true);
-        foreach (var snap in listSnap)
+        IInteraction[] listInteractionObject = transform.GetComponentsInChildren<IInteraction>(true);
+        foreach (var mobject in listInteractionObject)
         {
-            snap.EnableRigWeight(enable);
+            mobject.EnableInteraction(enable);
         }
     }
     IEnumerator DelayEnableInteraction(float delayTime, bool enable)
