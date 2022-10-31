@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.40748248, g: 0.40707508, b: 0.41266623, a: 1}
+  m_IndirectSpecularColor: {r: 0.40748647, g: 0.40707633, b: 0.41267133, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1745,7 +1745,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 911637454}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.66509813
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14232,6 +14232,158 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1154756507603345044}
     m_Modifications:
+    - target: {fileID: 38965020, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 303057074, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 338854211, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 375090167, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 403009435, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 466769706, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 483850310, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 484592841, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 558042210, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 596184690, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 676425688, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 682035192, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052400109, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073497698, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075791157, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1110791454, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174006371, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434596715, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 51
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576401774, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 54
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742924027, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 57
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806057147, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 58
+      objectReference: {fileID: 0}
+    - target: {fileID: 1816363161, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 59
+      objectReference: {fileID: 0}
+    - target: {fileID: 1875694333, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886959757, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 61
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976353961, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 62
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019307170, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 63
+      objectReference: {fileID: 0}
+    - target: {fileID: 2058611510, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 2066932250, guid: 7a398e946f618e64393367066256a0fb, type: 3}
+      propertyPath: sceneViewId
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 182931281983567485, guid: 7a398e946f618e64393367066256a0fb,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245755693041408232, guid: 7a398e946f618e64393367066256a0fb,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512644729482335583, guid: 7a398e946f618e64393367066256a0fb,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 3251071614513684667, guid: 7a398e946f618e64393367066256a0fb,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 4183980430913416238, guid: 7a398e946f618e64393367066256a0fb,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178434254815945676, guid: 7a398e946f618e64393367066256a0fb,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 5269276500584513203, guid: 7a398e946f618e64393367066256a0fb,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 6451649350847942113, guid: 7a398e946f618e64393367066256a0fb,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 6624026443431106355, guid: 7a398e946f618e64393367066256a0fb,
         type: 3}
       propertyPath: m_RootOrder
@@ -14291,6 +14443,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: XRPlayerController
+      objectReference: {fileID: 0}
+    - target: {fileID: 6624026443431106358, guid: 7a398e946f618e64393367066256a0fb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7666264097750613540, guid: 7a398e946f618e64393367066256a0fb,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791103903816011864, guid: 7a398e946f618e64393367066256a0fb,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 56
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230167773119118066, guid: 7a398e946f618e64393367066256a0fb,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815159842740624022, guid: 7a398e946f618e64393367066256a0fb,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977008051574000810, guid: 7a398e946f618e64393367066256a0fb,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977813616638179784, guid: 7a398e946f618e64393367066256a0fb,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 48
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

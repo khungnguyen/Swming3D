@@ -36,7 +36,7 @@ public class XRPlayerController : MonoBehaviour
             GetComponentInChildren<OVRCameraRig>().enabled = false;
             trackkingSpace.SetActive(false);
             leftController.GetComponentInChildren<HandVisualCustomize>().ForceVisibleHand(true);
-           // rightController.GetComponentInChildren<HandVisualCustomize>().ForceVisibleHand(true);
+            rightController.GetComponentInChildren<HandVisualCustomize>().ForceVisibleHand(true);
         }
         else
         {
