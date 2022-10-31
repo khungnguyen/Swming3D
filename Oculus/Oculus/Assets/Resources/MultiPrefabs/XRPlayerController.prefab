@@ -2081,6 +2081,7 @@ MonoBehaviour:
   - {fileID: 2171517660339188400}
   - {fileID: 2171517661201887020}
   - {fileID: 2171517660887364438}
+  _started: 0
 --- !u!114 &2765398894017139331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4411,7 +4412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8293426779395384256
 Transform:
   m_ObjectHideFlags: 0
@@ -5245,6 +5246,7 @@ MonoBehaviour:
   - {fileID: 3511263461490052487}
   - {fileID: 3511263460500478057}
   - {fileID: 3511263461729621282}
+  _started: 0
 --- !u!114 &3100520712532867027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14609,7 +14611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6624026443431106355
 Transform:
   m_ObjectHideFlags: 0
@@ -14725,6 +14727,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackkingSpace: {fileID: 6444735631448077198}
   cameraOffset: {fileID: 6624026442350448585}
+  leftController: {fileID: 6957748625220172434}
+  rightController: {fileID: 5511952361189071497}
   speedY: 0.5
 --- !u!1 &6632810084596267568
 GameObject:
@@ -17524,6 +17528,7 @@ GameObject:
   - component: {fileID: 6872286894108119840}
   - component: {fileID: 6872286894108119843}
   - component: {fileID: 7430139963455896476}
+  - component: {fileID: 2169424729427958805}
   m_Layer: 6
   m_Name: RightHandVisual
   m_TagString: Untagged
@@ -17554,7 +17559,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6872286894108119841}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9af9ea683544b184083cef283557012d, type: 3}
   m_Name: 
@@ -17590,6 +17595,7 @@ MonoBehaviour:
   - {fileID: 6872286893424221103}
   - {fileID: 6872286892641109555}
   - {fileID: 6872286893970758217}
+  _started: 0
 --- !u!114 &7430139963455896476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17603,6 +17609,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handVisual: {fileID: 6872286894108119843}
+--- !u!114 &2169424729427958805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6872286894108119841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ade6746efa871241b8a43d22d9624a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hand: {fileID: 3424178668143861414}
+  _skinnedMeshRenderer: {fileID: 6872286892845769847}
+  _updateRootPose: 1
+  _updateRootScale: 1
+  _root: {fileID: 0}
+  _handMaterialPropertyBlockEditor: {fileID: 4008488692888525696}
+  _jointTransforms:
+  - {fileID: 6872286892409400171}
+  - {fileID: 6872286892508776598}
+  - {fileID: 6872286892509668368}
+  - {fileID: 6872286894118775449}
+  - {fileID: 6872286893570405198}
+  - {fileID: 6872286893630750952}
+  - {fileID: 6872286893598380716}
+  - {fileID: 6872286892822052822}
+  - {fileID: 6872286893005665341}
+  - {fileID: 6872286894016780936}
+  - {fileID: 6872286892495064583}
+  - {fileID: 6872286893045516570}
+  - {fileID: 6872286892560726760}
+  - {fileID: 6872286893036873403}
+  - {fileID: 6872286893300489182}
+  - {fileID: 6872286894340804852}
+  - {fileID: 6872286892665652618}
+  - {fileID: 6872286893960285330}
+  - {fileID: 6872286893335274340}
+  - {fileID: 6872286894188321296}
+  - {fileID: 6872286894214109696}
+  - {fileID: 6872286893424221103}
+  - {fileID: 6872286892641109555}
+  - {fileID: 6872286893970758217}
+  _started: 0
 --- !u!1 &6872286894118775454
 GameObject:
   m_ObjectHideFlags: 0
@@ -19297,6 +19347,7 @@ GameObject:
   - component: {fileID: 8762454870565699235}
   - component: {fileID: 8762454870565699234}
   - component: {fileID: 7072831665810351783}
+  - component: {fileID: 5809969978323395674}
   m_Layer: 6
   m_Name: LeftHandVisual
   m_TagString: Untagged
@@ -19327,7 +19378,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8762454870565699244}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9af9ea683544b184083cef283557012d, type: 3}
   m_Name: 
@@ -19363,6 +19414,7 @@ MonoBehaviour:
   - {fileID: 8762454872091909363}
   - {fileID: 8762454870934489373}
   - {fileID: 8762454871777625174}
+  _started: 0
 --- !u!114 &7072831665810351783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19376,6 +19428,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handVisual: {fileID: 8762454870565699234}
+--- !u!114 &5809969978323395674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8762454870565699244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ade6746efa871241b8a43d22d9624a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hand: {fileID: 1376867689961425545}
+  _skinnedMeshRenderer: {fileID: 8762454871302307342}
+  _updateRootPose: 1
+  _updateRootScale: 1
+  _root: {fileID: 0}
+  _handMaterialPropertyBlockEditor: {fileID: 7950686742962902172}
+  _jointTransforms:
+  - {fileID: 8762454872201079498}
+  - {fileID: 8762454871516467759}
+  - {fileID: 8762454871555024211}
+  - {fileID: 8762454870777509771}
+  - {fileID: 8762454871284021203}
+  - {fileID: 8762454872093664813}
+  - {fileID: 8762454872338742740}
+  - {fileID: 8762454870754078317}
+  - {fileID: 8762454870841294306}
+  - {fileID: 8762454871739580660}
+  - {fileID: 8762454870855571668}
+  - {fileID: 8762454872129298277}
+  - {fileID: 8762454872651039617}
+  - {fileID: 8762454872453305818}
+  - {fileID: 8762454872240842897}
+  - {fileID: 8762454872073329659}
+  - {fileID: 8762454872174196906}
+  - {fileID: 8762454871933574005}
+  - {fileID: 8762454872372238199}
+  - {fileID: 8762454870960165193}
+  - {fileID: 8762454870906632000}
+  - {fileID: 8762454872091909363}
+  - {fileID: 8762454870934489373}
+  - {fileID: 8762454871777625174}
+  _started: 0
 --- !u!1 &8762454870578258494
 GameObject:
   m_ObjectHideFlags: 0

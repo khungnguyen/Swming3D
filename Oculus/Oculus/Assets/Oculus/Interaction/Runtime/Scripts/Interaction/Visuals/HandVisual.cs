@@ -29,11 +29,11 @@ namespace Oculus.Interaction
     public class HandVisual : MonoBehaviour
     {
         [SerializeField, Interface(typeof(IHand))]
-        private MonoBehaviour _hand;
+        public MonoBehaviour _hand;
         public IHand Hand;
 
-        [SerializeField]
-        private SkinnedMeshRenderer _skinnedMeshRenderer;
+        //[SerializeField]
+        public SkinnedMeshRenderer _skinnedMeshRenderer;
 
         [SerializeField]
         private bool _updateRootPose = true;
@@ -60,7 +60,7 @@ namespace Oculus.Interaction
 
         public bool ForceOffVisibility { get; set; }
 
-        private bool _started = false;
+        public bool _started = false;
 
         protected virtual void Awake()
         {
@@ -70,7 +70,6 @@ namespace Oculus.Interaction
                 _root = _jointTransforms[0].parent;
             }
         }
-
         protected virtual void Start()
         {
             this.BeginStart(ref _started);

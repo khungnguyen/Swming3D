@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Oculus.Interaction;
 using UnityEngine;
 
 
@@ -16,6 +17,13 @@ public class XRPlayerController : MonoBehaviour
     private Transform cameraOffset;
 
 
+    [SerializeField]
+    private Transform leftController;
+
+    [SerializeField]
+    private Transform rightController;
+
+
     public float speedY = 0.5f;
     private Vector3 curCameraPos;
     void Start()
@@ -27,6 +35,8 @@ public class XRPlayerController : MonoBehaviour
             GetComponentInChildren<OVRManager>().enabled = false;
             GetComponentInChildren<OVRCameraRig>().enabled = false;
             trackkingSpace.SetActive(false);
+            leftController.GetComponentInChildren<HandVisualCustomize>().ForceVisibleHand(true);
+           // rightController.GetComponentInChildren<HandVisualCustomize>().ForceVisibleHand(true);
         }
         else
         {

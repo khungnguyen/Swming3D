@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.40748647, g: 0.40707633, b: 0.41267133, a: 1}
+  m_IndirectSpecularColor: {r: 0.40748248, g: 0.40707508, b: 0.41266623, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1745,7 +1745,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 911637454}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.66509813
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14232,26 +14232,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1154756507603345044}
     m_Modifications:
-    - target: {fileID: 3251071614513684667, guid: 7a398e946f618e64393367066256a0fb,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4183980430913416238, guid: 7a398e946f618e64393367066256a0fb,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4399065431656443423, guid: 7a398e946f618e64393367066256a0fb,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4833077882968088559, guid: 7a398e946f618e64393367066256a0fb,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 6624026443431106355, guid: 7a398e946f618e64393367066256a0fb,
         type: 3}
       propertyPath: m_RootOrder
@@ -14311,16 +14291,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: XRPlayerController
-      objectReference: {fileID: 0}
-    - target: {fileID: 6624026443431106358, guid: 7a398e946f618e64393367066256a0fb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977813616638179784, guid: 7a398e946f618e64393367066256a0fb,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
