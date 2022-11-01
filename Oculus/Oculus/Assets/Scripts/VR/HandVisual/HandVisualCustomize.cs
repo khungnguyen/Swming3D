@@ -20,7 +20,6 @@ public class HandVisualCustomize : HandVisual
        
         if (forceVisibleHand)
         {
-             Debug.Log(TAG + " Calling update Skeleton" + _skinnedMeshRenderer.enabled);
             _skinnedMeshRenderer.enabled = true;
         }
         else
