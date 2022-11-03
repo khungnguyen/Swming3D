@@ -195,6 +195,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     }
                     else {
                         Debug.LogError(TAG+"No property in Exercise" + key);
+                        ChangeController(key);
                     }
 
                 }
@@ -297,6 +298,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     }
     public void EnableInteractable(bool OnlyAfterAnim)
     {
+        //////
         object[] packages = new object[2];
         packages[0] = PhotonNetwork.NickName;
         packages[1] = OnlyAfterAnim;

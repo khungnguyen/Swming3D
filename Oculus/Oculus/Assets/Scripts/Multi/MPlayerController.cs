@@ -40,8 +40,6 @@ public class MPlayerController : MonoBehaviourPunCallbacks
     }
     void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
-        camera.transform.rotation = Quaternion.Euler(0, 90, 0);
 
     }
 

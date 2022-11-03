@@ -27,28 +27,26 @@ public class SpawnManager : MonoBehaviour
             SpawnPlayers();
             
         }
-        //Transform point = SpawnPointManager.instance.GetStudentSpawnPoint();
-        //var gameObject = Instantiate((studentGO), point.transform.position, point.transform.rotation);
     }
-
+    /**
+    * Spawning player by using photon
+    */
     public void SpawnPlayers()
     {
         if(DectectVR.instancne.isVR)
         {
-            Transform transfrom = SpawnPointManager.instance.GetXRPlayerSpawnPoint();
-            player = PhotonNetwork.Instantiate(convertPrefabPath(XRPlayerGO), transfrom.position, transform.rotation);
+            Transform point = SpawnPointManager.instance.GetXRPlayerSpawnPoint();
+            player = PhotonNetwork.Instantiate(convertPrefabPath(XRPlayerGO), point.position, point.rotation);
 
-            Transform point = SpawnPointManager.instance.GetStudentSpawnPoint();
-            var gameObject = PhotonNetwork.Instantiate(convertPrefabPath(studentGO), point.transform.position, point.transform.rotation);
-                //gameObject.transform.SetParent(point);
+            point = SpawnPointManager.instance.GetStudentSpawnPoint();
+            PhotonNetwork.Instantiate(convertPrefabPath(studentGO), point.transform.position, point.transform.rotation);
         }
         else
         {
-            Transform transfrom = SpawnPointManager.instance.GetDesktopPlayerSpawnPoint();
-            player = PhotonNetwork.Instantiate(convertPrefabPath(DesktopPlayerGO), transfrom.position, transform.rotation);
-            player.transform.rotation = transform.rotation;
+            Transform point = SpawnPointManager.instance.GetDesktopPlayerSpawnPoint();
+            player = PhotonNetwork.Instantiate(convertPrefabPath(DesktopPlayerGO), point.position, point.rotation);
         }
-  
+    
     }
    private string convertPrefabPath(GameObject gameObject)
     {

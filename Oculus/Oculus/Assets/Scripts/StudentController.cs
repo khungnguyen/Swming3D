@@ -72,6 +72,8 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         {
             mobject.EnableInteraction(enable);
         }
+        delayActiveInteraction = false;
+        delayInactiveInteraction = false;
     }
     IEnumerator DelayEnableInteraction(float delayTime, bool enable)
     {
@@ -90,6 +92,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
             case EventCodes.ActionSettingUpLesson:
                 //animator.enabled = true;
                 curLesson = (int)packages[0];
+                EnableInteraction(false);
                 SettupStudent(curLesson);
                 StopAllCoroutines();
                 CorrectTransform(ExerciseManager.instance.GetStartPoint());
@@ -101,7 +104,6 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 bool useReplaceModel = (bool)packages[0];
                 //animator.avatar = animatorAvatar;
                 Debug.Log(TAG + "ActionPlayAnimation " + animation);
-
                 EnableInteraction(false);
                 if (useReplaceModel)
                 {
@@ -141,7 +143,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 else
                 {
                     Debug.Log(TAG + "Enable Interaction immediately");
-                    EnableInteraction(true);
+                    StartCoroutine(DelayEnableInteraction(1f, true));
                 }
                 break;
             case EventCodes.ActionDisableInteractable:
@@ -154,7 +156,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 else
                 {
                     Debug.Log(TAG + "Disable Interaction immediately");
-                    EnableInteraction(false);
+                    StartCoroutine(DelayEnableInteraction(1f, true));
                 }
                 break;
             //Unused Cases
@@ -249,7 +251,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
 
     }
     private void BeforeTriggerAnim(string trigger)
-    {
+    {   
         if (trigger == "PositionWrong")
         {
             kickBoard.GetComponent<SnapTo>().setTarget(boardHolderWrong);
@@ -260,6 +262,9 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
             kickBoard.GetComponent<SnapTo>().setTarget(boardHolderSplashKick);
 
         }
+        else if(curLesson == (int)LessonID.Lesson_2 && trigger =="EnableKickBoard") {
+            kickBoard.gameObject.SetActive(true);
+        } 
         else
         {
             kickBoard.GetComponent<SnapTo>().setTarget(boardHolderRight);
@@ -295,7 +300,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         }
         if (lesson == (int)LessonID.Lesson_2)
         {
-            kickBoard.gameObject.SetActive(true);
+            kickBoard.gameObject.SetActive(false);
             boardHolderSwim.gameObject.SetActive(false);
         }
     }

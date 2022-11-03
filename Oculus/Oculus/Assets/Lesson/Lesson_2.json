@@ -1,93 +1,103 @@
 {
   "Exercise": "TIME 10-25 Minutes 4 Finger Hold Board Head Above Water Flutter Kick",
-  "AnimatorController": "Case_Two",
-  "startPointName": "Lesson_2_Ex_All_Pos",
+  "AnimatorController" :"Case_One",
+  "startPointName" :"Lesson_1_Ex_All_Pos",
   "Buttons": [
     {
-      "name": "Execute Action",
+      "name": "Have Student Enter Pool",
+      "action": "MoveStudentToPool",
+      "displayOrder": 1
+    },
+    {
+      "name": "Execute Properly",
       "action": "PlayCorrectAnimFlutter",
-      "displayOrder": 1
+      "displayOrder": 2
     },
     {
-      "name": "Splash Kick",
+      "name": "Execute with a Splash Kick",
       "action": "SplashKickWrong",
-      "displayOrder": 1
+      "displayOrder": 2
     },
     {
-      "name": "Cycles Kick",
+      "name": "Execute with a Cycles Kick",
       "action": "CycleKickWrong",
-      "displayOrder": 1
+      "displayOrder": 2
     },
     {
-      "name": "Incorrect Position",
+      "name": "Execute with a Incorrect Position",
       "action": "PositionWrong",
-      "displayOrder": 1
+      "displayOrder": 2
     },
     {
-      "name": "Execute Action",
+      "name": "Execute Properly",
       "action": "PlayCorrectAnimFlutter",
       "displayOrder": 3
     },
     {
-      "name": "5 metters",
+      "name": "Have Student Swim Solo",
+      "action": "MoveToMenuExercise",
+      "displayOrder": 4
+    }
+    ,
+    {
+      "name": "5 meters",
       "action": "GoToExercise_1",
-      "displayOrder": 4
+      "displayOrder": 5
     },
     {
-      "name": "15 metters",
+      "name": "15 meters",
       "action": "GoToExercise_2",
-      "displayOrder": 4
+      "displayOrder": 5
     },
     {
-      "name": "20 metters",
+      "name": "20 meters",
       "action": "GoToExercise_3",
-      "displayOrder": 4
+      "displayOrder": 5
     },
     {
       "name": "Swim Back",
       "action": "SwimBack",
-      "displayOrder": 5
+      "displayOrder": 6
     },
     {
       "name": "Walk Back",
       "action": "WalkBack",
-      "displayOrder": 5
+      "displayOrder": 6
     },
     {
-      "name": "Execute Action",
+      "name": "Execute Properly",
       "action": "PlayCorrectAnimSwimOrWalkBack",
-      "displayOrder": 6
-    },
-    
-    {
-      "name": "Not Follow Distance",
-      "action": "NotFollowDistance",
-      "displayOrder": 6
-    },
-    {
-      "name": "Not Follow Return",
-      "action": "NotFollowReturn",
-      "displayOrder": 6
-    },
-    {
-      "name": "Lose Control",
-      "action": "LoseControl",
-      "displayOrder": 6
-    },
-    {
-      "name": "Execute Action",
-      "action": "PlayCorrectAnimSwimOrWalkBackAndFinish",
       "displayOrder": 7
+    },
+    {
+      "name": "Studen Will Not Follow Distance",
+      "action": "NotFollowDistance",
+      "displayOrder": -1
+    },
+    {
+      "name": "Studen Will Not Follow Return Method",
+      "action": "NotFollowReturn",
+      "displayOrder": -1
+    },
+    {
+      "name": "Student Will Lose Control",
+      "action": "LoseControl",
+      "displayOrder": 7
+    },
+    {
+      "name": "Execute Properly",
+      "action": "PlayCorrectAnimSwimOrWalkBackAndFinish",
+      "displayOrder": 8
     },
     {
       "name": "Back To Exercise",
       "action": "BackToExercise",
-      "displayOrder": 8
+      "displayOrder": 9
     },
     {
       "name": "Lesson List",
       "action": "GoToLessonMenu",
-      "displayOrder": 8
+      "displayOrder": 9
     }
   ],
   "Actions": [
@@ -138,6 +148,36 @@
         }
       ],
       "showDisplayerOrder": 0
+    },
+    {
+      "name": "MoveStudentToPool",
+      "action": [
+        {
+          "name": "ChangeAnimController",
+          "property": [
+            "Case_Two"
+          ]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": [
+            "Lesson_2_Ex_All_Pos"
+          ]
+        },
+        {
+          "name": "TriggerAnimation",
+          "property": [
+            "EnableKickBoard"
+          ]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": [
+            ""
+          ]
+        }
+      ],
+      "showDisplayerOrder": 2
     },
     {
       "name": "SplashKickWrong",
@@ -206,6 +246,14 @@
       "showDisplayerOrder": 4
     },
     {
+      "name": "MoveToMenuExercise",
+      "action": [
+        {
+        }
+      ],
+      "showDisplayerOrder": 5
+    },
+    {
       "name": "GoToExercise_1",
       "action": [
         {
@@ -215,7 +263,7 @@
           ]
         }
       ],
-      "showDisplayerOrder": 5
+      "showDisplayerOrder": 6
     },
     {
       "name": "GoToExercise_2",
@@ -227,7 +275,7 @@
           ]
         }
       ],
-      "showDisplayerOrder": 5
+      "showDisplayerOrder": 6
     },
     {
       "name": "GoToExercise_3",
@@ -239,7 +287,7 @@
           ]
         }
       ],
-      "showDisplayerOrder": 5
+      "showDisplayerOrder": 6
     },
     {
       "name": "SwimBack",
@@ -251,7 +299,7 @@
           ]
         }
       ],
-      "showDisplayerOrder": 6
+      "showDisplayerOrder": 7
     },
     {
       "name": "WalkBack",
@@ -263,7 +311,7 @@
           ]
         }
       ],
-      "showDisplayerOrder": 6
+      "showDisplayerOrder": 7
     },
     {
       "name": "PlayCorrectAnimSwimOrWalkBack",
@@ -288,7 +336,7 @@
           ]
         }
       ],
-      "showDisplayerOrder": 8
+      "showDisplayerOrder": 9
     },
     {
       "name": "NotFollowDistance",
@@ -366,7 +414,7 @@
           ]
         }
       ],
-      "showDisplayerOrder": 7
+      "showDisplayerOrder": 8
     },
     {
       "name": "PlayCorrectAnimSwimOrWalkBackAndFinish",
@@ -391,7 +439,7 @@
           ]
         }
       ],
-      "showDisplayerOrder": 8
+      "showDisplayerOrder": 9
     },
     {
       "name": "GoToLessonMenu",
@@ -450,7 +498,7 @@
   ],
   "ExerciseList": [
     {
-      "lessonName": "5 meters and return",
+      "lessonName": "Swim and Return",
       "starAnimation": "StandIdle",
       "conditionTrigger": {
         "name": "StandJump",
@@ -468,7 +516,7 @@
       ]
     },
     {
-      "lessonName": "15 meters and return",
+      "lessonName": "Swim and Return",
       "starAnimation": "SquatIdle",
       "conditionTrigger": {
         "name": "SquatJump",
@@ -486,7 +534,7 @@
       ]
     },
     {
-      "lessonName": "25 meters and return",
+      "lessonName": "Swim and Return",
       "starAnimation": "SlideIdle",
       "startController": "25Metters",
       "conditionTrigger": {
