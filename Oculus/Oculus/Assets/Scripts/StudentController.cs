@@ -54,13 +54,13 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         if (delayActiveInteraction)
         {
             Debug.LogError("Animation Event call Enable" + e.animatorClipInfo.clip.name);
-            StartCoroutine(DelayEnableInteraction(1f, true));
+            StartCoroutine(DelayEnableInteraction(0.1f, true));
             delayActiveInteraction = false;
         }
         else if (delayInactiveInteraction)
         {
             Debug.LogError("Animation Event call Disable" + e.animatorClipInfo.clip.name);
-            StartCoroutine(DelayEnableInteraction(1f, false));
+            StartCoroutine(DelayEnableInteraction(0.1f, false));
             delayInactiveInteraction = false;
         }
     }
@@ -72,6 +72,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         {
             mobject.EnableInteraction(enable);
         }
+        delayActiveInteraction = false;
         delayActiveInteraction = false;
         delayInactiveInteraction = false;
     }
@@ -126,9 +127,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 break;
             case EventCodes.ActionNextExercise:
                 EnableInteraction(false);
-                int excerciseIndex = (int)packages[1];
+                int excerciseIndex = (int)packages[0];
                 ExerciseUnit muyUnit = ExerciseManager.instance.GetExercise(excerciseIndex);
                 Debug.Log(TAG + "ActionNextExercise" + muyUnit.lessonName);
+                SetAnimator(muyUnit.startController);
                 CorrectTransform(muyUnit.startPointName);
                 TriggerAnimation(muyUnit.startAnimation);
                 break;
@@ -143,7 +145,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 else
                 {
                     Debug.Log(TAG + "Enable Interaction immediately");
-                    StartCoroutine(DelayEnableInteraction(1f, true));
+                    StartCoroutine(DelayEnableInteraction(0.11f, true));
                 }
                 break;
             case EventCodes.ActionDisableInteractable:
@@ -156,7 +158,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 else
                 {
                     Debug.Log(TAG + "Disable Interaction immediately");
-                    StartCoroutine(DelayEnableInteraction(1f, true));
+                    StartCoroutine(DelayEnableInteraction(0.01f, false));
                 }
                 break;
             //Unused Cases
@@ -212,25 +214,29 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     }
     private void SetAnimator(string animatorName, bool force = false)
     {
-        if (animatorName != animator?.runtimeAnimatorController?.name || force)
+        if (animatorName != null && animatorName.Length > 0 || force)
         {
-            AnimationDataItem find = AnimationDataHolder.instance.GetAnimationDataByControllerName(animatorName);
+            if (animatorName != animator?.runtimeAnimatorController?.name || force)
             {
-                if (find.controller != null)
+                AnimationDataItem find = AnimationDataHolder.instance.GetAnimationDataByControllerName(animatorName);
                 {
-                    animator.runtimeAnimatorController = find.controller;
-                    Debug.Log(TAG + "Reset Animator to" + animatorName);
-                }
-                if (find.avatar != null)
-                {
-                    animator.avatar = find.avatar;
-                    Debug.Log(TAG + "Reset Avatar to" + find.avatar.name);
-                }
+                    if (find.controller != null)
+                    {
+                        animator.runtimeAnimatorController = find.controller;
+                        Debug.Log(TAG + "Reset Animator to" + animatorName);
+                    }
+                    if (find.avatar != null)
+                    {
+                        animator.avatar = find.avatar;
+                        Debug.Log(TAG + "Reset Avatar to" + find.avatar.name);
+                    }
 
+                }
             }
+            ReActivate();
+            ResetAnimatorTriggers();
         }
-        ReActivate();
-        ResetAnimatorTriggers();
+
     }
 
     public override void OnEnable()
@@ -251,7 +257,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
 
     }
     private void BeforeTriggerAnim(string trigger)
-    {   
+    {
         if (trigger == "PositionWrong")
         {
             kickBoard.GetComponent<SnapTo>().setTarget(boardHolderWrong);
@@ -262,9 +268,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
             kickBoard.GetComponent<SnapTo>().setTarget(boardHolderSplashKick);
 
         }
-        else if(curLesson == (int)LessonID.Lesson_2 && trigger =="EnableKickBoard") {
+        else if (curLesson == (int)LessonID.Lesson_2 && trigger == "EnableKickBoard")
+        {
             kickBoard.gameObject.SetActive(true);
-        } 
+        }
         else
         {
             kickBoard.GetComponent<SnapTo>().setTarget(boardHolderRight);

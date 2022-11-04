@@ -62,7 +62,7 @@ public class ExerciseManager : MonoBehaviour
     }
     public ExerciseUnit ChangeExercise(int index)
     {
-        if (curExercise != index && index < exercises.ExerciseList.Length - 1)
+        if (curExercise != index && index <= exercises.ExerciseList.Length - 1)
         {
             curExercise = index;
         }

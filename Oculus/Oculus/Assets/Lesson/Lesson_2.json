@@ -1,7 +1,7 @@
 {
   "Exercise": "TIME 10-25 Minutes 4 Finger Hold Board Head Above Water Flutter Kick",
-  "AnimatorController" :"Case_One",
-  "startPointName" :"Lesson_1_Ex_All_Pos",
+  "AnimatorController": "Case_One",
+  "startPointName": "Lesson_1_Ex_All_Pos",
   "Buttons": [
     {
       "name": "Have Student Enter Pool",
@@ -24,7 +24,7 @@
       "displayOrder": 2
     },
     {
-      "name": "Execute with a Incorrect Position",
+      "name": "Execute with Incorrect Position",
       "action": "PositionWrong",
       "displayOrder": 2
     },
@@ -37,8 +37,7 @@
       "name": "Have Student Swim Solo",
       "action": "MoveToMenuExercise",
       "displayOrder": 4
-    }
-    ,
+    },
     {
       "name": "5 meters",
       "action": "GoToExercise_1",
@@ -106,9 +105,7 @@
       "action": [
         {
           "name": "StartExercise",
-          "property": [
-            ""
-          ]
+          "property": [""]
         }
       ],
       "showDisplayerOrder": 2
@@ -118,9 +115,7 @@
       "action": [
         {
           "name": "NextExercise",
-          "property": [
-            ""
-          ]
+          "property": [""]
         }
       ],
       "showDisplayerOrder": 1
@@ -130,9 +125,7 @@
       "action": [
         {
           "name": "TriggerFinalAnimation",
-          "property": [
-            ""
-          ]
+          "property": [""]
         }
       ],
       "showDisplayerOrder": 3
@@ -142,9 +135,7 @@
       "action": [
         {
           "name": "GoToLessonMenu",
-          "property": [
-            ""
-          ]
+          "property": [""]
         }
       ],
       "showDisplayerOrder": 0
@@ -154,27 +145,23 @@
       "action": [
         {
           "name": "ChangeAnimController",
-          "property": [
-            "Case_Two"
-          ]
+          "property": ["Case_Two"]
+        },
+        {
+          "name": "GoToExercise",
+          "property": ["0"]
         },
         {
           "name": "CorrectTransform",
-          "property": [
-            "Lesson_2_Ex_All_Pos"
-          ]
+          "property": ["Lesson_2_Ex_All_Pos"]
         },
         {
           "name": "TriggerAnimation",
-          "property": [
-            "EnableKickBoard"
-          ]
+          "property": ["EnableKickBoard"]
         },
         {
           "name": "EnableInteractable",
-          "property": [
-            ""
-          ]
+          "property": [""]
         }
       ],
       "showDisplayerOrder": 2
@@ -184,15 +171,11 @@
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": [
-            "SplashKickWrong"
-          ]
+          "property": ["SplashKickWrong"]
         },
         {
           "name": "EnableInteractable",
-          "property": [
-            "DelayAfterAnim"
-          ]
+          "property": ["DelayAfterAnim"]
         }
       ],
       "showDisplayerOrder": 3
@@ -202,15 +185,11 @@
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": [
-            "CycleKickWrong"
-          ]
+          "property": ["CycleKickWrong"]
         },
         {
           "name": "EnableInteractable",
-          "property": [
-            "DelayAfterAnim"
-          ]
+          "property": ["DelayAfterAnim"]
         }
       ],
       "showDisplayerOrder": 3
@@ -220,15 +199,11 @@
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": [
-            "PositionWrong"
-          ]
+          "property": ["PositionWrong"]
         },
         {
           "name": "EnableInteractable",
-          "property": [
-            "DelayAfterAnim"
-          ]
+          "property": ["DelayAfterAnim"]
         }
       ],
       "showDisplayerOrder": 3
@@ -238,9 +213,11 @@
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": [
-            "CorrectFlutter"
-          ]
+          "property": ["CorrectFlutter"]
+        },
+        {
+          "name": "ChangeLessonTitle",
+          "property": ["Swim and Return"]
         }
       ],
       "showDisplayerOrder": 4
@@ -249,6 +226,8 @@
       "name": "MoveToMenuExercise",
       "action": [
         {
+          "name": "ChangeLessonTitle",
+          "property": ["Swim and Return"]
         }
       ],
       "showDisplayerOrder": 5
@@ -258,9 +237,7 @@
       "action": [
         {
           "name": "GoToExercise",
-          "property": [
-            "0"
-          ]
+          "property": ["1"]
         }
       ],
       "showDisplayerOrder": 6
@@ -270,9 +247,7 @@
       "action": [
         {
           "name": "GoToExercise",
-          "property": [
-            "1"
-          ]
+          "property": ["2"]
         }
       ],
       "showDisplayerOrder": 6
@@ -282,9 +257,7 @@
       "action": [
         {
           "name": "GoToExercise",
-          "property": [
-            "2"
-          ]
+          "property": ["3"]
         }
       ],
       "showDisplayerOrder": 6
@@ -294,9 +267,7 @@
       "action": [
         {
           "name": "SaveDataValue",
-          "property": [
-            "Key_RightAnimation","Swim"
-          ]
+          "property": ["Key_RightAnimation", "Swim"]
         }
       ],
       "showDisplayerOrder": 7
@@ -306,9 +277,7 @@
       "action": [
         {
           "name": "SaveDataValue",
-          "property": [
-            "Key_RightAnimation","Walk"
-          ]
+          "property": ["Key_RightAnimation", "Walk"]
         }
       ],
       "showDisplayerOrder": 7
@@ -318,22 +287,15 @@
       "action": [
         {
           "name": "ChangeAnimController",
-          "property": [
-            "RightController"
-          ]
+          "property": ["RightController"]
         },
         {
           "name": "CorrectTransform",
-          "property": [
-            "SwimStartPoint"
-          ]
-        }
-        ,
+          "property": ["SwimStartPoint"]
+        },
         {
           "name": "TriggerAnimationWithSaveKey",
-          "property": [
-            "Key_RightAnimation"
-          ]
+          "property": ["Key_RightAnimation"]
         }
       ],
       "showDisplayerOrder": 9
@@ -343,21 +305,15 @@
       "action": [
         {
           "name": "ChangeAnimController",
-          "property": [
-            "WrongController"
-          ]
+          "property": ["WrongController"]
         },
         {
           "name": "CorrectTransform",
-          "property": [
-            "SwimStartPoint"
-          ]
+          "property": ["SwimStartPoint"]
         },
         {
           "name": "TriggerAnimation",
-          "property": [
-            "Swim"
-          ]
+          "property": ["Swim"]
         }
       ],
       "showDisplayerOrder": 7
@@ -367,21 +323,15 @@
       "action": [
         {
           "name": "ChangeAnimController",
-          "property": [
-            "RightController"
-          ]
+          "property": ["RightController"]
         },
         {
           "name": "CorrectTransform",
-          "property": [
-            "SwimStartPoint"
-          ]
+          "property": ["SwimStartPoint"]
         },
         {
           "name": "TriggerAnimationWithOutSaveKey",
-          "property": [
-            "Key_RightAnimation"
-          ]
+          "property": ["Key_RightAnimation"]
         }
       ],
       "showDisplayerOrder": 7
@@ -391,27 +341,19 @@
       "action": [
         {
           "name": "ChangeAnimController",
-          "property": [
-            "LoseController"
-          ]
+          "property": ["LoseController"]
         },
         {
           "name": "CorrectTransform",
-          "property": [
-            "Lesson_2_Ex_All_Pos"
-          ]
+          "property": ["Lesson_2_Ex_All_Pos"]
         },
         {
           "name": "TriggerAnimation",
-          "property": [
-            "LoseControl"
-          ]
+          "property": ["LoseControl"]
         },
         {
           "name": "EnableInteractable",
-          "property": [
-            "DelayAfterAnim"
-          ]
+          "property": ["DelayAfterAnim"]
         }
       ],
       "showDisplayerOrder": 8
@@ -421,22 +363,15 @@
       "action": [
         {
           "name": "ChangeAnimController",
-          "property": [
-            "RightController"
-          ]
+          "property": ["RightController"]
         },
         {
           "name": "CorrectTransform",
-          "property": [
-            "SwimStartPoint"
-          ]
-        }
-        ,
+          "property": ["SwimStartPoint"]
+        },
         {
           "name": "TriggerAnimationWithSaveKey",
-          "property": [
-            "Key_RightAnimation"
-          ]
+          "property": ["Key_RightAnimation"]
         }
       ],
       "showDisplayerOrder": 9
@@ -445,16 +380,20 @@
       "name": "GoToLessonMenu",
       "action": [
         {
+          "name": "EndLesson",
+          "property": []
+        },
+        {
           "name": "GoToLessonMenu",
-          "property": [
-            ""
-          ]
+          "property": [""]
+        },
+        {
+          "name": "ClearDataSave",
+          "property": [""]
         },
         {
           "name": "DisableInteractable",
-          "property": [
-            ""
-          ]
+          "property": [""]
         }
       ],
       "showDisplayerOrder": 0
@@ -464,33 +403,27 @@
       "action": [
         {
           "name": "ClearDataSave",
-          "property": [
-            ""
-          ]
+          "property": [""]
         },
         {
           "name": "DisableInteractable",
-          "property": [
-            ""
-          ]
+          "property": [""]
         },
         {
           "name": "ChangeAnimController",
-          "property": [
-            "LoseController"
-          ]
+          "property": ["LoseController"]
         },
         {
           "name": "CorrectTransform",
-          "property": [
-            "Lesson_2_Ex_All_Pos"
-          ]
+          "property": ["Lesson_2_Ex_All_Pos"]
         },
         {
           "name": "SettingUpLesson",
-          "property": [
-            ""
-          ]
+          "property": [""]
+        },
+        {
+          "name": "ChangeLessonTitle",
+          "property": [""]
         }
       ],
       "showDisplayerOrder": 1
@@ -498,57 +431,86 @@
   ],
   "ExerciseList": [
     {
-      "lessonName": "Swim and Return",
-      "starAnimation": "StandIdle",
+      "lessonName": "Practice in Place",
+      "starAnimation": "",
       "conditionTrigger": {
         "name": "StandJump",
         "value": true
       },
       "startPointName": "Lesson_2_Ex_All_Pos",
-      "startController": "5Metters",
+      "startController": "Case_Two",
+      "property": []
+    },
+    {
+      "lessonName": "Swim and Return",
+      "starAnimation": "",
+      "conditionTrigger": {
+        "name": "",
+        "value": true
+      },
+      "startPointName": "Lesson_2_Ex_All_Pos",
+      "startController": "",
       "property": [
-        "LoseController","Case_Two",
-        "RightController","5Metters",
-        "WrongController","15Metters",
-        "WrongController","25Metters",
-        "TriggerName","Swim",
-        "TriggerName","Walk"
+        "LoseController",
+        "Case_Two",
+        "RightController",
+        "5Metters",
+        "WrongController",
+        "15Metters",
+        "WrongController",
+        "25Metters",
+        "TriggerName",
+        "Swim",
+        "TriggerName",
+        "Walk"
       ]
     },
     {
       "lessonName": "Swim and Return",
-      "starAnimation": "SquatIdle",
+      "starAnimation": "",
       "conditionTrigger": {
         "name": "SquatJump",
         "value": true
       },
-      "startController": "15Metters",
+      "startController": "",
       "startPointName": "Lesson_2_Ex_All_Pos",
       "property": [
-        "LoseController","Case_Two",
-        "RightController","15Metters",
-        "WrongController","5Metters",
-        "WrongController","25Metters",
-        "TriggerName","Swim",
-        "TriggerName","Walk"
+        "LoseController",
+        "Case_Two",
+        "RightController",
+        "15Metters",
+        "WrongController",
+        "5Metters",
+        "WrongController",
+        "25Metters",
+        "TriggerName",
+        "Swim",
+        "TriggerName",
+        "Walk"
       ]
     },
     {
       "lessonName": "Swim and Return",
-      "starAnimation": "SlideIdle",
-      "startController": "25Metters",
+      "starAnimation": "",
+      "startController": "",
       "conditionTrigger": {
         "name": "SlideJump",
         "value": false
       },
       "startPointName": "Lesson_2_Ex_All_Pos",
       "property": [
-        "LoseController","Case_Two",
-        "RightController","25Metters",
-        "WrongController","5Metters",
-        "WrongController","15Metters",
-        "TriggerName","Swim",
-        "TriggerName","Walk"
+        "LoseController",
+        "Case_Two",
+        "RightController",
+        "25Metters",
+        "WrongController",
+        "5Metters",
+        "WrongController",
+        "15Metters",
+        "TriggerName",
+        "Swim",
+        "TriggerName",
+        "Walk"
       ]
     }
   ]
