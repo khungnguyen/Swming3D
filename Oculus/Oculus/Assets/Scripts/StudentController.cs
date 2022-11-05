@@ -40,10 +40,19 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     // Start is called before the first frame update
     void Start()
     {
-        var starTransfrom = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
-        SetAnimator("Case_One");
-        transform.SetPositionAndRotation(starTransfrom.position, starTransfrom.rotation);
-        // StartCoroutine(DelayEnableInteraction(2,true));
+
+
+        if (VRAppDebug.USE_DEBUG_VR_SINGLE_PREVIEW)
+        {
+            StartCoroutine(DelayEnableInteraction(2, true));
+        }
+        else
+        {
+            var starTransfrom = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
+            SetAnimator("Case_One");
+            transform.SetPositionAndRotation(starTransfrom.position, starTransfrom.rotation);
+        }
+
     }
     private bool delayActiveInteraction = false;
     private bool delayInactiveInteraction = false;
@@ -54,13 +63,13 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         if (delayActiveInteraction)
         {
             Debug.LogError("Animation Event call Enable" + e.animatorClipInfo.clip.name);
-            StartCoroutine(DelayEnableInteraction(0.1f, true));
+            StartCoroutine(DelayEnableInteraction(0.2f, true));
             delayActiveInteraction = false;
         }
         else if (delayInactiveInteraction)
         {
             Debug.LogError("Animation Event call Disable" + e.animatorClipInfo.clip.name);
-            StartCoroutine(DelayEnableInteraction(0.1f, false));
+            StartCoroutine(DelayEnableInteraction(0.2f, false));
             delayInactiveInteraction = false;
         }
     }
@@ -93,9 +102,9 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
             case EventCodes.ActionSettingUpLesson:
                 //animator.enabled = true;
                 curLesson = (int)packages[0];
+                StopAllCoroutines();
                 EnableInteraction(false);
                 SettupStudent(curLesson);
-                StopAllCoroutines();
                 CorrectTransform(ExerciseManager.instance.GetStartPoint());
                 SetAnimator(ExerciseManager.instance.GetAnimator());
                 Debug.LogError(TAG + "ActionSettingUpLesson " + curLesson);
@@ -105,6 +114,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 bool useReplaceModel = (bool)packages[0];
                 //animator.avatar = animatorAvatar;
                 Debug.Log(TAG + "ActionPlayAnimation " + animation);
+                StopAllCoroutines();
                 EnableInteraction(false);
                 if (useReplaceModel)
                 {
@@ -145,7 +155,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 else
                 {
                     Debug.Log(TAG + "Enable Interaction immediately");
-                    StartCoroutine(DelayEnableInteraction(0.11f, true));
+                    StartCoroutine(DelayEnableInteraction(0.01f, true));
                 }
                 break;
             case EventCodes.ActionDisableInteractable:

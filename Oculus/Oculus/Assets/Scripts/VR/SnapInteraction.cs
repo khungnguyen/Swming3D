@@ -17,7 +17,7 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
 
     public bool lockTarget = false;
 
-    private bool isSnap = true;
+    protected bool isSnap = true;
 
     public bool disableSnapFunct = false;
 
@@ -99,13 +99,13 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
 
 
     }
-    public void OnSelect()
+    public virtual void OnSelect()
     {
         isSnap = false;
         GetOriginalRoation();
         // activateConstraintComp(true);
     }
-    public void OnUnselect()
+    public virtual void OnUnselect()
     {
         isSnap = true;
         SnapUpdate();
@@ -147,17 +147,6 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
         if (Vector3.Distance(transform.rotation.eulerAngles, snapTo.rotation.eulerAngles) >= 0.01)
         {
             transform.rotation = snapTo.rotation;
-        }
-    }
-    private void activateConstraintComp(bool active)
-    {
-        if (constraintComp is TwoBoneIKConstraint)
-        {
-            ((TwoBoneIKConstraint)constraintComp).enabled = active;
-        }
-        else if (constraintComp is MultiAimConstraint)
-        {
-            ((MultiAimConstraint)constraintComp).enabled = active;
         }
     }
     public void EnableGrabBableCube(bool a)

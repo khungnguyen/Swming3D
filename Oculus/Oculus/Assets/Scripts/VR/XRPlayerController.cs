@@ -62,14 +62,14 @@ public class XRPlayerController : MonoBehaviour
     {
         if (OVRInput.Get(OVRInput.Button.One) || OVRInput.Get(OVRInput.Button.Three))
         {
-            Debug.Log("Button One Three Press");
+           // Debug.Log("Button One Three Press");
             curCameraPos = cameraOffset.transform.position;
             curCameraPos.y -= speedY * Time.deltaTime;
             cameraOffset.transform.position = curCameraPos;
         }
         else if (OVRInput.Get(OVRInput.Button.Two) || OVRInput.Get(OVRInput.Button.Four))
         {
-            Debug.Log("Button One Two Four Press");
+           // Debug.Log("Button One Two Four Press");
             curCameraPos = cameraOffset.transform.position;
             curCameraPos.y += speedY * Time.deltaTime;
             cameraOffset.transform.position = curCameraPos;

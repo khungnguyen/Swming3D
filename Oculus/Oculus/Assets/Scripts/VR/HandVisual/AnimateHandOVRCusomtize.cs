@@ -12,7 +12,6 @@ public class AnimateHandOVRCusomtize : AnimatedHandOVR
     {
         _isGivingThumbsUp = false;
         _isPointing = false;
-        Debug.Log("XXXXXXXXXXXXXXXXXXXXXXXXX");
     }
     /**
     * Change to hold for both grab and index button
