@@ -7806,7 +7806,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5847179524202690157
 Transform:
   m_ObjectHideFlags: 0
@@ -7976,6 +7976,8 @@ MonoBehaviour:
   enableWeight: 0
   lockRotation: 0
   wholeBody: {fileID: 3305391537715199526}
+  kickBoard: {fileID: 1648975623}
+  newParentOfKickBoard: {fileID: 0}
 --- !u!1 &7098745084459353077
 GameObject:
   m_ObjectHideFlags: 0
@@ -10776,7 +10778,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 257cba4879885034d83dd44536965a9b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1107539745557611761, guid: 257cba4879885034d83dd44536965a9b,
         type: 3}

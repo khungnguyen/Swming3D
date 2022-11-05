@@ -40,8 +40,6 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     // Start is called before the first frame update
     void Start()
     {
-
-
         if (VRAppDebug.USE_DEBUG_VR_SINGLE_PREVIEW)
         {
             StartCoroutine(DelayEnableInteraction(2, true));
