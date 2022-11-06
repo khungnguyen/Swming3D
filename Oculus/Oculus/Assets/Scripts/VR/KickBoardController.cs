@@ -29,10 +29,16 @@ public class KickBoardController : MonoBehaviourPunCallbacks, IInteraction
     /**
     * Set target null : disable snap to
     */
+
+    private PhotonTransformView photonTransformView;
+    void Start()
+    {
+    }
     public void OnSelect()
     {
         snapTo.setTarget(null);
         ChangMaterial(MATERIAL_USE.ON_GRAB);
+
     }
 
     public void OnUnselect()
@@ -43,7 +49,7 @@ public class KickBoardController : MonoBehaviourPunCallbacks, IInteraction
     {
         if (kickBoardMaterial)
         {
-            ChangMaterial(enable?MATERIAL_USE.ON_INTERACTION:MATERIAL_USE.NORMAL);
+            ChangMaterial(enable ? MATERIAL_USE.ON_INTERACTION : MATERIAL_USE.NORMAL);
         }
         else
         {

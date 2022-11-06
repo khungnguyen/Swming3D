@@ -23,12 +23,11 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
     public Transform boardHolderRight;
     public Transform boardHolderSplashKick;
     public Transform boardHolderSwim;
-
     public Transform replaceModelPoint;
-
     public GameObject currentModel;
     private GameObject replaceModel;
 
+    public Transform bodyMovingCube;
 
     private int curLesson;
 
@@ -153,7 +152,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 else
                 {
                     Debug.Log(TAG + "Enable Interaction immediately");
-                    StartCoroutine(DelayEnableInteraction(0.01f, true));
+                    StartCoroutine(DelayEnableInteraction(0.1f, true));
                 }
                 break;
             case EventCodes.ActionDisableInteractable:
@@ -166,7 +165,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
                 else
                 {
                     Debug.Log(TAG + "Disable Interaction immediately");
-                    StartCoroutine(DelayEnableInteraction(0.01f, false));
+                    StartCoroutine(DelayEnableInteraction(0.1f, false));
                 }
                 break;
             //Unused Cases
@@ -193,6 +192,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
             case EventCodes.ActionCorrectTransform:
                 Debug.Log(TAG + "ActionCorrectTransform" + (string)packages[0]);
                 CorrectTransform((string)packages[0]);
+                break;
+            case EventCodes.ActionStopAnimation:
+                Debug.Log(TAG + "ActionStopAnimation");
+                StartCoroutine(StopAnimation());
                 break;
 
         }
@@ -264,9 +267,23 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         }
 
     }
+    private string lastAnimation;
     private void BeforeTriggerAnim(string trigger)
     {
-        if (trigger == "PositionWrong")
+        if (trigger == "StopAnim")
+        {
+            if (lastAnimation == "PositionWrong")
+            {
+                kickBoard.GetComponent<SnapTo>().setTarget(boardHolderWrong);
+
+            }
+            else if (lastAnimation == "SplashKickWrong")
+            {
+                kickBoard.GetComponent<SnapTo>().setTarget(boardHolderSplashKick);
+
+            }
+        }
+        else if (trigger == "PositionWrong")
         {
             kickBoard.GetComponent<SnapTo>().setTarget(boardHolderWrong);
 
@@ -284,6 +301,15 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         {
             kickBoard.GetComponent<SnapTo>().setTarget(boardHolderRight);
         }
+        if (trigger == "LoseControl")
+        {
+            bodyMovingCube.gameObject.SetActive(true);
+        }
+        else {
+            bodyMovingCube.gameObject.SetActive(false);
+        }
+
+        lastAnimation = trigger;
     }
     private void SwapModel(bool useReplace)
     {
@@ -340,6 +366,29 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
             if (trigger.type == AnimatorControllerParameterType.Trigger)
             {
                 animator.ResetTrigger(trigger.name);
+            }
+        }
+    }
+    private IEnumerator StopAnimation()
+    {
+        var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        Debug.Log("animator.layerCount" + animator.layerCount);
+        Debug.Log("animator.GetLayerName" + animator.GetLayerName(0));
+        yield return IsCurrentAnimationPlaying();
+        animator.StopPlayback();
+    }
+    private IEnumerator IsCurrentAnimationPlaying()
+    {
+        var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        while (true)
+        {
+            yield return null;
+            Debug.Log("stateInfo.normalizedTime" + stateInfo.ToString() + "-" + stateInfo.normalizedTime % 1);
+            //  if (stateInfo.normalizedTime % 1.0f == 0f)
+            {
+                Debug.Log("Anim mation finish");
+                break;
             }
         }
     }

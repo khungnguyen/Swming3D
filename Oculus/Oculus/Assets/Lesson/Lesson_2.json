@@ -97,6 +97,11 @@
       "name": "Lesson List",
       "action": "GoToLessonMenu",
       "displayOrder": 9
+    },
+    {
+      "name": "Allow Coach To Correct",
+      "action": "StopAnimationAndEnableInteraction",
+      "displayOrder": 10
     }
   ],
   "Actions": [
@@ -172,13 +177,9 @@
         {
           "name": "TriggerAnimation",
           "property": ["SplashKickWrong"]
-        },
-        {
-          "name": "EnableInteractable",
-          "property": ["DelayAfterAnim"]
         }
       ],
-      "showDisplayerOrder": 3
+      "showDisplayerOrder": 10
     },
     {
       "name": "CycleKickWrong",
@@ -186,13 +187,9 @@
         {
           "name": "TriggerAnimation",
           "property": ["CycleKickWrong"]
-        },
-        {
-          "name": "EnableInteractable",
-          "property": ["DelayAfterAnim"]
         }
       ],
-      "showDisplayerOrder": 3
+      "showDisplayerOrder": 10
     },
     {
       "name": "PositionWrong",
@@ -200,13 +197,9 @@
         {
           "name": "TriggerAnimation",
           "property": ["PositionWrong"]
-        },
-        {
-          "name": "EnableInteractable",
-          "property": ["DelayAfterAnim"]
         }
       ],
-      "showDisplayerOrder": 3
+      "showDisplayerOrder": 10
     },
     {
       "name": "PlayCorrectAnimFlutter",
@@ -423,10 +416,24 @@
         },
         {
           "name": "ChangeLessonTitle",
-          "property": [""]
+          "property": ["Practice In Place"]
         }
       ],
       "showDisplayerOrder": 1
+    },
+    {
+      "name": "StopAnimationAndEnableInteraction",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["StopAnim"]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": ["DelayAfterAnim"]
+        }
+      ],
+      "showDisplayerOrder": 3
     }
   ],
   "ExerciseList": [

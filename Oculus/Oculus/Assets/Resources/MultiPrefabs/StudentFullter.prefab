@@ -849,7 +849,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 790001671}
-  sceneViewId: 29
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &790001671
@@ -1072,7 +1072,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 820987092}
-  sceneViewId: 28
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &820987092
@@ -1774,7 +1774,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 1648975626}
-  sceneViewId: 25
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &1648975626
@@ -1817,7 +1817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c734f3ecd7cbaf4f84fc286c0890753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kickBoardMaterial: {fileID: 7411342775371104966}
+  kickBoardMaterial: {fileID: 4740553375205011902}
   materials:
   - {fileID: 2100000, guid: 1efb81d6b81613d47a56572464bae947, type: 2}
   - {fileID: 2100000, guid: ed9cbd09665a40b4b851f5a5e555bb46, type: 2}
@@ -3560,7 +3560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderers:
-  - {fileID: 4740553375205011902}
+  - {fileID: 5943519342584730007}
   _vectorProperties: []
   _colorProperties: []
   _floatProperties: []
@@ -3806,7 +3806,7 @@ Transform:
   m_Father: {fileID: 5668972273135659858}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2244279174440988606
+--- !u!1 &2236387278589528776
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3814,10 +3814,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2422178444701493233}
-  - component: {fileID: 7411342775371104966}
-  - component: {fileID: 8143076689513529636}
-  - component: {fileID: 4962828793252944145}
+  - component: {fileID: 2939698779660964743}
+  - component: {fileID: 5943519342584730007}
+  - component: {fileID: 7859567489089763251}
+  - component: {fileID: 6766856121085587529}
   m_Layer: 8
   m_Name: simpleGrabUIObjectMesh
   m_TagString: Untagged
@@ -3825,28 +3825,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2422178444701493233
+--- !u!4 &2939698779660964743
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2244279174440988606}
+  m_GameObject: {fileID: 2236387278589528776}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2079772093818104137}
+  m_Father: {fileID: 2497052259811211500}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &7411342775371104966
+--- !u!23 &5943519342584730007
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2244279174440988606}
+  m_GameObject: {fileID: 2236387278589528776}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -3860,7 +3860,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1efb81d6b81613d47a56572464bae947, type: 2}
+  - {fileID: 2100000, guid: 8457c109fddc47744859a47f51da2661, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3882,27 +3882,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &8143076689513529636
+--- !u!33 &7859567489089763251
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2244279174440988606}
-  m_Mesh: {fileID: 3975939166408368812, guid: 5e33d1d6e4c7b5a499517e2bd1caac50, type: 3}
---- !u!65 &4962828793252944145
+  m_GameObject: {fileID: 2236387278589528776}
+  m_Mesh: {fileID: 2140363256473165317, guid: f5ceaf081c5af184cb5b44b9e95931f8, type: 3}
+--- !u!65 &6766856121085587529
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2244279174440988606}
+  m_GameObject: {fileID: 2236387278589528776}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.45851827, y: 0.26680747, z: 0.04442935}
-  m_Center: {x: 0.0140463635, y: -2.6948377e-15, z: 0.017562367}
+  m_Size: {x: 0.05, y: 0.05, z: 0.05}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2326002319747068929
 GameObject:
   m_ObjectHideFlags: 0
@@ -4975,7 +4975,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 791952755378197316}
-  sceneViewId: 23
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &3739350556186041615
@@ -5009,7 +5009,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2497052259811211500}
+  m_Father: {fileID: 2079772093818104137}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &4740553375205011902
@@ -5032,7 +5032,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8457c109fddc47744859a47f51da2661, type: 2}
+  - {fileID: 2100000, guid: 1efb81d6b81613d47a56572464bae947, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5061,7 +5061,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3739350556186041615}
-  m_Mesh: {fileID: 2140363256473165317, guid: f5ceaf081c5af184cb5b44b9e95931f8, type: 3}
+  m_Mesh: {fileID: 3975939166408368812, guid: 5e33d1d6e4c7b5a499517e2bd1caac50, type: 3}
 --- !u!65 &3812825989773915243
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5073,8 +5073,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.05, z: 0.05}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.45851827, y: 0.26680747, z: 0.04442935}
+  m_Center: {x: 0.0140463635, y: -2.6948377e-15, z: 0.017562367}
 --- !u!1 &3869274223570687703
 GameObject:
   m_ObjectHideFlags: 0
@@ -5359,7 +5359,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 4495093382827163501}
-  sceneViewId: 71
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &4652298602658790860
@@ -6181,7 +6181,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 9108526826466261020}
-  sceneViewId: 21
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &9108526826466261020
@@ -6371,7 +6371,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 9071712337392296447}
-  sceneViewId: 22
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &9071712337392296447
@@ -6779,7 +6779,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 9048306173592622065}
-  sceneViewId: 69
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &9048306173592622065
@@ -7937,7 +7937,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 4625103716711227862}
-  sceneViewId: 26
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &4625103716711227862
@@ -7970,14 +7970,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   constraintComp: {fileID: 0}
   snapTo: {fileID: 1190304367}
-  visualGameObject: {fileID: 3739350556186041615}
+  visualGameObject: {fileID: 2236387278589528776}
   lockTarget: 0
   disableSnapFunct: 0
   enableWeight: 0
   lockRotation: 0
+  kickBoardPhotonView: {fileID: 1648975626}
   wholeBody: {fileID: 3305391537715199526}
   kickBoard: {fileID: 1648975623}
-  newParentOfKickBoard: {fileID: 0}
+  newParentOfKickBoard: {fileID: 3305391537715199526}
 --- !u!1 &7098745084459353077
 GameObject:
   m_ObjectHideFlags: 0
@@ -8006,7 +8007,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5518015106027643358}
+  - {fileID: 2939698779660964743}
   m_Father: {fileID: 7055708942312526812}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8110,7 +8111,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2422178444701493233}
+  - {fileID: 5518015106027643358}
   m_Father: {fileID: 201807412474207226}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9210,7 +9211,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 8192469491367271912}
-  sceneViewId: 24
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &8192469491367271912
@@ -9406,7 +9407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderers:
-  - {fileID: 7411342775371104966}
+  - {fileID: 4740553375205011902}
   _vectorProperties: []
   _colorProperties: []
   _floatProperties: []
@@ -10778,7 +10779,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 257cba4879885034d83dd44536965a9b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1107539745557611761, guid: 257cba4879885034d83dd44536965a9b,
         type: 3}
@@ -11118,7 +11119,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 5901751119908455610}
-  sceneViewId: 27
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!4 &893227225305845575 stripped
@@ -11220,6 +11221,7 @@ MonoBehaviour:
   boardHolderSwim: {fileID: 183132818374529859}
   replaceModelPoint: {fileID: 0}
   currentModel: {fileID: 1170819295043574115}
+  bodyMovingCube: {fileID: 5847179524202690157}
 --- !u!114 &3538516938956681386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11350,7 +11352,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 7440151648502805998}
-  sceneViewId: 70
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &7440151648502805998

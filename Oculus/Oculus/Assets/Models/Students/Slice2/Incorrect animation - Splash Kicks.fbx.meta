@@ -6,6 +6,9 @@ ModelImporter:
   - first:
       74: -1487072158154012828
     second: Splash Kicks_
+  - first:
+      74: 1481350839376868879
+    second: Splash Kicks No Loop
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -40,6 +43,35 @@ ModelImporter:
     clipAnimations:
     - serializedVersion: 16
       name: Splash Kicks_
+      takeName: Splash Kicks_
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Splash Kicks No Loop
       takeName: Splash Kicks_
       internalID: 0
       firstFrame: 0

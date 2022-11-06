@@ -5,6 +5,6 @@ using UnityEngine;
 public class VRAppDebug
 {
     public static readonly bool USE_DEBUG_VR_SINGLE_PREVIEW = false;
-    public static readonly bool USE_BODY_MOVING = true; 
+    public static readonly bool USE_BODY_MOVING = false; 
     // Disable interaction of body
 }

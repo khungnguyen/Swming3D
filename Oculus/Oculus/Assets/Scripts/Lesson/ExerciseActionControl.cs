@@ -27,6 +27,7 @@ public enum ExaminorAction
     SettingUpLesson,
 
     ChangeLessonTitle,
+    StopAnimation,
 }
 public enum ActionPropertyType
 {
@@ -265,6 +266,10 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 {
                     UpdateLessonName(actionProperty.property[0]);
                 }
+                else if (miniAction == ExaminorAction.StopAnimation.ToString())
+                {
+                    StopAnimation();
+                }
                 // End No Use actions
 
             }
@@ -414,5 +419,10 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     private void ClearDataSave()
     {
         dataSave.Clear();
+    }
+    private void StopAnimation() {
+        object[] packages = new object[1];
+        packages[0] = true;
+        ConnectionManager.instance.SendAction(EventCodes.ActionStopAnimation, packages);
     }
 }
