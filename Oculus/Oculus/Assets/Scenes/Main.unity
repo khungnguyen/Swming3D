@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.40748647, g: 0.40707633, b: 0.41267133, a: 1}
+  m_IndirectSpecularColor: {r: 0.40748248, g: 0.40707508, b: 0.41266623, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2273,6 +2273,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StudentFullter
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780071977210668188, guid: e05f72fb198e27e44b108edd93f0d7ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2956529626137602774, guid: e05f72fb198e27e44b108edd93f0d7ad,
         type: 3}
