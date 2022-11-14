@@ -9,7 +9,7 @@ public enum LessonID
     Lesson_1,
     Lesson_2
 }
-public class StudentController : MonoBehaviourPunCallbacks, IReciever
+public class StudentController : MonoBehaviourPunCallbacks, IReceiver
 {
     const string TAG = "[StudentController] ";
     public Animator animator;
@@ -91,7 +91,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReciever
         Debug.Log(TAG + "DelayEnableInteraction = " + enable);
 
     }
-    public void OnActionReciver(EventCodes theEvent, object[] packages)
+    public void OnActionReceiver(EventCodes theEvent, object[] packages)
     {
 
         switch (theEvent)

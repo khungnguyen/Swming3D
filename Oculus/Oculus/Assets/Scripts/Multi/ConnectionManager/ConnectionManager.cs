@@ -26,7 +26,7 @@ public enum EventCodes : byte
 public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
 {
     public static ConnectionManager instance;
-    private static List<IReciever> receivers = new List<IReciever>();
+    private static List<IReceiver> receivers = new List<IReceiver>();
     
     const string TAG="[ConnectionManager]";
     public void Awake()
@@ -56,7 +56,7 @@ public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
             object[] data = (object[])photonEvent.CustomData;
             foreach (var re in receivers)
             {
-                re.OnActionReciver(theEvent, data);
+                re.OnActionReceiver(theEvent, data);
             }
         }
     }
@@ -91,16 +91,16 @@ public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
         }
        
     }
-    public static void AddCallbackTarget(IReciever re)
+    public static void AddCallbackTarget(IReceiver re)
     {
-        IReciever  reuslt = receivers.Find(e => e == re);
-        if(reuslt == null)
+        IReceiver  result = receivers.Find(e => e == re);
+        if(result == null)
         {
             receivers.Add(re);
             // Debug.LogError(TAG+"Adding callback" + re);
         }
     }
-    public static void RemoveCallBackTarget(IReciever re)
+    public static void RemoveCallBackTarget(IReceiver re)
     {
         int index = receivers.FindIndex(e => e == re);
         if(index != -1)

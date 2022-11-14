@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LessonManager : MonoBehaviour, IReciever
+public class LessonManager : MonoBehaviour, IReceiver
 {
     // Start is called before the first frame update
     public TextAsset[] lessonData;
@@ -34,7 +34,7 @@ public class LessonManager : MonoBehaviour, IReciever
         ConnectionManager.RemoveCallBackTarget(this);
     }
 
-    public void OnActionReciver(EventCodes theEvent, object[] packages)
+    public void OnActionReceiver(EventCodes theEvent, object[] packages)
     {
         switch (theEvent)
         {
