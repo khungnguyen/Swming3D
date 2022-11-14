@@ -1,4 +1,4 @@
 public interface IButtonEvent
 {
-    void OnClicked(object action);
+    public void OnClicked(object action);
 }

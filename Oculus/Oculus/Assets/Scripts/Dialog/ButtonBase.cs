@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonBase : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class ButtonBase : MonoBehaviour
 
     private object info;
 
-    public void SetText(string t)
+    public virtual void SetText(string t)
     {
         label.SetText(t);
     }
@@ -26,5 +27,11 @@ public class ButtonBase : MonoBehaviour
     }
     public void SetData(object data) {
         info = data;
+    }
+    public object GetData() {
+        return info;
+    }
+    public void EnableInteraction(bool b) {
+        transform.GetComponent<Button>().enabled = b;
     }
 }

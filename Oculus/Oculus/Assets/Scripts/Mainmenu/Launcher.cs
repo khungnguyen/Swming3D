@@ -14,7 +14,7 @@ public enum MENU
     All,
     None
 }
-public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
+public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEvent
 {
     public static Launcher instance;
     [SerializeField]
@@ -35,8 +35,16 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
     [SerializeField]
     GameObject PlayerInfoPrefab;
 
+    [SerializeField]
+    private GameObject dialogRooms;
+
+    public bool useNewUI = false;
     List<RoomItem> roomItemListCached = new List<RoomItem>();
     List<PlayerInfo> playerInfoListCached = new List<PlayerInfo>();
+
+    private List<RoomInfo> curRooms;
+
+    private DialogScroll selectedRoom;
 
     private MENU curMenu = MENU.None;
     private void Awake()
@@ -82,10 +90,17 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
     public override void OnJoinedRoom()
     {
         Debug.Log("Room Joined");
-        ActivateMenu(MENU.Loading, false);
-        ActivateMenu(MENU.RoomMenu, true);
-        RoomMenu.transform.Find("RoomTitle").GetComponent<TMP_Text>().text = PhotonNetwork.CurrentRoom.Name;
-        ListAllPlayers();
+        if (useNewUI)
+        {
+            ShowSelectedRoom(PhotonNetwork.CurrentRoom.Name);
+        }
+        else
+        {
+            ActivateMenu(MENU.Loading, false);
+            ActivateMenu(MENU.RoomMenu, true);
+            RoomMenu.transform.Find("RoomTitle").GetComponent<TMP_Text>().text = PhotonNetwork.CurrentRoom.Name;
+            ListAllPlayers();
+        }
     }
     public override void OnCreatedRoom()
     {
@@ -115,35 +130,43 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
     {
         Debug.Log("Room OnLeftRoom");
     }
-    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    public override void OnRoomListUpdate(List<RoomInfo> rooms)
     {
-        Debug.Log("OnRoomListUpdate" + roomList.Count);
+        Debug.Log("OnRoomListUpdate" + rooms.Count);
         foreach (RoomItem room in roomItemListCached)
         {
             Destroy(room.gameObject);
         }
         roomItemListCached.Clear();
-        for (int i = 0; i < roomList.Count; i++)
+        for (int i = 0; i < rooms.Count; i++)
         {
-            Debug.Log("@@RoomInfo" + roomList[i].Name);
-            if (roomList[i].PlayerCount != roomList[i].MaxPlayers && !roomList[i].RemovedFromList)
+            Debug.Log("@@RoomInfo" + rooms[i].Name);
+            if (rooms[i].PlayerCount != rooms[i].MaxPlayers && !rooms[i].RemovedFromList)
             {
                 GameObject roomObject = Instantiate(RoomItemPrefab);
                 roomObject.transform.SetParent(RoomListMenu.transform.Find("Scroll View/Viewport/Content"));
                 roomObject.transform.localScale = new Vector3(1, 1, 1);
                 RoomItem item = roomObject.GetComponent<RoomItem>();
-                item.setRoomInfo(roomList[i]);
+                item.setRoomInfo(rooms[i]);
                 item.setListener(this);
                 roomItemListCached.Add(item);
             }
 
         }
+        curRooms = rooms;
     }
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         Debug.Log("OnPlayerEnteredRoom" + newPlayer.NickName);
         Debug.Log("PhotonNetwork.PlayerList" + PhotonNetwork.PlayerList.Length);
-        ListAllPlayers();
+        if (useNewUI)
+        {
+            AddPlayerToRoom(newPlayer);
+        }
+        else
+        {
+            ListAllPlayers();
+        }
     }
     private void ListAllPlayers()
     {
@@ -166,7 +189,14 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         Debug.Log("OnPlayerLeftRoom" + otherPlayer);
-        ListAllPlayers();
+        if (useNewUI)
+        {
+            RemovePlayerFromRoom(otherPlayer);
+        }
+        else
+        {
+            ListAllPlayers();
+        }
     }
     public void JoinRoom(string room = ROOM_NAME)
     {
@@ -193,13 +223,27 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
         switch (menu)
         {
             case MENU.RoomListMenu:
-                RoomListMenu.SetActive(active);
+                if (useNewUI)
+                {
+                    ShowAllRooms();
+                }
+                else
+                {
+                    RoomListMenu.SetActive(active);
+                }
                 break;
             case MENU.MainMenu:
                 Mainmenu.SetActive(active);
                 break;
             case MENU.RoomMenu:
-                RoomMenu.SetActive(active);
+                if (selectedRoom)
+                {
+
+                }
+                else
+                {
+                    RoomMenu.SetActive(active);
+                }
                 break;
             case MENU.Loading:
                 Loading.SetActive(active);
@@ -219,8 +263,80 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback
         }
 
     }
+    private void ShowAllRooms()
+    {
+        GameObject ob = Instantiate(dialogRooms, transform);
+        selectedRoom = ob.GetComponent<DialogScroll>();
+        curRooms.ForEach(e =>
+        {
+            if (e.PlayerCount != e.MaxPlayers && !e.RemovedFromList)
+            {
+                ButtonBaseRoom butt = (ButtonBaseRoom)selectedRoom.AddButton();
+                butt.SetText(e.Name);
+                butt.SetDescription("Total Players :" + e.PlayerCount);
+                butt.SetData(e);
+            }
+        });
+        selectedRoom.Init("Rooms", (object data) =>
+        {
+            Utils.Log(this, "Room clicked", ((RoomInfo)data).Name);
+            string roomName = ((RoomInfo)data).Name;
+            //ShowSelectedRoom(roomName);
+            JoinRoom(roomName);
+            selectedRoom.Hide();
+        }, (object data) =>
+        {
+
+        }).Show();
+
+
+    }
+    private void ShowSelectedRoom(string roomName)
+    {
+        if (selectedRoom == null)
+        {
+            GameObject ob = Instantiate(dialogRooms, transform);
+            selectedRoom = ob.GetComponent<DialogScroll>();
+            foreach (Player newPlayer in PhotonNetwork.PlayerList)
+            {
+                AddPlayerToRoom(newPlayer);
+            }
+            selectedRoom.Init(roomName, (object data) =>
+            {
+
+            }, (object data) =>
+            {
+                selectedRoom.ClearAllButtons();
+                selectedRoom = null;
+                LeaveRoom();
+            }).Show();
+        }
+
+    }
+
+    private void AddPlayerToRoom(Player newPlayer)
+    {
+        if (selectedRoom != null)
+        {
+            ButtonBaseRoom butt = (ButtonBaseRoom)selectedRoom.AddButton();
+            butt.SetText(newPlayer.NickName);
+            butt.SetDescription(newPlayer.IsMasterClient ? "Hosted" : "Guest");
+            butt.SetData(newPlayer);
+        }
+    }
+    private void RemovePlayerFromRoom(Player newPlayer) {
+         if (selectedRoom != null)
+        {
+           selectedRoom.RemoveButtonByData(newPlayer);
+        }
+    }
     public void ExitApplication()
     {
         Application.Quit();
+    }
+
+    public void OnClicked(object action)
+    {
+        throw new System.NotImplementedException();
     }
 }
