@@ -21,7 +21,9 @@ public enum EventCodes : byte
     ActionCorrectTransform,
 
     ActionResetModel,
-    ActionStopAnimation
+    ActionStopAnimation,
+
+    ActionActivateExtension
 }
 public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
 {

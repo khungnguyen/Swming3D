@@ -12,6 +12,21 @@
       "name": "Allow Coach To Correct",
       "action": "AllowCoachToCorrect",
       "displayOrder": 2
+    },
+    {
+      "name": "Execute Properly",
+      "action": "ExecuteProperly",
+      "displayOrder": 3
+    },
+    {
+      "name": "Back To Exercise",
+      "action": "BackToExercise",
+      "displayOrder": 4
+    },
+    {
+      "name": "Back To Lesson List",
+      "action": "GoToLessonMenu",
+      "displayOrder": 4
     }
   ],
   "Actions": [
@@ -21,19 +36,65 @@
         {
           "name": "GoToExercise",
           "property": ["0"]
+        },
+        {
+          "name": "ActivateExtension",
+          "property": ["BackFloat", "True"]
         }
       ],
       "showDisplayerOrder": 2
     },
-     {
+    {
       "name": "AllowCoachToCorrect",
       "action": [
         {
           "name": "TriggerAnimation",
           "property": ["StopAnim"]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": ["DelayAfterAnim"]
         }
       ],
-      "showDisplayerOrder": 2
+      "showDisplayerOrder": 3
+    },
+    {
+      "name": "ExecuteProperly",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["StafishCorrect"]
+        }
+      ],
+      "showDisplayerOrder": 4
+    },
+    {
+      "name": "BackToExercise",
+      "action": [
+        {
+          "name": "DisableInteractable",
+          "property": [""]
+        },
+        {
+          "name": "SettingUpLesson",
+          "property": [""]
+        }
+      ],
+      "showDisplayerOrder": 1
+    },
+    {
+      "name": "GoToLessonMenu",
+      "action": [
+        {
+          "name": "GoToLessonMenu",
+          "property": [""]
+        },
+        {
+          "name": "DisableInteractable",
+          "property": [""]
+        }
+      ],
+      "showDisplayerOrder": 0
     }
   ],
   "ExerciseList": [
@@ -41,10 +102,10 @@
       "lessonName": "Stafish On Your Back",
       "starAnimation": "",
       "conditionTrigger": {
-        "name": "StandJump",
+        "name": "",
         "value": true
       },
-      "startPointName": "Lesson_2_Ex_All_Pos",
+      "startPointName": "StafishfloatPoint",
       "startController": "Case_Three",
       "property": []
     }

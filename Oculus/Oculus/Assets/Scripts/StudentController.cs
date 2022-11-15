@@ -18,14 +18,12 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
 
     public RigBuilder rig;
 
-    public Transform kickBoard;
-    public Transform boardHolderWrong;
-    public Transform boardHolderRight;
-    public Transform boardHolderSplashKick;
-    public Transform boardHolderSwim;
-    public Transform replaceModelPoint;
-    public GameObject currentModel;
-    private GameObject replaceModel;
+    public StudentExtension studentExtensions;
+
+
+    // public Transform replaceModelPoint;
+    // public GameObject currentModel;
+    // private GameObject replaceModel;
 
     public Transform bodyMovingCube;
 
@@ -49,6 +47,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
             SetAnimator("Case_One");
             transform.SetPositionAndRotation(starTransfrom.position, starTransfrom.rotation);
         }
+        HideAllExtension();
 
     }
     private bool delayActiveInteraction = false;
@@ -93,13 +92,12 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     }
     public void OnActionReceiver(EventCodes theEvent, object[] packages)
     {
-
         switch (theEvent)
         {
             case EventCodes.ActionSettingUpLesson:
-                //animator.enabled = true;
                 curLesson = (int)packages[0];
                 StopAllCoroutines();
+                HideAllExtension();
                 EnableInteraction(false);
                 SettupStudent(curLesson);
                 CorrectTransform(ExerciseManager.instance.GetStartPoint());
@@ -108,20 +106,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 break;
             case EventCodes.ActionPlayAnimation:
                 string animation = (string)packages[1];
-                bool useReplaceModel = (bool)packages[0];
-                //animator.avatar = animatorAvatar;
                 Debug.Log(TAG + "ActionPlayAnimation " + animation);
                 StopAllCoroutines();
                 EnableInteraction(false);
-                if (useReplaceModel)
-                {
-                    TriggerReplaceAnimation(animation);
-                }
-                else
-                {
-                    TriggerAnimation(animation);
-                }
-                UpdateStudentBehavior(animation);
+                TriggerAnimation(animation);
                 break;
             case EventCodes.ActionStartExercise:
                 int exerciseIndex = (int)packages[1];
@@ -168,23 +156,6 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                     StartCoroutine(DelayEnableInteraction(0.1f, false));
                 }
                 break;
-            //Unused Cases
-            case EventCodes.ActionReplaceModel:
-                string modelName = (string)packages[0];
-                GameObject model = ModelHolder.instance.FindModelByName(modelName);
-                if (model != null)
-                {
-                    replaceModel = Instantiate(model);
-                    replaceModel.transform.SetParent(transform);
-                    replaceModel.transform.SetPositionAndRotation(replaceModelPoint.position, replaceModelPoint.rotation);
-                    SwapModel(true);
-                }
-                break;
-            case EventCodes.ActionResetModel:
-                SwapModel(false);
-                Destroy(replaceModel);
-                break;
-            //End Unused Cases
             case EventCodes.ActionChangeController:
                 Debug.Log(TAG + "ActionChangeController" + (string)packages[0]);
                 SetAnimator((string)packages[0], true);
@@ -193,30 +164,18 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 Debug.Log(TAG + "ActionCorrectTransform" + (string)packages[0]);
                 CorrectTransform((string)packages[0]);
                 break;
-            case EventCodes.ActionStopAnimation:
-                Debug.Log(TAG + "ActionStopAnimation");
-                StartCoroutine(StopAnimation());
+            // case EventCodes.ActionStopAnimation:
+            //     Debug.Log(TAG + "ActionStopAnimation");
+            //     StartCoroutine(StopAnimation());
+            //     break;
+            case EventCodes.ActionActivateExtension:
+                Debug.Log(TAG + "ActionActivateExtension");
+                string transformName = (string)packages[0];
+                bool active = (bool)packages[1];
+                ActivateExtension(transformName,active);
                 break;
 
         }
-    }
-    private void UpdateStudentBehavior(string behavior)
-    {
-        if (curLesson == (int)LessonID.Lesson_2)
-        {
-            if (behavior == "Swim" || behavior == "Walk")
-            {
-                //  StartCoroutine(StopSwimInSecond(2));
-                boardHolderSwim.gameObject.SetActive(true);
-                kickBoard.gameObject.SetActive(false);
-            }
-            else
-            {
-                boardHolderSwim.gameObject.SetActive(false);
-                kickBoard.gameObject.SetActive(true);
-            }
-        }
-
     }
     IEnumerator StopSwimInSecond(float second)
     {
@@ -236,7 +195,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                         animator.runtimeAnimatorController = find.controller;
                         Debug.Log(TAG + "Reset Animator to" + animatorName);
                     }
-                  //  Debug.Log(TAG + "Reset Avatar to" + find.avatar.name);
+                    //  Debug.Log(TAG + "Reset Avatar to" + find.avatar.name);
                     if (find.avatar != null)
                     {
                         Debug.Log(TAG + "Reset Avatar to" + find.avatar);
@@ -260,7 +219,8 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     {
         ConnectionManager.RemoveCallBackTarget(this);
     }
-    private void TriggerAnimation(string trigger)
+    private void
+    TriggerAnimation(string trigger)
     {
         if (trigger != null && trigger.Length > 0)
         {
@@ -269,83 +229,30 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         }
 
     }
-    private string lastAnimation;
+    private string lastTrigger;
     private void BeforeTriggerAnim(string trigger)
     {
-        if (trigger == "StopAnim")
-        {
-            if (lastAnimation == "PositionWrong")
-            {
-                kickBoard.GetComponent<SnapTo>().setTarget(boardHolderWrong);
+        studentExtensions.UpdateExtensions(curLesson, trigger, lastTrigger);
 
-            }
-            else if (lastAnimation == "SplashKickWrong")
-            {
-                kickBoard.GetComponent<SnapTo>().setTarget(boardHolderSplashKick);
-
-            }
-        }
-        else if (trigger == "PositionWrong")
-        {
-            kickBoard.GetComponent<SnapTo>().setTarget(boardHolderWrong);
-
-        }
-        else if (trigger == "SplashKickWrong")
-        {
-            kickBoard.GetComponent<SnapTo>().setTarget(boardHolderSplashKick);
-
-        }
-        else if (curLesson == (int)LessonID.Lesson_2 && trigger == "EnableKickBoard")
-        {
-            kickBoard.gameObject.SetActive(true);
-        }
-        else
-        {
-            kickBoard.GetComponent<SnapTo>().setTarget(boardHolderRight);
-        }
         if (trigger == "LoseControl")
         {
             bodyMovingCube.gameObject.SetActive(true);
         }
-        else {
-            bodyMovingCube.gameObject.SetActive(false);
-        }
-
-        lastAnimation = trigger;
-    }
-    private void SwapModel(bool useReplace)
-    {
-        if (replaceModel != null)
-        {
-            currentModel.SetActive(!useReplace);
-            replaceModel.SetActive(useReplace);
-        }
         else
         {
-            currentModel.SetActive(true);
+            bodyMovingCube.gameObject.SetActive(false);
         }
-
-    }
-    private void TriggerReplaceAnimation(string trigger)
-    {
-        if (trigger != null && trigger.Length > 0)
-        {
-            replaceModel?.GetComponent<Animator>().SetTrigger(trigger);
-        }
-
+        lastTrigger = trigger;
     }
     private void SettupStudent(int lesson)
     {
-        if (lesson == (int)LessonID.Lesson_1)
-        {
-            boardHolderSwim.gameObject.SetActive(false);
-            kickBoard.gameObject.SetActive(false);
-        }
-        if (lesson == (int)LessonID.Lesson_2)
-        {
-            kickBoard.gameObject.SetActive(false);
-            boardHolderSwim.gameObject.SetActive(false);
-        }
+        studentExtensions.SetUpBaseOnLesson(lesson);
+    }
+
+    private void HideAllExtension()
+    {
+        studentExtensions.HideAllExtension();
+        
     }
     private void ReActivate()
     {
@@ -371,27 +278,30 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
             }
         }
     }
-    private IEnumerator StopAnimation()
-    {
-        var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+    private void ActivateExtension(string transformName, bool active) {
+        studentExtensions.ActivateExtension(transformName,active);
+    }
+    // private IEnumerator StopAnimation()
+    // {
+    //     var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
-        Debug.Log("animator.layerCount" + animator.layerCount);
-        Debug.Log("animator.GetLayerName" + animator.GetLayerName(0));
-        yield return IsCurrentAnimationPlaying();
-        animator.StopPlayback();
-    }
-    private IEnumerator IsCurrentAnimationPlaying()
-    {
-        var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        while (true)
-        {
-            yield return null;
-            Debug.Log("stateInfo.normalizedTime" + stateInfo.ToString() + "-" + stateInfo.normalizedTime % 1);
-            //  if (stateInfo.normalizedTime % 1.0f == 0f)
-            {
-                Debug.Log("Anim mation finish");
-                break;
-            }
-        }
-    }
+    //     Debug.Log("animator.layerCount" + animator.layerCount);
+    //     Debug.Log("animator.GetLayerName" + animator.GetLayerName(0));
+    //     yield return IsCurrentAnimationPlaying();
+    //     animator.StopPlayback();
+    // }
+    // private IEnumerator IsCurrentAnimationPlaying()
+    // {
+    //     var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+    //     while (true)
+    //     {
+    //         yield return null;
+    //         Debug.Log("stateInfo.normalizedTime" + stateInfo.ToString() + "-" + stateInfo.normalizedTime % 1);
+    //         //  if (stateInfo.normalizedTime % 1.0f == 0f)
+    //         {
+    //             Debug.Log("Anim mation finish");
+    //             break;
+    //         }
+    //     }
+    // }
 }

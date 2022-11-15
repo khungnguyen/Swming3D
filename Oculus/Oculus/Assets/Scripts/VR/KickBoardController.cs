@@ -6,6 +6,12 @@ using Photon.Pun;
 using System.Collections.Generic;
 public class KickBoardController : MonoBehaviourPunCallbacks, IInteraction
 {
+    public Transform boardHolderWrong;
+    public Transform boardHolderRight;
+    public Transform boardHolderSplashKick;
+
+    public Transform fixedKickBoard; // animation kickboard, not for handling
+
     /**
     * Handle interaction of Kickboard
     * Try to disable snap to when being interacted by VR player
@@ -30,7 +36,6 @@ public class KickBoardController : MonoBehaviourPunCallbacks, IInteraction
     * Set target null : disable snap to
     */
 
-    private PhotonTransformView photonTransformView;
     void Start()
     {
     }
@@ -65,5 +70,59 @@ public class KickBoardController : MonoBehaviourPunCallbacks, IInteraction
             kickBoardMaterial.material = mat;
         }
     }
+    public void Activate(bool v)
+    {
+        gameObject.SetActive(v);
+    }
+    public void SnapTo(Transform to)
+    {
+        snapTo.setTarget(to);
+    }
+    public void SetBehavior(string trigger, string lastAnimation)
+    {
+        Utils.Log(this, "trigger", trigger);
+        if (trigger == "StopAnim")
+        {
+            if (lastAnimation == "PositionWrong")
+            {
+                SnapTo(boardHolderWrong);
 
+            }
+            else if (lastAnimation == "SplashKickWrong")
+            {
+                SnapTo(boardHolderSplashKick);
+
+            }
+        }
+        else if (trigger == "PositionWrong")
+        {
+            SnapTo(boardHolderWrong);
+
+        }
+        else if (trigger == "SplashKickWrong")
+        {
+            SnapTo(boardHolderSplashKick);
+
+        }
+        else if (trigger == "EnableKickBoard")
+        {
+            Activate(true);
+        }
+        else if (trigger == "Swim" || trigger == "Walk")
+        {
+            //  StartCoroutine(StopSwimInSecond(2));
+            fixedKickBoard.gameObject.SetActive(true);
+            Activate(false);
+        }
+        else
+        {
+            Activate(true);
+            fixedKickBoard.gameObject.SetActive(false);
+            SnapTo(boardHolderRight);
+        }
+    }
+    public void HideKickBoards() {
+        Activate(false);
+        fixedKickBoard.gameObject.SetActive(false);
+    }
 }

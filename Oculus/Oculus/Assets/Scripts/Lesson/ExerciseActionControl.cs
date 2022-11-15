@@ -28,6 +28,7 @@ public enum ExaminorAction
 
     ChangeLessonTitle,
     StopAnimation,
+    ActivateExtension,
 }
 public enum ActionPropertyType
 {
@@ -270,6 +271,12 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 {
                     StopAnimation();
                 }
+                else if (miniAction == ExaminorAction.ActivateExtension.ToString())
+                {
+                    string transformName = actionProperty.property[0];
+                    bool active = actionProperty.property[1]=="True";
+                    ActivateExtension(transformName,active);
+                }
                 // End No Use actions
 
             }
@@ -424,5 +431,11 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         object[] packages = new object[1];
         packages[0] = true;
         ConnectionManager.instance.SendAction(EventCodes.ActionStopAnimation, packages);
+    }
+    private void ActivateExtension(string objectName, bool active) {
+        object[] packages = new object[2];
+        packages[0] = objectName;
+        packages[1] = active;
+        ConnectionManager.instance.SendAction(EventCodes.ActionActivateExtension, packages);
     }
 }
