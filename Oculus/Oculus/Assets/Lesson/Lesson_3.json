@@ -1,0 +1,52 @@
+{
+  "Exercise": "TIME 00-10 Minutes Exercise 2",
+  "AnimatorController": "Case_One",
+  "startPointName": "Lesson_1_Ex_All_Pos",
+  "Buttons": [
+    {
+      "name": "Have Student Enter Pool",
+      "action": "MoveStudentToPool",
+      "displayOrder": 1
+    },
+    {
+      "name": "Allow Coach To Correct",
+      "action": "AllowCoachToCorrect",
+      "displayOrder": 2
+    }
+  ],
+  "Actions": [
+    {
+      "name": "MoveStudentToPool",
+      "action": [
+        {
+          "name": "GoToExercise",
+          "property": ["0"]
+        }
+      ],
+      "showDisplayerOrder": 2
+    },
+     {
+      "name": "AllowCoachToCorrect",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["StopAnim"]
+        }
+      ],
+      "showDisplayerOrder": 2
+    }
+  ],
+  "ExerciseList": [
+    {
+      "lessonName": "Stafish On Your Back",
+      "starAnimation": "",
+      "conditionTrigger": {
+        "name": "StandJump",
+        "value": true
+      },
+      "startPointName": "Lesson_2_Ex_All_Pos",
+      "startController": "Case_Three",
+      "property": []
+    }
+  ]
+}

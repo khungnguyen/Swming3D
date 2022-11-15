@@ -236,8 +236,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                         animator.runtimeAnimatorController = find.controller;
                         Debug.Log(TAG + "Reset Animator to" + animatorName);
                     }
+                  //  Debug.Log(TAG + "Reset Avatar to" + find.avatar.name);
                     if (find.avatar != null)
                     {
+                        Debug.Log(TAG + "Reset Avatar to" + find.avatar);
                         animator.avatar = find.avatar;
                         Debug.Log(TAG + "Reset Avatar to" + find.avatar.name);
                     }

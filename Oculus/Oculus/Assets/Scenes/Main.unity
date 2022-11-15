@@ -463,6 +463,8 @@ MonoBehaviour:
     avatar: {fileID: 9000000, guid: fc5147285cfe6df468f4ab8945f129ce, type: 3}
   - controller: {fileID: 9100000, guid: f45774c76174cc24bb807939a5ce673a, type: 2}
     avatar: {fileID: 9000000, guid: fc5147285cfe6df468f4ab8945f129ce, type: 3}
+  - controller: {fileID: 9100000, guid: dba0c644c52efae498fedfa279d4b5aa, type: 2}
+    avatar: {fileID: 9000000, guid: c804e5e3e408e1944a6df96a0746c814, type: 3}
 --- !u!1 &157982908
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,7 +2273,7 @@ PrefabInstance:
     - target: {fileID: 2780071977210668188, guid: e05f72fb198e27e44b108edd93f0d7ad,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2956529626137602774, guid: e05f72fb198e27e44b108edd93f0d7ad,
         type: 3}
@@ -5008,6 +5010,7 @@ MonoBehaviour:
   lessonData:
   - {fileID: 4900000, guid: 66fa44735a7d94042a560b011078e8bb, type: 3}
   - {fileID: 4900000, guid: da25fc966da7b9c47a2b53de7e72b71d, type: 3}
+  - {fileID: 4900000, guid: 831731b913041644e9baea09c78d41d2, type: 3}
   exerciesComp: {fileID: 1823551683}
 --- !u!1 &1904033979
 GameObject:
@@ -5933,7 +5936,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148535173179}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.667}
+  m_LocalPosition: {x: 0, y: 9.42, z: -0.667}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

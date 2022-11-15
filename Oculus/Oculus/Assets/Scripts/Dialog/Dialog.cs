@@ -12,6 +12,12 @@ public class Dialog : MonoBehaviour, IDialog
     [SerializeField]
     private TMP_Text tmpTitle;
 
+    [SerializeField]
+    private TMP_Text tmpDescription;
+
+    [SerializeField]
+    private Transform buttonLayout;
+
     protected Action<object> okFunc;
     protected Action<object> cancelFunc;
     public virtual void Hide(Action onComplete = null, bool needDestroy = true)
@@ -33,14 +39,27 @@ public class Dialog : MonoBehaviour, IDialog
         });
     }
 
-    public virtual Dialog Init(string title, Action<object> ok, Action<object> cancel)
+    public virtual Dialog Init(DialogOption option, Action<object> okFunc, Action<object> cancelFunc)
     {
         if (tmpTitle != null)
         {
-            tmpTitle.SetText(title);
+            tmpTitle.SetText(option.title);
         }
-        okFunc = ok;
-        cancelFunc = cancel;
+        if (tmpDescription != null)
+        {
+            if (option.HasDescription())
+            {
+                tmpDescription.SetText(option.description);
+            }
+            else
+            {
+                tmpDescription.gameObject.SetActive(false);
+            }
+
+        }
+        buttonLayout.gameObject.SetActive(!option.hideButton);
+        this.okFunc = okFunc;
+        this.cancelFunc = cancelFunc;
         return this;
     }
 
@@ -68,5 +87,15 @@ public class Dialog : MonoBehaviour, IDialog
                 cancelFunc(this);
             }
         });
+    }
+    public virtual void Ok()
+    {
+        Hide(() =>
+       {
+           if (okFunc != null)
+           {
+               okFunc(this);
+           }
+       });
     }
 }

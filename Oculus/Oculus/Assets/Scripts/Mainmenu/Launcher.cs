@@ -267,6 +267,7 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
     {
         GameObject ob = Instantiate(dialogRooms, transform);
         selectedRoom = ob.GetComponent<DialogScroll>();
+        DialogOption  option =new DialogOption { hideButton = true, title = "Rooms", description = "Lobby : " + PhotonNetwork.CurrentLobby.Name};
         curRooms.ForEach(e =>
         {
             if (e.PlayerCount != e.MaxPlayers && !e.RemovedFromList)
@@ -277,14 +278,16 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
                 butt.SetData(e);
             }
         });
-        selectedRoom.Init("Rooms", (object data) =>
+        selectedRoom.Init(option, (object selected) =>
         {
-            Utils.Log(this, "Room clicked", ((RoomInfo)data).Name);
-            string roomName = ((RoomInfo)data).Name;
-            //ShowSelectedRoom(roomName);
+            Utils.Log(this, "Room clicked", ((RoomInfo)selected).Name);
+            string roomName = ((RoomInfo)selected).Name;
             JoinRoom(roomName);
             selectedRoom.Hide();
-        }, (object data) =>
+        }, (object ok) =>
+        {
+
+        }, (object cancel) =>
         {
 
         }).Show();
@@ -301,10 +304,14 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
             {
                 AddPlayerToRoom(newPlayer);
             }
-            selectedRoom.Init(roomName, (object data) =>
+            DialogOption  option =new DialogOption { hideButton = !PhotonNetwork.IsMasterClient, title = roomName, description = "Players : " + PhotonNetwork.CurrentRoom.PlayerCount};
+            selectedRoom.Init(option, (object selected) =>
             {
 
-            }, (object data) =>
+            }, (object ok) =>
+            {
+                StartGame();
+            }, (object cancel) =>
             {
                 selectedRoom.ClearAllButtons();
                 selectedRoom = null;
@@ -324,10 +331,11 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
             butt.SetData(newPlayer);
         }
     }
-    private void RemovePlayerFromRoom(Player newPlayer) {
-         if (selectedRoom != null)
+    private void RemovePlayerFromRoom(Player newPlayer)
+    {
+        if (selectedRoom != null)
         {
-           selectedRoom.RemoveButtonByData(newPlayer);
+            selectedRoom.RemoveButtonByData(newPlayer);
         }
     }
     public void ExitApplication()

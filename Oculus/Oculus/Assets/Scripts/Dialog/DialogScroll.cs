@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public class DialogScroll : Dialog, IButtonEvent
     private GameObject baseButton;
 
     private List<ButtonBase> buttons = new();
+
+    private Action<object> selectedFunc;
     public ButtonBase AddButton(GameObject button)
     {
         var buttonBase = Instantiate(button, scrollContent).GetComponent<ButtonBase>();
@@ -23,9 +26,9 @@ public class DialogScroll : Dialog, IButtonEvent
     }
     public void OnClicked(object data)
     {
-        if (okFunc != null)
+        if (selectedFunc != null)
         {
-            okFunc(data);
+            selectedFunc(data);
         }
     }
     public void ClearAllButtons()
@@ -45,4 +48,10 @@ public class DialogScroll : Dialog, IButtonEvent
         var button = buttons.Find(e => e.GetData() == data);
         Destroy(button.gameObject);
     }
+    public virtual Dialog Init(DialogOption option, Action<object> selectedItemFunc, Action<object> okFunc, Action<object> cancelFunc)
+    {
+        selectedFunc = selectedItemFunc;
+        return base.Init(option, okFunc, cancelFunc);
+    }
 }
+
