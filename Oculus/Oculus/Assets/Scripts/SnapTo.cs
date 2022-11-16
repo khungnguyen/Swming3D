@@ -5,9 +5,9 @@ using UnityEngine;
 public class SnapTo : MonoBehaviour
 {
     // Start is called before the first frame 
-    private Transform target;
+    public Transform target;
 
-    private bool keepUpdating = false;
+    public bool keepUpdating = false;
     void Start()
     {
 

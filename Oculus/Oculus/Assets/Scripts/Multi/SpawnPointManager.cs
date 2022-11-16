@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnPointManager : MonoBehaviour
 {
     [SerializeField]
-    private Transform[] StutdemtSpawnPoints;
+    private Transform[] studentPoints;
     [SerializeField]
     private Transform[] XRPlayerSpawnPoints;
     [SerializeField]
@@ -16,7 +16,7 @@ public class SpawnPointManager : MonoBehaviour
         instance = this;
     }
     public Transform GetStudentSpawnPoint() {
-        return StutdemtSpawnPoints[Random.Range(0, StutdemtSpawnPoints.Length -1)];
+        return studentPoints[Random.Range(0, studentPoints.Length -1)];
     }
     public Transform GetXRPlayerSpawnPoint()
     {
@@ -27,7 +27,7 @@ public class SpawnPointManager : MonoBehaviour
         return DesktopPlayerSpawnPoints[Random.Range(0, DesktopPlayerSpawnPoints.Length - 1)];
     }
     public Transform GetStudentSpawnPointByName(string name) {
-        return (new List<Transform>(StutdemtSpawnPoints)).Find(e=>e.name==name);
+        return (new List<Transform>(studentPoints)).Find(e=>e.name==name);
     }
     public Transform GetXRPlayerSpawnPointByName(string name) {
         return (new List<Transform>(XRPlayerSpawnPoints)).Find(e=>e.name==name);

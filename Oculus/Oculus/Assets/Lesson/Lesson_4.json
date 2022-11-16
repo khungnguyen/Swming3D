@@ -1,0 +1,163 @@
+{
+  "Exercise": "TIME 00-10 Minutes Exercise 3 (25 meters)",
+  "AnimatorController": "Case_Four",
+  "startPointName": "Lesson_1_Ex_All_Pos",
+  "startAction":"StartAction",
+  "Buttons": [
+    {
+      "name": "Allow Coach To Correct",
+      "action": "AllowCoachToCorrect_Slide",
+      "displayOrder": 1
+    },
+    {
+      "name": "Execute Properly",
+      "action": "SlideIn",
+      "displayOrder": 2
+    },
+    {
+      "name": "Starfish Front Float",
+      "action": "ExecuteStarfishWrong",
+      "displayOrder": 3
+    },
+    {
+      "name": "Allow Coach To Correct",
+      "action": "AllowCoachToCorrect_Starfish",
+      "displayOrder": 4
+    },
+    {
+      "name": "Execute Properly",
+      "action": "ExecuteStarfish",
+      "displayOrder": 5
+    },
+    {
+      "name": "Back To Exercise",
+      "action": "BackToExercise",
+      "displayOrder": 400
+    },
+    {
+      "name": "Back To Lesson List",
+      "action": "GoToLessonMenu",
+      "displayOrder": 400
+    }
+  ],
+  "Actions": [
+    {
+      "name": "StartAction",
+      "action": [
+        {
+          "name": "ActivateExtension",
+          "property": ["BackFloat", "True"]
+        }
+      ],
+      "showDisplayerOrder": 0
+    },
+    {
+      "name": "AllowCoachToCorrect_Slide",
+      "action": [
+        {
+          "name": "GoToExercise",
+          "property": ["0"]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": [""]
+        }
+      ],
+      "showDisplayerOrder": 2
+    },
+    {
+      "name": "SlideIn",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["SlideIn"]
+        },
+        {
+          "name": "ChangeLessonTitle",
+          "property": ["Starfish Front Float"]
+        }
+      ],
+      "showDisplayerOrder": 3
+    },
+    {
+      "name": "ExecuteStarfishWrong",
+      "action": [
+       
+        {
+          "name": "TriggerAnimation",
+          "property": ["StarfishWrong"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["StarfishFloatFrontPoint"]
+        }
+      ],
+      "showDisplayerOrder": 4
+    },
+    {
+      "name": "AllowCoachToCorrect_Starfish",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["StopAnim"]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": ["DelayAfterAnim"]
+        }
+      ],
+      "showDisplayerOrder": 5
+    },
+    {
+      "name": "ExecuteStarfish",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["Starfish"]
+        }
+      ],
+      "showDisplayerOrder": 400
+    },
+    {
+      "name": "BackToExercise",
+      "action": [
+        {
+          "name": "DisableInteractable",
+          "property": [""]
+        },
+        {
+          "name": "SettingUpLesson",
+          "property": [""]
+        }
+      ],
+      "showDisplayerOrder": 1
+    },
+    {
+      "name": "GoToLessonMenu",
+      "action": [
+        {
+          "name": "GoToLessonMenu",
+          "property": [""]
+        },
+        {
+          "name": "DisableInteractable",
+          "property": [""]
+        }
+      ],
+      "showDisplayerOrder": 0
+    }
+  ],
+  "ExerciseList": [
+    {
+      "lessonName": "Slide Entry",
+      "starAnimation": "",
+      "conditionTrigger": {
+        "name": "",
+        "value": true
+      },
+      "startPointName": "",
+      "startController": "Case_Four",
+      "property": []
+    }
+  ]
+}

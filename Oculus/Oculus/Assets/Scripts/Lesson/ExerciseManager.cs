@@ -114,6 +114,8 @@ public class Exercises
     public string AnimatorController;
 
     public string startPointName;
+
+    public string startAction ="";
 }
 [System.Serializable]
 public class ExerciseUnit

@@ -20,11 +20,6 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
 
     public StudentExtension studentExtensions;
 
-
-    // public Transform replaceModelPoint;
-    // public GameObject currentModel;
-    // private GameObject replaceModel;
-
     public Transform bodyMovingCube;
 
     private int curLesson;

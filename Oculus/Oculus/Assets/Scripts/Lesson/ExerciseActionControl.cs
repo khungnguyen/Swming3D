@@ -83,6 +83,10 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         CreateButtonDialog();
         UpdateLessonName(curExercise.lessonName);
         SettingUpLesson(lesson);
+        string startAction = ExerciseManager.instance.exercises.startAction;
+        if(!string.IsNullOrEmpty(startAction)) {
+           HandlerAction(startAction);
+        }
     }
     public void CreateButtonDialog(int level = 1)
     {
@@ -100,8 +104,6 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 {
                     int currentExerciseIndex = ExerciseManager.instance.GetExerciseIndex();
                     int totalExerciseLength = ExerciseManager.instance.GetTotalExerciseLength();
-                    Debug.Log(TAG + "currentExerciseIndex" + currentExerciseIndex);
-                    Debug.Log(TAG + "totalExerciseLength" + (totalExerciseLength - 1));
                     if (currentExerciseIndex == totalExerciseLength - 1)
                     {
                         continue;
