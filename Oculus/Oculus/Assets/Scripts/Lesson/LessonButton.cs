@@ -6,9 +6,9 @@ using UnityEngine;
 public class LessonButton : BaseButton
 {
 
-    private int lessonIndex;
+    private string lessonIndex;
 
-    public void SetButtonInfo(int index)
+    public void SetButtonInfo(string index)
     {
         lessonIndex = index;
     }

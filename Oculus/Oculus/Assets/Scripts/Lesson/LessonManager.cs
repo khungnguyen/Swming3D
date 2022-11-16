@@ -1,28 +1,73 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
+public enum LessonGroupType
+{
+    ZERO,
+    ONE,
+    TWO,
+    THREE,
+    FOUR
+}
+[System.Serializable]
+public struct LessonGroup
+{
+    public LessonGroupType groupType;
+    public List<LessonItem> listLesson;
 
+    public List<LessonItem> GetLessonItems()
+    {
+        return listLesson;
+    }
+}
+[System.Serializable]
+public class LessonItem
+{
+    public TextAsset jsonData;
+    public Exercises lesson;
+
+    public void Init()
+    {
+        lesson = JsonUtility.FromJson<Exercises>(jsonData.text);
+    }
+}
 public class LessonManager : MonoBehaviour, IReceiver
 {
-    // Start is called before the first frame update
-    public TextAsset[] lessonData;
 
-    public ExerciseManager exerciesComp;
-
+    [SerializeField]
+    private List<LessonGroup> lessonGroupData;
     public static LessonManager instance;
-    private List<Exercises> listLesson = new List<Exercises>();
     private void Awake()
     {
         instance = this;
-        for (var i = 0; i < lessonData.Length; i++)
+        lessonGroupData.ForEach(e =>
         {
-            listLesson.Add(JsonUtility.FromJson<Exercises>(lessonData[i].text));
-        }
-
+            e.GetLessonItems().ForEach(i =>
+            {
+                i.lesson = JsonUtility.FromJson<Exercises>(i.jsonData.text);
+            });
+        });
     }
+    public List<LessonGroup> GetLessonGroups()
+    {
+        return lessonGroupData;
+    }
+    public List<Exercises> GetLessons(LessonGroupType group = LessonGroupType.ZERO)
+    {
+        List<LessonItem> list = lessonGroupData.Find(e => e.groupType == group).listLesson;
+        // Utils.LogError("GetLessons", list.Count);
+        if (list != null)
+        {
+            List<Exercises> lessons = new();
+            list.ForEach(e =>
+            {
+                lessons.Add(e.lesson);
+            });
+            return lessons;
+        }
+        return null;
 
-    public List<Exercises> GetLessons() {
-        return listLesson;
     }
     public void OnEnable()
     {
@@ -40,9 +85,10 @@ public class LessonManager : MonoBehaviour, IReceiver
         {
             case EventCodes.ActionInitLesson:
 
-                var index = (int)packages[0];
+                var group = (int)packages[0];
+                var index = (int)packages[1];
                 Debug.LogError("Init Lesson Index" + index);
-                ExerciseManager.instance.SetExercises(lessonData[index].text, index);
+                ExerciseManager.instance.SetExercises(GetLessons((LessonGroupType)group)[index], index);
                 break;
 
         }

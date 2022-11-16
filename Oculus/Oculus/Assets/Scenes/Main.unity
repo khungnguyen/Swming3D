@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.40748248, g: 0.40707508, b: 0.41266623, a: 1}
+  m_IndirectSpecularColor: {r: 0.40748647, g: 0.40707633, b: 0.41267133, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2008,6 +2008,7 @@ GameObject:
   m_Component:
   - component: {fileID: 796579078}
   - component: {fileID: 796579079}
+  - component: {fileID: 796579080}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -2033,7 +2034,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.0000038146973}
-  m_SizeDelta: {x: 0, y: 62.2993}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &796579079
 MonoBehaviour:
@@ -2061,6 +2062,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &796579080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796579077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1001 &805625435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2069,10 +2084,32 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1154756507603345044}
     m_Modifications:
+    - target: {fileID: 790001670, guid: e05f72fb198e27e44b108edd93f0d7ad, type: 3}
+      propertyPath: sceneViewId
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 820987093, guid: e05f72fb198e27e44b108edd93f0d7ad, type: 3}
+      propertyPath: sceneViewId
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1648975627, guid: e05f72fb198e27e44b108edd93f0d7ad, type: 3}
+      propertyPath: sceneViewId
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557663197245855121, guid: e05f72fb198e27e44b108edd93f0d7ad,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2780071977210668188, guid: e05f72fb198e27e44b108edd93f0d7ad,
         type: 3}
       propertyPath: m_Name
       value: StudentFullter
+      objectReference: {fileID: 0}
+    - target: {fileID: 2956529626137602774, guid: e05f72fb198e27e44b108edd93f0d7ad,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3305391537715199526, guid: e05f72fb198e27e44b108edd93f0d7ad,
         type: 3}
@@ -2128,6 +2165,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3928824494677777095, guid: e05f72fb198e27e44b108edd93f0d7ad,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609132654716018464, guid: e05f72fb198e27e44b108edd93f0d7ad,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013426363507481447, guid: e05f72fb198e27e44b108edd93f0d7ad,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6562376906163255070, guid: e05f72fb198e27e44b108edd93f0d7ad,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6769273784638625107, guid: e05f72fb198e27e44b108edd93f0d7ad,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7406463494151515494, guid: e05f72fb198e27e44b108edd93f0d7ad,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8754751797333800745, guid: e05f72fb198e27e44b108edd93f0d7ad,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880870607569642588, guid: e05f72fb198e27e44b108edd93f0d7ad,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -4647,12 +4724,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff54ea09549bdd448997d770f679dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lessonData:
-  - {fileID: 4900000, guid: 66fa44735a7d94042a560b011078e8bb, type: 3}
-  - {fileID: 4900000, guid: da25fc966da7b9c47a2b53de7e72b71d, type: 3}
-  - {fileID: 4900000, guid: 831731b913041644e9baea09c78d41d2, type: 3}
-  - {fileID: 4900000, guid: 4e1037d482fec5f44b9799c918951562, type: 3}
-  exerciesComp: {fileID: 1823551683}
+  lessonGroupData:
+  - groupType: 0
+    listLesson:
+    - jsonData: {fileID: 4900000, guid: 0649eb2ef7bc59541944498351e95631, type: 3}
+      lesson:
+        ExerciseList: []
+        Exercise: 
+        Buttons: []
+        Actions: []
+        AnimatorController: 
+        startPointName: 
+        startAction: 
+    - jsonData: {fileID: 4900000, guid: 55ed8ed16b5aebe49ac5e3bbf5abe64d, type: 3}
+      lesson:
+        ExerciseList: []
+        Exercise: 
+        Buttons: []
+        Actions: []
+        AnimatorController: 
+        startPointName: 
+        startAction: 
+    - jsonData: {fileID: 4900000, guid: 17ee8124067b357418c38065ae4c5554, type: 3}
+      lesson:
+        ExerciseList: []
+        Exercise: 
+        Buttons: []
+        Actions: []
+        AnimatorController: 
+        startPointName: 
+        startAction: 
+  - groupType: 1
+    listLesson:
+    - jsonData: {fileID: 4900000, guid: 0649eb2ef7bc59541944498351e95631, type: 3}
+      lesson:
+        ExerciseList: []
+        Exercise: 
+        Buttons: []
+        Actions: []
+        AnimatorController: 
+        startPointName: 
+        startAction: 
 --- !u!1 &1904033979
 GameObject:
   m_ObjectHideFlags: 0

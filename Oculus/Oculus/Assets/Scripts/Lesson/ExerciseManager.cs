@@ -23,9 +23,9 @@ public class ExerciseManager : MonoBehaviour
         instance = this;
         exercises = new Exercises();
     }
-    public void SetExercises(string text,int lessonIndex)
+    public void SetExercises(Exercises ex,int lessonIndex)
     {
-        exercises = JsonUtility.FromJson<Exercises>(text);
+        exercises = ex;
         curLesson = lessonIndex;
         curExercise = 0;
         TriggerCallback();
