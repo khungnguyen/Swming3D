@@ -11,6 +11,11 @@ public class LessionUI : MonoBehaviour, IButtonAction
 
     public Transform scrollContent;
 
+    public GameObject lessonDialog;
+
+    public Transform dialogParent;
+
+    public bool useNewUI = true;
     enum Action
     {
         SelectGroup,
@@ -43,38 +48,95 @@ public class LessionUI : MonoBehaviour, IButtonAction
     // Start is called before the first frame update
     void Start()
     {
-        
+
 
     }
     private void CreateLessonGroupMenu()
     {
-        for (var i = 0; i < LessonManager.instance.GetLessonGroups().Count; i++)
-        {
-            var item = LessonManager.instance.GetLessonGroups()[i];
-            var go = Instantiate(lessonButtonPrefab, scrollContent);
-            var comp = go.GetComponent<LessonButton>();
-            comp.SetText("Lesson Group " + item.groupType);
-            comp.SetButtonInfo(Action.SelectGroup.ToString() + "_" + item.groupType.ToString());
-            comp.OnClicked += OnClicked;
 
+        if (useNewUI)
+        {
+            var dialogGO = Instantiate(lessonDialog, dialogParent);
+            DialogScroll dialogCP = dialogGO.GetComponent<DialogScroll>();
+            DialogOption option = new DialogOption { title = "Lesson Group", description = "Lessons have same period", hideButton = true };
+            dialogCP.Init(option, (object select) =>
+            {
+                dialogCP.Hide(() =>
+                {
+                    OnClicked((string)select);
+                });
+
+            }, null, (object cancel) =>
+            {
+                CreateLessonGroupMenu();
+            });
+            for (var i = 0; i < LessonManager.instance.GetLessonGroups().Count; i++)
+            {
+                var item = LessonManager.instance.GetLessonGroups()[i];
+                ButtonBaseRoom butt = (ButtonBaseRoom)dialogCP.AddButton();
+                butt.SetText("Lesson Group " + item.groupType);
+                butt.SetDescription("");
+                butt.SetData(Action.SelectGroup.ToString() + "_" + item.groupType.ToString());
+            }
         }
+        else
+        {
+            for (var i = 0; i < LessonManager.instance.GetLessonGroups().Count; i++)
+            {
+                var item = LessonManager.instance.GetLessonGroups()[i];
+                var go = Instantiate(lessonButtonPrefab, scrollContent);
+                var comp = go.GetComponent<LessonButton>();
+                comp.SetText("Lesson Group " + item.groupType);
+                comp.SetButtonInfo(Action.SelectGroup.ToString() + "_" + item.groupType.ToString());
+                comp.OnClicked += OnClicked;
+
+            }
+        }
+
     }
     private void CreateLessonMenu(LessonGroupType groupType)
     {
-        Utils.Log(this, "CreateLessonMenu", groupType);
         var data = LessonManager.instance.GetLessons(groupType);
-        Utils.Log(this, "CreateLessonMenu", data);
-        for (var i = 0; i < data.Count; i++)
+        if (useNewUI)
         {
-            var item = data[i];
-            var go = Instantiate(lessonButtonPrefab, scrollContent);
-            var comp = go.GetComponent<LessonButton>();
-            Utils.Log(this, item.Exercise);
-            comp.SetText(item.Exercise);
-            comp.SetButtonInfo(Action.SelectLesson.ToString() + "_" + groupType.ToString() + "_" + i);
-            comp.OnClicked += OnClicked;
+            var dialogGO = Instantiate(lessonDialog, dialogParent);
+            DialogScroll dialogCP = dialogGO.GetComponent<DialogScroll>();
+            DialogOption option = new DialogOption { title = "Lesson Group", description = "Lessons have same period", hideButton = true };
+            dialogCP.Init(option, (object select) =>
+            {
+                OnClicked((string)select);
+                dialogCP.Hide();
+            }, null, (object cancel) =>
+            {
+                dialogCP.Hide(()=>{
+                    CreateLessonGroupMenu();
+                });
+            });
+            for (var i = 0; i < data.Count; i++)
+            {
+                var item = data[i];
+                ButtonBaseRoom butt = (ButtonBaseRoom)dialogCP.AddButton();
+                butt.SetText(item.Exercise);
+                butt.SetDescription("Coming soon");
+                butt.SetData(Action.SelectLesson.ToString() + "_" + groupType.ToString() + "_" + i);
 
+            }
         }
+        else
+        {
+            for (var i = 0; i < data.Count; i++)
+            {
+                var item = data[i];
+                var go = Instantiate(lessonButtonPrefab, scrollContent);
+                var comp = go.GetComponent<LessonButton>();
+                Utils.Log(this, item.Exercise);
+                comp.SetText(item.Exercise);
+                comp.SetButtonInfo(Action.SelectLesson.ToString() + "_" + groupType.ToString() + "_" + i);
+                comp.OnClicked += OnClicked;
+
+            }
+        }
+
     }
     private void OnLessonSelected(LessonGroupType groupType, int i)
     {
@@ -92,7 +154,8 @@ public class LessionUI : MonoBehaviour, IButtonAction
         packages[1] = index;
         ConnectionManager.instance.SendAction(EventCodes.ActionInitLesson, packages, ReceiverGroup.Others);
     }
-    public void OnEnable() {
+    public void OnEnable()
+    {
         CreateLessonGroupMenu();
     }
 }
