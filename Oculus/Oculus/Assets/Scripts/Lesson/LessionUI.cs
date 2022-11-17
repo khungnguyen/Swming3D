@@ -58,7 +58,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
         {
             var dialogGO = Instantiate(lessonDialog, dialogParent);
             DialogScroll dialogCP = dialogGO.GetComponent<DialogScroll>();
-            DialogOption option = new DialogOption { title = "Lesson Group", description = "Lessons have same period", hideButton = true };
+            DialogOption option = new DialogOption { title = "Exercises Group", description = "Exercises have same period", hideButton = true };
             dialogCP.Init(option, (object select) =>
             {
                 dialogCP.Hide(() =>
@@ -74,7 +74,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
             {
                 var item = LessonManager.instance.GetLessonGroups()[i];
                 ButtonBaseRoom butt = (ButtonBaseRoom)dialogCP.AddButton();
-                butt.SetText("Lesson Group " + item.groupType);
+                butt.SetText("Exercises Group " + item.groupType);
                 butt.SetDescription("");
                 butt.SetData(Action.SelectGroup.ToString() + "_" + item.groupType.ToString());
             }
@@ -86,7 +86,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
                 var item = LessonManager.instance.GetLessonGroups()[i];
                 var go = Instantiate(lessonButtonPrefab, scrollContent);
                 var comp = go.GetComponent<LessonButton>();
-                comp.SetText("Lesson Group " + item.groupType);
+                comp.SetText("Exercises Group " + item.groupType);
                 comp.SetButtonInfo(Action.SelectGroup.ToString() + "_" + item.groupType.ToString());
                 comp.OnClicked += OnClicked;
 
@@ -101,16 +101,15 @@ public class LessionUI : MonoBehaviour, IButtonAction
         {
             var dialogGO = Instantiate(lessonDialog, dialogParent);
             DialogScroll dialogCP = dialogGO.GetComponent<DialogScroll>();
-            DialogOption option = new DialogOption { title = "Lesson Group", description = "Lessons have same period", hideButton = true };
+            DialogOption option = new DialogOption { title = "All Exercises", description = "Specific exercise", hideButton = true };
             dialogCP.Init(option, (object select) =>
             {
                 OnClicked((string)select);
                 dialogCP.Hide();
             }, null, (object cancel) =>
             {
-                dialogCP.Hide(()=>{
-                    CreateLessonGroupMenu();
-                });
+                Utils.LogError(this,"Onclick Close Lesson Menu");
+                CreateLessonGroupMenu();
             });
             for (var i = 0; i < data.Count; i++)
             {
