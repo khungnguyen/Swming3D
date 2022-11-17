@@ -65,7 +65,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     public TMP_Text lessonName;
 
     public TMP_Text exerciseName;
-    public bool useNewUI = true;
+    private bool useNewUI = true;
 
     private ExerciseUnit curExercise;
 
@@ -77,6 +77,15 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
      * Function called when Exercise was loaded fully
      * Create 1st UI
      */
+    void Start()
+    {
+        useNewUI = VRAppDebug.USE_NEW_MENU_DESIGN;
+        if (useNewUI)
+        {
+            Utils.DestroyTransformChildren(transform);
+        }
+
+    }
     public void OnLoaded(int lesson)
     {
         curExercise = ExerciseManager.instance.GetCurExercise();

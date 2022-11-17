@@ -69,4 +69,10 @@ public class Utils
     public static T String2Enum<T>(string t) {
          return  (T)System.Enum.Parse( typeof(T), t );
     }
+    public static void DestroyTransformChildren(Transform transform) {
+        for (var i = transform.childCount - 1; i >= 0; i--)
+        {
+            Transform.Destroy(transform.GetChild(i).gameObject);
+        }
+    }
 }

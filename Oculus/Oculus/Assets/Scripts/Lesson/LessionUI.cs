@@ -12,7 +12,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
     public Transform scrollContent;
     public Transform dialogParent;
 
-    public bool useNewUI = true;
+    private bool useNewUI = true;
     enum Action
     {
         SelectGroup,
@@ -23,7 +23,10 @@ public class LessionUI : MonoBehaviour, IButtonAction
     */
     public void OnClicked(string action)
     {
-        ClearScrollContent();
+        if (!useNewUI)
+        {
+            ClearScrollContent();
+        }
         string[] types = action.Split("_");
         switch (Utils.String2Enum<Action>(types[0]))
         {
@@ -37,15 +40,16 @@ public class LessionUI : MonoBehaviour, IButtonAction
     }
     private void ClearScrollContent()
     {
-        for (var i = scrollContent.childCount - 1; i >= 0; i--)
-        {
-            Destroy(scrollContent.GetChild(i).gameObject);
-        }
+            Utils.DestroyTransformChildren(scrollContent);
     }
     // Start is called before the first frame update
     void Start()
     {
-
+        useNewUI = VRAppDebug.USE_NEW_MENU_DESIGN;
+        if (useNewUI)
+        {
+            Utils.DestroyTransformChildren(transform);
+        }
 
     }
     private void CreateLessonGroupMenu()
@@ -54,7 +58,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
         if (useNewUI)
         {
             // var dialogGO = Instantiate(lessonDialog, dialogParent);
-            DialogScroll dialogCP = ResourceManager.instance.CreateDialog<DialogScroll>(DialogType.DialogScrollMenu,dialogParent);
+            DialogScroll dialogCP = ResourceManager.instance.CreateDialog<DialogScroll>(DialogType.DialogScrollMenu, dialogParent);
             // DialogScroll dialogCP = dialogGO.GetComponent<DialogScroll>();
             DialogOption option = new DialogOption { title = "Exercises Group", description = "Exercises have same period", hideButton = true };
             dialogCP.Init(option, (object select) =>
@@ -99,7 +103,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
         {
             // var dialogGO = Instantiate(lessonDialog, dialogParent);
             // DialogScroll dialogCP = dialogGO.GetComponent<DialogScroll>();
-            DialogScroll dialogCP = ResourceManager.instance.CreateDialog<DialogScroll>(DialogType.DialogScrollMenu,dialogParent);
+            DialogScroll dialogCP = ResourceManager.instance.CreateDialog<DialogScroll>(DialogType.DialogScrollMenu, dialogParent);
             DialogOption option = new() { title = "All Exercises", description = "Specific exercise", hideButton = true };
             dialogCP.Init(option, (object select) =>
             {
@@ -107,7 +111,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
                 dialogCP.Hide();
             }, null, (object cancel) =>
             {
-                Utils.LogError(this,"Onclick Close Lesson Menu");
+                Utils.LogError(this, "Onclick Close Lesson Menu");
                 CreateLessonGroupMenu();
             }).Show();
             for (var i = 0; i < data.Count; i++)

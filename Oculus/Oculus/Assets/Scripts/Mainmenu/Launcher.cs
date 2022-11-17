@@ -38,7 +38,7 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
     [SerializeField]
     private GameObject dialogRooms;
 
-    public bool useNewUI = false;
+    private bool useNewUI = false;
     List<RoomItem> roomItemListCached = new List<RoomItem>();
     List<PlayerInfo> playerInfoListCached = new List<PlayerInfo>();
 
@@ -50,6 +50,7 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
     private void Awake()
     {
         instance = this;
+        useNewUI = VRAppDebug.USE_NEW_PHOTON_ROOM_DESIGN;
     }
     // Start is called before the first frame update
     void Start()
