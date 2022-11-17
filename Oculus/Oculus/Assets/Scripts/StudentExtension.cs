@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class StudentExtension : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -10,16 +11,28 @@ public class StudentExtension : MonoBehaviour
 
     [SerializeField]
     private List<Transform> extensionTransforms;
+
+    enum Extension
+    {
+        KickBoardExtension
+    }
     void Start()
     {
 
     }
-    public void UpdateExtensions(int lesson, string trigger, string lastTrigger)
+    public void UpdateExtensions(string[] extension, string trigger, string lastTrigger)
     {
-        if (lesson == (int)LessonID.Lesson_2)
+        if (extension != null)
         {
-            kickBoardController.SetBehavior(trigger, lastTrigger);
+            for (var i = 0; i < extension.Length; i++)
+            {
+                if (extension[i] == Extension.KickBoardExtension.ToString())
+                {
+                    kickBoardController.SetBehavior(trigger, lastTrigger);
+                }
+            }
         }
+
 
     }
     public void SetUpBaseOnLesson(int lesson)
@@ -28,8 +41,9 @@ public class StudentExtension : MonoBehaviour
     }
     public void ActivateExtension(string trigger, bool active)
     {
-        var transform = extensionTransforms.Find(e=>e.name == trigger);
-        if(transform != null) {
+        var transform = extensionTransforms.Find(e => e.name == trigger);
+        if (transform != null)
+        {
             transform.gameObject.SetActive(active);
         }
     }

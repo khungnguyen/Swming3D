@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum ExaminorAction
+public enum ExaminerAction
 {
 
     StartExercise,
@@ -59,63 +59,103 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
 
     public GameObject buttonPrefab;
 
+    [SerializeField]
+    private Transform dialogParent;
+
     public TMP_Text lessonName;
 
     public TMP_Text exerciseName;
+    public bool useNewUI = true;
 
     private ExerciseUnit curExercise;
 
     private int currentLessonIndex;
 
-    void Start()
-    {
+    private DialogScroll examinerDialog;
 
-
-    }
     /*
      * Function called when Exercise was loaded fully
      * Create 1st UI
      */
     public void OnLoaded(int lesson)
     {
-        curExercise = ExerciseManager.instance.GetCurxercise();
+        curExercise = ExerciseManager.instance.GetCurExercise();
         currentLessonIndex = lesson;
         CreateButtonDialog();
         UpdateLessonName(curExercise.lessonName);
         SettingUpLesson(lesson);
         string startAction = ExerciseManager.instance.exercises.startAction;
-        if(!string.IsNullOrEmpty(startAction)) {
-           HandlerAction(startAction);
+        if (!string.IsNullOrEmpty(startAction))
+        {
+            HandlerAction(startAction);
         }
     }
     public void CreateButtonDialog(int level = 1)
     {
-
         var buttons = ExerciseManager.instance.exercises.Buttons;
-        for (int g = 0; g < lessonUISpace.transform.childCount; g++)
+        if (useNewUI)
         {
-            Destroy(lessonUISpace.transform.GetChild(g).gameObject);
-        }
-        foreach (var bt in buttons)
-        {
-            if (bt.displayOrder == level)
+            examinerDialog = ResourceManager.instance.CreateDialog<DialogScroll>(DialogType.DialogExersiesAction, dialogParent);
+            DialogOption option = new() { title = ExerciseManager.instance.GetCurExercise().lessonName, description = "", hideButton = true };
+            examinerDialog.Init(option, (object select) =>
             {
-                if (bt.action == ExaminorAction.NextExercise.ToString())
+                examinerDialog.Hide(() =>
                 {
-                    int currentExerciseIndex = ExerciseManager.instance.GetExerciseIndex();
-                    int totalExerciseLength = ExerciseManager.instance.GetTotalExerciseLength();
-                    if (currentExerciseIndex == totalExerciseLength - 1)
+                    HandlerAction((string)select);
+                });
+
+            }, null, (object cancel) =>
+            {
+
+            }).Show();
+            foreach (var bt in buttons)
+            {
+                if (bt.displayOrder == level)
+                {
+                    if (bt.action == ExaminerAction.NextExercise.ToString())
                     {
-                        continue;
+                        int currentExerciseIndex = ExerciseManager.instance.GetExerciseIndex();
+                        int totalExerciseLength = ExerciseManager.instance.GetTotalExerciseLength();
+                        if (currentExerciseIndex == totalExerciseLength - 1)
+                        {
+                            continue;
+                        }
                     }
+                    ButtonBaseRoom butt = (ButtonBaseRoom)examinerDialog.AddButton();
+                    butt.SetText(bt.name);
+                    //butt.SetDescription("");
+                    butt.SetData(bt.action);
                 }
-                GameObject newbt = Instantiate(buttonPrefab, lessonUISpace.transform);
-                newbt.name = bt.name;
-                newbt.GetComponent<ExerciseButton>().SetButtonInfo(bt);
-                newbt.GetComponent<ExerciseButton>().OnClicked += HandlerAction;
             }
         }
-        StartCoroutine(AddContentFitter());
+        else
+        {
+            for (int g = 0; g < lessonUISpace.transform.childCount; g++)
+            {
+                Destroy(lessonUISpace.transform.GetChild(g).gameObject);
+            }
+            foreach (var bt in buttons)
+            {
+                if (bt.displayOrder == level)
+                {
+                    if (bt.action == ExaminerAction.NextExercise.ToString())
+                    {
+                        int currentExerciseIndex = ExerciseManager.instance.GetExerciseIndex();
+                        int totalExerciseLength = ExerciseManager.instance.GetTotalExerciseLength();
+                        if (currentExerciseIndex == totalExerciseLength - 1)
+                        {
+                            continue;
+                        }
+                    }
+                    GameObject newbt = Instantiate(buttonPrefab, lessonUISpace.transform);
+                    newbt.name = bt.name;
+                    newbt.GetComponent<ExerciseButton>().SetButtonInfo(bt);
+                    newbt.GetComponent<ExerciseButton>().OnClicked += HandlerAction;
+                }
+            }
+            StartCoroutine(AddContentFitter());
+        }
+
     }
     IEnumerator AddContentFitter()
     {
@@ -134,27 +174,27 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
             foreach (ActionProperty actionProperty in ac.action)
             {
                 string miniAction = actionProperty.name;
-                if (miniAction == ExaminorAction.StartExercise.ToString())
+                if (miniAction == ExaminerAction.StartExercise.ToString())
                 {
                     StartLesson();
                 }
-                else if (miniAction == ExaminorAction.TriggerFinalAnimation.ToString())
+                else if (miniAction == ExaminerAction.TriggerFinalAnimation.ToString())
                 {
                     FinalAnimation();
                 }
-                else if (miniAction == ExaminorAction.NextExercise.ToString())
+                else if (miniAction == ExaminerAction.NextExercise.ToString())
                 {
                     NextExercise();
                 }
-                else if (miniAction == ExaminorAction.TriggerAnimation.ToString())
+                else if (miniAction == ExaminerAction.TriggerAnimation.ToString())
                 {
-                    StartAnimtion(actionProperty.property[0]);
+                    StartAnimation(actionProperty.property[0]);
                 }
-                else if (miniAction == ExaminorAction.GoToLessonMenu.ToString())
+                else if (miniAction == ExaminerAction.GoToLessonMenu.ToString())
                 {
                     GoToLessonUI();
                 }
-                else if (miniAction == ExaminorAction.EnableInteractable.ToString())
+                else if (miniAction == ExaminerAction.EnableInteractable.ToString())
                 {
                     bool OnlyAfterAnim = false;
                     if (actionProperty.property[0] == ActionPropertyType.DelayAfterAnim.ToString())
@@ -163,7 +203,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     }
                     EnableInteractable(OnlyAfterAnim);
                 }
-                else if (miniAction == ExaminorAction.DisableInteractable.ToString())
+                else if (miniAction == ExaminerAction.DisableInteractable.ToString())
                 {
                     bool OnlyAfterAnim = false;
                     if (actionProperty.property[0] == ActionPropertyType.DelayAfterAnim.ToString())
@@ -172,13 +212,13 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     }
                     DisableInteractable(OnlyAfterAnim);
                 }
-                else if (miniAction == ExaminorAction.GoToExercise.ToString())
+                else if (miniAction == ExaminerAction.GoToExercise.ToString())
                 {
                     int newExerscise = int.Parse(actionProperty.property[0]);
                     Debug.LogError("GoToExercise" + newExerscise);
                     NextExercise(newExerscise);
                 }
-                else if (miniAction == ExaminorAction.SaveDataValue.ToString())
+                else if (miniAction == ExaminerAction.SaveDataValue.ToString())
                 {
 
                     for (int i = 0; i < actionProperty.property.Length; i += 2)
@@ -189,7 +229,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                         SaveData(data);
                     }
                 }
-                else if (miniAction == ExaminorAction.ChangeAnimController.ToString())
+                else if (miniAction == ExaminerAction.ChangeAnimController.ToString())
                 {
                     string key = actionProperty.property[0];
                     List<string> choices = GetExercisePropertiesByName(key);
@@ -206,20 +246,20 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     }
 
                 }
-                else if (miniAction == ExaminorAction.TriggerAnimationWithSaveKey.ToString())
+                else if (miniAction == ExaminerAction.TriggerAnimationWithSaveKey.ToString())
                 {
                     string key = actionProperty.property[0];
                     string saveValue = GetDataSaveByKey(key).value;
                     if (saveValue != null && saveValue.Length > 0)
                     {
-                        StartAnimtion(saveValue);
+                        StartAnimation(saveValue);
                     }
                     else
                     {
                         Debug.LogError(TAG + "Could not find Save Key " + key);
                     }
                 }
-                else if (miniAction == ExaminorAction.TriggerAnimationWithOutSaveKey.ToString())
+                else if (miniAction == ExaminerAction.TriggerAnimationWithOutSaveKey.ToString())
                 {
                     string key = actionProperty.property[0];
                     string saveValue = GetDataSaveByKey(key).value;
@@ -230,7 +270,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                         {
                             if (i != saveValue)
                             {
-                                StartAnimtion(i);
+                                StartAnimation(i);
                             }
                         }
                     }
@@ -239,13 +279,13 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                         Debug.LogError(TAG + "Could not find Save Key " + key);
                     }
                 }
-                else if (miniAction == ExaminorAction.CorrectTransform.ToString())
+                else if (miniAction == ExaminerAction.CorrectTransform.ToString())
                 {
                     string key = actionProperty.property[0];
                     CorrectTransform(key);
                 }
                 // We not use any more action
-                else if (miniAction == ExaminorAction.ReplaceModel.ToString())
+                else if (miniAction == ExaminerAction.ReplaceModel.ToString())
                 {
                     string modelFilter = actionProperty.property[0];
                     List<string> choices = GetExercisePropertiesByName(modelFilter);
@@ -253,38 +293,38 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     Debug.LogError(TAG + "ReplaceModel" + choices[randomOne]);
                     ReplaceModel(choices[randomOne]);
                 }
-                else if (miniAction == ExaminorAction.TriggerAnimationReplaceModel.ToString())
+                else if (miniAction == ExaminerAction.TriggerAnimationReplaceModel.ToString())
                 {
-                    StartAnimtion(actionProperty.property[0], true);
+                    StartAnimation(actionProperty.property[0], true);
                 }
-                else if (miniAction == ExaminorAction.ClearDataSave.ToString())
+                else if (miniAction == ExaminerAction.ClearDataSave.ToString())
                 {
                     ClearDataSave();
                 }
-                else if (miniAction == ExaminorAction.SettingUpLesson.ToString())
+                else if (miniAction == ExaminerAction.SettingUpLesson.ToString())
                 {
                     SettingUpLesson(currentLessonIndex);
                 }
-                else if (miniAction == ExaminorAction.ChangeLessonTitle.ToString())
+                else if (miniAction == ExaminerAction.ChangeLessonTitle.ToString())
                 {
                     UpdateLessonName(actionProperty.property[0]);
                 }
-                else if (miniAction == ExaminorAction.StopAnimation.ToString())
+                else if (miniAction == ExaminerAction.StopAnimation.ToString())
                 {
                     StopAnimation();
                 }
-                else if (miniAction == ExaminorAction.ActivateExtension.ToString())
+                else if (miniAction == ExaminerAction.ActivateExtension.ToString())
                 {
                     string transformName = actionProperty.property[0];
-                    bool active = actionProperty.property[1]=="True";
-                    ActivateExtension(transformName,active);
+                    bool active = actionProperty.property[1] == "True";
+                    ActivateExtension(transformName, active);
                 }
                 // End No Use actions
 
             }
-            if (ac.showDisplayerOrder != 0)
+            if (ac.showDisplayOrder != 0)
             {
-                CreateButtonDialog(ac.showDisplayerOrder);
+                CreateButtonDialog(ac.showDisplayOrder);
             }
             //quy
         }
@@ -344,7 +384,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         packages[0] = PhotonNetwork.NickName;
         packages[1] = ExerciseManager.instance.GetExerciseIndex();
         ConnectionManager.instance.SendAction(EventCodes.ActionStartExercise, packages);
-        UpdateLessonName(ExerciseManager.instance.GetCurxercise().lessonName);
+        UpdateLessonName(ExerciseManager.instance.GetCurExercise().lessonName);
     }
 
     public void SettingUpLesson(int lessonIndex)
@@ -355,11 +395,11 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     }
     public void FinalAnimation()
     {
-        StartAnimtion(curExercise.conditionTrigger.name);
+        StartAnimation(curExercise.conditionTrigger.name);
     }
-    public void StartAnimtion(string name, bool useReplaceModel = false)
+    public void StartAnimation(string name, bool useReplaceModel = false)
     {
-        sendActionPlayAnim(name, useReplaceModel);
+        SendActionPlayAnim(name, useReplaceModel);
     }
     public void NextExercise(int index = -1)
     {
@@ -372,14 +412,14 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         {
             ExerciseManager.instance.ChangeExercise(index);
         }
-        curExercise = ExerciseManager.instance.GetCurxercise();
+        curExercise = ExerciseManager.instance.GetCurExercise();
         Debug.LogError("NextExercise " + index + " name " + curExercise.lessonName);
         object[] packages = new object[1];
         packages[0] = ExerciseManager.instance.GetExerciseIndex();
         ConnectionManager.instance.SendAction(EventCodes.ActionNextExercise, packages);
         UpdateLessonName(curExercise.lessonName);
     }
-    public void sendActionPlayAnim(string trigger, bool forReplaceModel)
+    public void SendActionPlayAnim(string trigger, bool forReplaceModel)
     {
         object[] packages = new object[2];
         packages[0] = forReplaceModel;
@@ -405,7 +445,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     }
     private List<string> GetExercisePropertiesByName(string filter)
     {
-        ExerciseUnit unit = ExerciseManager.instance.GetCurxercise();
+        ExerciseUnit unit = ExerciseManager.instance.GetCurExercise();
         List<string> choices = new List<string>();
         for (int i = 0; i < unit.property.Length; i += 2)
         {
@@ -429,12 +469,14 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     {
         dataSave.Clear();
     }
-    private void StopAnimation() {
+    private void StopAnimation()
+    {
         object[] packages = new object[1];
         packages[0] = true;
         ConnectionManager.instance.SendAction(EventCodes.ActionStopAnimation, packages);
     }
-    private void ActivateExtension(string objectName, bool active) {
+    private void ActivateExtension(string objectName, bool active)
+    {
         object[] packages = new object[2];
         packages[0] = objectName;
         packages[1] = active;

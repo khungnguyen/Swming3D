@@ -19,3 +19,10 @@ public struct DialogOption
       return description!=null && description.Length>0;
     }
 }
+public enum DialogType {
+  DialogScrollBase,
+  DialogNoticeBase,
+  DialogScrollRooms,
+  DialogExersiesAction,
+  DialogScrollMenu
+}

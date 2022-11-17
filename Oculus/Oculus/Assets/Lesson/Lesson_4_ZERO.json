@@ -49,7 +49,7 @@
           "property": ["BackFloat", "True"]
         }
       ],
-      "showDisplayerOrder": 0
+      "showDisplayOrder": 0
     },
     {
       "name": "AllowCoachToCorrect_Slide",
@@ -63,26 +63,25 @@
           "property": [""]
         }
       ],
-      "showDisplayerOrder": 2
+      "showDisplayOrder": 2
     },
     {
       "name": "SlideIn",
       "action": [
         {
-          "name": "TriggerAnimation",
-          "property": ["SlideIn"]
+          "name": "GoToExercise",
+          "property": ["1"]
         },
         {
-          "name": "ChangeLessonTitle",
-          "property": ["Starfish Front Float"]
+          "name": "TriggerAnimation",
+          "property": ["SlideIn"]
         }
       ],
-      "showDisplayerOrder": 3
+      "showDisplayOrder": 3
     },
     {
       "name": "ExecuteStarfishWrong",
       "action": [
-       
         {
           "name": "TriggerAnimation",
           "property": ["StarfishWrong"]
@@ -92,7 +91,7 @@
           "property": ["StarfishFloatFrontPoint"]
         }
       ],
-      "showDisplayerOrder": 4
+      "showDisplayOrder": 4
     },
     {
       "name": "AllowCoachToCorrect_Starfish",
@@ -106,7 +105,7 @@
           "property": ["DelayAfterAnim"]
         }
       ],
-      "showDisplayerOrder": 5
+      "showDisplayOrder": 5
     },
     {
       "name": "ExecuteStarfish",
@@ -116,7 +115,7 @@
           "property": ["Starfish"]
         }
       ],
-      "showDisplayerOrder": 400
+      "showDisplayOrder": 400
     },
     {
       "name": "BackToExercise",
@@ -128,9 +127,13 @@
         {
           "name": "SettingUpLesson",
           "property": [""]
+        },
+        {
+          "name": "GoToExercise",
+          "property": ["0"]
         }
       ],
-      "showDisplayerOrder": 1
+      "showDisplayOrder": 1
     },
     {
       "name": "GoToLessonMenu",
@@ -144,7 +147,7 @@
           "property": [""]
         }
       ],
-      "showDisplayerOrder": 0
+      "showDisplayOrder": 0
     }
   ],
   "ExerciseList": [
@@ -158,6 +161,18 @@
       "startPointName": "",
       "startController": "Case_Four",
       "property": []
+    },
+    {
+      "lessonName": "Starfish Front Float",
+      "starAnimation": "",
+      "conditionTrigger": {
+        "name": "",
+        "value": true
+      },
+      "startPointName": "",
+      "startController": "",
+      "property": []
     }
-  ]
+  ],
+  "extension" :[]
 }

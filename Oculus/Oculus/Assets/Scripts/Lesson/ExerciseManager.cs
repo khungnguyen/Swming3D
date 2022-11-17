@@ -46,7 +46,7 @@ public class ExerciseManager : MonoBehaviour
     {
         return exercises.AnimatorController;
     }
-    public ExerciseUnit GetCurxercise()
+    public ExerciseUnit GetCurExercise()
     {
         return GetExercise(curExercise);
     }
@@ -58,7 +58,7 @@ public class ExerciseManager : MonoBehaviour
             curExercise++;
 
         }
-        return GetCurxercise();
+        return GetCurExercise();
     }
     public ExerciseUnit ChangeExercise(int index)
     {
@@ -66,7 +66,7 @@ public class ExerciseManager : MonoBehaviour
         {
             curExercise = index;
         }
-        return GetCurxercise();
+        return GetCurExercise();
     }
     public int GetExerciseIndex()
     {
@@ -116,6 +116,9 @@ public class Exercises
     public string startPointName;
 
     public string startAction ="";
+    public string[] extension;
+
+
 }
 [System.Serializable]
 public class ExerciseUnit
@@ -152,7 +155,7 @@ public class ButtonActions
 {
     public string name;
     public ActionProperty[] action;
-    public int showDisplayerOrder;
+    public int showDisplayOrder;
 }
 [System.Serializable]
 public class ActionProperty

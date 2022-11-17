@@ -4,11 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using System;
-public enum LessonID
-{
-    Lesson_1,
-    Lesson_2
-}
 public class StudentController : MonoBehaviourPunCallbacks, IReceiver
 {
     const string TAG = "[StudentController] ";
@@ -227,7 +222,8 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     private string lastTrigger;
     private void BeforeTriggerAnim(string trigger)
     {
-        studentExtensions.UpdateExtensions(curLesson, trigger, lastTrigger);
+        string[] extension = ExerciseManager.instance.exercises.extension;
+        studentExtensions.UpdateExtensions(extension, trigger, lastTrigger);
 
         if (trigger == "LoseControl")
         {

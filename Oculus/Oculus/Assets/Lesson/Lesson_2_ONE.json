@@ -113,7 +113,7 @@
           "property": [""]
         }
       ],
-      "showDisplayerOrder": 2
+      "showDisplayOrder": 2
     },
     {
       "name": "NextExercise",
@@ -123,7 +123,7 @@
           "property": [""]
         }
       ],
-      "showDisplayerOrder": 1
+      "showDisplayOrder": 1
     },
     {
       "name": "ActionPlayAnimation",
@@ -133,7 +133,7 @@
           "property": [""]
         }
       ],
-      "showDisplayerOrder": 3
+      "showDisplayOrder": 3
     },
     {
       "name": "LessonList",
@@ -143,7 +143,7 @@
           "property": [""]
         }
       ],
-      "showDisplayerOrder": 0
+      "showDisplayOrder": 0
     },
     {
       "name": "MoveStudentToPool",
@@ -169,7 +169,7 @@
           "property": [""]
         }
       ],
-      "showDisplayerOrder": 2
+      "showDisplayOrder": 2
     },
     {
       "name": "SplashKickWrong",
@@ -179,7 +179,7 @@
           "property": ["SplashKickWrong"]
         }
       ],
-      "showDisplayerOrder": 10
+      "showDisplayOrder": 10
     },
     {
       "name": "CycleKickWrong",
@@ -189,7 +189,7 @@
           "property": ["CycleKickWrong"]
         }
       ],
-      "showDisplayerOrder": 10
+      "showDisplayOrder": 10
     },
     {
       "name": "PositionWrong",
@@ -199,7 +199,7 @@
           "property": ["PositionWrong"]
         }
       ],
-      "showDisplayerOrder": 10
+      "showDisplayOrder": 10
     },
     {
       "name": "PlayCorrectAnimFlutter",
@@ -213,7 +213,7 @@
           "property": ["Swim and Return"]
         }
       ],
-      "showDisplayerOrder": 4
+      "showDisplayOrder": 4
     },
     {
       "name": "MoveToMenuExercise",
@@ -223,7 +223,7 @@
           "property": ["Swim and Return"]
         }
       ],
-      "showDisplayerOrder": 5
+      "showDisplayOrder": 5
     },
     {
       "name": "GoToExercise_1",
@@ -233,7 +233,7 @@
           "property": ["1"]
         }
       ],
-      "showDisplayerOrder": 6
+      "showDisplayOrder": 6
     },
     {
       "name": "GoToExercise_2",
@@ -243,7 +243,7 @@
           "property": ["2"]
         }
       ],
-      "showDisplayerOrder": 6
+      "showDisplayOrder": 6
     },
     {
       "name": "GoToExercise_3",
@@ -253,7 +253,7 @@
           "property": ["3"]
         }
       ],
-      "showDisplayerOrder": 6
+      "showDisplayOrder": 6
     },
     {
       "name": "SwimBack",
@@ -263,7 +263,7 @@
           "property": ["Key_RightAnimation", "Swim"]
         }
       ],
-      "showDisplayerOrder": 7
+      "showDisplayOrder": 7
     },
     {
       "name": "WalkBack",
@@ -273,7 +273,7 @@
           "property": ["Key_RightAnimation", "Walk"]
         }
       ],
-      "showDisplayerOrder": 7
+      "showDisplayOrder": 7
     },
     {
       "name": "PlayCorrectAnimSwimOrWalkBack",
@@ -291,7 +291,7 @@
           "property": ["Key_RightAnimation"]
         }
       ],
-      "showDisplayerOrder": 9
+      "showDisplayOrder": 9
     },
     {
       "name": "NotFollowDistance",
@@ -309,7 +309,7 @@
           "property": ["Swim"]
         }
       ],
-      "showDisplayerOrder": 7
+      "showDisplayOrder": 7
     },
     {
       "name": "NotFollowReturn",
@@ -327,7 +327,7 @@
           "property": ["Key_RightAnimation"]
         }
       ],
-      "showDisplayerOrder": 7
+      "showDisplayOrder": 7
     },
     {
       "name": "LoseControl",
@@ -349,7 +349,7 @@
           "property": ["DelayAfterAnim"]
         }
       ],
-      "showDisplayerOrder": 8
+      "showDisplayOrder": 8
     },
     {
       "name": "PlayCorrectAnimSwimOrWalkBackAndFinish",
@@ -367,7 +367,7 @@
           "property": ["Key_RightAnimation"]
         }
       ],
-      "showDisplayerOrder": 9
+      "showDisplayOrder": 9
     },
     {
       "name": "GoToLessonMenu",
@@ -385,7 +385,7 @@
           "property": [""]
         }
       ],
-      "showDisplayerOrder": 0
+      "showDisplayOrder": 0
     },
     {
       "name": "BackToExercise",
@@ -415,7 +415,7 @@
           "property": ["Practice In Place"]
         }
       ],
-      "showDisplayerOrder": 1
+      "showDisplayOrder": 1
     },
     {
       "name": "StopAnimationAndEnableInteraction",
@@ -429,7 +429,7 @@
           "property": ["DelayAfterAnim"]
         }
       ],
-      "showDisplayerOrder": 3
+      "showDisplayOrder": 3
     }
   ],
   "ExerciseList": [
@@ -516,5 +516,6 @@
         "Walk"
       ]
     }
-  ]
+  ],
+  "extension" :["KickBoardExtension"]
 }

@@ -7,8 +7,13 @@ public class ButtonBaseRoom : ButtonBase
 {
     [SerializeField]
     private TMP_Text description;
-    public void SetDescription(string t) {
+    public void SetDescription(string t)
+    {
+        description.gameObject.SetActive(true);
         description.SetText(t);
     }
-
+    void Awake()
+    {
+        description.gameObject.SetActive(false);
+    }
 }
