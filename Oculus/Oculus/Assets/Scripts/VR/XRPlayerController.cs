@@ -25,6 +25,10 @@ public class XRPlayerController : MonoBehaviour
 
 
     public float speedY = 0.5f;
+
+    const float MAX_Y = 1f;
+
+    const float MIN_Y = -1f;
     private Vector3 curCameraPos;
     void Start()
     {
@@ -65,6 +69,7 @@ public class XRPlayerController : MonoBehaviour
            // Debug.Log("Button One Three Press");
             curCameraPos = cameraOffset.transform.position;
             curCameraPos.y -= speedY * Time.deltaTime;
+            curCameraPos.y =Mathf.Clamp( curCameraPos.y,MIN_Y,MAX_Y);
             cameraOffset.transform.position = curCameraPos;
         }
         else if (OVRInput.Get(OVRInput.Button.Two) || OVRInput.Get(OVRInput.Button.Four))
@@ -72,6 +77,7 @@ public class XRPlayerController : MonoBehaviour
            // Debug.Log("Button One Two Four Press");
             curCameraPos = cameraOffset.transform.position;
             curCameraPos.y += speedY * Time.deltaTime;
+            curCameraPos.y =Mathf.Clamp(curCameraPos.y,MIN_Y,MAX_Y);
             cameraOffset.transform.position = curCameraPos;
         }
     }

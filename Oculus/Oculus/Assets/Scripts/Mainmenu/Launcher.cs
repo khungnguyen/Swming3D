@@ -328,7 +328,7 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
         {
             ButtonBaseRoom butt = (ButtonBaseRoom)selectedRoom.AddButton();
             butt.SetText(newPlayer.NickName);
-            butt.SetDescription(newPlayer.IsMasterClient ? "Hosted" : "Guest");
+            butt.SetDescription(newPlayer.IsMasterClient ? "Hosted"+(newPlayer.IsLocal?"- Me":"") : "Guest" + (newPlayer.IsLocal?"- Me":""));
             butt.SetData(newPlayer);
         }
     }
