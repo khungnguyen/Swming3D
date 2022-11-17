@@ -111,15 +111,14 @@ public class LessionUI : MonoBehaviour, IButtonAction
                 dialogCP.Hide();
             }, null, (object cancel) =>
             {
-                Utils.LogError(this, "Onclick Close Lesson Menu");
-                CreateLessonGroupMenu();
+                ScenesManager.instance.GoTo(SCREEN.MainMenu, true);
             }).Show();
             for (var i = 0; i < data.Count; i++)
             {
                 var item = data[i];
                 ButtonBaseRoom butt = (ButtonBaseRoom)dialogCP.AddButton();
                 butt.SetText(item.Exercise);
-                butt.SetDescription("Coming soon");
+                // butt.SetDescription("Coming soon");
                 butt.SetData(Action.SelectLesson.ToString() + "_" + groupType.ToString() + "_" + i);
 
             }

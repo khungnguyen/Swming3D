@@ -49,13 +49,13 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         if (delayActiveInteraction)
         {
             Debug.LogError("Animation Event call Enable" + e.animatorClipInfo.clip.name);
-            StartCoroutine(DelayEnableInteraction(0.2f, true));
+            StartCoroutine(DelayEnableInteraction(1f, true));
             delayActiveInteraction = false;
         }
         else if (delayInactiveInteraction)
         {
             Debug.LogError("Animation Event call Disable" + e.animatorClipInfo.clip.name);
-            StartCoroutine(DelayEnableInteraction(0.2f, false));
+            StartCoroutine(DelayEnableInteraction(1f, false));
             delayInactiveInteraction = false;
         }
     }
@@ -130,7 +130,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 else
                 {
                     Debug.Log(TAG + "Enable Interaction immediately");
-                    StartCoroutine(DelayEnableInteraction(0.1f, true));
+                    StartCoroutine(DelayEnableInteraction(0.5f, true));
                 }
                 break;
             case EventCodes.ActionDisableInteractable:
@@ -143,7 +143,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 else
                 {
                     Debug.Log(TAG + "Disable Interaction immediately");
-                    StartCoroutine(DelayEnableInteraction(0.1f, false));
+                    StartCoroutine(DelayEnableInteraction(0.5f, false));
                 }
                 break;
             case EventCodes.ActionChangeController:

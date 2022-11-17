@@ -1,6 +1,6 @@
 {
   "Exercise": "TIME 00-10 Minutes Exercise 3 (ABTO)",
-  "AnimatorController": "Case_Four",
+  "AnimatorController": "Case_Five",
   "startPointName": "Lesson_1_Ex_All_Pos",
   "startAction":"StartAction",
   "Buttons": [
@@ -15,8 +15,8 @@
       "displayOrder": 2
     },
     {
-      "name": "Starfish Front Float",
-      "action": "ExecuteStarfishWrong",
+      "name": "Bubble Nose",
+      "action": "ExecuteBubbleNose",
       "displayOrder": 3
     },
     {
@@ -44,10 +44,6 @@
     {
       "name": "StartAction",
       "action": [
-        {
-          "name": "ActivateExtension",
-          "property": ["BackFloat", "True"]
-        }
       ],
       "showDisplayOrder": 0
     },
@@ -80,11 +76,11 @@
       "showDisplayOrder": 3
     },
     {
-      "name": "ExecuteStarfishWrong",
+      "name": "ExecuteBubbleNose",
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": ["StarfishWrong"]
+          "property": ["BubbleNoseIdle"]
         },
         {
           "name": "CorrectTransform",
@@ -159,11 +155,11 @@
         "value": true
       },
       "startPointName": "",
-      "startController": "Case_Four",
+      "startController": "",
       "property": []
     },
     {
-      "lessonName": "Starfish Front Float",
+      "lessonName": "Bubble Nose",
       "starAnimation": "",
       "conditionTrigger": {
         "name": "",

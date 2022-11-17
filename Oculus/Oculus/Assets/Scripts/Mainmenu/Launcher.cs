@@ -44,7 +44,8 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
 
     private List<RoomInfo> curRooms;
 
-    private DialogScroll selectedRoom;
+    private DialogScroll lobbyDialog;
+    private DialogScroll selectedRoomDialog;
 
     private MENU curMenu = MENU.None;
     private void Awake()
@@ -55,11 +56,14 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
     // Start is called before the first frame update
     void Start()
     {
-        PhotonNetwork.ConnectUsingSettings();
-        PhotonNetwork.NickName = "Guest" + Random.Range(1, 100);
-        ActivateMenu(MENU.All, false, MENU.MainMenu);
-        ActivateMenu(MENU.Loading, true);
+        if (!PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.ConnectUsingSettings();
+            PhotonNetwork.NickName = "Guest" + Random.Range(1, 100);
+            ActivateMenu(MENU.All, false, MENU.MainMenu);
+            ActivateMenu(MENU.Loading, true);
 
+        }
     }
 
     // Update is called once per frame
@@ -155,6 +159,17 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
 
         }
         curRooms = rooms;
+        if (lobbyDialog != null)
+        {
+            lobbyDialog.ClearAllButtons();
+            curRooms.ForEach(e =>
+            {
+                if (e.PlayerCount != e.MaxPlayers && !e.RemovedFromList)
+                {
+                    AddRoomToLobby(e);
+                }
+            });
+        }
     }
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
@@ -237,7 +252,7 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
                 Mainmenu.SetActive(active);
                 break;
             case MENU.RoomMenu:
-                if (selectedRoom)
+                if (useNewUI)
                 {
 
                 }
@@ -267,46 +282,53 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
     private void ShowAllRooms()
     {
         GameObject ob = Instantiate(dialogRooms, transform);
-        selectedRoom = ob.GetComponent<DialogScroll>();
-        DialogOption  option =new DialogOption { hideButton = true, title = "Rooms", description = "Lobby : " + PhotonNetwork.CurrentLobby.Name};
+        lobbyDialog = ob.GetComponent<DialogScroll>();
+        DialogOption option = new DialogOption { hideButton = true, title = "Rooms", description = "Lobby : " + PhotonNetwork.CurrentLobby.Name };
         curRooms.ForEach(e =>
         {
             if (e.PlayerCount != e.MaxPlayers && !e.RemovedFromList)
             {
-                ButtonBaseRoom butt = (ButtonBaseRoom)selectedRoom.AddButton();
-                butt.SetText(e.Name);
-                butt.SetDescription("Total Players :" + e.PlayerCount);
-                butt.SetData(e);
+                AddRoomToLobby(e);
             }
         });
-        selectedRoom.Init(option, (object selected) =>
+        lobbyDialog.Init(option, (object selected) =>
         {
             Utils.Log(this, "Room clicked", ((RoomInfo)selected).Name);
             string roomName = ((RoomInfo)selected).Name;
             JoinRoom(roomName);
-            selectedRoom.Hide();
+            lobbyDialog.Hide();
+            lobbyDialog = null;
         }, (object ok) =>
         {
 
         }, (object cancel) =>
         {
-
+            lobbyDialog = null;
         }).Show();
-
+    }
+    private void AddRoomToLobby(RoomInfo e)
+    {
+        if (lobbyDialog != null)
+        {
+            ButtonBaseRoom butt = (ButtonBaseRoom)lobbyDialog.AddButton();
+            butt.SetText(e.Name);
+            butt.SetDescription("Wating for 1 player");
+            butt.SetData(e);
+        }
 
     }
     private void ShowSelectedRoom(string roomName)
     {
-        if (selectedRoom == null)
+        if (selectedRoomDialog == null)
         {
             GameObject ob = Instantiate(dialogRooms, transform);
-            selectedRoom = ob.GetComponent<DialogScroll>();
+            selectedRoomDialog = ob.GetComponent<DialogScroll>();
             foreach (Player newPlayer in PhotonNetwork.PlayerList)
             {
                 AddPlayerToRoom(newPlayer);
             }
-            DialogOption  option =new DialogOption { hideButton = !PhotonNetwork.IsMasterClient, title = roomName, description = "Players : " + PhotonNetwork.CurrentRoom.PlayerCount};
-            selectedRoom.Init(option, (object selected) =>
+            DialogOption option = new DialogOption { hideButton = !PhotonNetwork.IsMasterClient, title = roomName, description = "Players : " + PhotonNetwork.CurrentRoom.PlayerCount };
+            selectedRoomDialog.Init(option, (object selected) =>
             {
 
             }, (object ok) =>
@@ -314,29 +336,28 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
                 StartGame();
             }, (object cancel) =>
             {
-                selectedRoom.ClearAllButtons();
-                selectedRoom = null;
+                selectedRoomDialog.ClearAllButtons();
+                selectedRoomDialog = null;
                 LeaveRoom();
             }).Show();
         }
 
     }
-
     private void AddPlayerToRoom(Player newPlayer)
     {
-        if (selectedRoom != null)
+        if (selectedRoomDialog != null)
         {
-            ButtonBaseRoom butt = (ButtonBaseRoom)selectedRoom.AddButton();
+            ButtonBaseRoom butt = (ButtonBaseRoom)selectedRoomDialog.AddButton();
             butt.SetText(newPlayer.NickName);
-            butt.SetDescription(newPlayer.IsMasterClient ? "Hosted"+(newPlayer.IsLocal?"- Me":"") : "Guest" + (newPlayer.IsLocal?"- Me":""));
+            butt.SetDescription(newPlayer.IsMasterClient ? "Hosted" + (newPlayer.IsLocal ? "- Me" : "") : "Guest" + (newPlayer.IsLocal ? "- Me" : ""));
             butt.SetData(newPlayer);
         }
     }
     private void RemovePlayerFromRoom(Player newPlayer)
     {
-        if (selectedRoom != null)
+        if (selectedRoomDialog != null)
         {
-            selectedRoom.RemoveButtonByData(newPlayer);
+            selectedRoomDialog.RemoveButtonByData(newPlayer);
         }
     }
     public void ExitApplication()
