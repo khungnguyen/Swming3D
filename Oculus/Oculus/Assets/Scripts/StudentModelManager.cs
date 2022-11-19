@@ -1,0 +1,58 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class StudentModelManager : MonoBehaviour, IReceiver
+{
+    public static StudentModelManager instance;
+
+    private GameObject curStudent;
+    private GameObject preStudent;
+    void Awake()
+    {
+        instance = this;
+    }
+    void Start()
+    {
+        SpawDefaultStudent();
+    }
+    public void SpawDefaultStudent()
+    {
+       // if (DectectVR.instancne.isVR)
+        {
+            var point = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
+            curStudent = SpawnStudent("StudentFullter", point);
+        }
+    }
+    public GameObject SpawnStudent(string name, Transform point)
+    {
+        return SpawnManager.instance.SpawnStudent(name, point);
+    }
+    void OnEnable()
+    {
+        ConnectionManager.AddCallbackTarget(this);
+    }
+    void OnDisable()
+    {
+        ConnectionManager.RemoveCallBackTarget(this);
+    }
+
+    public void OnActionReceiver(EventCodes theEvent, object[] packages)
+    {
+        if (theEvent == EventCodes.ActionChangeModel)
+        {
+            preStudent = curStudent;
+            curStudent.gameObject.SetActive(false);
+            string model = (string)packages[0];
+            string pointName = (string)packages[1];
+            string animator = (string)packages[2];
+            string animation = (string)packages[3];
+            var point = SpawnPointManager.instance.GetStudentSpawnPointByName(pointName);
+            curStudent = SpawnStudent(model, point);
+            var controller = curStudent.GetComponent<StudentController>();
+            controller.SetAnimator(animator,true);
+            controller.TriggerAnimation(animation);
+
+        }
+    }
+}

@@ -29,6 +29,8 @@ public enum ExaminerAction
     ChangeLessonTitle,
     StopAnimation,
     ActivateExtension,
+    EnableBodyMoving,
+    ChangeModel,
 }
 public enum ActionPropertyType
 {
@@ -65,7 +67,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     public TMP_Text lessonName;
 
     public TMP_Text exerciseName;
-    private bool useNewUI = true;
+    private bool useNewUI = VRAppDebug.USE_NEW_MENU_DESIGN;
 
     private ExerciseUnit curExercise;
 
@@ -79,7 +81,6 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
      */
     void Start()
     {
-        useNewUI = VRAppDebug.USE_NEW_MENU_DESIGN;
         if (useNewUI)
         {
             Utils.DestroyTransformChildren(transform);
@@ -328,6 +329,19 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     bool active = actionProperty.property[1] == "True";
                     ActivateExtension(transformName, active);
                 }
+                else if (miniAction == ExaminerAction.EnableBodyMoving.ToString())
+                {
+                    bool active = actionProperty.property[0] == "True";
+                    ActivateBodyMoving(active);
+                }
+                else if (miniAction == ExaminerAction.ChangeModel.ToString())
+                {
+                    string modelName = actionProperty.property[0];
+                    string startPoint = actionProperty.property[1];
+                    string animator = actionProperty.property[2];
+                    string animation = actionProperty.property[3];
+                    ChangeModel(modelName, startPoint, animation, animation);
+                }
                 // End No Use actions
 
             }
@@ -491,4 +505,20 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         packages[1] = active;
         ConnectionManager.instance.SendAction(EventCodes.ActionActivateExtension, packages);
     }
+    private void ActivateBodyMoving(bool active)
+    {
+        object[] packages = new object[1];
+        packages[0] = active;
+        ConnectionManager.instance.SendAction(EventCodes.ActionBodyMoving, packages);
+    }
+    private void ChangeModel(string model, string pointName, string animator, string animation)
+    {
+        object[] packages = new object[4];
+        packages[0] = model;
+        packages[1] = pointName;
+        packages[2] = animator;
+        packages[3] = animation;
+        ConnectionManager.instance.SendAction(EventCodes.ActionChangeModel, packages);
+    }
+
 }

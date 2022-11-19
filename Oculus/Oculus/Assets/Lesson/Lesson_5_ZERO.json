@@ -1,7 +1,7 @@
 {
   "Exercise": "TIME 00-10 Minutes Exercise 3 (ABTO)",
   "AnimatorController": "Case_Five",
-  "startPointName": "Lesson_1_Ex_All_Pos",
+  "startPointName": "ExerciseStarStarfishBackStart",
   "startAction":"StartAction",
   "Buttons": [
     {
@@ -44,6 +44,10 @@
     {
       "name": "StartAction",
       "action": [
+        {
+          "name": "ActivateExtension",
+          "property": ["BackFloat", "True"]
+        }
       ],
       "showDisplayOrder": 0
     },
@@ -71,6 +75,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["SlideIn"]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": ["DelayAfterAnim"]
         }
       ],
       "showDisplayOrder": 3
@@ -79,12 +87,8 @@
       "name": "ExecuteBubbleNose",
       "action": [
         {
-          "name": "TriggerAnimation",
-          "property": ["BubbleNoseIdle"]
-        },
-        {
-          "name": "CorrectTransform",
-          "property": ["StarfishFloatFrontPoint"]
+          "name": "ChangeModel",
+          "property": ["StudentBubbleNose","StarfishFloatFrontPoint","Case_Five_v2","Animation"]
         }
       ],
       "showDisplayOrder": 4

@@ -1,7 +1,7 @@
 {
   "Exercise": "TIME 00-10 Minutes Exercise 3 (25 meters)",
   "AnimatorController": "Case_Four",
-  "startPointName": "Lesson_1_Ex_All_Pos",
+  "startPointName": "ExerciseStarStarfishBackStart",
   "startAction":"StartAction",
   "Buttons": [
     {
@@ -75,6 +75,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["SlideIn"]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": ["DelayAfterAnim"]
         }
       ],
       "showDisplayOrder": 3
@@ -159,7 +163,7 @@
         "value": true
       },
       "startPointName": "",
-      "startController": "Case_Four",
+      "startController": "",
       "property": []
     },
     {

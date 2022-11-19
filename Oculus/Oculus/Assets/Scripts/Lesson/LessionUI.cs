@@ -12,7 +12,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
     public Transform scrollContent;
     public Transform dialogParent;
 
-    private bool useNewUI = true;
+    private bool useNewUI = VRAppDebug.USE_NEW_MENU_DESIGN;
     enum Action
     {
         SelectGroup,
@@ -45,7 +45,6 @@ public class LessionUI : MonoBehaviour, IButtonAction
     // Start is called before the first frame update
     void Start()
     {
-        useNewUI = VRAppDebug.USE_NEW_MENU_DESIGN;
         if (useNewUI)
         {
             Utils.DestroyTransformChildren(transform);

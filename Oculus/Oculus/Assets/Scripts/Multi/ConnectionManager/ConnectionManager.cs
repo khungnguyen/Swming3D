@@ -23,7 +23,10 @@ public enum EventCodes : byte
     ActionResetModel,
     ActionStopAnimation,
 
-    ActionActivateExtension
+    ActionActivateExtension,
+    ActionBodyMoving,
+    ActionChangeModel,
+    
 }
 public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
 {

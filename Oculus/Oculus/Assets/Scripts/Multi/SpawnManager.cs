@@ -25,7 +25,7 @@ public class SpawnManager : MonoBehaviour
         if (PhotonNetwork.IsConnected)
         {
             SpawnPlayers();
-            
+
         }
     }
     /**
@@ -33,22 +33,29 @@ public class SpawnManager : MonoBehaviour
     */
     public void SpawnPlayers()
     {
-        if(DectectVR.instancne.isVR)
+        var resource = ResourceManager.instance;
+        if (DectectVR.instancne.isVR)
         {
             Transform point = SpawnPointManager.instance.GetXRPlayerSpawnPoint();
-            player = PhotonNetwork.Instantiate(convertPrefabPath(XRPlayerGO), point.position, point.rotation);
+            player = PhotonNetwork.Instantiate(ConvertPrefabPath(resource.GetCoachGameObject()), point.position, point.rotation);
 
             point = SpawnPointManager.instance.GetStudentSpawnPoint();
-            PhotonNetwork.Instantiate(convertPrefabPath(studentGO), point.transform.position, point.transform.rotation);
+            SpawnStudent("StudentFullter", point);
         }
         else
         {
             Transform point = SpawnPointManager.instance.GetDesktopPlayerSpawnPoint();
-            player = PhotonNetwork.Instantiate(convertPrefabPath(DesktopPlayerGO), point.position, point.rotation);
+            player = PhotonNetwork.Instantiate(ConvertPrefabPath(resource.GetExaminerGameObject()), point.position, point.rotation);
         }
-    
+
     }
-   private string convertPrefabPath(GameObject gameObject)
+    public GameObject SpawnStudent(string model, Transform refer)
+    {
+        var resource = ResourceManager.instance;
+        return PhotonNetwork.Instantiate(ConvertPrefabPath(resource.GetStudentModelByName(model)), refer.transform.position, refer.transform.rotation);
+
+    }
+    private string ConvertPrefabPath(GameObject gameObject)
     {
         return MULTI_PREFAB_PATH + "/" + gameObject.name;
     }

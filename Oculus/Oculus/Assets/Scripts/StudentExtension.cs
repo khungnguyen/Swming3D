@@ -6,11 +6,9 @@ using UnityEngine;
 public class StudentExtension : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField]
-    private KickBoardController kickBoardController;
+    public KickBoardController kickBoardController;
 
-    [SerializeField]
-    private List<Transform> extensionTransforms;
+    public List<Transform> extensionTransforms;
 
     enum Extension
     {

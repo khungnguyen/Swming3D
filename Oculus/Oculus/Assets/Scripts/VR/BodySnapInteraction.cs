@@ -8,13 +8,13 @@ public class BodySnapInteraction : SnapInteraction
 {
     private bool onSelect = false;
 
-    public PhotonTransformView kickBoardPhotonView;
+    private PhotonTransformView kickBoardPhotonView;
 
     public Transform wholeBody;
 
     public Transform kickBoard;
 
-    public Transform newParentOfKickBoard;
+    private Transform newParentOfKickBoard;
 
     private Transform curentKicboardParent;
 
@@ -25,6 +25,8 @@ public class BodySnapInteraction : SnapInteraction
             gameObject.SetActive(false);
         }
         base.Awake();
+        kickBoardPhotonView = GetComponent<PhotonTransformView>();
+        newParentOfKickBoard = wholeBody;
     }
     void Start()
     {

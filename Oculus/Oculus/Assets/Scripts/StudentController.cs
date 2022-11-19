@@ -24,7 +24,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         public Vector3 position;
         public Quaternion rotation;
     }
+    // public bool useF
     // Start is called before the first frame update
+
+    public static bool firstTime = false;
     void Start()
     {
         if (VRAppDebug.USE_DEBUG_VR_SINGLE_PREVIEW)
@@ -33,15 +36,24 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         }
         else
         {
-            var starTransfrom = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
-            SetAnimator("Case_One");
-            transform.SetPositionAndRotation(starTransfrom.position, starTransfrom.rotation);
-        }
-        HideAllExtension();
+            if (!firstTime)
+            {
+                // var starTransfrom = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
+                // SetAnimator("Case_One");
+                // transform.SetPositionAndRotation(starTransfrom.position, starTransfrom.rotation);
+                // firstTime = true;
+                // HideAllExtension();
+            }
 
+        }
     }
     private bool delayActiveInteraction = false;
     private bool delayInactiveInteraction = false;
+
+    public void RepositionNexAnim(string name)
+    {
+        CorrectTransform(name);
+    }
     public void NotifityEndAnimationState(AnimationEvent e)
     {
 
@@ -162,7 +174,11 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 Debug.Log(TAG + "ActionActivateExtension");
                 string transformName = (string)packages[0];
                 bool active = (bool)packages[1];
-                ActivateExtension(transformName,active);
+                ActivateExtension(transformName, active);
+                break;
+            case EventCodes.ActionBodyMoving:
+                bool enable = (bool)packages[0];
+                ActivateBodyMoving(enable);
                 break;
 
         }
@@ -172,7 +188,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         yield return new WaitForSeconds(second);
         animator.StopPlayback();
     }
-    private void SetAnimator(string animatorName, bool force = false)
+    public void SetAnimator(string animatorName, bool force = false)
     {
         if (animatorName != null && animatorName.Length > 0 || force)
         {
@@ -209,8 +225,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     {
         ConnectionManager.RemoveCallBackTarget(this);
     }
-    private void
-    TriggerAnimation(string trigger)
+    public void TriggerAnimation(string trigger)
     {
         if (trigger != null && trigger.Length > 0)
         {
@@ -224,16 +239,12 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     {
         string[] extension = ExerciseManager.instance.exercises.extension;
         studentExtensions.UpdateExtensions(extension, trigger, lastTrigger);
-
-        if (trigger == "LoseControl")
-        {
-            bodyMovingCube.gameObject.SetActive(true);
-        }
-        else
-        {
-            bodyMovingCube.gameObject.SetActive(false);
-        }
         lastTrigger = trigger;
+    }
+
+    private void ActivateBodyMoving(bool enable)
+    {
+        bodyMovingCube.gameObject.SetActive(enable);
     }
     private void SettupStudent(int lesson)
     {
@@ -243,14 +254,14 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     private void HideAllExtension()
     {
         studentExtensions.HideAllExtension();
-        
+
     }
     private void ReActivate()
     {
         transform.gameObject.SetActive(false);
         transform.gameObject.SetActive(true);
     }
-    private void CorrectTransform(string name)
+    public void CorrectTransform(string name)
     {
         Transform init = SpawnPointManager.instance.GetStudentSpawnPointByName(name);
         if (init != null)
@@ -269,8 +280,9 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
             }
         }
     }
-    private void ActivateExtension(string transformName, bool active) {
-        studentExtensions.ActivateExtension(transformName,active);
+    private void ActivateExtension(string transformName, bool active)
+    {
+        studentExtensions.ActivateExtension(transformName, active);
     }
     // private IEnumerator StopAnimation()
     // {

@@ -345,6 +345,10 @@
           "property": ["LoseControl"]
         },
         {
+          "name": "EnableBodyMoving",
+          "property": ["True"]
+        },
+        {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
         }
@@ -354,6 +358,10 @@
     {
       "name": "PlayCorrectAnimSwimOrWalkBackAndFinish",
       "action": [
+        {
+          "name": "EnableBodyMoving",
+          "property": ["False"]
+        },
         {
           "name": "ChangeAnimController",
           "property": ["RightController"]

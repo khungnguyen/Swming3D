@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Utils
+public static class Utils
 {
     public static bool IsPointerOverUI(string tag)
     {
@@ -31,7 +31,7 @@ public class Utils
         }
         if (level == LogLevel.Debug)
         {
-            Debug.Log("#[" + tag+ "] " + message);
+            Debug.Log("#[" + tag + "] " + message);
         }
         else if (level == LogLevel.Error)
         {
@@ -66,13 +66,94 @@ public class Utils
         }
 
     }
-    public static T String2Enum<T>(string t) {
-         return  (T)System.Enum.Parse( typeof(T), t );
+    public static T String2Enum<T>(string t)
+    {
+        return (T)System.Enum.Parse(typeof(T), t);
     }
-    public static void DestroyTransformChildren(Transform transform) {
+    public static void DestroyTransformChildren(Transform transform)
+    {
         for (var i = transform.childCount - 1; i >= 0; i--)
         {
             Transform.Destroy(transform.GetChild(i).gameObject);
         }
+    }
+    public static T CopyComponent<T>(T original, GameObject destination) where T : Component
+    {
+        System.Type type = original.GetType();
+        Component copy = destination.AddComponent(type);
+        System.Reflection.FieldInfo[] fields = type.GetFields();
+        foreach (System.Reflection.FieldInfo field in fields)
+        {
+            field.SetValue(copy, field.GetValue(original));
+        }
+        return copy as T;
+    }
+    public static T CopyComponentV2<T>(T original, GameObject destination) where T : Component
+    {
+        System.Type type = original.GetType();
+        var dst = destination.GetComponent(type) as T;
+        if (!dst) dst = destination.AddComponent(type) as T;
+        var fields = type.GetFields();
+        foreach (var field in fields)
+        {
+            if (field.IsStatic) continue;
+            field.SetValue(dst, field.GetValue(original));
+        }
+        var props = type.GetProperties();
+        foreach (var prop in props)
+        {
+            if (!prop.CanWrite || prop.Name == "name") continue;
+            prop.SetValue(dst, prop.GetValue(original, null), null);
+        }
+        return dst as T;
+    }
+    public static Transform FindChild(Transform parent, string name, bool removeSpace = false)
+    {
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            var child = parent.GetChild(i);
+            var childName = child.name;
+            if (removeSpace)
+            {
+                childName = childName.Replace(" ", "");
+            }
+            if (childName.Contains(name))
+                return child;
+            var result = FindChild(child, name, removeSpace);
+            if (result != null)
+                return result;
+        }
+        return null;
+    }
+    public static Transform FindChildRecursive(this Transform parent, string name, bool removeSpace)
+    {
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            var child = parent.GetChild(i);
+            var childName = child.name;
+            if (removeSpace)
+            {
+                childName = childName.ReplaceAll(" ", "");
+            }
+            if (childName.Contains(name))
+            {
+
+                return child;
+            }
+
+
+            var result = child.FindChildRecursive(name, removeSpace);
+            if (result != null)
+                return result;
+        }
+        return null;
+    }
+    public static string ReplaceAll(this string input, string find, string replace)
+    {
+        while (input.Contains(find))
+        {
+            input = input.Replace(find, replace);
+        }
+        return input;
     }
 }
