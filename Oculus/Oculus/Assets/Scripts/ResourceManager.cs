@@ -33,6 +33,6 @@ public class ResourceManager : MonoBehaviour
         return examinerGameObject;
     }
     public GameObject GetCoachGameObject() {
-        return examinerGameObject;
+        return coachGameObject;
     }
 }

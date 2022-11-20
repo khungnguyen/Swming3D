@@ -27,7 +27,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     // public bool useF
     // Start is called before the first frame update
 
-    public static bool firstTime = false;
+    public bool firstTime = false;
     void Start()
     {
         if (VRAppDebug.USE_DEBUG_VR_SINGLE_PREVIEW)
@@ -36,15 +36,20 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         }
         else
         {
-            if (!firstTime)
-            {
-                // var starTransfrom = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
-                // SetAnimator("Case_One");
-                // transform.SetPositionAndRotation(starTransfrom.position, starTransfrom.rotation);
-                // firstTime = true;
-                // HideAllExtension();
-            }
 
+            InitFirstPose();
+        }
+    }
+    void InitFirstPose()
+    {
+        Utils.LogError(this,"Init first pose");
+        // if (!firstTime)
+        {
+            var starTransfrom = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
+            SetAnimator("Case_One",true);
+            transform.SetPositionAndRotation(starTransfrom.position, starTransfrom.rotation);
+            firstTime = true;
+            HideAllExtension();
         }
     }
     private bool delayActiveInteraction = false;

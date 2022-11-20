@@ -38,9 +38,6 @@ public class SpawnManager : MonoBehaviour
         {
             Transform point = SpawnPointManager.instance.GetXRPlayerSpawnPoint();
             player = PhotonNetwork.Instantiate(ConvertPrefabPath(resource.GetCoachGameObject()), point.position, point.rotation);
-
-            point = SpawnPointManager.instance.GetStudentSpawnPoint();
-            SpawnStudent("StudentFullter", point);
         }
         else
         {

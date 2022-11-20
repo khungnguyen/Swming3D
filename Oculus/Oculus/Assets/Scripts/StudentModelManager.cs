@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 public class StudentModelManager : MonoBehaviour, IReceiver
@@ -14,11 +15,16 @@ public class StudentModelManager : MonoBehaviour, IReceiver
     }
     void Start()
     {
-        SpawDefaultStudent();
+        if (PhotonNetwork.IsConnected)
+        {
+            SpawDefaultStudent();
+
+        }
+
     }
     public void SpawDefaultStudent()
     {
-       // if (DectectVR.instancne.isVR)
+        if (DectectVR.instancne.isVR)
         {
             var point = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
             curStudent = SpawnStudent("StudentFullter", point);
@@ -50,7 +56,7 @@ public class StudentModelManager : MonoBehaviour, IReceiver
             var point = SpawnPointManager.instance.GetStudentSpawnPointByName(pointName);
             curStudent = SpawnStudent(model, point);
             var controller = curStudent.GetComponent<StudentController>();
-            controller.SetAnimator(animator,true);
+            controller.SetAnimator(animator, true);
             controller.TriggerAnimation(animation);
 
         }
