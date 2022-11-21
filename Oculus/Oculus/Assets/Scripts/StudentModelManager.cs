@@ -24,10 +24,11 @@ public class StudentModelManager : MonoBehaviour, IReceiver
     }
     public void SpawDefaultStudent()
     {
-        if (DectectVR.instancne.isVR)
+        if (DectectVR.instancne.isVR || VRAppDebug.USE_DEBUG_NO_VR_SINGLE_PREVIEW)
         {
             var point = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
             curStudent = SpawnStudent("StudentFullter", point);
+            curStudent.GetComponent<StudentController>().InitFirstPose();
         }
     }
     public GameObject SpawnStudent(string name, Transform point)
@@ -48,7 +49,7 @@ public class StudentModelManager : MonoBehaviour, IReceiver
         if (theEvent == EventCodes.ActionChangeModel)
         {
             preStudent = curStudent;
-            curStudent.gameObject.SetActive(false);
+            curStudent.SetActive(false);
             string model = (string)packages[0];
             string pointName = (string)packages[1];
             string animator = (string)packages[2];
@@ -58,6 +59,7 @@ public class StudentModelManager : MonoBehaviour, IReceiver
             var controller = curStudent.GetComponent<StudentController>();
             controller.SetAnimator(animator, true);
             controller.TriggerAnimation(animation);
+            Destroy(preStudent);
 
         }
     }

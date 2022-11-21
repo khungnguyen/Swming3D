@@ -38,7 +38,7 @@ public class DectectVR : MonoBehaviour
         }
         if (VRAppDebug.USE_AUTO_DETECT_VR)
         {
-            forceVR = true;
+            forceVR = false;
             noVR = false;
         }
         else

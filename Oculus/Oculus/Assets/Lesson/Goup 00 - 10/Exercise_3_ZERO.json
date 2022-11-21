@@ -15,7 +15,7 @@
       "displayOrder": 2
     },
     {
-      "name": "Starfish Front Float",
+      "name": "Starfish Front Float Incorrect",
       "action": "ExecuteStarfishWrong",
       "displayOrder": 3
     },
@@ -28,11 +28,6 @@
       "name": "Execute Properly",
       "action": "ExecuteStarfish",
       "displayOrder": 5
-    },
-    {
-      "name": "Back To Exercise",
-      "action": "BackToExercise",
-      "displayOrder": 400
     },
     {
       "name": "Back To Lesson List",
@@ -57,6 +52,10 @@
         {
           "name": "GoToExercise",
           "property": ["0"]
+        },
+        {
+          "name": "EnableBodyMoving",
+          "property": ["True"]
         },
         {
           "name": "EnableInteractable",

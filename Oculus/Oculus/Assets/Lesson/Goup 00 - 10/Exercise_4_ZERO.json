@@ -20,21 +20,6 @@
       "displayOrder": 3
     },
     {
-      "name": "Allow Coach To Correct",
-      "action": "AllowCoachToCorrect_Starfish",
-      "displayOrder": 4
-    },
-    {
-      "name": "Execute Properly",
-      "action": "ExecuteStarfish",
-      "displayOrder": 5
-    },
-    {
-      "name": "Back To Exercise",
-      "action": "BackToExercise",
-      "displayOrder": 400
-    },
-    {
       "name": "Back To Lesson List",
       "action": "GoToLessonMenu",
       "displayOrder": 400
@@ -88,52 +73,10 @@
       "action": [
         {
           "name": "ChangeModel",
-          "property": ["StudentBubbleNose","StarfishFloatFrontPoint","Case_Five_v2","Animation"]
-        }
-      ],
-      "showDisplayOrder": 4
-    },
-    {
-      "name": "AllowCoachToCorrect_Starfish",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": ["StopAnim"]
-        },
-        {
-          "name": "EnableInteractable",
-          "property": ["DelayAfterAnim"]
-        }
-      ],
-      "showDisplayOrder": 5
-    },
-    {
-      "name": "ExecuteStarfish",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": ["Starfish"]
+          "property": ["StudentBubbleNose","BubbleNosePoint","Case_Five_v2",""]
         }
       ],
       "showDisplayOrder": 400
-    },
-    {
-      "name": "BackToExercise",
-      "action": [
-        {
-          "name": "DisableInteractable",
-          "property": [""]
-        },
-        {
-          "name": "SettingUpLesson",
-          "property": [""]
-        },
-        {
-          "name": "GoToExercise",
-          "property": ["0"]
-        }
-      ],
-      "showDisplayOrder": 1
     },
     {
       "name": "GoToLessonMenu",
@@ -145,6 +88,10 @@
         {
           "name": "DisableInteractable",
           "property": [""]
+        },
+        {
+          "name": "ChangeModel",
+          "property": ["StudentFullter","ExerciseStarStarfishBackStart","Case_Five","Animation"]
         }
       ],
       "showDisplayOrder": 0

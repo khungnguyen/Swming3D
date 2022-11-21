@@ -14,19 +14,24 @@
       "displayOrder": 2
     },
     {
-      "name": "Execute Properly",
-      "action": "ExecuteProperly",
+      "name": "Execute Incorrect Starfish",
+      "action": "ExecuteIncorrect",
       "displayOrder": 3
     },
     {
-      "name": "Back To Exercise",
-      "action": "BackToExercise",
+      "name": "Allow Coach To Correct",
+      "action": "AllowCoachToCorrectStarfish",
       "displayOrder": 4
+    },
+    {
+      "name": "Execute Properly",
+      "action": "ExecuteCorrect",
+      "displayOrder": 5
     },
     {
       "name": "Back To Lesson List",
       "action": "GoToLessonMenu",
-      "displayOrder": 4
+      "displayOrder": 400
     }
   ],
   "Actions": [
@@ -40,47 +45,65 @@
         {
           "name": "ActivateExtension",
           "property": ["BackFloat", "True"]
-        }
+        },
+        {
+          "name": "EnableBodyMoving",
+          "property": ["True"]
+       },
+       {
+          "name": "EnableInteractable",
+          "property": ["DelayAfterAnim"]
+       }
       ],
-      "showDisplayOrder": 2
+      "showDisplayOrder": 3
     },
     {
       "name": "AllowCoachToCorrect",
+      "action": [
+       {
+          "name": "EnableBodyMoving",
+          "property": ["True"]
+       },
+       {
+          "name": "EnableInteractable",
+          "property": [""]
+       }
+      ],
+      "showDisplayOrder": 3
+    },
+    {
+      "name": "ExecuteIncorrect",
+      "action": [
+       {
+          "name": "TriggerAnimation",
+          "property": ["StarfishIncorrect"]
+       }
+      ],
+      "showDisplayOrder": 4
+    },
+    {
+      "name": "AllowCoachToCorrectStarfish",
       "action": [
         {
           "name": "TriggerAnimation",
           "property": ["StopAnim"]
         },
-        {
+       {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
-        }
+       }
       ],
-      "showDisplayOrder": 3
-    },
+      "showDisplayOrder": 5
+    }, 
     {
-      "name": "ExecuteProperly",
+      "name": "ExecuteCorrect",
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": ["StafishCorrect"]
+          "property": ["StarfishCorrect"]
         }
       ],
-      "showDisplayOrder": 4
-    },
-    {
-      "name": "BackToExercise",
-      "action": [
-        {
-          "name": "DisableInteractable",
-          "property": [""]
-        },
-        {
-          "name": "SettingUpLesson",
-          "property": [""]
-        }
-      ],
-      "showDisplayOrder": 1
+      "showDisplayOrder": 400
     },
     {
       "name": "GoToLessonMenu",

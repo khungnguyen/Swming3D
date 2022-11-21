@@ -37,10 +37,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         else
         {
 
-            InitFirstPose();
+            //InitFirstPose();
         }
     }
-    void InitFirstPose()
+    public void InitFirstPose()
     {
         Utils.LogError(this,"Init first pose");
         // if (!firstTime)

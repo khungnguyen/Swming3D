@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.40748647, g: 0.40707633, b: 0.41267133, a: 1}
+  m_IndirectSpecularColor: {r: 0.40748248, g: 0.40707508, b: 0.41266623, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2653,7 +2653,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1041310787}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.54, y: 0.084, z: 0.366}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5064,6 +5064,16 @@ MonoBehaviour:
         startAction: 
         extension: []
     - jsonData: {fileID: 4900000, guid: 17ee8124067b357418c38065ae4c5554, type: 3}
+      lesson:
+        ExerciseList: []
+        Exercise: 
+        Buttons: []
+        Actions: []
+        AnimatorController: 
+        startPointName: 
+        startAction: 
+        extension: []
+    - jsonData: {fileID: 4900000, guid: c9e51712f7bcb934bb52a7e378ad7873, type: 3}
       lesson:
         ExerciseList: []
         Exercise: 
