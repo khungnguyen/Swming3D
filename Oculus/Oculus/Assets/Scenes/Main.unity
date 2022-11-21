@@ -1108,12 +1108,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 805625435}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &401483798 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 87443675b31f32d4c9ffd4477db8c72e,
-    type: 3}
-  m_PrefabInstance: {fileID: 853815969}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &433542655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2427,82 +2421,6 @@ PrefabInstance:
     - {fileID: 7440151648502805998, guid: e05f72fb198e27e44b108edd93f0d7ad, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e05f72fb198e27e44b108edd93f0d7ad, type: 3}
---- !u!1001 &853815969
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 2
-    m_TransformParent: {fileID: 6003338360147817264}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 87443675b31f32d4c9ffd4477db8c72e,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 87443675b31f32d4c9ffd4477db8c72e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 87443675b31f32d4c9ffd4477db8c72e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 87443675b31f32d4c9ffd4477db8c72e,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 87443675b31f32d4c9ffd4477db8c72e,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 87443675b31f32d4c9ffd4477db8c72e,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 87443675b31f32d4c9ffd4477db8c72e,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 87443675b31f32d4c9ffd4477db8c72e,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 87443675b31f32d4c9ffd4477db8c72e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 87443675b31f32d4c9ffd4477db8c72e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 87443675b31f32d4c9ffd4477db8c72e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 87443675b31f32d4c9ffd4477db8c72e,
-        type: 3}
-      propertyPath: m_Name
-      value: Doggy Paddle in Place Correct
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 87443675b31f32d4c9ffd4477db8c72e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_AddedGameObjects: []
-  m_SourcePrefab: {fileID: 100100000, guid: 87443675b31f32d4c9ffd4477db8c72e, type: 3}
 --- !u!1 &911637453
 GameObject:
   m_ObjectHideFlags: 0
@@ -12816,8 +12734,7 @@ Transform:
   m_LocalPosition: {x: 10.54, y: -0.007, z: -0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 401483798}
+  m_Children: []
   m_Father: {fileID: 1705272545}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}

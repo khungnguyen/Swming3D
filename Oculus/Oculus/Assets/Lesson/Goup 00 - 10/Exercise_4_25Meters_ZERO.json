@@ -1,5 +1,5 @@
 {
-  "Exercise": "TIME 00-10 Minutes Exercise 3 (ABTO)",
+  "Exercise": "TIME 00-10 Minutes Exercise 4 (25 Meters)",
   "AnimatorController": "Case_Seven",
   "startPointName": "StandinWaterIdle",
   "startAction":"StartAction",
@@ -10,8 +10,8 @@
       "displayOrder": 1
     },
     {
-      "name": "Execute Properly",
-      "action": "SlideIn",
+      "name": "Bubble Nose Hand Straigth",
+      "action": "BubbleNoseHandStraight",
       "displayOrder": 2
     },
     {
@@ -29,6 +29,7 @@
     {
       "name": "StartAction",
       "action": [
+        
       ],
       "showDisplayOrder": 0
     },
@@ -40,6 +41,10 @@
           "property": ["0"]
         },
         {
+          "name": "EnableBodyMoving",
+          "property": ["True"]
+        },
+        {
           "name": "EnableInteractable",
           "property": [""]
         }
@@ -47,7 +52,7 @@
       "showDisplayOrder": 2
     },
     {
-      "name": "SlideIn",
+      "name": "BubbleNoseHandStraight",
       "action": [
         {
           "name": "GoToExercise",
