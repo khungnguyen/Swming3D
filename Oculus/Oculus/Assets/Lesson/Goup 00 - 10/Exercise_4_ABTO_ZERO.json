@@ -1,6 +1,6 @@
 {
   "Exercise": "TIME 00-10 Minutes Exercise 4 (ABTO)",
-  "AnimatorController": "Case_Four",
+  "AnimatorController": "Case_Six",
   "startPointName": "ExerciseStarStarfishBackStart",
   "startAction":"StartAction",
   "Buttons": [
@@ -21,13 +21,18 @@
     },
     {
       "name": "Allow Coach To Correct",
-      "action": "AllowCoachToCorrect_Starfish",
+      "action": "AllowCoachToCorrect_DoggyPaddle",
       "displayOrder": 4
     },
     {
       "name": "Execute Properly",
-      "action": "ExecuteStarfish",
+      "action": "ExecuteDoggyPaddle",
       "displayOrder": 5
+    },
+    {
+      "name": "Swim 5 Meters And Back",
+      "action": "ExecuteDoggyPaddle5Meters",
+      "displayOrder": 6
     },
     {
       "name": "Back To Lesson List",
@@ -83,21 +88,21 @@
       "showDisplayOrder": 3
     },
     {
-      "name": "ExecuteStarfishWrong",
+      "name": "ExecuteDoggyPaddleIncorrect",
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": ["StarfishWrong"]
+          "property": ["DoggyPaddleIncorrect"]
         },
         {
           "name": "CorrectTransform",
-          "property": ["StarfishFloatFrontPoint"]
+          "property": ["DoggyPaddleinPlace"]
         }
       ],
       "showDisplayOrder": 4
     },
     {
-      "name": "AllowCoachToCorrect_Starfish",
+      "name": "AllowCoachToCorrect_DoggyPaddle",
       "action": [
         {
           "name": "TriggerAnimation",
@@ -111,32 +116,23 @@
       "showDisplayOrder": 5
     },
     {
-      "name": "ExecuteStarfish",
+      "name": "ExecuteDoggyPaddle",
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": ["Starfish"]
+          "property": ["DoggyPaddleCorrect"]
+        }
+      ],
+      "showDisplayOrder": 6
+    },{
+      "name": "ExecuteDoggyPaddle5Meters",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["SwimAndBack"]
         }
       ],
       "showDisplayOrder": 400
-    },
-    {
-      "name": "BackToExercise",
-      "action": [
-        {
-          "name": "DisableInteractable",
-          "property": [""]
-        },
-        {
-          "name": "SettingUpLesson",
-          "property": [""]
-        },
-        {
-          "name": "GoToExercise",
-          "property": ["0"]
-        }
-      ],
-      "showDisplayOrder": 1
     },
     {
       "name": "GoToLessonMenu",
@@ -166,7 +162,7 @@
       "property": []
     },
     {
-      "lessonName": "Starfish Front Float",
+      "lessonName": "Doggy Paddle",
       "starAnimation": "",
       "conditionTrigger": {
         "name": "",
