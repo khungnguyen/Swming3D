@@ -62,7 +62,6 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
             PhotonNetwork.NickName = "Guest" + Random.Range(1, 100);
             ActivateMenu(MENU.All, false, MENU.MainMenu);
             ActivateMenu(MENU.Loading, true);
-
         }
     }
 
