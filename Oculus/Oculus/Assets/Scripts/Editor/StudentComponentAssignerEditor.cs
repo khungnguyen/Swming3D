@@ -156,10 +156,7 @@ public class StudentComponentAssignerEditor : Editor
 
         SetupComponent(studentComp, moving);
         var body = moving.GetType().GetField("wholeBody");
-        if (body != null)
-        {
-            body.SetValue(moving, studentComp.transform);
-        }
+        body?.SetValue(moving, studentComp.transform);
     }
     private void SetupComponent(StudentComponentAssigner comp, Component target)
     {
@@ -182,7 +179,16 @@ public class StudentComponentAssignerEditor : Editor
                 if (value != null)
                 {
                     var transformName = ((Transform)value).name;
-                    var transform = comp.transform.FindChildRecursive(transformName, true);
+                    Transform transform = null;
+                    if (((Transform)value).name == comp.sourceGameObject.name) // root transform of target
+                    {
+                        transform = comp.transform;
+                    }
+                    else
+                    {
+                        transform = comp.transform.FindChildRecursive(transformName, true);
+                    }
+
                     if (transform != null)
                     {
                         field.SetValue(target, transform);

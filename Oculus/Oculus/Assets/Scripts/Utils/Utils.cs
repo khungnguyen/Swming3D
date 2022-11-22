@@ -171,9 +171,7 @@ public static class Utils
     {
         string t = type.ToString();
         string sub = t[(t.IndexOf("[") + 1)..t.IndexOf("]")].Trim();
-        Log("sub", sub);
         var newType = FindObjectsOfTypeByName(sub);
-        Log("GetList", newType);
         return (IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(newType));
     }
     public static Type FindObjectsOfTypeByName(string aClassName)
