@@ -1,4 +1,6 @@
 
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -24,9 +26,18 @@ public static class Utils
     {
 
         string message = "";
+        if (agr != null) { }
         for (int i = 0; i < agr.Length; i++)
         {
-            message += agr[i].ToString();
+            if (agr[i] != null)
+            {
+                message += agr[i].ToString();
+
+            }
+            else
+            {
+                message += "null";
+            }
             message += " ";
         }
         if (level == LogLevel.Debug)
@@ -155,5 +166,27 @@ public static class Utils
             input = input.Replace(find, replace);
         }
         return input;
+    }
+    public static IList GetList(Type type)
+    {
+        string t = type.ToString();
+        string sub = t[(t.IndexOf("[") + 1)..t.IndexOf("]")].Trim();
+        Log("sub", sub);
+        var newType = FindObjectsOfTypeByName(sub);
+        Log("GetList", newType);
+        return (IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(newType));
+    }
+    public static Type FindObjectsOfTypeByName(string aClassName)
+    {
+        Type textType = null;
+        string typeName = aClassName;
+        var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+        foreach (var assembly in assemblies)
+        {
+            textType = assembly.GetType(typeName);
+            if (textType != null)
+                break;
+        }
+        return textType;
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using Photon.Pun;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
@@ -54,6 +55,9 @@ public class StudentComponentAssignerEditor : Editor
                 Utils.CopyComponentV2(comp, studentComp.transform.gameObject);
             }
         }
+        // PhotonView photonView = studentComp.GetComponent<PhotonView>();
+        // photonView.ObservedComponents.Add(studentComp.GetComponent<PhotonTransformView>());
+        SetupComponent(studentComp, studentComp.GetComponent<PhotonView>());
     }
     private void SnapInteractionProperties(StudentComponentAssigner comp)
     {
@@ -68,7 +72,7 @@ public class StudentComponentAssignerEditor : Editor
                     if (inter.snapTo != null)
                     {
                         var transformName = inter.snapTo.name.ReplaceAll(" ", "");
-                        var foundChild = comp.body.FindChildRecursive(transformName, true);
+                        var foundChild = comp.humanoidBody.FindChildRecursive(transformName, true);
                         if (foundChild != null)
                         {
                             inter.snapTo = foundChild;
@@ -96,9 +100,9 @@ public class StudentComponentAssignerEditor : Editor
                 var twoBoneIKs = targetRig.GetComponentsInChildren<TwoBoneIKConstraint>();
                 foreach (var k in twoBoneIKs)
                 {
-                    var root = comp.body.FindChildRecursive(k.data.root.name, true);
-                    var mid = comp.body.FindChildRecursive(k.data.mid.name, true);
-                    var tip = comp.body.FindChildRecursive(k.data.tip.name, true);
+                    var root = comp.humanoidBody.FindChildRecursive(k.data.root.name, true);
+                    var mid = comp.humanoidBody.FindChildRecursive(k.data.mid.name, true);
+                    var tip = comp.humanoidBody.FindChildRecursive(k.data.tip.name, true);
                     if (root != null)
                     {
                         k.data.root = root;
@@ -133,12 +137,13 @@ public class StudentComponentAssignerEditor : Editor
     }
     private void SetUpBodyMoving(StudentComponentAssigner studentComp)
     {
-        var attachBody = studentComp.transform.FindChildRecursive("AttactCenterPoint");
+        const string attachPointName = "AttactCenterPoint";
+        var attachBody = studentComp.transform.FindChildRecursive(attachPointName);
         var moving = studentComp.GetComponentInChildren<BodySnapInteraction>(true);
         if (attachBody == null)
         {
             var attachParent = studentComp.transform.FindChildRecursive("Bip001Spine2", true);
-            var go = new GameObject("AttactCenterPoint");
+            var go = new GameObject(attachPointName);
             if (attachParent != null)
             {
                 //go.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
@@ -155,8 +160,6 @@ public class StudentComponentAssignerEditor : Editor
         {
             body.SetValue(moving, studentComp.transform);
         }
-
-
     }
     private void SetupComponent(StudentComponentAssigner comp, Component target)
     {
@@ -165,9 +168,11 @@ public class StudentComponentAssignerEditor : Editor
             Utils.LogError(this, "SetupComponent target is null");
             return;
         }
+
         var type = target.GetType();
         var fields = type.GetFields();
-        foreach (System.Reflection.FieldInfo field in fields)
+        // Utils.LogError(this, "SetupComponent ", type);
+        foreach (FieldInfo field in fields)
         {
             var fieldType = field.FieldType;
             var fieldName = field.Name;
@@ -195,59 +200,89 @@ public class StudentComponentAssignerEditor : Editor
                     var value = field.GetValue(target);
                     if (value != null)
                     {
-                        if (fieldType.ToString().Contains("System.Collections.Generic.List")
-                                            && fieldType.ToString().Contains("UnityEngine.Transform")
-                                            )
+                        if (fieldType.ToString().Contains("System.Collections.Generic.List"))
                         {
-                            var list = (List<Transform>)field.GetValue(target);
-                            List<Transform> replacelist = new();
-                            list.ForEach(e =>
+                            // Utils.LogError(this, "value", fieldName, value);
+                            var list = new List<Component>((IEnumerable<Component>)value);
+                            // Utils.LogError(this, "list", list);
+                            var replacement = Utils.GetList(fieldType);
+                            list.ForEach(component =>
                             {
-                                var c = comp.transform.FindChildRecursive(e.name, true);
-                                if (c != null)
+                                Transform foundComp = null;
+                                if (component.transform.name == comp.sourceGameObject.transform.name)
                                 {
-                                    replacelist.Add(c);
+                                    foundComp = comp.transform;
                                 }
-                            });
-                            field.SetValue(target, replacelist);
-                            continue;
-                        }
-                        var checkComp = value is Component;
-                        Component cp = null;
-                        if (checkComp)
-                        {
-                            var myTrans = ((Component)value).transform;
-                            var transName = myTrans.name;
-                            var insideTrans = comp.transform.FindChildRecursive(transName, true);
-                            if (insideTrans != null)
-                            {
-                                cp = insideTrans.GetComponent(fieldType);
-                            }
-                            else
-                            {
-                                cp = comp.gameObject.GetComponent(fieldType);
-                                if (cp == null)
+                                else
                                 {
-                                    var childrenCp = comp.gameObject.GetComponentsInChildren(fieldType, true);
-                                    if (childrenCp != null && childrenCp.Length > 0)
+                                    foundComp = comp.transform.FindChildRecursive(component.transform.name, true);
+                                }
+
+                                if (foundComp != null)
+                                {
+                                    var cp = foundComp.GetComponent(component.GetType());
+                                    if (cp != null)
                                     {
-                                        cp = childrenCp[0];
+                                        replacement.Add(cp);
+                                    }
+                                    else
+                                    {
+                                        Utils.LogError(this, "Couldn't find comp", component.transform.name, component.GetType());
+                                    }
+
+                                }
+                                else
+                                {
+                                    Utils.LogError(this, "Couldn't find", component.transform.name);
+                                }
+
+                            });
+                            if (replacement.Count > 0)
+                            {
+                                field.SetValue(target, replacement);
+
+                            }
+                        }
+                        else
+                        {
+                            var checkComp = value is Component;
+                            Component cp = null;
+                            if (checkComp)
+                            {
+                                var myTrans = ((Component)value).transform;
+                                var transName = myTrans.name;
+                                var insideTrans = comp.transform.FindChildRecursive(transName, true);
+                                if (insideTrans != null)
+                                {
+                                    cp = insideTrans.GetComponent(fieldType);
+                                }
+                                else
+                                {
+                                    cp = comp.gameObject.GetComponent(fieldType);
+                                    if (cp == null)
+                                    {
+                                        var childrenCp = comp.gameObject.GetComponentsInChildren(fieldType, true);
+                                        if (childrenCp != null && childrenCp.Length > 0)
+                                        {
+                                            cp = childrenCp[0];
+                                        }
                                     }
                                 }
+
                             }
 
+                            if (cp != null)
+                            {
+                                field.SetValue(target, cp);
+                            }
                         }
 
-                        if (cp != null)
-                        {
-                            field.SetValue(target, cp);
-                        }
                     }
 
                 }
                 catch (Exception e)
                 {
-                    Utils.LogError(this, "Filed", fieldName, "Type", fieldType, "in Component", type, "Doesn't suport");
+                    Utils.LogError(this, "Filed", fieldName, "Type", fieldType, "in Component", type, "Doesn't suport", e.ToString());
                 }
             }
 
