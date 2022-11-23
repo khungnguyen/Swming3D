@@ -20,14 +20,14 @@
       "displayOrder": 3
     },
     {
-      "name": "Submerge : Coach Puts The Ring On Bottom Of Pool",
+      "name": "Submerge : Coach Puts The Ring",
       "action": "CoachHandleTheRing",
       "displayOrder": 4
     },
     {
       "name": "Student Submerges The Ring",
       "action": "SubmergeTheRing",
-      "displayOrder": 400
+      "displayOrder": 5
     },
     {
       "name": "Back To Lesson List",
@@ -89,17 +89,18 @@
       "action": [
         {
           "name": "ChangeModel",
-          "property": ["StudeentSubmergeRing","StandinWaterIdle","Case_Seven_2",""]
+          "property": ["StudentSubmergeRing","StandinWaterIdle","Case_Seven_2",""]
         },
         {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
         }
       ],
-      "showDisplayOrder": 4
+      "showDisplayOrder": 5
     },{
       "name": "SubmergeTheRing",
       "action": [
+
         {
           "name": "TriggerAnimation",
           "property": ["GetTheRing"]

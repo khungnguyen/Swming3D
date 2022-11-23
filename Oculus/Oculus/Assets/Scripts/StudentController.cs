@@ -26,8 +26,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     }
     // public bool useF
     // Start is called before the first frame update
-
-    public bool firstTime = false;
+    void Awake() {
+        StudentModelManager.instance.OnStudentCreate(this);
+    }
+    public static bool firstTime = false;
     void Start()
     {
         if (VRAppDebug.USE_DEBUG_VR_SINGLE_PREVIEW)
@@ -37,13 +39,13 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         else
         {
 
-            //InitFirstPose();
+            InitFirstPose();
         }
     }
     public void InitFirstPose()
     {
         Utils.LogError(this,"Init first pose");
-        // if (!firstTime)
+         if (!firstTime)
         {
             var starTransfrom = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
             SetAnimator("Case_One",true);
@@ -185,6 +187,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 bool enable = (bool)packages[0];
                 ActivateBodyMoving(enable);
                 break;
+            case EventCodes.ActionChangeModel:
+                
+                break;
+            
 
         }
     }

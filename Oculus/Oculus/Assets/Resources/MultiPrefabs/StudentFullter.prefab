@@ -1354,7 +1354,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1129546531}
   - component: {fileID: 1129546532}
-  - component: {fileID: 812845764}
   m_Layer: 0
   m_Name: BackFloat2
   m_TagString: Untagged
@@ -1433,20 +1432,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0858174, y: -0.0064297915, z: -0.00000013411045}
     m_Extent: {x: 0.12784898, y: 0.11411502, z: 0.11567128}
   m_DirtyAABB: 0
---- !u!114 &812845764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1129546530}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db71bdfd838c83d4d91dcd6dd3098d22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 3673641395458516862}
-  keepUpdating: 1
 --- !u!1 &1190304366
 GameObject:
   m_ObjectHideFlags: 0
@@ -10439,7 +10424,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 257cba4879885034d83dd44536965a9b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 257cba4879885034d83dd44536965a9b,
         type: 3}
@@ -10815,7 +10800,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 305235ab4c25cb342ae8f6ab2a302529, type: 2}
+      objectReference: {fileID: 9100000, guid: b1390db07aecb554f832c31dacee357e, type: 2}
     - target: {fileID: 5866666021909216657, guid: 257cba4879885034d83dd44536965a9b,
         type: 3}
       propertyPath: m_WarningMessage
@@ -11150,13 +11135,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RigLayers:
-  - m_Rig: {fileID: 1033683124452624123}
+  - m_Rig: {fileID: 0}
     m_Active: 1
-  - m_Rig: {fileID: 1033683124521617935}
+  - m_Rig: {fileID: 0}
     m_Active: 1
-  - m_Rig: {fileID: 8111006639553675548}
+  - m_Rig: {fileID: 0}
     m_Active: 1
-  - m_Rig: {fileID: 8888047085427524679}
+  - m_Rig: {fileID: 0}
     m_Active: 1
   m_Effectors: []
 --- !u!114 &3924149697960634375
@@ -11261,7 +11246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObservedComponentsFoldoutOpen: 1
   Group: 0
-  prefixField: -1
+  prefixField: 0
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 0

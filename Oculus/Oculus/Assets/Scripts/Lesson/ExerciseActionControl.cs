@@ -340,7 +340,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     string startPoint = actionProperty.property[1];
                     string animator = actionProperty.property[2];
                     string animation = actionProperty.property[3];
-                    ChangeModel(modelName, startPoint, animation, animation);
+                    ChangeModel(modelName, startPoint, animator, animation);
                 }
                 // End No Use actions
 
