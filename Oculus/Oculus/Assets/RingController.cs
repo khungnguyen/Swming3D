@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 public class RingController : MonoBehaviour
@@ -17,22 +18,31 @@ public class RingController : MonoBehaviour
 
     public void OnUnselect()
     {
-        if(onCollision) {
-            transform.SetPositionAndRotation(targetSnapTo.position,targetSnapTo.rotation);
-            actualRing.gameObject.SetActive(true);
-            signToPutRing.gameObject.SetActive(false);
-            gameObject.SetActive(false);
+        if (onCollision)
+        {
+            gameObject.GetPhotonView().RPC("PutTheRing",RpcTarget.All);
         }
     }
+    [PunRPC]
+    public void PutTheRing()
+    {
+        transform.SetPositionAndRotation(targetSnapTo.position, targetSnapTo.rotation);
+        actualRing.gameObject.SetActive(true);
+        signToPutRing.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+    }
 
-    void CollisionDectectEvent(Transform t,bool onEnter) {
-        Utils.Log(this, "Collider",t.name,onEnter);
+    void CollisionDectectEvent(Transform t, bool onEnter)
+    {
+        Utils.Log(this, "Collider", t.name, onEnter);
         onCollision = onEnter;
     }
-    void OnEnable() {
-        collisionDetecter.listener+=CollisionDectectEvent;
+    void OnEnable()
+    {
+        collisionDetecter.listener += CollisionDectectEvent;
     }
-    void OnDisable() {
-        collisionDetecter.listener-=CollisionDectectEvent;
+    void OnDisable()
+    {
+        collisionDetecter.listener -= CollisionDectectEvent;
     }
 }

@@ -29,6 +29,10 @@
     {
       "name": "StartAction",
       "action": [
+        {
+          "name": "ActivateExtension",
+          "property": ["BackFloat", "True"]
+        }
       ],
       "showDisplayOrder": 0
     },

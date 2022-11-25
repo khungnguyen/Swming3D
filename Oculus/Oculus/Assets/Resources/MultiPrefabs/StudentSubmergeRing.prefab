@@ -195,7 +195,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810340148}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06570625, y: -1.0816, z: 0.30880803}
+  m_LocalPosition: {x: -0.06570625, y: -1.0768, z: 0.30880803}
   m_LocalScale: {x: 0.17046, y: 0.025483, z: 0.053848}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13334,7 +13334,6 @@ MonoBehaviour:
   rig: {fileID: 5429381219112915385}
   studentExtensions: {fileID: 3312393262994270134}
   bodyMovingCube: {fileID: 3858676268180093021}
-  firstTime: 0
 --- !u!114 &3312393262994270134
 MonoBehaviour:
   m_ObjectHideFlags: 0

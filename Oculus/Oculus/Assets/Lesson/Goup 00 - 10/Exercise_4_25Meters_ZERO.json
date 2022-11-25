@@ -89,18 +89,17 @@
       "action": [
         {
           "name": "ChangeModel",
-          "property": ["StudentSubmergeRing","StandinWaterIdle","Case_Seven_2",""]
-        },
-        {
-          "name": "EnableInteractable",
-          "property": ["DelayAfterAnim"]
+          "property": ["StudentSubmergeRing","SubmergetoGetRingIdle","Case_Seven_2",""]
         }
       ],
       "showDisplayOrder": 5
     },{
       "name": "SubmergeTheRing",
       "action": [
-
+        {
+          "name": "ChangeAnimController",
+          "property": ["Case_Seven_3"]
+        },
         {
           "name": "TriggerAnimation",
           "property": ["GetTheRing"]

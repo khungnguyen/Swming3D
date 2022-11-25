@@ -39,13 +39,14 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         else
         {
 
-            InitFirstPose();
+         //   InitFirstPose();
         }
     }
+    [PunRPC]
     public void InitFirstPose()
     {
         Utils.LogError(this,"Init first pose");
-         if (!firstTime)
+       //  if (!firstTime)
         {
             var starTransfrom = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
             SetAnimator("Case_One",true);
@@ -199,6 +200,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         yield return new WaitForSeconds(second);
         animator.StopPlayback();
     }
+    [PunRPC]
     public void SetAnimator(string animatorName, bool force = false)
     {
         if (animatorName != null && animatorName.Length > 0 || force)
@@ -217,7 +219,6 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                     {
                         Debug.Log(TAG + "Reset Avatar to" + find.avatar);
                         animator.avatar = find.avatar;
-                        Debug.Log(TAG + "Reset Avatar to" + find.avatar.name);
                     }
 
                 }
@@ -236,6 +237,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     {
         ConnectionManager.RemoveCallBackTarget(this);
     }
+    [PunRPC]
     public void TriggerAnimation(string trigger)
     {
         if (trigger != null && trigger.Length > 0)

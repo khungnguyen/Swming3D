@@ -515,6 +515,8 @@ MonoBehaviour:
     avatar: {fileID: 9000000, guid: 257cba4879885034d83dd44536965a9b, type: 3}
   - controller: {fileID: 9100000, guid: 193f0ff7cdc4687409600282b9434d6a, type: 2}
     avatar: {fileID: 9000000, guid: 01d4b1e830f95584bb084bd778e64ded, type: 3}
+  - controller: {fileID: 9100000, guid: 3153726f391e5424a97d359959293c07, type: 2}
+    avatar: {fileID: 9000000, guid: 1fc4ce217b0707d4aa19ff745534cb5d, type: 3}
 --- !u!1 &157982908
 GameObject:
   m_ObjectHideFlags: 0
@@ -8977,6 +8979,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StudeentSubmergeRing
       objectReference: {fileID: 0}
+    - target: {fileID: 8484624768414152063, guid: e5309104c661197468aafdfad166364d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8839957353225841427, guid: e5309104c661197468aafdfad166364d,
         type: 3}
       propertyPath: sceneViewId
@@ -8995,12 +9002,12 @@ PrefabInstance:
     - target: {fileID: 9148114766932094917, guid: e5309104c661197468aafdfad166364d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.01
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: 9148114766932094917, guid: e5309104c661197468aafdfad166364d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.366
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 9148114766932094917, guid: e5309104c661197468aafdfad166364d,
         type: 3}
@@ -12461,7 +12468,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4967511845708656537}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.54, y: 0.004, z: -0.3}
+  m_LocalPosition: {x: 10.54, y: 0.003, z: -0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
