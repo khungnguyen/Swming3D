@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Realtime;
+using UnityEngine.UI;
 
 public class LessionUI : MonoBehaviour, IButtonAction
 {
@@ -37,6 +38,14 @@ public class LessionUI : MonoBehaviour, IButtonAction
                 CreateLessonMenu(Utils.String2Enum<LessonGroupType>(types[1]));
                 break;
         }
+    }
+    IEnumerator AddContentFitter()
+    {
+        yield return new WaitForEndOfFrame();
+        scrollContent.GetComponent<VerticalLayoutGroup>().enabled = false;
+        scrollContent.GetComponent<VerticalLayoutGroup>().enabled = true;
+        GetComponent<VerticalLayoutGroup>().enabled = false;
+        GetComponent<VerticalLayoutGroup>().enabled = true;
     }
     private void ClearScrollContent()
     {
@@ -75,7 +84,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
             {
                 var item = LessonManager.instance.GetLessonGroups()[i];
                 ButtonBaseRoom butt = (ButtonBaseRoom)dialogCP.AddButton();
-                butt.SetText("Exercises Group " + item.groupType);
+                butt.SetText(LessonManager.LessonGroupName[(int)item.groupType]);
                 butt.SetDescription("");
                 butt.SetData(Action.SelectGroup.ToString() + "_" + item.groupType.ToString());
             }
@@ -87,11 +96,12 @@ public class LessionUI : MonoBehaviour, IButtonAction
                 var item = LessonManager.instance.GetLessonGroups()[i];
                 var go = Instantiate(lessonButtonPrefab, scrollContent);
                 var comp = go.GetComponent<LessonButton>();
-                comp.SetText("Exercises Group " + item.groupType);
+                comp.SetText(LessonManager.LessonGroupName[(int)item.groupType]);
                 comp.SetButtonInfo(Action.SelectGroup.ToString() + "_" + item.groupType.ToString());
                 comp.OnClicked += OnClicked;
 
             }
+            StartCoroutine(AddContentFitter());
         }
 
     }
@@ -135,6 +145,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
                 comp.OnClicked += OnClicked;
 
             }
+            StartCoroutine(AddContentFitter());
         }
 
     }

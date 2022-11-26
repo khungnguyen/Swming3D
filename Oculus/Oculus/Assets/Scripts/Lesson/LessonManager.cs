@@ -10,6 +10,7 @@ public enum LessonGroupType
     THREE,
     FOUR
 }
+
 [System.Serializable]
 public struct LessonGroup
 {
@@ -34,6 +35,11 @@ public class LessonItem
 }
 public class LessonManager : MonoBehaviour, IReceiver
 {
+    public static string[] LessonGroupName = {
+    "Time 00 - 10 minutes",
+    "Time 10 - 25 minutes",
+    "Time 25 - 40 minutes",
+    };  
 
     [SerializeField]
     private List<LessonGroup> lessonGroupData;

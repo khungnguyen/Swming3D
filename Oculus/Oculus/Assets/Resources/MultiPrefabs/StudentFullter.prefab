@@ -11104,7 +11104,6 @@ MonoBehaviour:
   rig: {fileID: 3538516938956681386}
   studentExtensions: {fileID: 3265608607919027112}
   bodyMovingCube: {fileID: 5847179524202690157}
-  firstTime: 0
 --- !u!114 &3265608607919027112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11135,13 +11134,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RigLayers:
-  - m_Rig: {fileID: 0}
+  - m_Rig: {fileID: 1033683124452624123}
     m_Active: 1
-  - m_Rig: {fileID: 0}
+  - m_Rig: {fileID: 1033683124521617935}
     m_Active: 1
-  - m_Rig: {fileID: 0}
+  - m_Rig: {fileID: 8111006639553675548}
     m_Active: 1
-  - m_Rig: {fileID: 0}
+  - m_Rig: {fileID: 8888047085427524679}
     m_Active: 1
   m_Effectors: []
 --- !u!114 &3924149697960634375
