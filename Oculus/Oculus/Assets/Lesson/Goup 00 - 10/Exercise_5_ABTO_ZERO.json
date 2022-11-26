@@ -1,8 +1,8 @@
 {
-  "Exercise": "TIME 00-10 Minutes Exercise 4 (25 Meters)",
-  "AnimatorController": "Case_Seven",
-  "startPointName": "StandinWaterIdle",
-  "startAction":"StartAction",
+  "Exercise": "TIME 00-10 Minutes Exercise 5 (ABTO)",
+  "AnimatorController": "Case_Eight",
+  "startPointName": "StandinWaterIdle_Feet",
+  "startAction": "StartAction",
   "Buttons": [
     {
       "name": "Allow Coach To Correct",
@@ -10,24 +10,14 @@
       "displayOrder": 1
     },
     {
-      "name": "Bubble Nose Hand Straigth",
-      "action": "BubbleNoseHandStraight",
-      "displayOrder": 2
-    },
-    {
-      "name": "Stand Idle",
-      "action": "StandIdle",
-      "displayOrder": 3
-    },
-    {
       "name": "Submerge : Coach Puts The Ring",
       "action": "CoachHandleTheRing",
-      "displayOrder": 4
+      "displayOrder": 2
     },
     {
       "name": "Student Submerges The Ring",
       "action": "SubmergeTheRing",
-      "displayOrder": 5
+      "displayOrder": 3
     },
     {
       "name": "Back To Lesson List",
@@ -39,7 +29,15 @@
     {
       "name": "StartAction",
       "action": [
-        
+        {
+          "name": "ChangeModel",
+          "property": [
+            "StudentSubmergeRing",
+            "StandinWaterIdle_Feet",
+            "Case_Eight",
+            ""
+          ]
+        }
       ],
       "showDisplayOrder": 0
     },
@@ -59,46 +57,24 @@
           "property": [""]
         }
       ],
-      "showDisplayOrder": 2
+      "showDisplayOrder": 3
     },
     {
-      "name": "BubbleNoseHandStraight",
+      "name": "CoachHandleTheRing",
       "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": ["BubbleHandStraight"]
-        }
       ],
       "showDisplayOrder": 3
     },
     {
-      "name": "StandIdle",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": ["StandIdle"]
-        }
-      ],
-      "showDisplayOrder": 4
-    },{
-      "name": "CoachHandleTheRing",
-      "action": [
-        {
-          "name": "ChangeModel",
-          "property": ["StudentSubmergeRing","StandinWaterIdle_Feet","Case_Seven_2",""]
-        },
-        {
-          "name": "EnableInteractable",
-          "property": ["DelayAfterAnim"]
-        }
-      ],
-      "showDisplayOrder": 5
-    },{
       "name": "SubmergeTheRing",
       "action": [
         {
+          "name": "CorrectTransform",
+          "property": ["SubmergetoGetRing"]
+        },
+        {
           "name": "ChangeAnimController",
-          "property": ["Case_Seven_3"]
+          "property": ["Case_Eight_NoHumanoid"]
         },
         {
           "name": "TriggerAnimation",
@@ -120,7 +96,7 @@
         },
         {
           "name": "ChangeModel",
-          "property": ["StudentFullter","StandinWaterIdle","Case_Seven",""]
+          "property": ["StudentFullter", "StandinWaterIdle", "Case_Seven", ""]
         }
       ],
       "showDisplayOrder": 0
@@ -128,18 +104,7 @@
   ],
   "ExerciseList": [
     {
-      "lessonName": "Bubble Hand Straight",
-      "starAnimation": "",
-      "conditionTrigger": {
-        "name": "",
-        "value": true
-      },
-      "startPointName": "",
-      "startController": "",
-      "property": []
-    },
-    {
-      "lessonName": "Ring",
+      "lessonName": "Submerge The Ring",
       "starAnimation": "",
       "conditionTrigger": {
         "name": "",
@@ -150,5 +115,5 @@
       "property": []
     }
   ],
-  "extension" :[]
+  "extension": []
 }

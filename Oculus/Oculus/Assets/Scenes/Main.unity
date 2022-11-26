@@ -514,9 +514,13 @@ MonoBehaviour:
   - controller: {fileID: 9100000, guid: bd9256d01f912ab43b9d79c84d15c360, type: 2}
     avatar: {fileID: 9000000, guid: 257cba4879885034d83dd44536965a9b, type: 3}
   - controller: {fileID: 9100000, guid: 193f0ff7cdc4687409600282b9434d6a, type: 2}
-    avatar: {fileID: 9000000, guid: 01d4b1e830f95584bb084bd778e64ded, type: 3}
+    avatar: {fileID: 9000000, guid: 20e55509a6b6f814eb6964cf063c7080, type: 3}
   - controller: {fileID: 9100000, guid: 3153726f391e5424a97d359959293c07, type: 2}
     avatar: {fileID: 9000000, guid: 1fc4ce217b0707d4aa19ff745534cb5d, type: 3}
+  - controller: {fileID: 9100000, guid: d6f4850a4eb41ed4592d8400fa950aff, type: 2}
+    avatar: {fileID: 9000000, guid: 20e55509a6b6f814eb6964cf063c7080, type: 3}
+  - controller: {fileID: 9100000, guid: c590b38b3684fc446b97d3d8b75f6493, type: 2}
+    avatar: {fileID: 9000000, guid: c6fa235949d63b748b2a1a06c715ddc9, type: 3}
 --- !u!1 &157982908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1893,7 +1897,7 @@ MonoBehaviour:
   studentModels:
   - {fileID: 2780071977210668188, guid: e05f72fb198e27e44b108edd93f0d7ad, type: 3}
   - {fileID: 4698784066366641707, guid: a17c055130f8110409fd514809f59fa5, type: 3}
-  - {fileID: 8484624768414152063, guid: e5309104c661197468aafdfad166364d, type: 3}
+  - {fileID: 1127441355424062785, guid: 28d329837a8aa6f49aac87f7975d7146, type: 3}
   examinerGameObject: {fileID: 8367939583904502353, guid: 2d98b388eb69993449b66c8faaf6b7c5,
     type: 3}
   coachGameObject: {fileID: 6624026443431106358, guid: 7a398e946f618e64393367066256a0fb,
@@ -2343,6 +2347,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e05f72fb198e27e44b108edd93f0d7ad, type: 3}
+--- !u!1 &814595847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 814595848}
+  m_Layer: 0
+  m_Name: StandinWaterIdle_Feet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &814595848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814595847}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10.54, y: 0.046, z: -0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1705272545}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &911637453
 GameObject:
   m_ObjectHideFlags: 0
@@ -3680,6 +3715,7 @@ MonoBehaviour:
   - {fileID: 2290883805964197486}
   - {fileID: 5745455237359088931}
   - {fileID: 225449087}
+  - {fileID: 814595848}
   XRPlayerSpawnPoints:
   - {fileID: 539190780}
   DesktopPlayerSpawnPoints:
@@ -4038,6 +4074,7 @@ Transform:
   - {fileID: 522756351}
   - {fileID: 5745455237359088931}
   - {fileID: 225449087}
+  - {fileID: 814595848}
   m_Father: {fileID: 1154756507603345044}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5008,6 +5045,16 @@ MonoBehaviour:
         startAction: 
         extension: []
     - jsonData: {fileID: 4900000, guid: d29b1716e31934d4bb0b9d71dba63c72, type: 3}
+      lesson:
+        ExerciseList: []
+        Exercise: 
+        Buttons: []
+        Actions: []
+        AnimatorController: 
+        startPointName: 
+        startAction: 
+        extension: []
+    - jsonData: {fileID: 4900000, guid: b5db4a217237b6c45af4fd9b16af2dcb, type: 3}
       lesson:
         ExerciseList: []
         Exercise: 

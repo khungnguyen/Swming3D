@@ -168,6 +168,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 break;
             case EventCodes.ActionChangeController:
                 Debug.Log(TAG + "ActionChangeController" + (string)packages[0]);
+                EnableInteraction(false);
                 SetAnimator((string)packages[0], true);
                 break;
             case EventCodes.ActionCorrectTransform:
@@ -186,6 +187,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 break;
             case EventCodes.ActionBodyMoving:
                 bool enable = (bool)packages[0];
+                 Debug.Log(TAG + "ActionBodyMoving" + enable);
                 ActivateBodyMoving(enable);
                 break;
             case EventCodes.ActionChangeModel:
