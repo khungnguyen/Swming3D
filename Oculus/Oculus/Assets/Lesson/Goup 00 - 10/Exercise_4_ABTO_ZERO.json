@@ -1,7 +1,7 @@
 {
   "Exercise": "TIME 00-10 Minutes Exercise 4 (ABTO)",
   "AnimatorController": "Case_Six",
-  "startPointName": "ExerciseStarStarfishBackStart",
+  "startPointName": "ExerciseStarStarfishBackStart_No_Rotate",
   "startAction":"StartAction",
   "Buttons": [
     {
@@ -129,7 +129,7 @@
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": ["SwimAndBack"]
+          "property": ["DoggySwim"]
         }
       ],
       "showDisplayOrder": 400
