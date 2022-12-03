@@ -26,7 +26,11 @@ public class StudentExtension : MonoBehaviour
             {
                 if (extension[i] == Extension.KickBoardExtension.ToString())
                 {
-                    kickBoardController.SetBehavior(trigger, lastTrigger);
+                    if (kickBoardController != null)
+                    {
+                        kickBoardController.SetBehavior(trigger, lastTrigger);
+                    }
+
                 }
             }
         }
@@ -35,7 +39,11 @@ public class StudentExtension : MonoBehaviour
     }
     public void SetUpBaseOnLesson(int lesson)
     {
-        kickBoardController.HideKickBoards();
+        if (kickBoardController != null)
+        {
+            kickBoardController.HideKickBoards();
+        }
+
     }
     public void ActivateExtension(string trigger, bool active)
     {
@@ -47,7 +55,10 @@ public class StudentExtension : MonoBehaviour
     }
     public void HideAllExtension()
     {
-        kickBoardController.HideKickBoards();
+        if (kickBoardController != null)
+        {
+            kickBoardController.HideKickBoards();
+        }
         extensionTransforms.ForEach(e =>
         {
             e.gameObject.SetActive(false);

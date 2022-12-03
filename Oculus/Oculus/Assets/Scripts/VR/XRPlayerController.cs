@@ -28,7 +28,7 @@ public class XRPlayerController : MonoBehaviour
 
     const float MAX_Y = 1f;
 
-    const float MIN_Y = -1f;
+    const float MIN_Y = -2f;
     private Vector3 curCameraPos;
     void Start()
     {

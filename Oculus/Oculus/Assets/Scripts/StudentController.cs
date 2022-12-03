@@ -26,7 +26,8 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     }
     // public bool useF
     // Start is called before the first frame update
-    void Awake() {
+    void Awake()
+    {
         StudentModelManager.instance.OnStudentCreate(this);
     }
     public static bool firstTime = false;
@@ -39,17 +40,17 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         else
         {
 
-         //   InitFirstPose();
+            //   InitFirstPose();
         }
     }
     [PunRPC]
     public void InitFirstPose()
     {
-        Utils.LogError(this,"Init first pose");
-       //  if (!firstTime)
+        Utils.LogError(this, "Init first pose");
+        //  if (!firstTime)
         {
             var starTransfrom = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
-            SetAnimator("Case_One",true);
+            SetAnimator("Case_One", true);
             transform.SetPositionAndRotation(starTransfrom.position, starTransfrom.rotation);
             firstTime = true;
             HideAllExtension();
@@ -60,7 +61,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
 
     public void RepositionNexAnim(string name)
     {
-         CorrectTransform(name);
+        CorrectTransform(name);
     }
     public void NotifityEndAnimationState(AnimationEvent e)
     {
@@ -187,13 +188,13 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 break;
             case EventCodes.ActionBodyMoving:
                 bool enable = (bool)packages[0];
-                 Debug.Log(TAG + "ActionBodyMoving" + enable);
+                Debug.Log(TAG + "ActionBodyMoving" + enable);
                 ActivateBodyMoving(enable);
                 break;
             case EventCodes.ActionChangeModel:
-                
+
                 break;
-            
+
 
         }
     }
@@ -253,7 +254,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     private void BeforeTriggerAnim(string trigger)
     {
         string[] extension = ExerciseManager.instance.exercises.extension;
-        studentExtensions.UpdateExtensions(extension, trigger, lastTrigger);
+        if (studentExtensions != null)
+        {
+            studentExtensions.UpdateExtensions(extension, trigger, lastTrigger);
+        }
         lastTrigger = trigger;
     }
 
@@ -263,12 +267,17 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     }
     private void SettupStudent(int lesson)
     {
-        studentExtensions.SetUpBaseOnLesson(lesson);
+        if (studentExtensions != null)
+        {
+            studentExtensions.SetUpBaseOnLesson(lesson);
+        }
+
     }
 
     private void HideAllExtension()
     {
-        studentExtensions.HideAllExtension();
+        if (studentExtensions != null)
+            studentExtensions.HideAllExtension();
 
     }
     private void ReActivate()
@@ -297,7 +306,11 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     }
     private void ActivateExtension(string transformName, bool active)
     {
-        studentExtensions.ActivateExtension(transformName, active);
+        if (studentExtensions != null)
+        {
+            studentExtensions.ActivateExtension(transformName, active);
+        }
+
     }
     // private IEnumerator StopAnimation()
     // {
