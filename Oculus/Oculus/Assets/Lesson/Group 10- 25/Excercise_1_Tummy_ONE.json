@@ -14,18 +14,28 @@
       "displayOrder": 2
     },
     {
+      "name": "Non-Stop Kicking",
+      "action": "NonStopKicking",
+      "displayOrder": 2
+    },
+    {
       "name": "Ankles not Locked",
       "action": "AnklesNotLocked",
       "displayOrder": 2
     },
     {
-      "name": "Execute with a Cycles Kick",
-      "action": "CycleKickWrong",
+      "name": "Not Bending Knees Enough",
+      "action": "NotBledingKneesEnough",
       "displayOrder": 2
     },
     {
-      "name": "Execute with Incorrect Position",
-      "action": "PositionWrong",
+      "name": "Kick Above Water",
+      "action": "KickAboveWater",
+      "displayOrder": 2
+    },
+    {
+      "name": "Legs not Opening Enough",
+      "action": "LegsNotOpeningEnough",
       "displayOrder": 2
     },
     {
@@ -164,6 +174,15 @@
       "showDisplayOrder": 2
     },
     {
+      "name": "NonStopKicking",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["NonStopKicking"]
+        }
+      ],
+      "showDisplayOrder": 10
+    }, {
       "name": "AnklesNotLocked",
       "action": [
         {
@@ -174,21 +193,31 @@
       "showDisplayOrder": 10
     },
     {
-      "name": "CycleKickWrong",
+      "name": "NotBledingKneesEnough",
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": ["CycleKickWrong"]
+          "property": ["NotBledingKneesEnough"]
         }
       ],
       "showDisplayOrder": 10
     },
     {
-      "name": "PositionWrong",
+      "name": "KickAboveWater",
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": ["PositionWrong"]
+          "property": ["KickAboveWater"]
+        }
+      ],
+      "showDisplayOrder": 10
+    },
+    {
+      "name": "LegsNotOpeningEnough",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["LegsNotOpeningEnough"]
         }
       ],
       "showDisplayOrder": 10
