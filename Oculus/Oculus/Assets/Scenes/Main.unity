@@ -160,7 +160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 163.78015, y: 0}
   m_SizeDelta: {x: -66.87669, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &44383446
@@ -606,6 +606,12 @@ MonoBehaviour:
   - controller: {fileID: 9100000, guid: c590b38b3684fc446b97d3d8b75f6493, type: 2}
     avatar: {fileID: 9000000, guid: c6fa235949d63b748b2a1a06c715ddc9, type: 3}
   - controller: {fileID: 9100000, guid: 86f5a43c1376a634d870b266073b9ca7, type: 2}
+    avatar: {fileID: 9000000, guid: b3d0e4ea37f3bb941a86d4a7738a2bcb, type: 3}
+  - controller: {fileID: 9100000, guid: 97f2a076604907c4c9e82330cbcc1b58, type: 2}
+    avatar: {fileID: 9000000, guid: b3d0e4ea37f3bb941a86d4a7738a2bcb, type: 3}
+  - controller: {fileID: 9100000, guid: f9ec270eee12dba47afbb1a3fac4a87f, type: 2}
+    avatar: {fileID: 9000000, guid: b3d0e4ea37f3bb941a86d4a7738a2bcb, type: 3}
+  - controller: {fileID: 9100000, guid: e284741549bd18a4bbd1d10bdf113edc, type: 2}
     avatar: {fileID: 9000000, guid: b3d0e4ea37f3bb941a86d4a7738a2bcb, type: 3}
 --- !u!4 &140235830 stripped
 Transform:
@@ -1244,6 +1250,77 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 805625435}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &412930908
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: ea1b2d1b7c49da440bab3c548f5713ba,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea1b2d1b7c49da440bab3c548f5713ba,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea1b2d1b7c49da440bab3c548f5713ba,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea1b2d1b7c49da440bab3c548f5713ba,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea1b2d1b7c49da440bab3c548f5713ba,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea1b2d1b7c49da440bab3c548f5713ba,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea1b2d1b7c49da440bab3c548f5713ba,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea1b2d1b7c49da440bab3c548f5713ba,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea1b2d1b7c49da440bab3c548f5713ba,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea1b2d1b7c49da440bab3c548f5713ba,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea1b2d1b7c49da440bab3c548f5713ba,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea1b2d1b7c49da440bab3c548f5713ba,
+        type: 3}
+      propertyPath: m_Name
+      value: Tummy Board Froggy Kick Swim Back 5 Meters
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea1b2d1b7c49da440bab3c548f5713ba, type: 3}
 --- !u!1 &433542655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2812,6 +2889,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 805625435}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &923434469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 923434470}
+  m_Layer: 0
+  m_Name: Tummy_Board_Swim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &923434470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923434469}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.541, y: -0.022000015, z: 0.107}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1705272545}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &926360318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6464959808806471611, guid: e05f72fb198e27e44b108edd93f0d7ad,
@@ -3965,6 +4073,77 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1001 &1477537251
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 4b0d3a48a14a56546ab86a9b61a25faf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b0d3a48a14a56546ab86a9b61a25faf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b0d3a48a14a56546ab86a9b61a25faf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b0d3a48a14a56546ab86a9b61a25faf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b0d3a48a14a56546ab86a9b61a25faf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b0d3a48a14a56546ab86a9b61a25faf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b0d3a48a14a56546ab86a9b61a25faf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b0d3a48a14a56546ab86a9b61a25faf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b0d3a48a14a56546ab86a9b61a25faf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b0d3a48a14a56546ab86a9b61a25faf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b0d3a48a14a56546ab86a9b61a25faf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4b0d3a48a14a56546ab86a9b61a25faf,
+        type: 3}
+      propertyPath: m_Name
+      value: Tummy Board Froggy Kick Swim 5 Meters
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4b0d3a48a14a56546ab86a9b61a25faf, type: 3}
 --- !u!4 &1493092090 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7177147525772694114, guid: e05f72fb198e27e44b108edd93f0d7ad,
@@ -4220,6 +4399,7 @@ MonoBehaviour:
   - {fileID: 814595848}
   - {fileID: 522696524}
   - {fileID: 665960863}
+  - {fileID: 923434470}
   XRPlayerSpawnPoints:
   - {fileID: 539190780}
   DesktopPlayerSpawnPoints:
@@ -4587,6 +4767,7 @@ Transform:
   - {fileID: 225449087}
   - {fileID: 814595848}
   - {fileID: 665960863}
+  - {fileID: 923434470}
   m_Father: {fileID: 1154756507603345044}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

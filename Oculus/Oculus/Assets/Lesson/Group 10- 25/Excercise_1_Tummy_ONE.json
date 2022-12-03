@@ -305,7 +305,7 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["SwimStartPoint"]
+          "property": ["Tummy_Board_Swim"]
         },
         {
           "name": "TriggerAnimationWithSaveKey",
@@ -480,17 +480,10 @@
         "name": "",
         "value": true
       },
-      "startPointName": "Lesson_2_Ex_All_Pos",
+      "startPointName": "Tummy_Board_Idle",
       "startController": "",
       "property": [
-        "LoseController",
-        "Case_Two",
-        "RightController",
-        "5Metters",
-        "WrongController",
-        "15Metters",
-        "WrongController",
-        "25Metters",
+        "RightController","Case_Tummy_5meters",
         "TriggerName",
         "Swim",
         "TriggerName",
@@ -505,16 +498,12 @@
         "value": true
       },
       "startController": "",
-      "startPointName": "Lesson_2_Ex_All_Pos",
+      "startPointName": "Tummy_Board_Idle",
       "property": [
         "LoseController",
         "Case_Two",
         "RightController",
-        "15Metters",
-        "WrongController",
-        "5Metters",
-        "WrongController",
-        "25Metters",
+        "Case_Tummy_15meters",
         "TriggerName",
         "Swim",
         "TriggerName",
@@ -529,12 +518,12 @@
         "name": "SlideJump",
         "value": false
       },
-      "startPointName": "Lesson_2_Ex_All_Pos",
+      "startPointName": "Tummy_Board_Idle",
       "property": [
         "LoseController",
         "Case_Two",
         "RightController",
-        "25Metters",
+        "Case_Tummy_15meters",
         "WrongController",
         "5Metters",
         "WrongController",
@@ -546,5 +535,5 @@
       ]
     }
   ],
-  "extension" :["KickBoardExtension"]
+  "extension" :[""]
 }
