@@ -26,9 +26,9 @@ public class XRPlayerController : MonoBehaviour
 
     public float speedY = 0.5f;
 
-    const float MAX_Y = 1f;
+    const float MAX_Y = 1.5f;
 
-    const float MIN_Y = -2f;
+    const float MIN_Y = -2.5f;
     private Vector3 curCameraPos;
     void Start()
     {
@@ -66,19 +66,27 @@ public class XRPlayerController : MonoBehaviour
     {
         if (OVRInput.Get(OVRInput.Button.One) || OVRInput.Get(OVRInput.Button.Three))
         {
-           // Debug.Log("Button One Three Press");
+            // Debug.Log("Button One Three Press");
             curCameraPos = cameraOffset.transform.position;
             curCameraPos.y -= speedY * Time.deltaTime;
-            curCameraPos.y =Mathf.Clamp( curCameraPos.y,MIN_Y,MAX_Y);
+            curCameraPos.y = Mathf.Clamp(curCameraPos.y, MIN_Y, MAX_Y);
             cameraOffset.transform.position = curCameraPos;
         }
         else if (OVRInput.Get(OVRInput.Button.Two) || OVRInput.Get(OVRInput.Button.Four))
         {
-           // Debug.Log("Button One Two Four Press");
+            // Debug.Log("Button One Two Four Press");
             curCameraPos = cameraOffset.transform.position;
             curCameraPos.y += speedY * Time.deltaTime;
-            curCameraPos.y =Mathf.Clamp(curCameraPos.y,MIN_Y,MAX_Y);
+            curCameraPos.y = Mathf.Clamp(curCameraPos.y, MIN_Y, MAX_Y);
             cameraOffset.transform.position = curCameraPos;
         }
+    }
+    private void Move(bool isUp)
+    {
+        int dir = isUp ? 1 : -1;
+        curCameraPos = cameraOffset.transform.position;
+        curCameraPos.y += dir * speedY * Time.deltaTime;
+        curCameraPos.y = Mathf.Clamp(curCameraPos.y, MIN_Y, MAX_Y);
+        cameraOffset.transform.position = curCameraPos;
     }
 }

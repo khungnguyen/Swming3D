@@ -28,6 +28,7 @@ public class LessonItem
     public TextAsset jsonData;
     public Exercises lesson;
 
+    public bool enable = true;
     public void Init()
     {
         lesson = JsonUtility.FromJson<Exercises>(jsonData.text);
@@ -39,7 +40,7 @@ public class LessonManager : MonoBehaviour, IReceiver
     "Time 00 - 10 minutes",
     "Time 10 - 25 minutes",
     "Time 25 - 40 minutes",
-    };  
+    };
 
     [SerializeField]
     private List<LessonGroup> lessonGroupData;
@@ -61,8 +62,7 @@ public class LessonManager : MonoBehaviour, IReceiver
     }
     public List<Exercises> GetLessons(LessonGroupType group = LessonGroupType.ZERO)
     {
-        List<LessonItem> list = lessonGroupData.Find(e => e.groupType == group).listLesson;
-        // Utils.LogError("GetLessons", list.Count);
+        List<LessonItem> list = (lessonGroupData.Find(e => e.groupType == group).listLesson).FindAll(i => i.enable == true);
         if (list != null)
         {
             List<Exercises> lessons = new();
