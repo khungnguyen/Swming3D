@@ -60,6 +60,7 @@ public class BodySnapInteraction : SnapInteraction
         {
             StartCoroutine(DelayActivePhotonViewKickBoard());
         }
+        kickBoard.GetComponent<SnapTo>().setTarget(null);
         curentKicboardParent = kickBoard.parent;
         kickBoard.parent = newParentOfKickBoard.parent;
     }

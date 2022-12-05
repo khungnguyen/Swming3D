@@ -9,7 +9,7 @@ public class VRAppDebug
     /**
     * USE_DEBUG_NO_VR_SINGLE_PREVIEW : Instantiate student without using VR to checking lesson
     */
-    public static readonly bool USE_DEBUG_NO_VR_SINGLE_PREVIEW = true;
+    public static readonly bool USE_DEBUG_NO_VR_SINGLE_PREVIEW = false;
 
     public static readonly bool USE_BODY_MOVING = false;
 
