@@ -99,11 +99,6 @@
       "displayOrder": 8
     },
     {
-      "name": "Back To Exercise",
-      "action": "BackToExercise",
-      "displayOrder": 9
-    },
-    {
       "name": "Lesson List",
       "action": "GoToLessonMenu",
       "displayOrder": 9
@@ -354,16 +349,12 @@
       "name": "LoseControl",
       "action": [
         {
-          "name": "ChangeAnimController",
-          "property": ["LoseController"]
+          "name": "TriggerAnimation",
+          "property": ["LoseControl"]
         },
         {
           "name": "CorrectTransform",
-          "property": ["Lesson_2_Ex_All_Pos"]
-        },
-        {
-          "name": "TriggerAnimation",
-          "property": ["LoseControl"]
+          "property": ["Tummy_Board_Idle"]
         },
         {
           "name": "EnableBodyMoving",
@@ -389,7 +380,7 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["SwimStartPoint"]
+          "property": ["Tummy_Board_Swim"]
         },
         {
           "name": "TriggerAnimationWithSaveKey",
@@ -412,6 +403,10 @@
         {
           "name": "DisableInteractable",
           "property": [""]
+        },
+        {
+          "name": "ChangeModel",
+          "property": ["StudentFullter","Lesson_1_Ex_All_Pos","Case_One",""]
         }
       ],
       "showDisplayOrder": 0
@@ -520,14 +515,8 @@
       },
       "startPointName": "Tummy_Board_Idle",
       "property": [
-        "LoseController",
-        "Case_Two",
         "RightController",
-        "Case_Tummy_15meters",
-        "WrongController",
-        "5Metters",
-        "WrongController",
-        "15Metters",
+        "Case_Tummy_25meters",
         "TriggerName",
         "Swim",
         "TriggerName",

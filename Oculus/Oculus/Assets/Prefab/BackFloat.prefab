@@ -72,7 +72,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4721102437619362963}
-  m_Mesh: {fileID: -3292346735276779406, guid: 4287093b180153f4b86249c19da111fa, type: 3}
+  m_Mesh: {fileID: -3292346735276779406, guid: 2fada0cc346097e499a37729d1ef46e6, type: 3}
 --- !u!23 &2746231438911570220
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -93,9 +93,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6036109035531164381, guid: 4287093b180153f4b86249c19da111fa, type: 3}
-  - {fileID: -7621992812897208050, guid: 4287093b180153f4b86249c19da111fa, type: 3}
-  - {fileID: 6044726008863606537, guid: 4287093b180153f4b86249c19da111fa, type: 3}
+  - {fileID: 6036109035531164381, guid: 2fada0cc346097e499a37729d1ef46e6, type: 3}
+  - {fileID: -7621992812897208050, guid: 2fada0cc346097e499a37729d1ef46e6, type: 3}
+  - {fileID: 6044726008863606537, guid: 2fada0cc346097e499a37729d1ef46e6, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -251,7 +251,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: -3292346735276779406, guid: 4287093b180153f4b86249c19da111fa, type: 3}
+  m_Mesh: {fileID: -3292346735276779406, guid: 2fada0cc346097e499a37729d1ef46e6, type: 3}
   m_Bones:
   - {fileID: 6686778458475473865}
   - {fileID: 0}

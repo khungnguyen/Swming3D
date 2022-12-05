@@ -111,6 +111,8 @@ public class Exercises
     public string Exercise;
     public UIButton[] Buttons;
     public ButtonActions[] Actions;
+
+    public string modelPrefab;
     public string AnimatorController;
 
     public string startPointName;
