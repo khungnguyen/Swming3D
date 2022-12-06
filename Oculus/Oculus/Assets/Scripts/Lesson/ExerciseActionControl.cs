@@ -338,8 +338,20 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 {
                     string modelName = actionProperty.property[0];
                     string startPoint = actionProperty.property[1];
-                    string animator = actionProperty.property[2];
+                    string animatorKey = actionProperty.property[2];
                     string animation = actionProperty.property[3];
+                    List<string> choices = GetExercisePropertiesByName(animatorKey);
+                    string animator ="";
+                    if (choices.Count > 0)
+                    {
+                        int ran = Random.Range(0, choices.Count - 1);
+                        Debug.Log(TAG + "Select right controller by key" + choices[ran]);
+                        animator = choices[ran];
+                    }
+                    else {
+                        animator = animatorKey;
+                    }
+
                     ChangeModel(modelName, startPoint, animator, animation);
                 }
                 // End No Use actions
