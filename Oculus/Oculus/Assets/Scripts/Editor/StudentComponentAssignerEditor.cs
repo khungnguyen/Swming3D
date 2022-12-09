@@ -208,46 +208,50 @@ public class StudentComponentAssignerEditor : Editor
                     {
                         if (fieldType.ToString().Contains("System.Collections.Generic.List"))
                         {
-                            // Utils.LogError(this, "value", fieldName, value);
-                            var list = new List<Component>((IEnumerable<Component>)value);
-                            // Utils.LogError(this, "list", list);
-                            var replacement = Utils.GetList(fieldType);
-                            list.ForEach(component =>
+                            if (!fieldType.ToString().Contains("[UnityEngine.Material]"))
                             {
-                                Transform foundComp = null;
-                                if (component.transform.name == comp.sourceGameObject.transform.name)
+                                // Utils.LogError(this, "value", fieldName, value);
+                                var list = new List<Component>((IEnumerable<Component>)value);
+                                // Utils.LogError(this, "list", list);
+                                var replacement = Utils.GetList(fieldType);
+                                list.ForEach(component =>
                                 {
-                                    foundComp = comp.transform;
-                                }
-                                else
-                                {
-                                    foundComp = comp.transform.FindChildRecursive(component.transform.name, true);
-                                }
-
-                                if (foundComp != null)
-                                {
-                                    var cp = foundComp.GetComponent(component.GetType());
-                                    if (cp != null)
+                                    Transform foundComp = null;
+                                    if (component.transform.name == comp.sourceGameObject.transform.name)
                                     {
-                                        replacement.Add(cp);
+                                        foundComp = comp.transform;
                                     }
                                     else
                                     {
-                                        Utils.LogError(this, "Couldn't find comp", component.transform.name, component.GetType());
+                                        foundComp = comp.transform.FindChildRecursive(component.transform.name, true);
                                     }
 
-                                }
-                                else
+                                    if (foundComp != null)
+                                    {
+                                        var cp = foundComp.GetComponent(component.GetType());
+                                        if (cp != null)
+                                        {
+                                            replacement.Add(cp);
+                                        }
+                                        else
+                                        {
+                                            Utils.LogError(this, "Couldn't find comp", component.transform.name, component.GetType());
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        Utils.LogError(this, "Couldn't find", component.transform.name);
+                                    }
+
+                                });
+                                if (replacement.Count > 0)
                                 {
-                                    Utils.LogError(this, "Couldn't find", component.transform.name);
+                                    field.SetValue(target, replacement);
+
                                 }
-
-                            });
-                            if (replacement.Count > 0)
-                            {
-                                field.SetValue(target, replacement);
-
                             }
+
                         }
                         else
                         {
