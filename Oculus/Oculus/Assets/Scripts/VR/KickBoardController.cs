@@ -9,6 +9,7 @@ public class KickBoardController : MonoBehaviourPunCallbacks, IInteraction
     public Transform boardHolderWrong;
     public Transform boardHolderRight;
     public Transform boardHolderSplashKick;
+    public Transform boardHolderCyclehKick;
 
     public Transform fixedKickBoard; // animation kickboard, not for handling
 
@@ -102,12 +103,14 @@ public class KickBoardController : MonoBehaviourPunCallbacks, IInteraction
                 if (lastAnimation == "PositionWrong")
                 {
                     SnapTo(boardHolderWrong);
-
-
                 }
                 else if (lastAnimation == "SplashKickWrong")
                 {
                     SnapTo(boardHolderSplashKick);
+
+                }else if (lastAnimation == "CycleKick")
+                {
+                    SnapTo(boardHolderCyclehKick);
 
                 }
             }
@@ -120,16 +123,26 @@ public class KickBoardController : MonoBehaviourPunCallbacks, IInteraction
             {
                 SnapTo(boardHolderSplashKick);
 
+            } else if (trigger == "CycleKick")
+            {
+                SnapTo(boardHolderCyclehKick);
+
             }
             else if (trigger == "EnableKickBoard")
             {
                 Activate(true);
+                fixedKickBoard.gameObject.SetActive(false);
             }
             else if (trigger == "Swim" || trigger == "Walk")
             {
-                //  StartCoroutine(StopSwimInSecond(2));
                 fixedKickBoard.gameObject.SetActive(true);
                 Activate(false);
+            }
+            else if (trigger == "LoseControl")
+            {
+                SnapTo(fixedKickBoard,true);
+                Activate(true);
+                fixedKickBoard.gameObject.SetActive(false);
             }
             else
             {
