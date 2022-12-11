@@ -88,6 +88,10 @@
           "name": "TriggerAnimation",
           "property": ["StopAnim"]
         },
+        {
+          "name": "EnableBodyMoving",
+          "property": ["True"]
+       },
        {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
@@ -101,6 +105,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["StarfishCorrect"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["StarfishFloatFrontPointCorrect"]
         }
       ],
       "showDisplayOrder": 400

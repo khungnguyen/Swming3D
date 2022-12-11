@@ -60,6 +60,7 @@ public class StudentModelManager : MonoBehaviourPunCallbacks, IReceiver,IPunInst
                 string animator = (string)packages[2];
                 string animation = (string)packages[3];
                 var point = SpawnPointManager.instance.GetStudentSpawnPointByName(pointName);
+                Utils.Log(this,"ActionChangeModel",model,animator,pointName,animator,point);
                 curStudent = SpawnStudent(model, point);
                 var photonView = curStudent.GetPhotonView();
                 photonView.RPC("SetAnimator",RpcTarget.All,animator,true);

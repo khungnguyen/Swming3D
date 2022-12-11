@@ -54,10 +54,6 @@
           "property": ["0"]
         },
         {
-          "name": "EnableBodyMoving",
-          "property": ["True"]
-        },
-        {
           "name": "EnableInteractable",
           "property": [""]
         }
@@ -76,6 +72,10 @@
           "property": ["SlideIn"]
         },
         {
+          "name": "EnableBodyMoving",
+          "property": ["True"]
+       },
+        {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
         }
@@ -90,6 +90,10 @@
           "property": ["StarfishWrong"]
         },
         {
+          "name": "EnableBodyMoving",
+          "property": ["False"]
+       },
+        {
           "name": "CorrectTransform",
           "property": ["StarfishFloatFrontPoint"]
         }
@@ -103,6 +107,10 @@
           "name": "TriggerAnimation",
           "property": ["StopAnim"]
         },
+        {
+          "name": "EnableBodyMoving",
+          "property": ["True"]
+       },
         {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]

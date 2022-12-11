@@ -178,25 +178,31 @@ public class StudentComponentAssignerEditor : Editor
                 var value = field.GetValue(target);
                 if (value != null)
                 {
-                    var transformName = ((Transform)value).name;
-                    Transform transform = null;
-                    if (((Transform)value).name == comp.sourceGameObject.name) // root transform of target
+                    Utils.Log(this, "fieldName", fieldName, value);
+                    Transform convert = ((Transform)value);
+                    if (convert)
                     {
-                        transform = comp.transform;
-                    }
-                    else
-                    {
-                        transform = comp.transform.FindChildRecursive(transformName, true);
+                        var transformName = convert.name;
+                        Transform transform = null;
+                        if (((Transform)value).name == comp.sourceGameObject.name) // root transform of target
+                        {
+                            transform = comp.transform;
+                        }
+                        else
+                        {
+                            transform = comp.transform.FindChildRecursive(transformName, true);
+                        }
+
+                        if (transform != null)
+                        {
+                            field.SetValue(target, transform);
+                        }
+                        else
+                        {
+                            Utils.LogError(this, "SetupComponent  Couldn't find transform[", transformName, "]inside compent", type, "Filed Name", fieldName);
+                        }
                     }
 
-                    if (transform != null)
-                    {
-                        field.SetValue(target, transform);
-                    }
-                    else
-                    {
-                        Utils.LogError(this, "SetupComponent  Couldn't find transform[", transformName, "]inside compent", type, "Filed Name", fieldName);
-                    }
                 }
             }
             else

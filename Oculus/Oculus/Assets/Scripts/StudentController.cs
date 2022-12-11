@@ -70,13 +70,15 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         if (delayActiveInteraction)
         {
             Debug.LogError("Animation Event call Enable" + e.animatorClipInfo.clip.name);
-            StartCoroutine(DelayEnableInteraction(1f, true));
+            StartCoroutine(DelayEnableInteraction(0.1f, true));
+           // EnableInteraction(true);
             delayActiveInteraction = false;
         }
         else if (delayInactiveInteraction)
         {
             Debug.LogError("Animation Event call Disable" + e.animatorClipInfo.clip.name);
-            StartCoroutine(DelayEnableInteraction(1f, false));
+            StartCoroutine(DelayEnableInteraction(0.1f, false));
+            //EnableInteraction(false);
             delayInactiveInteraction = false;
         }
     }
@@ -88,7 +90,6 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         {
             mobject.EnableInteraction(enable);
         }
-        delayActiveInteraction = false;
         delayActiveInteraction = false;
         delayInactiveInteraction = false;
     }
@@ -151,7 +152,8 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 else
                 {
                     Debug.Log(TAG + "Enable Interaction immediately");
-                    StartCoroutine(DelayEnableInteraction(0.5f, true));
+                   StartCoroutine(DelayEnableInteraction(0.1f, true));
+                   //EnableInteraction(true);
                 }
                 break;
             case EventCodes.ActionDisableInteractable:
@@ -164,7 +166,8 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 else
                 {
                     Debug.Log(TAG + "Disable Interaction immediately");
-                    StartCoroutine(DelayEnableInteraction(0.5f, false));
+                   StartCoroutine(DelayEnableInteraction(0.1f, false));
+                  // EnableInteraction(false);
                 }
                 break;
             case EventCodes.ActionChangeController:
@@ -198,6 +201,8 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
 
         }
     }
+    private bool IsBodyMovingEnable = false;
+    private string currentTransform = "";
     IEnumerator StopSwimInSecond(float second)
     {
         yield return new WaitForSeconds(second);
@@ -229,7 +234,12 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
             ReActivate();
             ResetAnimatorTriggers();
         }
-
+        if (IsBodyMovingEnable)
+        {
+            // reset transform before playing animaiton
+            ResetTransformAfterBodyMove();
+            IsBodyMovingEnable = false;
+        }
     }
 
     public override void OnEnable()
@@ -245,10 +255,23 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     {
         if (trigger != null && trigger.Length > 0)
         {
+            if (IsBodyMovingEnable)
+            {
+                // reset transform before playing animaiton
+                ResetTransformAfterBodyMove();
+                IsBodyMovingEnable = false;
+            }
             BeforeTriggerAnim(trigger);
             animator.SetTrigger(trigger);
         }
 
+    }
+    private void ResetTransformAfterBodyMove()
+    {
+        if (!string.IsNullOrEmpty(currentTransform))
+        {
+            CorrectTransform(currentTransform);
+        }
     }
     private string lastTrigger;
     private void BeforeTriggerAnim(string trigger)
@@ -263,6 +286,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
 
     private void ActivateBodyMoving(bool enable)
     {
+        IsBodyMovingEnable = enable;
         bodyMovingCube.gameObject.SetActive(enable);
     }
     private void SettupStudent(int lesson)
@@ -277,7 +301,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     private void HideAllExtension()
     {
         if (studentExtensions != null)
+        {
             studentExtensions.HideAllExtension();
+        }
+        ActivateBodyMoving(false);
 
     }
     private void ReActivate()
@@ -288,6 +315,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     public void CorrectTransform(string name)
     {
         Transform init = SpawnPointManager.instance.GetStudentSpawnPointByName(name);
+        currentTransform = name;
         if (init != null)
         {
             Debug.Log(TAG + "CorrectTransform" + name);

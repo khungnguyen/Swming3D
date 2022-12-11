@@ -336,12 +336,13 @@
       "name": "LoseControl",
       "action": [
         {
-          "name": "TriggerAnimation",
-          "property": ["LoseControl"]
-        },
-        {
-          "name": "CorrectTransform",
-          "property": ["4FingerFroggyBubbleNoseIdle"]
+          "name": "ChangeModel",
+          "property": [
+            "StudentOneHandLoseControl",
+            "OneHandLoseControl",
+            "Case_4_Finger_OneHand_Monkey_LoseControl",
+            "LoseControl"
+          ]
         },
         {
           "name": "EnableBodyMoving",
@@ -398,36 +399,6 @@
         }
       ],
       "showDisplayOrder": 0
-    },
-    {
-      "name": "BackToExercise",
-      "action": [
-        {
-          "name": "ClearDataSave",
-          "property": [""]
-        },
-        {
-          "name": "DisableInteractable",
-          "property": [""]
-        },
-        {
-          "name": "ChangeAnimController",
-          "property": ["LoseController"]
-        },
-        {
-          "name": "CorrectTransform",
-          "property": ["Lesson_2_Ex_All_Pos"]
-        },
-        {
-          "name": "SettingUpLesson",
-          "property": [""]
-        },
-        {
-          "name": "ChangeLessonTitle",
-          "property": ["Practice In Place"]
-        }
-      ],
-      "showDisplayOrder": 1
     },
     {
       "name": "StopAnimationAndEnableInteraction",

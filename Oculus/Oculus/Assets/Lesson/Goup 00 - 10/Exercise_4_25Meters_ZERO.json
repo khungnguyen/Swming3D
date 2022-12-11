@@ -65,6 +65,10 @@
       "name": "BubbleNoseHandStraight",
       "action": [
         {
+          "name": "CorrectTransform",
+          "property": ["StandinWaterIdle"]
+        },
+        {
           "name": "TriggerAnimation",
           "property": ["BubbleHandStraight"]
         }

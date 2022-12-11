@@ -2,7 +2,7 @@
   "Exercise": "Exercise 4 (ABTO)",
   "AnimatorController": "Case_Six",
   "startPointName": "ExerciseStarStarfishBackStart_No_Rotate",
-  "startAction":"StartAction",
+  "startAction": "StartAction",
   "Buttons": [
     {
       "name": "Allow Coach To Correct",
@@ -59,10 +59,6 @@
           "property": ["0"]
         },
         {
-          "name": "EnableBodyMoving",
-          "property": ["True"]
-        },
-        {
           "name": "EnableInteractable",
           "property": [""]
         }
@@ -81,6 +77,10 @@
           "property": ["SlideIn"]
         },
         {
+          "name": "EnableBodyMoving",
+          "property": ["True"]
+        },
+        {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
         }
@@ -97,6 +97,10 @@
         {
           "name": "CorrectTransform",
           "property": ["DoggyPaddleinPlace"]
+        },
+        {
+          "name": "EnableBodyMoving",
+          "property": ["False"]
         }
       ],
       "showDisplayOrder": 4
@@ -107,6 +111,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["StopAnim"]
+        },
+        {
+          "name": "EnableBodyMoving",
+          "property": ["True"]
         },
         {
           "name": "EnableInteractable",
@@ -124,7 +132,8 @@
         }
       ],
       "showDisplayOrder": 6
-    },{
+    },
+    {
       "name": "ExecuteDoggyPaddle5Meters",
       "action": [
         {
@@ -177,5 +186,5 @@
       "property": []
     }
   ],
-  "extension" :[]
+  "extension": []
 }

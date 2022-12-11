@@ -34,15 +34,15 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
         bool usePhotonView = !(photonView != null && photonView.IsMine);
         disableSnapFunct = false;
 
-            if (constraintComp == null || (!(constraintComp is TwoBoneIKConstraint) && !(constraintComp is MultiAimConstraint)))
+        if (constraintComp == null || (!(constraintComp is TwoBoneIKConstraint) && !(constraintComp is MultiAimConstraint)))
+        {
+            constraintComp = transform.parent.GetComponent<TwoBoneIKConstraint>();
+            if (constraintComp == null)
             {
-                constraintComp = transform.parent.GetComponent<TwoBoneIKConstraint>();
-                if (constraintComp == null)
-                {
-                    constraintComp = transform.parent.GetComponent<MultiAimConstraint>();
-                }
+                constraintComp = transform.parent.GetComponent<MultiAimConstraint>();
             }
-            EnableRigWeight(false, true);
+        }
+        EnableRigWeight(false, true);
     }
 
     IEnumerator EnableWeightEnumrator(float delayTime)
@@ -52,8 +52,12 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
     }
     public void EnableRigWeight(bool enable = true, bool force = false)
     {
-       // Debug.LogError(TAG + "EnableRigWeight" + enable + "disableSnapFunct" + disableSnapFunct);
+        // Debug.LogError(TAG + "EnableRigWeight" + enable + "disableSnapFunct" + disableSnapFunct);
         enableWeight = enable;
+        if (enable) // update posistion before enable rig weight
+        {
+            SnapUpdate();
+        }
         if (!disableSnapFunct || force)
         {
             if (constraintComp is TwoBoneIKConstraint)
@@ -65,6 +69,7 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
                 ((MultiAimConstraint)constraintComp).weight = enable ? 1 : 0;
             }
         }
+
         EnableGrabBableCube(enable);
     }
 
