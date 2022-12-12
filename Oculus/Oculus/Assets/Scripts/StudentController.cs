@@ -19,6 +19,8 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
 
     private int curLesson;
 
+    public Action<bool> OnAnimationStateComplete;
+
     struct TransformInfor
     {
         public Vector3 position;
@@ -61,7 +63,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
 
     public void RepositionNexAnim(string name)
     {
-        CorrectTransform(name);
+     //   CorrectTransform(name);
     }
     public void NotifityEndAnimationState(AnimationEvent e)
     {
@@ -81,6 +83,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
             //EnableInteraction(false);
             delayInactiveInteraction = false;
         }
+        OnAnimationStateComplete?.Invoke(true);
     }
     public void EnableInteraction(bool enable)
     {
@@ -191,7 +194,6 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 break;
             case EventCodes.ActionBodyMoving:
                 bool enable = (bool)packages[0];
-                Debug.Log(TAG + "ActionBodyMoving" + enable);
                 ActivateBodyMoving(enable);
                 break;
             case EventCodes.ActionChangeModel:
@@ -255,6 +257,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     {
         if (trigger != null && trigger.Length > 0)
         {
+            Utils.Log(this,"TriggerAnimation","IsBodyMovingEnable",IsBodyMovingEnable);
             if (IsBodyMovingEnable)
             {
                 // reset transform before playing animaiton
@@ -286,6 +289,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
 
     private void ActivateBodyMoving(bool enable)
     {
+        Utils.Log(this,"ActivateBodyMoving",false);
         IsBodyMovingEnable = enable;
         bodyMovingCube.gameObject.SetActive(enable);
     }

@@ -10,7 +10,7 @@
       "displayOrder": 1
     },
     {
-      "name": "Execute Properly",
+      "name": "Execute Slide In",
       "action": "SlideIn",
       "displayOrder": 2
     },
@@ -101,6 +101,10 @@
         {
           "name": "EnableBodyMoving",
           "property": ["False"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 4
@@ -129,6 +133,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["DoggyPaddleCorrect"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 6
@@ -139,6 +147,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["DoggySwim"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 400

@@ -2,7 +2,7 @@
   "Exercise": "Starfish Front Float",
   "AnimatorController": "Case_Four",
   "startPointName": "ExerciseStarStarfishBackStart",
-  "startAction":"StartAction",
+  "startAction": "StartAction",
   "Buttons": [
     {
       "name": "Allow Coach To Correct",
@@ -10,13 +10,18 @@
       "displayOrder": 1
     },
     {
-      "name": "Execute Properly",
+      "name": "Execute Slide In",
       "action": "SlideIn",
       "displayOrder": 2
     },
     {
-      "name": "Starfish Front Float Incorrect",
+      "name": "Starfish Front Float Incorrectly",
       "action": "ExecuteStarfishWrong",
+      "displayOrder": 3
+    },
+    {
+      "name": "Starfish Front Float Correctly",
+      "action": "ExecuteStarfish",
       "displayOrder": 3
     },
     {
@@ -25,7 +30,7 @@
       "displayOrder": 4
     },
     {
-      "name": "Execute Properly",
+      "name": "Starfish Front Float Correctly",
       "action": "ExecuteStarfish",
       "displayOrder": 5
     },
@@ -41,7 +46,12 @@
       "action": [
         {
           "name": "ChangeModel",
-          "property": ["StudentFrontFloat","ExerciseStarStarfishBackStart","Case_Four",""]
+          "property": [
+            "StudentFrontFloat",
+            "ExerciseStarStarfishBackStart",
+            "Case_Four",
+            ""
+          ]
         },
         {
           "name": "ActivateExtension",
@@ -78,7 +88,7 @@
         {
           "name": "EnableBodyMoving",
           "property": ["True"]
-       },
+        },
         {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
@@ -89,7 +99,10 @@
     {
       "name": "ExecuteStarfishWrong",
       "action": [
-      
+        {
+          "name": "CorrectTransform",
+          "property": ["StarfishFrontFloatWrongPos"]
+        },
         {
           "name": "TriggerAnimation",
           "property": ["StarfishWrong"]
@@ -97,11 +110,11 @@
         {
           "name": "EnableBodyMoving",
           "property": ["False"]
-       },
-       {
-        "name": "CorrectTransform",
-        "property": ["StarfishFrontFloatWrongPos"]
-      }
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        }
       ],
       "showDisplayOrder": 4
     },
@@ -115,10 +128,14 @@
         {
           "name": "EnableBodyMoving",
           "property": ["True"]
-       },
+        },
         {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["StarfishFrontFloatWrongPos"]
         }
       ],
       "showDisplayOrder": 5
@@ -129,27 +146,17 @@
         {
           "name": "TriggerAnimation",
           "property": ["Starfish"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["StarfishFrontFloatWrongPos"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 400
-    },
-    {
-      "name": "BackToExercise",
-      "action": [
-        {
-          "name": "DisableInteractable",
-          "property": [""]
-        },
-        {
-          "name": "SettingUpLesson",
-          "property": [""]
-        },
-        {
-          "name": "GoToExercise",
-          "property": ["0"]
-        }
-      ],
-      "showDisplayOrder": 1
     },
     {
       "name": "GoToLessonMenu",
@@ -161,6 +168,10 @@
         {
           "name": "DisableInteractable",
           "property": [""]
+        },
+        {
+          "name": "ChangeModel",
+          "property": ["StudentFullter", "Lesson_1_Ex_All_Pos", "Case_One", ""]
         }
       ],
       "showDisplayOrder": 0
@@ -190,5 +201,5 @@
       "property": []
     }
   ],
-  "extension" :[]
+  "extension": []
 }

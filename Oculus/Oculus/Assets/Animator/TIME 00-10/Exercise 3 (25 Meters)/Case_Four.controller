@@ -38,14 +38,14 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8081256636555648246}
-  m_Solo: 0
+  m_Solo: 1
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 1
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -72,33 +72,6 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: -784301045736877754, guid: 839c9d083bb5ee14db42531f5e29d8a6,
-    type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &-2158259312213244988
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Starfish float on the front_Idle
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: -7042819391118328453, guid: c12445a03095bed439ee27cbeb92c723,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -147,9 +120,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.0801034
-  m_TransitionOffset: 0
-  m_ExitTime: 0.9899871
+  m_TransitionDuration: 1.0064554
+  m_TransitionOffset: 0.01895711
+  m_ExitTime: 0.8741931
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -201,33 +174,6 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &1312877074031432022
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Starfish float on the front - Incorrect animation
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: -5469296534468915783, guid: eb5b2540adfb2844583f6bf4da348fcb,
-    type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1101 &1465352342309456941
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -241,7 +187,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6919125393696976668}
-  m_Solo: 0
+  m_Solo: 1
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
@@ -263,9 +209,6 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: 1312877074031432022}
-    m_Position: {x: 1540, y: 140, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: -1716671050311780396}
     m_Position: {x: -250, y: -130, z: 0}
   - serializedVersion: 1
@@ -273,7 +216,7 @@ AnimatorStateMachine:
     m_Position: {x: -90, y: -390, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6919125393696976668}
-    m_Position: {x: 450, y: -630, z: 0}
+    m_Position: {x: 450, y: -620, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3449635352209983650}
     m_Position: {x: 680, y: -510, z: 0}
@@ -281,11 +224,8 @@ AnimatorStateMachine:
     m_State: {fileID: 8081256636555648246}
     m_Position: {x: 160, y: -500, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -2158259312213244988}
-    m_Position: {x: 330, y: -220, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 5729659518970398135}
-    m_Position: {x: 370, y: 10, z: 0}
+    m_Position: {x: 160, y: -320, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 4246811420240734630}
@@ -339,7 +279,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3449635352209983650}
-  m_Solo: 0
+  m_Solo: 1
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3

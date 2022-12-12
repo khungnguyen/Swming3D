@@ -31,6 +31,7 @@ public enum ExaminerAction
     ActivateExtension,
     EnableBodyMoving,
     ChangeModel,
+    EnableButtons,
 }
 public enum ActionPropertyType
 {
@@ -181,6 +182,10 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         ButtonActions ac = GetButtonAction(action);
         if (ac != null)
         {
+            if (ac.showDisplayOrder != 0)
+            {
+                CreateButtonDialog(ac.showDisplayOrder);
+            }
             foreach (ActionProperty actionProperty in ac.action)
             {
                 string miniAction = actionProperty.name;
@@ -334,6 +339,11 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     bool active = actionProperty.property[0] == "True";
                     ActivateBodyMoving(active);
                 }
+                else if (miniAction == ExaminerAction.EnableButtons.ToString())
+                {
+                    bool active = actionProperty.property[0] == "True";
+                    EnableButtons(active);
+                }
                 else if (miniAction == ExaminerAction.ChangeModel.ToString())
                 {
                     string modelName = actionProperty.property[0];
@@ -341,14 +351,15 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     string animatorKey = actionProperty.property[2];
                     string animation = actionProperty.property[3];
                     List<string> choices = GetExercisePropertiesByName(animatorKey);
-                    string animator ="";
+                    string animator = "";
                     if (choices.Count > 0)
                     {
                         int ran = Random.Range(0, choices.Count - 1);
                         Debug.Log(TAG + "Select right controller by key" + choices[ran]);
                         animator = choices[ran];
                     }
-                    else {
+                    else
+                    {
                         animator = animatorKey;
                     }
 
@@ -357,10 +368,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 // End No Use actions
 
             }
-            if (ac.showDisplayOrder != 0)
-            {
-                CreateButtonDialog(ac.showDisplayOrder);
-            }
+
             //quy
         }
     }
@@ -434,7 +442,9 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     }
     public void StartAnimation(string name, bool useReplaceModel = false)
     {
+        EnableButtons(false);
         SendActionPlayAnim(name, useReplaceModel);
+
     }
     public void NextExercise(int index = -1)
     {
@@ -532,5 +542,13 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         packages[3] = animation;
         ConnectionManager.instance.SendAction(EventCodes.ActionChangeModel, packages);
     }
+    public void EnableButtons(bool enable)
+    {
 
+        var listButton = lessonUISpace.GetComponentsInChildren<ExerciseButton>();
+        Utils.Log(this, "EnableButtons", listButton, enable);
+           foreach(var b in listButton) {
+                b.GetComponent<Button>().interactable = enable;
+           }
+    }
 }

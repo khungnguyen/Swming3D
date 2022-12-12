@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
-public class StudentModelManager : MonoBehaviourPunCallbacks, IReceiver,IPunInstantiateMagicCallback
+public class StudentModelManager : MonoBehaviourPunCallbacks, IReceiver, IPunInstantiateMagicCallback
 {
     public static StudentModelManager instance;
 
     private GameObject curStudent;
     private GameObject preStudent;
+
+    [SerializeField]
+    private ExerciseActionControl examinerUI;
     void Awake()
     {
         instance = this;
@@ -28,7 +31,7 @@ public class StudentModelManager : MonoBehaviourPunCallbacks, IReceiver,IPunInst
         {
             var point = SpawnPointManager.instance.GetStudentSpawnPointByName("Lesson_1_Ex_All_Pos");
             curStudent = SpawnStudent("StudentFullter", point);
-            curStudent.GetPhotonView().RPC("InitFirstPose",RpcTarget.All);
+            curStudent.GetPhotonView().RPC("InitFirstPose", RpcTarget.All);
             //  curStudent.GetComponent<StudentController>().InitFirstPose();
         }
     }
@@ -60,11 +63,11 @@ public class StudentModelManager : MonoBehaviourPunCallbacks, IReceiver,IPunInst
                 string animator = (string)packages[2];
                 string animation = (string)packages[3];
                 var point = SpawnPointManager.instance.GetStudentSpawnPointByName(pointName);
-                Utils.Log(this,"ActionChangeModel",model,animator,pointName,animator,point);
+                Utils.Log(this, "ActionChangeModel", model, animator, pointName, animator, point);
                 curStudent = SpawnStudent(model, point);
                 var photonView = curStudent.GetPhotonView();
-                photonView.RPC("SetAnimator",RpcTarget.All,animator,true);
-                photonView.RPC("TriggerAnimation",RpcTarget.All,animation);
+                photonView.RPC("SetAnimator", RpcTarget.All, animator, true);
+                photonView.RPC("TriggerAnimation", RpcTarget.All, animation);
                 PhotonNetwork.Destroy(preStudent);
 
             }
@@ -81,12 +84,22 @@ public class StudentModelManager : MonoBehaviourPunCallbacks, IReceiver,IPunInst
     {
         curStudent = st.gameObject;
         Utils.Log(this, "EventCodes.OnStudentCreate");
+        st.OnAnimationStateComplete += OnAnimationStateComplete;
+    }
+
+    public void OnAnimationStateComplete(bool b)
+    {
+        if (examinerUI)
+        {
+            examinerUI.EnableButtons(true);
+        }
+
     }
     public void OnPhotonInstantiate(PhotonMessageInfo info)
     {
-       // curStudent = info.Sender.TagObject;
-        Utils.LogError(this,"OnPhotonInstantiate TagObject",info.Sender.TagObject);
-        Utils.LogError(this,"OnPhotonInstantiate",info.photonView.transform.name);
-        Utils.LogError(this,"OnPhotonInstantiate",info.photonView.gameObject.GetComponent<StudentController>());
+        // curStudent = info.Sender.TagObject;
+        Utils.LogError(this, "OnPhotonInstantiate TagObject", info.Sender.TagObject);
+        Utils.LogError(this, "OnPhotonInstantiate", info.photonView.transform.name);
+        Utils.LogError(this, "OnPhotonInstantiate", info.photonView.gameObject.GetComponent<StudentController>());
     }
 }
