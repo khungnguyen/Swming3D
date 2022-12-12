@@ -15,8 +15,13 @@
       "displayOrder": 2
     },
     {
-      "name": "Doggy Paddle Incorrect",
+      "name": "Execute Doggy Paddle Incorrectly",
       "action": "ExecuteDoggyPaddleIncorrect",
+      "displayOrder": 3
+    },
+    {
+      "name": "Execute Doggy Paddle Correctly",
+      "action": "ExecuteDoggyPaddle",
       "displayOrder": 3
     },
     {
@@ -25,7 +30,7 @@
       "displayOrder": 4
     },
     {
-      "name": "Execute Properly",
+      "name": "Execute Doggy Paddle Correctly",
       "action": "ExecuteDoggyPaddle",
       "displayOrder": 5
     },
