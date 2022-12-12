@@ -1,7 +1,7 @@
 {
-  "Exercise": "Exercise 3 (25 meters)",
+  "Exercise": "Starfish Front Float",
   "AnimatorController": "Case_Four",
-  "startPointName": "ExerciseStarStarfishBackStart_No_Rotate",
+  "startPointName": "ExerciseStarStarfishBackStart",
   "startAction":"StartAction",
   "Buttons": [
     {
@@ -39,6 +39,10 @@
     {
       "name": "StartAction",
       "action": [
+        {
+          "name": "ChangeModel",
+          "property": ["StudentFrontFloat","ExerciseStarStarfishBackStart","Case_Four",""]
+        },
         {
           "name": "ActivateExtension",
           "property": ["BackFloat", "True"]
@@ -85,6 +89,7 @@
     {
       "name": "ExecuteStarfishWrong",
       "action": [
+      
         {
           "name": "TriggerAnimation",
           "property": ["StarfishWrong"]
@@ -93,10 +98,10 @@
           "name": "EnableBodyMoving",
           "property": ["False"]
        },
-        {
-          "name": "CorrectTransform",
-          "property": ["StarfishFloatFrontPoint"]
-        }
+       {
+        "name": "CorrectTransform",
+        "property": ["StarfishFrontFloatWrongPos"]
+      }
       ],
       "showDisplayOrder": 4
     },
