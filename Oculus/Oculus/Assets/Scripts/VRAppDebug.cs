@@ -29,7 +29,7 @@ public class VRAppDebug
     * FORCE_USE_VR : only work when USE_AUTO_DETECT_VR = false, forcing VR mode
     * FORCE_USE_NO_VR : only work when USE_AUTO_DETECT_VR = false, forcing No VR mode
     */
-    public static readonly bool USE_AUTO_DETECT_VR = false;
+    public static readonly bool USE_AUTO_DETECT_VR = true;
 
     public static readonly bool FORCE_USE_VR = !USE_AUTO_DETECT_VR && false;
 
