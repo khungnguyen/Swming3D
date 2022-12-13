@@ -63,7 +63,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
 
     public void RepositionNexAnim(string name)
     {
-     //   CorrectTransform(name);
+        //   CorrectTransform(name);
     }
     public void NotifityEndAnimationState(AnimationEvent e)
     {
@@ -73,7 +73,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         {
             Debug.LogError("Animation Event call Enable" + e.animatorClipInfo.clip.name);
             StartCoroutine(DelayEnableInteraction(0.1f, true));
-           // EnableInteraction(true);
+            // EnableInteraction(true);
             delayActiveInteraction = false;
         }
         else if (delayInactiveInteraction)
@@ -95,6 +95,11 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         }
         delayActiveInteraction = false;
         delayInactiveInteraction = false;
+        if (enable)
+        {
+            OnAnimationStateComplete?.Invoke(true);
+        }
+
     }
     IEnumerator DelayEnableInteraction(float delayTime, bool enable)
     {
@@ -155,8 +160,8 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 else
                 {
                     Debug.Log(TAG + "Enable Interaction immediately");
-                   StartCoroutine(DelayEnableInteraction(0.1f, true));
-                   //EnableInteraction(true);
+                    StartCoroutine(DelayEnableInteraction(0.1f, true));
+                    //EnableInteraction(true);
                 }
                 break;
             case EventCodes.ActionDisableInteractable:
@@ -169,8 +174,8 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 else
                 {
                     Debug.Log(TAG + "Disable Interaction immediately");
-                   StartCoroutine(DelayEnableInteraction(0.1f, false));
-                  // EnableInteraction(false);
+                    StartCoroutine(DelayEnableInteraction(0.1f, false));
+                    // EnableInteraction(false);
                 }
                 break;
             case EventCodes.ActionChangeController:
@@ -257,7 +262,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     {
         if (trigger != null && trigger.Length > 0)
         {
-            Utils.Log(this,"TriggerAnimation","IsBodyMovingEnable",IsBodyMovingEnable);
+            Utils.Log(this, "TriggerAnimation", "IsBodyMovingEnable", IsBodyMovingEnable);
             if (IsBodyMovingEnable)
             {
                 // reset transform before playing animaiton
@@ -289,7 +294,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
 
     private void ActivateBodyMoving(bool enable)
     {
-        Utils.Log(this,"ActivateBodyMoving",false);
+        Utils.Log(this, "ActivateBodyMoving", false);
         IsBodyMovingEnable = enable;
         bodyMovingCube.gameObject.SetActive(enable);
     }

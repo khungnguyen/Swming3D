@@ -9,8 +9,13 @@
       "displayOrder": 1
     },
     {
-      "name": "Monkey Walk Incorrect",
+      "name": "Execute Monkey Walk Incorrectly",
       "action": "PlayCorrectMonkeyWalkIncorrect",
+      "displayOrder": 2
+    },
+    {
+      "name": "Execute Monkey Walk Correctly",
+      "action": "PlayCorrectMonkeyWalk",
       "displayOrder": 2
     },
     {
@@ -77,6 +82,10 @@
           "property": ["0"]
         },
         {
+          "name": "EnableBodyMoving",
+          "property": ["True"]
+        },
+        {
           "name": "EnableInteractable",
           "property": [""]
         }
@@ -89,6 +98,14 @@
         {
           "name": "TriggerAnimation",
           "property": ["IncorrectMonkeyWalk"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["MonkeyWalkIdle"]
         }
       ],
       "showDisplayOrder": 3
@@ -102,6 +119,10 @@
         {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 4
@@ -116,6 +137,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["CorrectMonkeyWalk"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 5
@@ -126,6 +151,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["MonkeyWalk5m"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 9
@@ -136,6 +165,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["MonkeyWalk15meters"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 9
@@ -146,6 +179,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["MonkeyWalk25m"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 9
