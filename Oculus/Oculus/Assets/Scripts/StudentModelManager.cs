@@ -68,6 +68,7 @@ public class StudentModelManager : MonoBehaviourPunCallbacks, IReceiver, IPunIns
                 var photonView = curStudent.GetPhotonView();
                 photonView.RPC("SetAnimator", RpcTarget.All, animator, true);
                 photonView.RPC("TriggerAnimation", RpcTarget.All, animation);
+                photonView.RPC("CorrectTransform", RpcTarget.All, pointName);
                 PhotonNetwork.Destroy(preStudent);
 
             }

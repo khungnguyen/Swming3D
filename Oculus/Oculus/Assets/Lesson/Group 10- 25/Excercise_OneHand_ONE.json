@@ -145,6 +145,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["SplashKick"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 10
@@ -155,6 +159,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["CycleKick"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 10
@@ -165,6 +173,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["KickThenBreathe"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 10
@@ -175,6 +187,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["NotBledingKneesEnough"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 10
@@ -185,6 +201,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["FreestyleKickBreathe"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 10
@@ -195,6 +215,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["HeadInWater"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 10
@@ -209,6 +233,10 @@
         {
           "name": "ChangeLessonTitle",
           "property": ["Swim and Return"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 4
@@ -292,6 +320,10 @@
         {
           "name": "TriggerAnimationWithSaveKey",
           "property": ["Key_RightAnimation"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 9
@@ -349,6 +381,10 @@
           "property": ["True"]
         },
         {
+          "name": "EnableButtons",
+          "property": ["False"]
+        },
+        {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
         }
@@ -374,6 +410,10 @@
         {
           "name": "TriggerAnimationWithSaveKey",
           "property": ["Key_RightAnimation"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 9

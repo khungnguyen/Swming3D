@@ -105,7 +105,7 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["MonkeyWalkIdle"]
+          "property": ["MonkeyWalkIdleWrongPos"]
         }
       ],
       "showDisplayOrder": 3
@@ -119,10 +119,6 @@
         {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
-        },
-        {
-          "name": "EnableButtons",
-          "property": ["True"]
         }
       ],
       "showDisplayOrder": 4
@@ -164,7 +160,7 @@
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": ["MonkeyWalk15meters"]
+          "property": ["MonkeyWalk15m"]
         },
         {
           "name": "EnableButtons",

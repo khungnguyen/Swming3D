@@ -321,6 +321,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         transform.gameObject.SetActive(false);
         transform.gameObject.SetActive(true);
     }
+    [PunRPC]
     public void CorrectTransform(string name)
     {
         Transform init = SpawnPointManager.instance.GetStudentSpawnPointByName(name);
@@ -329,6 +330,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         {
             Debug.Log(TAG + "CorrectTransform" + name);
             transform.SetPositionAndRotation(init.position, init.rotation);
+            transform.localScale =init.localScale;
         }
     }
     private void ResetAnimatorTriggers()
