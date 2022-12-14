@@ -52,6 +52,10 @@
         {
           "name": "NextExercise",
           "property": [""]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 1
@@ -62,6 +66,10 @@
         {
           "name": "TriggerFinalAnimation",
           "property": [""]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 3
@@ -94,7 +102,7 @@
         "name": "SquatJump",
         "value": true
       },
-      "startPointName" :"StandJump"
+      "startPointName" :"Lesson_1_Ex_All_Pos"
     },
     {
       "lessonName": "Slide In Entry",
@@ -103,7 +111,7 @@
         "name": "SlideJump",
         "value": false
       },
-      "startPointName" :"SlideIdle"
+      "startPointName" :"Lesson_1_Ex_All_Pos"
     }
   ],
   "extension" :[]

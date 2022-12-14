@@ -58,6 +58,7 @@ public class ExerciseManager : MonoBehaviour
             curExercise++;
 
         }
+        Utils.Log(this,"Increase exercise",curExercise);
         return GetCurExercise();
     }
     public ExerciseUnit ChangeExercise(int index)

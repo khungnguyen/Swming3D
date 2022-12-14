@@ -80,6 +80,10 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
         }
 
         EnableGrabBableCube(enable);
+         if (enable) // update posistion before enable rig weight
+        {
+            SnapUpdate();
+        }
     }
 
     private void SetOriginProperties()
@@ -117,13 +121,12 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
     {
         isSnap = false;
         SetOriginProperties();
-        // activateConstraintComp(true);
     }
     public virtual void OnUnselect()
     {
-        isSnap = true;
         SnapUpdate();
-        // activateConstraintComp(false);
+        SetOriginProperties();
+        isSnap = true;
     }
 
     /*
@@ -141,9 +144,9 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
                 {
                     // do nothing
                 }
-                else
+                else 
                 {
-                    SnapUpdate();
+                   SnapUpdate();
                 }
             }
             else
@@ -152,10 +155,11 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
                 {
                     transform.rotation = Quaternion.Euler(originalRotation);
                 }
-                if (lockMovement)
-                {
-                    transform.position = originalPosition;
-                }
+
+            }
+            if (lockMovement)
+            {
+                transform.position = snapTo.position;
             }
         }
 
@@ -181,7 +185,6 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
     }
     public void EnableInteraction(bool enable)
     {
-        SetOriginProperties();
         EnableRigWeight(enable);
     }
 

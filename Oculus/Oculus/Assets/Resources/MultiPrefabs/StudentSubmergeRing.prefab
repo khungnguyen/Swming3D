@@ -779,7 +779,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 904272187819681805}
-  sceneViewId: 0
+  sceneViewId: 71
   InstantiationId: 1014
   isRuntimeInstantiated: 1
 --- !u!114 &904272187819681805
@@ -1582,7 +1582,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 5380100959001676830}
-  sceneViewId: 0
+  sceneViewId: 24
   InstantiationId: 1014
   isRuntimeInstantiated: 1
 --- !u!114 &5380100959001676830
@@ -2106,7 +2106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6575802963236326797
 Transform:
   m_ObjectHideFlags: 0
@@ -2229,9 +2229,9 @@ MonoBehaviour:
     m_Active: 1
   - m_Rig: {fileID: 1400696604927652197}
     m_Active: 1
-  - m_Rig: {fileID: 6663410757607015714}
-    m_Active: 1
   - m_Rig: {fileID: 7520954906526995528}
+    m_Active: 1
+  - m_Rig: {fileID: 6663410757607015714}
     m_Active: 1
   m_Effectors: []
 --- !u!114 &9212274099040898108
@@ -2254,7 +2254,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 4586593067671436461}
-  sceneViewId: 0
+  sceneViewId: 73
   InstantiationId: 1014
   isRuntimeInstantiated: 1
 --- !u!114 &4586593067671436461
@@ -2945,7 +2945,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 6026146053694457412}
-  sceneViewId: 0
+  sceneViewId: 29
   InstantiationId: 1014
   isRuntimeInstantiated: 1
 --- !u!114 &6026146053694457412
@@ -4711,12 +4711,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Weight: 1
   m_Data:
-    m_Root: {fileID: 8139337621928369868}
-    m_Mid: {fileID: 771377839768311869}
-    m_Tip: {fileID: 771377839768311869}
+    m_Root: {fileID: 9211711671838057151}
+    m_Mid: {fileID: 9211711671838057151}
+    m_Tip: {fileID: 9211711671838057151}
     m_Target: {fileID: 7082975374314388867}
     m_Hint: {fileID: 0}
-    m_TargetPositionWeight: 1
+    m_TargetPositionWeight: 0
     m_TargetRotationWeight: 1
     m_HintWeight: 1
     m_MaintainTargetPositionOffset: 0
@@ -5677,7 +5677,6 @@ GameObject:
   - component: {fileID: 6677780038776619134}
   - component: {fileID: 2867329317444311181}
   - component: {fileID: 1381071964825764977}
-  - component: {fileID: 3542419940755908609}
   - component: {fileID: 1718620579577460361}
   - component: {fileID: 4977336768577692136}
   - component: {fileID: 6571374495482201112}
@@ -5696,7 +5695,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2860699523677969631}
   m_LocalRotation: {x: 0.63369226, y: -0.43495303, z: -0.53427577, w: 0.3518514}
-  m_LocalPosition: {x: -11.005351, y: -0.61449254, z: 1.4044987}
+  m_LocalPosition: {x: -11.010608, y: -0.51812166, z: 1.4429775}
   m_LocalScale: {x: 2.5, y: 3.5, z: 3.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5736,7 +5735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transferOnSecondSelection: 1
   _addNewPointsToFront: 0
-  _forwardElement: {fileID: 3542419940755908609}
+  _forwardElement: {fileID: 1381071964825764977}
   _oneGrabTransformer: {fileID: 0}
   _twoGrabTransformer: {fileID: 0}
   _maxGrabPoints: -1
@@ -5753,7 +5752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   constraintComp: {fileID: 36916873}
-  snapTo: {fileID: 771377839768311869}
+  snapTo: {fileID: 9211711671838057151}
   visualGameObject: {fileID: 2068773217694200554}
   lockTarget: 0
   isSnap: 1
@@ -5771,27 +5770,6 @@ MonoBehaviour:
   - {fileID: 6822855934257779826}
   - {fileID: 2020932408393257712}
   - {fileID: 4796814213809316186}
---- !u!114 &3542419940755908609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2860699523677969631}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88b9a510d4ead0a4ebf335ba97c55bc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  constraintComp: {fileID: 36916873}
-  snapTo: {fileID: 771377839768311869}
-  visualGameObject: {fileID: 2068773217694200554}
-  lockTarget: 1
-  isSnap: 1
-  disableSnapFunct: 0
-  enableWeight: 0
-  lockRotation: 0
-  lockMovement: 1
 --- !u!114 &1718620579577460361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5886,7 +5864,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 4977336768577692136}
-  sceneViewId: 0
+  sceneViewId: 69
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &2868885222201986601
@@ -6810,7 +6788,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 2940375945937738467}
-  sceneViewId: 0
+  sceneViewId: 23
   InstantiationId: 1014
   isRuntimeInstantiated: 1
 --- !u!114 &564625724341705153
@@ -7618,7 +7596,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 4773500261270241254}
-  sceneViewId: 0
+  sceneViewId: 20
   InstantiationId: 1014
   isRuntimeInstantiated: 1
 --- !u!114 &4773500261270241254
@@ -9201,7 +9179,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 893594023421044225}
-  sceneViewId: 0
+  sceneViewId: 70
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &4457533267994697463
@@ -9732,7 +9710,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 3889794092603970209}
-  sceneViewId: 0
+  sceneViewId: 28
   InstantiationId: 1014
   isRuntimeInstantiated: 1
 --- !u!114 &3889794092603970209
@@ -10574,7 +10552,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 185049153172154052}
-  sceneViewId: 0
+  sceneViewId: 26
   InstantiationId: 1014
   isRuntimeInstantiated: 1
 --- !u!114 &185049153172154052
@@ -10792,7 +10770,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 196986793086054377}
-  sceneViewId: 0
+  sceneViewId: 72
   InstantiationId: 1014
   isRuntimeInstantiated: 1
 --- !u!1 &4979191157413865395
@@ -13354,7 +13332,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 427002682786670707}
-  sceneViewId: 0
+  sceneViewId: 25
   InstantiationId: 1014
   isRuntimeInstantiated: 1
 --- !u!114 &427002682786670707
@@ -13893,7 +13871,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 5491833450493685056}
-  sceneViewId: 0
+  sceneViewId: 22
   InstantiationId: 1014
   isRuntimeInstantiated: 1
 --- !u!114 &6682383764498488539
@@ -16492,7 +16470,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 7222959190307991660}
-  sceneViewId: 0
+  sceneViewId: 27
   InstantiationId: 1014
   isRuntimeInstantiated: 1
 --- !u!114 &7222959190307991660
@@ -17074,7 +17052,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 4399925679572557787}
-  sceneViewId: 0
+  sceneViewId: 21
   InstantiationId: 1014
   isRuntimeInstantiated: 1
 --- !u!114 &4399925679572557787

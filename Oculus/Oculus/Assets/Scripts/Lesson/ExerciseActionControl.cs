@@ -127,6 +127,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     {
                         int currentExerciseIndex = ExerciseManager.instance.GetExerciseIndex();
                         int totalExerciseLength = ExerciseManager.instance.GetTotalExerciseLength();
+                       
                         if (currentExerciseIndex == totalExerciseLength - 1)
                         {
                             continue;
@@ -153,6 +154,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     {
                         int currentExerciseIndex = ExerciseManager.instance.GetExerciseIndex();
                         int totalExerciseLength = ExerciseManager.instance.GetTotalExerciseLength();
+                         Utils.Log(this,currentExerciseIndex,"currentExerciseIndex",totalExerciseLength,"totalExerciseLength");
                         if (currentExerciseIndex == totalExerciseLength - 1)
                         {
                             continue;
@@ -458,7 +460,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
             ExerciseManager.instance.ChangeExercise(index);
         }
         curExercise = ExerciseManager.instance.GetCurExercise();
-        Debug.LogError("NextExercise " + index + " name " + curExercise.lessonName);
+        Debug.LogError("NextExercise " + ExerciseManager.instance.GetExerciseIndex() + " name " + curExercise.lessonName);
         object[] packages = new object[1];
         packages[0] = ExerciseManager.instance.GetExerciseIndex();
         ConnectionManager.instance.SendAction(EventCodes.ActionNextExercise, packages);
