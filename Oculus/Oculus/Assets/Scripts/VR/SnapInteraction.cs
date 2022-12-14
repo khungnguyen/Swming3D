@@ -17,7 +17,7 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
 
     public bool lockTarget = false;
 
-    protected bool isSnap = true;
+    public bool isSnap = true;
 
     public bool disableSnapFunct = false;
 
@@ -25,21 +25,27 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
 
     public bool lockRotation;
 
+    public bool lockMovement = false;
+
     public event Action<PointerEvent> WhenPointerEventRaised;
 
 
-    private Vector3 orginalRotation;
+    private Vector3 originalRotation;
+    private Vector3 originalPosition;
     public void Awake()
     {
-        bool usePhotonView = !(photonView != null && photonView.IsMine);
         disableSnapFunct = false;
 
-        if (constraintComp == null || (!(constraintComp is TwoBoneIKConstraint) && !(constraintComp is MultiAimConstraint)))
+        if (constraintComp == null || (!(constraintComp is TwoBoneIKConstraint) && !(constraintComp is MultiAimConstraint) && !(constraintComp is MultiRotationConstraint)))
         {
             constraintComp = transform.parent.GetComponent<TwoBoneIKConstraint>();
             if (constraintComp == null)
             {
                 constraintComp = transform.parent.GetComponent<MultiAimConstraint>();
+            }
+            if (constraintComp == null)
+            {
+                constraintComp = transform.parent.GetComponent<MultiRotationConstraint>();
             }
         }
         EnableRigWeight(false, true);
@@ -52,7 +58,6 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
     }
     public void EnableRigWeight(bool enable = true, bool force = false)
     {
-        // Debug.LogError(TAG + "EnableRigWeight" + enable + "disableSnapFunct" + disableSnapFunct);
         enableWeight = enable;
         if (enable) // update posistion before enable rig weight
         {
@@ -60,27 +65,32 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
         }
         if (!disableSnapFunct || force)
         {
-            if (constraintComp is TwoBoneIKConstraint)
+            if (constraintComp is TwoBoneIKConstraint ikbone)
             {
-                ((TwoBoneIKConstraint)constraintComp).weight = enable ? 1 : 0;
+                ikbone.weight = enable ? 1 : 0;
             }
-            else if (constraintComp is MultiAimConstraint)
+            else if (constraintComp is MultiAimConstraint aim)
             {
-                ((MultiAimConstraint)constraintComp).weight = enable ? 1 : 0;
+                aim.weight = enable ? 1 : 0;
+            }
+            else if (constraintComp is MultiRotationConstraint rotation)
+            {
+                rotation.weight = enable ? 1 : 0;
             }
         }
 
         EnableGrabBableCube(enable);
     }
 
-    private void GetOriginalRoation()
+    private void SetOriginProperties()
     {
-        orginalRotation = snapTo.rotation.eulerAngles;
+        originalRotation = snapTo.rotation.eulerAngles;
+        originalPosition = snapTo.position;
     }
     //dssd
     void Start()
     {
-        // StartCoroutine(EnableWeightEnumrator(2));
+
     }
     public void ProcessPointerEvent(PointerEvent evt)
     {
@@ -102,12 +112,11 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
             }
         }
 
-
     }
     public virtual void OnSelect()
     {
         isSnap = false;
-        GetOriginalRoation();
+        SetOriginProperties();
         // activateConstraintComp(true);
     }
     public virtual void OnUnselect()
@@ -137,11 +146,19 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
                     SnapUpdate();
                 }
             }
+            else
+            {
+                if (lockRotation)
+                {
+                    transform.rotation = Quaternion.Euler(originalRotation);
+                }
+                if (lockMovement)
+                {
+                    transform.position = originalPosition;
+                }
+            }
         }
-        if (lockRotation && !isSnap)
-        {
-            transform.rotation = Quaternion.Euler(orginalRotation);
-        }
+
     }
     private void SnapUpdate()
     {
@@ -164,6 +181,7 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
     }
     public void EnableInteraction(bool enable)
     {
+        SetOriginProperties();
         EnableRigWeight(enable);
     }
 
