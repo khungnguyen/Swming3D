@@ -12,7 +12,7 @@ using UnityEngine.Animations.Rigging;
 [CanEditMultipleObjects]
 public class StudentComponentAssignerEditor : Editor
 {
-    public string[] Rigs = { "RightArm", "LeftArm", "RightLeg", "LeftLeg", "BodyMoving" };
+    public string[] Rigs = { "Bend", "Head", "RightArm", "LeftArm", "RightLeg", "LeftLeg", "BodyMoving" };
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
@@ -28,6 +28,7 @@ public class StudentComponentAssignerEditor : Editor
             SetupComponent(studentComp, studentComp.GetComponentInChildren<KickBoardController>(true));
             SetupComponent(studentComp, studentComp.GetComponent<StudentExtension>());
             SetUpBodyMoving(studentComp);
+
 
         }
     }
@@ -107,13 +108,25 @@ public class StudentComponentAssignerEditor : Editor
                     {
                         k.data.root = root;
                     }
+                    else
+                    {
+                        Utils.LogError(this, "Can't find", k.data.root.name);
+                    }
                     if (mid != null)
                     {
                         k.data.mid = mid;
                     }
+                    else
+                    {
+                        Utils.LogError(this, "Can't find", k.data.mid.name);
+                    }
                     if (tip != null)
                     {
                         k.data.tip = tip;
+                    }
+                    else
+                    {
+                        Utils.LogError(this, "Can't find", k.data.tip.name);
                     }
                 }
             }
@@ -121,7 +134,9 @@ public class StudentComponentAssignerEditor : Editor
     }
     private void ActivateRigs(StudentComponentAssigner comp)
     {
-        var rigBuilder = comp.GetComponent<RigBuilder>();
+        DestroyImmediate(comp.gameObject.GetComponent<RigBuilder>());
+        var rigBuilder = comp.gameObject.AddComponent<RigBuilder>();
+        Utils.LogError(this, "Rig builder", rigBuilder.transform.name);
         rigBuilder.layers.Clear();
         foreach (var rigTransform in Rigs)
         {

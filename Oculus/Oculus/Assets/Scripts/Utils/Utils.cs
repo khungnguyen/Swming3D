@@ -144,9 +144,11 @@ public static class Utils
             var childName = child.name;
             if (removeSpace)
             {
-                childName = childName.ReplaceAll(" ", "");
+                if(childName.ReplaceAll(" ", "").Contains(name.ReplaceAll(" ", ""))) {
+                    return child;
+                }
             }
-            if (childName.Contains(name))
+            else if (childName.Contains(name))
             {
 
                 return child;
