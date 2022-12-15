@@ -2973,12 +2973,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127197218}
   m_CullTransparentMesh: 1
---- !u!4 &1129709372 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6471e53efa4257e47b5a8686568ec01f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1954243860}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1205433330
 GameObject:
   m_ObjectHideFlags: 0
@@ -4080,6 +4074,8 @@ MonoBehaviour:
   - {fileID: 8220452423051133179}
   - {fileID: 2817200788955858248}
   - {fileID: 356755687}
+  - {fileID: 2105596418}
+  - {fileID: 6850861315829649074}
   XRPlayerSpawnPoints:
   - {fileID: 539190780}
   DesktopPlayerSpawnPoints:
@@ -4412,6 +4408,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StudentPinchNoseBreathe
       objectReference: {fileID: 0}
+    - target: {fileID: 5739220202833849273, guid: 9db43cba9513c3e489eaeba38c5e31b2,
+        type: 3}
+      propertyPath: m_RigLayers.Array.data[0].m_Active
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6829566170494136625, guid: 9db43cba9513c3e489eaeba38c5e31b2,
         type: 3}
       propertyPath: sceneViewId
@@ -4636,7 +4637,8 @@ Transform:
   - {fileID: 8824678826929520595}
   - {fileID: 8220452423051133179}
   - {fileID: 2817200788955858248}
-  - {fileID: 1129709372}
+  - {fileID: 2105596418}
+  - {fileID: 6850861315829649074}
   m_Father: {fileID: 1154756507603345044}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5995,82 +5997,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!1001 &1954243860
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 2
-    m_TransformParent: {fileID: 1705272545}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 6471e53efa4257e47b5a8686568ec01f,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6471e53efa4257e47b5a8686568ec01f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 21.542109
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6471e53efa4257e47b5a8686568ec01f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.071
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6471e53efa4257e47b5a8686568ec01f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.19
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6471e53efa4257e47b5a8686568ec01f,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6471e53efa4257e47b5a8686568ec01f,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6471e53efa4257e47b5a8686568ec01f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6471e53efa4257e47b5a8686568ec01f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6471e53efa4257e47b5a8686568ec01f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6471e53efa4257e47b5a8686568ec01f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6471e53efa4257e47b5a8686568ec01f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 6471e53efa4257e47b5a8686568ec01f,
-        type: 3}
-      propertyPath: m_Name
-      value: Squat_Sit
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 6471e53efa4257e47b5a8686568ec01f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_AddedGameObjects: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6471e53efa4257e47b5a8686568ec01f, type: 3}
 --- !u!4 &1970356727 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3292654313950918604, guid: 25c090698b1b94e4d9a8f6d5494bdf31,
@@ -6228,6 +6154,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2074918470}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2105596417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2105596418}
+  m_Layer: 0
+  m_Name: PinchNoseBreatheIdle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2105596418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105596417}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.61, y: 0.003, z: -0.238}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1705272545}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2146547964 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1038146256242982, guid: a9d2de84afb308a4796cc671d3432b4d,
@@ -8878,6 +8835,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2282210637149655271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6850861315829649074}
+  m_Layer: 0
+  m_Name: PinchNoseBreatheIWrongPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &2290883805964197486
 Transform:
   m_ObjectHideFlags: 0
@@ -15648,6 +15621,21 @@ Transform:
   - {fileID: 6554606320985669100}
   m_Father: {fileID: 8401337800798792230}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &6850861315829649074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2282210637149655271}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 22.228, y: 0.003, z: -0.238}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1705272545}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6851159191459097238
 MonoBehaviour:
