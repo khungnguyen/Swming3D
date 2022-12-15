@@ -262,7 +262,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     {
         if (trigger != null && trigger.Length > 0)
         {
-            Utils.Log(this, "TriggerAnimation", "IsBodyMovingEnable", IsBodyMovingEnable);
+//            Utils.Log(this, "TriggerAnimation", "IsBodyMovingEnable", IsBodyMovingEnable);
             if (IsBodyMovingEnable)
             {
                 // reset transform before playing animaiton

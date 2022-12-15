@@ -127,7 +127,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     {
                         int currentExerciseIndex = ExerciseManager.instance.GetExerciseIndex();
                         int totalExerciseLength = ExerciseManager.instance.GetTotalExerciseLength();
-                       
+
                         if (currentExerciseIndex == totalExerciseLength - 1)
                         {
                             continue;
@@ -154,8 +154,8 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     {
                         int currentExerciseIndex = ExerciseManager.instance.GetExerciseIndex();
                         int totalExerciseLength = ExerciseManager.instance.GetTotalExerciseLength();
-                         Utils.Log(this,currentExerciseIndex,"currentExerciseIndex",totalExerciseLength,"totalExerciseLength");
-                        if (currentExerciseIndex == totalExerciseLength - 1)
+                        Utils.Log(this, currentExerciseIndex, "currentExerciseIndex", totalExerciseLength, "totalExerciseLength");
+                        if (currentExerciseIndex == totalExerciseLength - 1) // cheating too tired to fix it
                         {
                             continue;
                         }
@@ -178,16 +178,19 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         GetComponent<VerticalLayoutGroup>().enabled = false;
         GetComponent<VerticalLayoutGroup>().enabled = true;
     }
+    enum BUTTON_SHOW
+    {
+        KEEP_CURRENT_STATUS,
+        HIDE_BUTTONS,
+        SHOW_BUTTON
+    };
     public void HandlerAction(string action)
     {
         Debug.LogError(TAG + "Button Click With Action" + action);
         ButtonActions ac = GetButtonAction(action);
         if (ac != null)
         {
-            if (ac.showDisplayOrder != 0)
-            {
-                CreateButtonDialog(ac.showDisplayOrder);
-            }
+            BUTTON_SHOW needToEnableButton = BUTTON_SHOW.KEEP_CURRENT_STATUS;
             foreach (ActionProperty actionProperty in ac.action)
             {
                 string miniAction = actionProperty.name;
@@ -344,7 +347,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 else if (miniAction == ExaminerAction.EnableButtons.ToString())
                 {
                     bool active = actionProperty.property[0] == "True";
-                    EnableButtons(active);
+                    needToEnableButton = active ? BUTTON_SHOW.SHOW_BUTTON : BUTTON_SHOW.HIDE_BUTTONS;
                 }
                 else if (miniAction == ExaminerAction.ChangeModel.ToString())
                 {
@@ -370,7 +373,14 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 // End No Use actions
 
             }
-
+            if (ac.showDisplayOrder != 0)
+            {
+                CreateButtonDialog(ac.showDisplayOrder);
+            }
+            if (needToEnableButton != BUTTON_SHOW.KEEP_CURRENT_STATUS)
+            {
+                EnableButtons(needToEnableButton == BUTTON_SHOW.SHOW_BUTTON);
+            }
             //quy
         }
     }
@@ -546,11 +556,10 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     }
     public void EnableButtons(bool enable)
     {
-
         var listButton = lessonUISpace.GetComponentsInChildren<ExerciseButton>();
-        Utils.Log(this, "EnableButtons", listButton, enable);
-           foreach(var b in listButton) {
-                b.GetComponent<Button>().interactable = enable;
-           }
+        foreach (var b in listButton)
+        {
+            b.GetComponent<Button>().interactable = enable;
+        }
     }
 }
