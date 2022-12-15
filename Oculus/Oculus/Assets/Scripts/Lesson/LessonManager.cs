@@ -40,6 +40,7 @@ public class LessonManager : MonoBehaviour, IReceiver
     "Time 00 - 10 minutes",
     "Time 10 - 25 minutes",
     "Time 25 - 40 minutes",
+    "Time 40 - 45 minutes",
     };
 
     [SerializeField]

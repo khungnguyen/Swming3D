@@ -75,7 +75,7 @@
       "action": [
         {
           "name": "ChangeModel",
-          "property": ["StudenMonkey","MonkeyWalkIdle","Case_Monkey_Walk",""]
+          "property": ["StudentPinchNoseBreathe","MonkeyWalkIdle","Case_ABTO Bubble - Pinch Nose Hold Breath",""]
         },
         {
           "name": "GoToExercise",
@@ -126,10 +126,6 @@
     {
       "name": "PlayCorrectMonkeyWalk",
       "action": [
-        {
-          "name": "CorrectTransform",
-          "property": ["MonkeyWalkCorrect"]
-        },
         {
           "name": "TriggerAnimation",
           "property": ["CorrectMonkeyWalk"]

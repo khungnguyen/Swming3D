@@ -136,7 +136,6 @@ public class StudentComponentAssignerEditor : Editor
     {
         DestroyImmediate(comp.gameObject.GetComponent<RigBuilder>());
         var rigBuilder = comp.gameObject.AddComponent<RigBuilder>();
-        Utils.LogError(this, "Rig builder", rigBuilder.transform.name);
         rigBuilder.layers.Clear();
         foreach (var rigTransform in Rigs)
         {
