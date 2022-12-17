@@ -2138,7 +2138,7 @@ Transform:
   - {fileID: 7407490930235746815}
   - {fileID: 3413369718552238461}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6694338686605985689
 MonoBehaviour:
@@ -2221,6 +2221,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RigLayers:
+  - m_Rig: {fileID: 7520954906526995528}
+    m_Active: 1
+  - m_Rig: {fileID: 6663410757607015714}
+    m_Active: 1
   - m_Rig: {fileID: 8968128072495338561}
     m_Active: 1
   - m_Rig: {fileID: 1821703805608233884}
@@ -2228,10 +2232,6 @@ MonoBehaviour:
   - m_Rig: {fileID: 3307627245380898028}
     m_Active: 1
   - m_Rig: {fileID: 1400696604927652197}
-    m_Active: 1
-  - m_Rig: {fileID: 6663410757607015714}
-    m_Active: 1
-  - m_Rig: {fileID: 7520954906526995528}
     m_Active: 1
   m_Effectors: []
 --- !u!114 &9212274099040898108
