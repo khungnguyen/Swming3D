@@ -636,6 +636,8 @@ MonoBehaviour:
     avatar: {fileID: 9000000, guid: 955c04699ec70554f8259e96f47de4c4, type: 3}
   - controller: {fileID: 9100000, guid: f79d0ab50d7246e4abc5c14c33ea7c4b, type: 2}
     avatar: {fileID: 9000000, guid: 5d2f701ff99389642ad3b5bda40298ad, type: 3}
+  - controller: {fileID: 9100000, guid: 9f85f6e36e92c0148bff3e11ba31ed35, type: 2}
+    avatar: {fileID: 9000000, guid: c9cadfb56c7bbc04080992f9a08ed72a, type: 3}
   - controller: {fileID: 9100000, guid: 11ada4efecb12e141a72c54f3a9dae0e, type: 2}
     avatar: {fileID: 9000000, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
 --- !u!1 &157982908
@@ -3050,6 +3052,77 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1205433330}
   m_CullTransparentMesh: 1
+--- !u!1001 &1205511522
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 1154756507603345044}
+    m_Modifications:
+    - target: {fileID: 1744240024778426332, guid: 88b606b1217790644a8bd54821c7e131,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744240024778426332, guid: 88b606b1217790644a8bd54821c7e131,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744240024778426332, guid: 88b606b1217790644a8bd54821c7e131,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744240024778426332, guid: 88b606b1217790644a8bd54821c7e131,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744240024778426332, guid: 88b606b1217790644a8bd54821c7e131,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744240024778426332, guid: 88b606b1217790644a8bd54821c7e131,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744240024778426332, guid: 88b606b1217790644a8bd54821c7e131,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744240024778426332, guid: 88b606b1217790644a8bd54821c7e131,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744240024778426332, guid: 88b606b1217790644a8bd54821c7e131,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744240024778426332, guid: 88b606b1217790644a8bd54821c7e131,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744240024778426332, guid: 88b606b1217790644a8bd54821c7e131,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744240024778426335, guid: 88b606b1217790644a8bd54821c7e131,
+        type: 3}
+      propertyPath: m_Name
+      value: WaterSurface
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 88b606b1217790644a8bd54821c7e131, type: 3}
 --- !u!1 &1207509471
 GameObject:
   m_ObjectHideFlags: 0
@@ -5838,6 +5911,18 @@ MonoBehaviour:
         startAction: 
         extension: []
       enable: 1
+    - jsonData: {fileID: 4900000, guid: d8c8c394b8baee94daa5fe1e8ab96fcc, type: 3}
+      lesson:
+        ExerciseList: []
+        Exercise: 
+        Buttons: []
+        Actions: []
+        modelPrefab: 
+        AnimatorController: 
+        startPointName: 
+        startAction: 
+        extension: []
+      enable: 1
 --- !u!1 &1904033979
 GameObject:
   m_ObjectHideFlags: 0
@@ -6036,6 +6121,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2030456397 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1744240024778426332, guid: 88b606b1217790644a8bd54821c7e131,
+    type: 3}
+  m_PrefabInstance: {fileID: 1205511522}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2053403518
 GameObject:
   m_ObjectHideFlags: 0
@@ -7041,6 +7132,7 @@ Transform:
   - {fileID: 6505049650473989013}
   - {fileID: 539190780}
   - {fileID: 2074918471}
+  - {fileID: 2030456397}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
