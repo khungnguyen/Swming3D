@@ -642,6 +642,8 @@ MonoBehaviour:
     avatar: {fileID: 9000000, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
   - controller: {fileID: 9100000, guid: 5ebe156fd8d97ca43a9412d2545a2878, type: 2}
     avatar: {fileID: 9000000, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
+  - controller: {fileID: 9100000, guid: 7473d5fe7cde03a4e9789058ac6340d2, type: 2}
+    avatar: {fileID: 9000000, guid: 1ac10462a87e49447b53bb7415dec22e, type: 3}
 --- !u!1 &157982908
 GameObject:
   m_ObjectHideFlags: 0
@@ -5947,6 +5949,18 @@ MonoBehaviour:
         extension: []
       enable: 1
     - jsonData: {fileID: 4900000, guid: d8c8c394b8baee94daa5fe1e8ab96fcc, type: 3}
+      lesson:
+        ExerciseList: []
+        Exercise: 
+        Buttons: []
+        Actions: []
+        modelPrefab: 
+        AnimatorController: 
+        startPointName: 
+        startAction: 
+        extension: []
+      enable: 1
+    - jsonData: {fileID: 4900000, guid: 07888af51089a374abd1ddedc480f5d3, type: 3}
       lesson:
         ExerciseList: []
         Exercise: 
