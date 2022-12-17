@@ -640,6 +640,8 @@ MonoBehaviour:
     avatar: {fileID: 9000000, guid: c9cadfb56c7bbc04080992f9a08ed72a, type: 3}
   - controller: {fileID: 9100000, guid: 11ada4efecb12e141a72c54f3a9dae0e, type: 2}
     avatar: {fileID: 9000000, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
+  - controller: {fileID: 9100000, guid: 5ebe156fd8d97ca43a9412d2545a2878, type: 2}
+    avatar: {fileID: 9000000, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
 --- !u!1 &157982908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,6 +1024,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1782839244}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &317935881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 317935882}
+  m_Layer: 0
+  m_Name: BubbleNoseFaceDown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &317935882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317935881}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.61, y: 0, z: -0.238}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1705272545}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &322201184
 GameObject:
   m_ObjectHideFlags: 0
@@ -4149,6 +4182,7 @@ MonoBehaviour:
   - {fileID: 356755687}
   - {fileID: 2105596418}
   - {fileID: 6850861315829649074}
+  - {fileID: 317935882}
   XRPlayerSpawnPoints:
   - {fileID: 539190780}
   DesktopPlayerSpawnPoints:
@@ -4712,6 +4746,7 @@ Transform:
   - {fileID: 2817200788955858248}
   - {fileID: 2105596418}
   - {fileID: 6850861315829649074}
+  - {fileID: 317935882}
   m_Father: {fileID: 1154756507603345044}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5912,6 +5947,18 @@ MonoBehaviour:
         extension: []
       enable: 1
     - jsonData: {fileID: 4900000, guid: d8c8c394b8baee94daa5fe1e8ab96fcc, type: 3}
+      lesson:
+        ExerciseList: []
+        Exercise: 
+        Buttons: []
+        Actions: []
+        modelPrefab: 
+        AnimatorController: 
+        startPointName: 
+        startAction: 
+        extension: []
+      enable: 1
+    - jsonData: {fileID: 4900000, guid: 0bd4aef95dd005e4889ba4abf5470c1a, type: 3}
       lesson:
         ExerciseList: []
         Exercise: 

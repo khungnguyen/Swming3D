@@ -1,5 +1,5 @@
 {
-  "Exercise": "Exercise 2 ABTO Bubble - Bubble Nose",
+  "Exercise": "Step 2 25 Meter Bubble - Hand Straight Bubble Nose",
   "AnimatorController": "Case_One",
   "startPointName": "Lesson_1_Ex_All_Pos",
   "Buttons": [
@@ -9,12 +9,12 @@
       "displayOrder": 1
     },
     {
-      "name": "Execute Bubble Nose Pinch Nose Hold Breath InCorrectly",
+      "name": "Execute Bubble Nose Hand Straight Kick InCorrectly",
       "action": "IncorrectAnimation",
       "displayOrder": 2
     },
     {
-      "name": "Execute Bubble Nose Pinch Nose Hold Breath Correctly",
+      "name": "Execute Bubble Nose Hand Straight Kick Correctly",
       "action": "CorrectAnimation",
       "displayOrder": 2
     },
@@ -29,17 +29,17 @@
       "displayOrder": 4
     },
     {
-      "name": "Monkey Walk With Pinched Nose 5 Meters and Return",
+      "name": "Bubble Nose Hand Straight Kick Swim 5 Meters and Return",
       "action": "MonkeyWalk5meters",
       "displayOrder": 5
     },
     {
-      "name": "Monkey Walk With Pinched Nose 15 Meters and Return",
+      "name": "Bubble Nose Hand Straight Kick Swim 15 Meters and Return",
       "action": "MonkeyWalk15meters",
       "displayOrder": 5
     },
     {
-      "name": "Monkey Walk With Pinched Nose 25 Meters and Return",
+      "name": "Bubble Nose Hand Straight Kick Swim 25 Meters and Return",
       "action": "MonkeyWalk25meters",
       "displayOrder": 5
     },
@@ -75,7 +75,7 @@
       "action": [
         {
           "name": "ChangeModel",
-          "property": ["StudentPinchNoseBreathe","PinchNoseBreatheIdle","Exercise 2 (ABTO Bubble - Bubble Nose)",""]
+          "property": ["StudentPinchNoseBreathe","BubbleNoseFaceDown","Step 2 (25 Meter Bubble - Hand Straight Bubble Nose)",""]
         },
         {
           "name": "GoToExercise",
@@ -105,7 +105,7 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["PinchNoseBreatheIWrongPos"]
+          "property": ["BubbleNoseFaceDown"]
         }
       ],
       "showDisplayOrder": 3
