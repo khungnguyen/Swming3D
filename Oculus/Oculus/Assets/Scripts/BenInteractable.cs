@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class BenInteractable : SnapInteraction
 {
-    [SerializeField] List<SnapInteraction> interactionList;
+    List<SnapInteraction> interactionList;
 
     List<SnapInteraction> nolock;
     void Start()
     {
+        var rootNode = transform.parent.parent.parent;
+        interactionList = new List<SnapInteraction> (rootNode.GetComponentsInChildren<SnapInteraction>()).FindAll(e=>e!=this);
         nolock = interactionList.FindAll(e => e.lockTarget);
     }
     public override void OnSelect()
