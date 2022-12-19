@@ -545,9 +545,11 @@ MonoBehaviour:
   snapTo: {fileID: 5702624956942141408}
   visualGameObject: {fileID: 2201834028508764170}
   lockTarget: 0
+  isSnap: 1
   disableSnapFunct: 0
   enableWeight: 0
   lockRotation: 0
+  lockMovement: 0
 --- !u!114 &4338388306903545795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1283,9 +1285,11 @@ MonoBehaviour:
   snapTo: {fileID: 4881127325421924356}
   visualGameObject: {fileID: 1025689752219792026}
   lockTarget: 0
+  isSnap: 1
   disableSnapFunct: 0
   enableWeight: 0
   lockRotation: 0
+  lockMovement: 0
 --- !u!114 &1657685697445408954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1932,9 +1936,11 @@ MonoBehaviour:
   snapTo: {fileID: 621609805625992484}
   visualGameObject: {fileID: 7577440316193276146}
   lockTarget: 0
+  isSnap: 1
   disableSnapFunct: 0
   enableWeight: 0
   lockRotation: 0
+  lockMovement: 0
 --- !u!114 &3475854480360132969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4507,9 +4513,11 @@ MonoBehaviour:
   snapTo: {fileID: 7557575681204121711}
   visualGameObject: {fileID: 421850334726494332}
   lockTarget: 1
+  isSnap: 1
   disableSnapFunct: 0
   enableWeight: 0
   lockRotation: 0
+  lockMovement: 0
 --- !u!114 &6420226647858260299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5936,9 +5944,11 @@ MonoBehaviour:
   snapTo: {fileID: 5612862920260268941}
   visualGameObject: {fileID: 2741596545141690596}
   lockTarget: 0
+  isSnap: 1
   disableSnapFunct: 0
   enableWeight: 0
   lockRotation: 0
+  lockMovement: 0
 --- !u!114 &641732429826866542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6126,9 +6136,11 @@ MonoBehaviour:
   snapTo: {fileID: 6093961899430175153}
   visualGameObject: {fileID: 3369013807517395315}
   lockTarget: 1
+  isSnap: 1
   disableSnapFunct: 0
   enableWeight: 0
   lockRotation: 0
+  lockMovement: 0
 --- !u!114 &4651244556705831304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6767,7 +6779,7 @@ Transform:
   - {fileID: 7484884343472258350}
   - {fileID: 4937515690296441632}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9091301689164423056
 MonoBehaviour:
@@ -7074,9 +7086,11 @@ MonoBehaviour:
   snapTo: {fileID: 7042868260626533694}
   visualGameObject: {fileID: 274396459156700473}
   lockTarget: 1
+  isSnap: 1
   disableSnapFunct: 0
   enableWeight: 0
   lockRotation: 0
+  lockMovement: 0
 --- !u!114 &9093186414136222772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8070,9 +8084,11 @@ MonoBehaviour:
   snapTo: {fileID: 7840846895885644328}
   visualGameObject: {fileID: 2710068932425264476}
   lockTarget: 1
+  isSnap: 1
   disableSnapFunct: 0
   enableWeight: 0
   lockRotation: 0
+  lockMovement: 0
 --- !u!114 &7585576383128402696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9200,18 +9216,18 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4427394405292297522, guid: 3e982eb9e569ba5458a9c83bac203efa, type: 3}
-  - {fileID: 5244794397207834549, guid: 3e982eb9e569ba5458a9c83bac203efa, type: 3}
-  - {fileID: 2787077813069540900, guid: 3e982eb9e569ba5458a9c83bac203efa, type: 3}
-  - {fileID: 4497628284502966209, guid: 3e982eb9e569ba5458a9c83bac203efa, type: 3}
-  - {fileID: -8145408169447611014, guid: 3e982eb9e569ba5458a9c83bac203efa, type: 3}
-  - {fileID: 7361142571328244463, guid: 3e982eb9e569ba5458a9c83bac203efa, type: 3}
-  - {fileID: -8757510605255195007, guid: 3e982eb9e569ba5458a9c83bac203efa, type: 3}
-  - {fileID: 8575313940150268894, guid: 3e982eb9e569ba5458a9c83bac203efa, type: 3}
-  - {fileID: 6127770074666916595, guid: 3e982eb9e569ba5458a9c83bac203efa, type: 3}
-  - {fileID: 6036109035531164381, guid: 3e982eb9e569ba5458a9c83bac203efa, type: 3}
-  - {fileID: -7621992812897208050, guid: 3e982eb9e569ba5458a9c83bac203efa, type: 3}
-  - {fileID: 6044726008863606537, guid: 3e982eb9e569ba5458a9c83bac203efa, type: 3}
+  - {fileID: 2100000, guid: 4814be2c63b31f5459fe22ddaae4307f, type: 2}
+  - {fileID: 2100000, guid: 130da33b97b179b46b01705c7c9b1ade, type: 2}
+  - {fileID: 2100000, guid: f1410969e832b40449bf01902fc517f3, type: 2}
+  - {fileID: 2100000, guid: c4515158b2694d94287a38a4834269d2, type: 2}
+  - {fileID: 2100000, guid: 1c763115095fb1d46921a3e29d16f1f1, type: 2}
+  - {fileID: 2100000, guid: 41e6b01efab078345a2ac8c25ad15cac, type: 2}
+  - {fileID: 2100000, guid: 4bb9ce85c24ae5f4d89c69285ee94bd8, type: 2}
+  - {fileID: 2100000, guid: e9d0c919f905f0547a8ad96872f5c0cc, type: 2}
+  - {fileID: 2100000, guid: e9d0c919f905f0547a8ad96872f5c0cc, type: 2}
+  - {fileID: 2100000, guid: 645abe38076e70b4bb0f27f76bc129a1, type: 2}
+  - {fileID: 2100000, guid: b29efb29a90fa7b49ba8338baf728289, type: 2}
+  - {fileID: 2100000, guid: 6228924ad9ea17f4fa3779901cc23dcd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9807,9 +9823,11 @@ MonoBehaviour:
   snapTo: {fileID: 1386514148780781968}
   visualGameObject: {fileID: 4082712771730721674}
   lockTarget: 0
+  isSnap: 1
   disableSnapFunct: 0
   enableWeight: 0
   lockRotation: 0
+  lockMovement: 0
   wholeBody: {fileID: 4021574170936413093}
   kickBoard: {fileID: 2725193755777160418}
 --- !u!1 &6358477387038595291

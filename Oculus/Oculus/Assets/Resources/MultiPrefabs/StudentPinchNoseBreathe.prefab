@@ -7813,7 +7813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3771627522356244307
 Transform:
   m_ObjectHideFlags: 0
@@ -7840,7 +7840,7 @@ Transform:
   - {fileID: 3828654817305263469}
   - {fileID: 2786880401137513111}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7113347560883664169
 Animator:
@@ -8376,15 +8376,15 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4427394405292297522, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
-  - {fileID: 5244794397207834549, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
-  - {fileID: 2787077813069540900, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
-  - {fileID: 4497628284502966209, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
-  - {fileID: -8145408169447611014, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
+  - {fileID: 2100000, guid: 4814be2c63b31f5459fe22ddaae4307f, type: 2}
+  - {fileID: 2100000, guid: 130da33b97b179b46b01705c7c9b1ade, type: 2}
+  - {fileID: 2100000, guid: f1410969e832b40449bf01902fc517f3, type: 2}
+  - {fileID: 2100000, guid: c4515158b2694d94287a38a4834269d2, type: 2}
+  - {fileID: 2100000, guid: 1c763115095fb1d46921a3e29d16f1f1, type: 2}
   - {fileID: 7361142571328244463, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
   - {fileID: -8757510605255195007, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
-  - {fileID: 8575313940150268894, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
-  - {fileID: 6127770074666916595, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
+  - {fileID: 2100000, guid: e9d0c919f905f0547a8ad96872f5c0cc, type: 2}
+  - {fileID: 2100000, guid: e9d0c919f905f0547a8ad96872f5c0cc, type: 2}
   - {fileID: 6036109035531164381, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
   - {fileID: -7621992812897208050, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
   - {fileID: 6044726008863606537, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
@@ -13468,16 +13468,6 @@ MonoBehaviour:
   enableWeight: 0
   lockRotation: 0
   lockMovement: 1
-  interactionList:
-  - {fileID: 6761492528036201847, guid: 28d329837a8aa6f49aac87f7975d7146, type: 3}
-  - {fileID: 1938425278252780804, guid: 28d329837a8aa6f49aac87f7975d7146, type: 3}
-  - {fileID: 1260513335123183154, guid: 28d329837a8aa6f49aac87f7975d7146, type: 3}
-  - {fileID: 8567811712690190834, guid: 28d329837a8aa6f49aac87f7975d7146, type: 3}
-  - {fileID: 2927079001237710118, guid: 28d329837a8aa6f49aac87f7975d7146, type: 3}
-  - {fileID: 2426290530387994609, guid: 28d329837a8aa6f49aac87f7975d7146, type: 3}
-  - {fileID: 6822855934257779826, guid: 28d329837a8aa6f49aac87f7975d7146, type: 3}
-  - {fileID: 2020932408393257712, guid: 28d329837a8aa6f49aac87f7975d7146, type: 3}
-  - {fileID: 4796814213809316186, guid: 28d329837a8aa6f49aac87f7975d7146, type: 3}
 --- !u!114 &2307865160861942368
 MonoBehaviour:
   m_ObjectHideFlags: 0
