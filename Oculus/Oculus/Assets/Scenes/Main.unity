@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.40748647, g: 0.40707633, b: 0.41267133, a: 1}
+  m_IndirectSpecularColor: {r: 0.40748248, g: 0.40707508, b: 0.41266623, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -644,6 +644,22 @@ MonoBehaviour:
     avatar: {fileID: 9000000, guid: 29b5d855bcc1b374094142ad8cf6bbd4, type: 3}
   - controller: {fileID: 9100000, guid: 7473d5fe7cde03a4e9789058ac6340d2, type: 2}
     avatar: {fileID: 9000000, guid: 1ac10462a87e49447b53bb7415dec22e, type: 3}
+  - controller: {fileID: 9100000, guid: ce62e1ca59c98ac439291bf673ac3f6e, type: 2}
+    avatar: {fileID: 9000000, guid: 7ab229df0b68e8e4a996fa6f59178120, type: 3}
+  - controller: {fileID: 9100000, guid: d037fb8d5005ef647b0b4c32b79a6308, type: 2}
+    avatar: {fileID: 9000000, guid: 7ab229df0b68e8e4a996fa6f59178120, type: 3}
+  - controller: {fileID: 9100000, guid: 306ceb60255909043b1add85f2810392, type: 2}
+    avatar: {fileID: 9000000, guid: 7ab229df0b68e8e4a996fa6f59178120, type: 3}
+  - controller: {fileID: 9100000, guid: e976a37b93d984047b43c075c7c9bfda, type: 2}
+    avatar: {fileID: 9000000, guid: 7ab229df0b68e8e4a996fa6f59178120, type: 3}
+  - controller: {fileID: 9100000, guid: fb35485ee3e9a084b9b14b82f8b1d252, type: 2}
+    avatar: {fileID: 9000000, guid: 4b56ec96e3b2a1b41a469cab5d9e6959, type: 3}
+  - controller: {fileID: 9100000, guid: 16e12272d53a99a42a0ee682493092b2, type: 2}
+    avatar: {fileID: 9000000, guid: 4b56ec96e3b2a1b41a469cab5d9e6959, type: 3}
+  - controller: {fileID: 9100000, guid: 871cde6215f0924409d7ef3f6f5d125a, type: 2}
+    avatar: {fileID: 9000000, guid: 4b56ec96e3b2a1b41a469cab5d9e6959, type: 3}
+  - controller: {fileID: 9100000, guid: 8f367ebfacbe53f48bd2ecafae2f5ca5, type: 2}
+    avatar: {fileID: 9000000, guid: 4b56ec96e3b2a1b41a469cab5d9e6959, type: 3}
 --- !u!1 &157982908
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,6 +2232,7 @@ MonoBehaviour:
   - {fileID: 6293872099566313584, guid: d740b6c5c8021cb43bd9d8c7baae86f5, type: 3}
   - {fileID: 5797151920787318233, guid: 7ea50c659e1028e41b25421a74492116, type: 3}
   - {fileID: 4547601615595582953, guid: 9db43cba9513c3e489eaeba38c5e31b2, type: 3}
+  - {fileID: 4775933170612545121, guid: 6ad9958d6540b0e4080a197f2e2239f8, type: 3}
   examinerGameObject: {fileID: 8367939583904502353, guid: 2d98b388eb69993449b66c8faaf6b7c5,
     type: 3}
   coachGameObject: {fileID: 6624026443431106358, guid: 7a398e946f618e64393367066256a0fb,
@@ -5832,6 +5849,30 @@ MonoBehaviour:
         extension: []
       enable: 1
     - jsonData: {fileID: 4900000, guid: 0bd4aef95dd005e4889ba4abf5470c1a, type: 3}
+      lesson:
+        ExerciseList: []
+        Exercise: 
+        Buttons: []
+        Actions: []
+        modelPrefab: 
+        AnimatorController: 
+        startPointName: 
+        startAction: 
+        extension: []
+      enable: 1
+    - jsonData: {fileID: 4900000, guid: 857dd20a60ab06b4f9a1ec2122c7a084, type: 3}
+      lesson:
+        ExerciseList: []
+        Exercise: 
+        Buttons: []
+        Actions: []
+        modelPrefab: 
+        AnimatorController: 
+        startPointName: 
+        startAction: 
+        extension: []
+      enable: 1
+    - jsonData: {fileID: 4900000, guid: 52ba7d38045b08b4892cc1e2b7b8f64c, type: 3}
       lesson:
         ExerciseList: []
         Exercise: 
