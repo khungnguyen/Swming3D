@@ -660,6 +660,14 @@ MonoBehaviour:
     avatar: {fileID: 9000000, guid: 4b56ec96e3b2a1b41a469cab5d9e6959, type: 3}
   - controller: {fileID: 9100000, guid: 8f367ebfacbe53f48bd2ecafae2f5ca5, type: 2}
     avatar: {fileID: 9000000, guid: 4b56ec96e3b2a1b41a469cab5d9e6959, type: 3}
+  - controller: {fileID: 9100000, guid: edbddb90a8861f74bab26a9bab06e142, type: 2}
+    avatar: {fileID: 9000000, guid: b2cea6b235ffd5345a751bfc45bc6fcf, type: 3}
+  - controller: {fileID: 9100000, guid: 4a04a9b2f55c5eb4cae3019d1fe6f013, type: 2}
+    avatar: {fileID: 9000000, guid: b2cea6b235ffd5345a751bfc45bc6fcf, type: 3}
+  - controller: {fileID: 9100000, guid: 0ca71b770526afa4c8f2dd865d46fdbd, type: 2}
+    avatar: {fileID: 9000000, guid: b2cea6b235ffd5345a751bfc45bc6fcf, type: 3}
+  - controller: {fileID: 9100000, guid: 7bd80610cf5a6ea408a2318efa7b1860, type: 2}
+    avatar: {fileID: 9000000, guid: b2cea6b235ffd5345a751bfc45bc6fcf, type: 3}
 --- !u!1 &157982908
 GameObject:
   m_ObjectHideFlags: 0
@@ -5873,6 +5881,18 @@ MonoBehaviour:
         extension: []
       enable: 1
     - jsonData: {fileID: 4900000, guid: 52ba7d38045b08b4892cc1e2b7b8f64c, type: 3}
+      lesson:
+        ExerciseList: []
+        Exercise: 
+        Buttons: []
+        Actions: []
+        modelPrefab: 
+        AnimatorController: 
+        startPointName: 
+        startAction: 
+        extension: []
+      enable: 1
+    - jsonData: {fileID: 4900000, guid: 9b68f4837dfa2984fbdc22a254d1c733, type: 3}
       lesson:
         ExerciseList: []
         Exercise: 
