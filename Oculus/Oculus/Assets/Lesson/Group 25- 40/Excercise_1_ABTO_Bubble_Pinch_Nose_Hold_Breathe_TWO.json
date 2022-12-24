@@ -14,7 +14,7 @@
       "displayOrder": 2
     },
     {
-      "name": "Execute Bubble Nose Pinch Nose Hold Breath InCorrectly",
+      "name": "Execute Bubble Nose Pinch Nose Hold Breath Correctly",
       "action": "PlayCorrectMonkeyWalk",
       "displayOrder": 2
     },
@@ -133,6 +133,10 @@
         {
           "name": "EnableButtons",
           "property": ["True"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["PinchNoseBreatheIWrongPos"]
         }
       ],
       "showDisplayOrder": 5
