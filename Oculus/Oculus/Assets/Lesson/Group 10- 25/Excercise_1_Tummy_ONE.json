@@ -155,7 +155,7 @@
       "action": [
         {
           "name": "ChangeModel",
-          "property": ["StudentTummy","Tummy_Board_Idle","Case_Tummy",""]
+          "property": ["StudentTummy","Tummy_Board_Idle_180_rotate","Case_Tummy",""]
         },
         {
           "name": "GoToExercise",
@@ -382,7 +382,7 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["Tummy_Board_Idle"]
+          "property": ["Tummy_Board_Idle_180_rotate"]
         },
         {
           "name": "EnableBodyMoving",
@@ -507,7 +507,7 @@
         "name": "",
         "value": true
       },
-      "startPointName": "Tummy_Board_Idle",
+      "startPointName": "Tummy_Board_Idle_180_rotate",
       "startController": "",
       "property": [
         "RightController","Case_Tummy_5meters",
@@ -525,7 +525,7 @@
         "value": true
       },
       "startController": "",
-      "startPointName": "Tummy_Board_Idle",
+      "startPointName": "Tummy_Board_Idle_180_rotate",
       "property": [
         "LoseController",
         "Case_Two",
@@ -545,7 +545,7 @@
         "name": "SlideJump",
         "value": false
       },
-      "startPointName": "Tummy_Board_Idle",
+      "startPointName": "Tummy_Board_Idle_180_rotate",
       "property": [
         "RightController",
         "Case_Tummy_25meters",
