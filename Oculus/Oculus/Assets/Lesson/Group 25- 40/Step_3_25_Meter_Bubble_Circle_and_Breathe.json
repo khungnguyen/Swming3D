@@ -125,7 +125,7 @@
       "action": [
         {
           "name": "ChangeModel",
-          "property": ["StudentCircleBreathe","Tummy_Board_Idle","Step 3 (25 Meter Bubble - Circle and Breathe)",""]
+          "property": ["StudentCircleBreathe","10_40_Idle","Step 3 (25 Meter Bubble - Circle and Breathe)",""]
         },
         {
           "name": "GoToExercise",
@@ -148,6 +148,10 @@
         {
           "name": "EnableButtons",
           "property": ["True"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["10_40_Idle_180_rotate"]
         }
       ],
       "showDisplayOrder": 10
@@ -161,6 +165,10 @@
         {
           "name": "EnableButtons",
           "property": ["True"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["10_40_Idle_180_rotate"]
         }
       ],
       "showDisplayOrder": 10
@@ -221,6 +229,10 @@
         {
           "name": "EnableButtons",
           "property": ["True"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["10_40_Idle_180_rotate"]
         }
       ],
       "showDisplayOrder": 4
@@ -352,7 +364,7 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["Tummy_Board_Idle"]
+          "property": ["10_40_Idle"]
         },
         {
           "name": "EnableBodyMoving",
@@ -477,7 +489,7 @@
         "name": "",
         "value": true
       },
-      "startPointName": "Tummy_Board_Idle",
+      "startPointName": "",
       "startController": "",
       "property": [
         "RightController","Step 3 (25 Meter Bubble - Circle and Breathe)_5meters",
@@ -495,7 +507,7 @@
         "value": true
       },
       "startController": "",
-      "startPointName": "Tummy_Board_Idle",
+      "startPointName": "",
       "property": [
         "RightController",
         "Step 3 (25 Meter Bubble - Circle and Breathe)_15meters",
@@ -513,7 +525,7 @@
         "name": "SlideJump",
         "value": false
       },
-      "startPointName": "Tummy_Board_Idle",
+      "startPointName": "",
       "property": [
         "RightController",
         "Step 3 (25 Meter Bubble - Circle and Breathe)_25meters",
