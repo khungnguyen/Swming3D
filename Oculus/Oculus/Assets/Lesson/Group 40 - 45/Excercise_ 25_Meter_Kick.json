@@ -14,59 +14,54 @@
       "displayOrder": 2
     },
     {
-      "name": "Execute Bubble Nose Pinch Nose Hold Breath Correctly",
-      "action": "PlayCorrectMonkeyWalk",
-      "displayOrder": 2
+      "name": "Back To Idle",
+      "action": "BackToIdle",
+      "displayOrder": 3
+    },
+    {
+      "name": "Execute 5 Meters Properly",
+      "action": "PlayCorrect5Meters",
+      "displayOrder": 4
+    },
+    {
+      "name": "Execute Clap and Head Down Bubble Incorrectly",
+      "action": "PlayClapAndHeadDown",
+      "displayOrder": 4
+    },
+    {
+      "name": "Execute Circle and Breathe Incorrect",
+      "action": "PlayCircelAndBreathe",
+      "displayOrder": 4
     },
     {
       "name": "Allow Coach To Correct",
       "action": "AllowCoachToCorrect",
-      "displayOrder": 3
-    },
-    {
-      "name": "Execute Properly",
-      "action": "PlayCorrectMonkeyWalk",
-      "displayOrder": 4
-    },
-    {
-      "name": "Monkey Walk With Pinched Nose 5 Meters and Return",
-      "action": "MonkeyWalk5meters",
       "displayOrder": 5
     },
     {
-      "name": "Monkey Walk With Pinched Nose 15 Meters and Return",
-      "action": "MonkeyWalk15meters",
-      "displayOrder": 5
-    },
-    {
-      "name": "Monkey Walk With Pinched Nose 25 Meters and Return",
-      "action": "MonkeyWalk25meters",
-      "displayOrder": 5
-    },
-    {
-      "name": "Swim Back",
-      "action": "SwimBack",
+      "name": "Execute 5 Meters Properly",
+      "action": "PlayCorrect5Meters",
       "displayOrder": 6
     },
     {
-      "name": "Walk Back",
-      "action": "WalkBack",
-      "displayOrder": 6
-    },
-    {
-      "name": "Student Will Lose Control",
-      "action": "LoseControl",
+      "name": "Have Student Enter Pool",
+      "action": "BackToIdle2",
       "displayOrder": 7
     },
     {
-      "name": "Execute Properly",
-      "action": "PlayCorrectAnimSwimOrWalkBackAndFinish",
+      "name": "Have Student Enter Pool",
+      "action": "BackToIdle2",
       "displayOrder": 8
+    },
+    {
+      "name": "Execute 15 Meters Properly",
+      "action": "PlayCorrect15Meters",
+      "displayOrder": 9
     },
     {
       "name": "Lesson List",
       "action": "GoToLessonMenu",
-      "displayOrder": 9
+      "displayOrder": 10
     }
   ],
   "Actions": [
@@ -87,7 +82,7 @@
         },
         {
           "name": "EnableInteractable",
-          "property": [""]
+          "property": ["DelayAfterAnim"]
         }
       ],
       "showDisplayOrder": 2
@@ -98,19 +93,16 @@
         {
           "name": "TriggerAnimation",
           "property": ["HandStraight5Second"]
-        },
-        {
-          "name": "EnableButtons",
-          "property": ["True"]
         }
       ],
       "showDisplayOrder": 3
-    }, {
-      "name": "AllowCoachToCorrect",
+    }, 
+    {
+      "name": "BackToIdle",
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": ["StopAnim"]
+          "property": ["Idle"]
         },
         {
           "name": "EnableInteractable",
@@ -120,11 +112,39 @@
       "showDisplayOrder": 4
     },
     {
-      "name": "PlayCorrectMonkeyWalk",
+      "name": "BackToIdle2",
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": ["CorrectMonkeyWalk"]
+          "property": ["Idle"]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": ["DelayAfterAnim"]
+        }
+      ],
+      "showDisplayOrder": 9
+    },
+    {
+      "name": "PlayCorrect5Meters",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["PlayCorrect5Meters"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["40-45_Idle"]
+        }
+      ],
+      "showDisplayOrder": 7
+    },
+    {
+      "name": "PlayCorrect15Meters",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["PlayCorrect15Meters"]
         },
         {
           "name": "EnableButtons",
@@ -132,10 +152,48 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["PinchNoseBreatheIWrongPos"]
+          "property": ["40-45_Idle"]
+        }
+      ],
+      "showDisplayOrder": 10
+    },
+    {
+      "name": "PlayClapAndHeadDown",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["PlayClapAndHeadDown"]
         }
       ],
       "showDisplayOrder": 5
+    },
+    {
+      "name": "PlayCircelAndBreathe",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["PlayCircelAndBreathe"]
+        }
+      ],
+      "showDisplayOrder": 5
+    },
+    {
+      "name": "AllowCoachToCorrect",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["AllowToCorrect"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": ["DelayAfterAnim"]
+        }
+      ],
+      "showDisplayOrder": 6
     },
     {
       "name": "MonkeyWalk5meters",
@@ -178,16 +236,6 @@
         }
       ],
       "showDisplayOrder": 9
-    },
-    {
-      "name": "MoveToMenuExercise",
-      "action": [
-        {
-          "name": "ChangeLessonTitle",
-          "property": ["Swim and Return"]
-        }
-      ],
-      "showDisplayOrder": 5
     },
     {
       "name": "GoToExercise_1",
@@ -256,64 +304,6 @@
         }
       ],
       "showDisplayOrder": 9
-    },
-    {
-      "name": "NotFollowDistance",
-      "action": [
-        {
-          "name": "ChangeAnimController",
-          "property": ["WrongController"]
-        },
-        {
-          "name": "CorrectTransform",
-          "property": ["SwimStartPoint"]
-        },
-        {
-          "name": "TriggerAnimation",
-          "property": ["Swim"]
-        }
-      ],
-      "showDisplayOrder": 7
-    },
-    {
-      "name": "NotFollowReturn",
-      "action": [
-        {
-          "name": "ChangeAnimController",
-          "property": ["RightController"]
-        },
-        {
-          "name": "CorrectTransform",
-          "property": ["SwimStartPoint"]
-        },
-        {
-          "name": "TriggerAnimationWithOutSaveKey",
-          "property": ["Key_RightAnimation"]
-        }
-      ],
-      "showDisplayOrder": 7
-    },
-    {
-      "name": "LoseControl",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": ["LoseControl"]
-        },
-        {
-          "name": "CorrectTransform",
-          "property": ["10_40_Idle"]
-        },
-        {
-          "name": "EnableBodyMoving",
-          "property": ["True"]
-        },
-        {
-          "name": "EnableInteractable",
-          "property": ["DelayAfterAnim"]
-        }
-      ],
-      "showDisplayOrder": 8
     },
     {
       "name": "PlayCorrectAnimSwimOrWalkBackAndFinish",

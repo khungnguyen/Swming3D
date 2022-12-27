@@ -64,7 +64,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     public void RepositionNexAnim(string name)
     {
         //   CorrectTransform(name);
-    }
+    } 
     public void NotifityEndAnimationState(AnimationEvent e)
     {
 
