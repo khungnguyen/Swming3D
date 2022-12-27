@@ -9,8 +9,8 @@
       "displayOrder": 1
     },
     {
-      "name": "Execute Bubble Nose Pinch Nose Hold Breath InCorrectly",
-      "action": "PlayCorrectMonkeyWalkIncorrect",
+      "name": "Execute Bubble Nose Hands Straight for 5 Seconds",
+      "action": "HandStraight5Second",
       "displayOrder": 2
     },
     {
@@ -75,7 +75,7 @@
       "action": [
         {
           "name": "ChangeModel",
-          "property": ["Student25Meter_2","25Meterlast","25_Meters_Kick",""]
+          "property": ["Studen25Meters","40-45_Idle","25_Meters_Kick",""]
         },
         {
           "name": "GoToExercise",
@@ -93,19 +93,15 @@
       "showDisplayOrder": 2
     },
     {
-      "name": "PlayCorrectMonkeyWalkIncorrect",
+      "name": "HandStraight5Second",
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": ["IncorrectMonkeyWalk"]
+          "property": ["HandStraight5Second"]
         },
         {
           "name": "EnableButtons",
           "property": ["True"]
-        },
-        {
-          "name": "CorrectTransform",
-          "property": ["PinchNoseBreatheIWrongPos"]
         }
       ],
       "showDisplayOrder": 3
