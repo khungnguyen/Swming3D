@@ -1,23 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 public class BackFloat : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider collider)
     {
        Utils.LogError(this,"BackFloat Trigger Collider Enter");
+       gameObject.GetPhotonView().RPC("InActiveItself",RpcTarget.All);
+    }
+    [PunRPC]
+    public void InActiveItself() {
        gameObject.SetActive(false);
     }
      private void OnTriggerExit(Collider collider)

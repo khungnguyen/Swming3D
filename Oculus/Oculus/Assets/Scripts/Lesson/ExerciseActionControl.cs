@@ -189,7 +189,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         ButtonActions ac = GetButtonAction(action);
         if (ac != null)
         {
-             if (ac.showDisplayOrder != 0)
+            if (ac.showDisplayOrder != 0)
             {
                 CreateButtonDialog(ac.showDisplayOrder);
             }
@@ -358,6 +358,15 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     string startPoint = actionProperty.property[1];
                     string animatorKey = actionProperty.property[2];
                     string animation = actionProperty.property[3];
+                    string activeInteraction;
+                    try
+                    {
+                        activeInteraction = actionProperty.property[4];
+                    }
+                    catch (System.Exception)
+                    {
+                        activeInteraction = "False";
+                    }
                     List<string> choices = GetExercisePropertiesByName(animatorKey);
                     string animator = "";
                     if (choices.Count > 0)
@@ -371,12 +380,12 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                         animator = animatorKey;
                     }
 
-                    ChangeModel(modelName, startPoint, animator, animation);
+                    ChangeModel(modelName, startPoint, animator, animation, activeInteraction);
                 }
                 // End No Use actions
 
             }
-           
+
             if (needToEnableButton != BUTTON_SHOW.KEEP_CURRENT_STATUS)
             {
                 EnableButtons(needToEnableButton == BUTTON_SHOW.SHOW_BUTTON);
@@ -545,13 +554,14 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         packages[0] = active;
         ConnectionManager.instance.SendAction(EventCodes.ActionBodyMoving, packages);
     }
-    private void ChangeModel(string model, string pointName, string animator, string animation)
+    private void ChangeModel(string model, string pointName, string animator, string animation, string interact = "False")
     {
-        object[] packages = new object[4];
+        object[] packages = new object[5];
         packages[0] = model;
         packages[1] = pointName;
         packages[2] = animator;
         packages[3] = animation;
+        packages[4] = interact;
         ConnectionManager.instance.SendAction(EventCodes.ActionChangeModel, packages);
     }
     public void EnableButtons(bool enable)

@@ -62,11 +62,16 @@ public class StudentModelManager : MonoBehaviourPunCallbacks, IReceiver, IPunIns
                 string pointName = (string)packages[1];
                 string animator = (string)packages[2];
                 string animation = (string)packages[3];
+                string interact = (string)packages[4];
                 var point = SpawnPointManager.instance.GetStudentSpawnPointByName(pointName);
                 Utils.Log(this, "ActionChangeModel", model, animator, pointName, animator, point);
                 curStudent = SpawnStudent(model, point);
                 var photonView = curStudent.GetPhotonView();
+                
                 photonView.RPC("SetAnimator", RpcTarget.All, animator, true);
+                if(interact.Equals("DelayAfterAnim")) {
+                    photonView.RPC("EnableInteractionDelay", RpcTarget.All,true);
+                }
                 photonView.RPC("TriggerAnimation", RpcTarget.All, animation);
                 photonView.RPC("CorrectTransform", RpcTarget.All, pointName);
                 PhotonNetwork.Destroy(preStudent);

@@ -10,35 +10,41 @@ public class BenInteractable : SnapInteraction
     void Start()
     {
         var rootNode = transform.parent.parent.parent;
-        interactionList = new List<SnapInteraction> (rootNode.GetComponentsInChildren<SnapInteraction>()).FindAll(e=>e!=this);
+        interactionList = new List<SnapInteraction>(rootNode.GetComponentsInChildren<SnapInteraction>()).FindAll(e => e != this);
         nolock = interactionList.FindAll(e => e.lockTarget);
     }
     public override void OnSelect()
     {
-        foreach (var mobject in nolock)
+        if (enableWeight)
         {
-            mobject.lockTarget = false;
+            foreach (var mobject in nolock)
+            {
+                mobject.lockTarget = false;
+            }
+            foreach (var mobject in interactionList)
+            {
+                mobject.EnableInteraction(false);
+            }
+            base.OnSelect();
+            Utils.LogError(this, "BenInteractable OnSelect");
         }
-        foreach (var mobject in interactionList)
-        {
-            mobject.EnableInteraction(false);
-        }
-        base.OnSelect();
-        Utils.LogError(this, "BenInteractable OnSelect");
+
     }
     public override void OnUnselect()
     {
-        
-        foreach (var mobject in interactionList)
+        if (enableWeight)
         {
-            mobject.EnableInteraction(true);
+            foreach (var mobject in interactionList)
+            {
+                mobject.EnableInteraction(true);
+            }
+            foreach (var mobject in nolock)
+            {
+                mobject.lockTarget = true;
+            }
+            base.OnUnselect();
+            Utils.LogError(this, "BenInteractable OnUnselect");
         }
-        foreach (var mobject in nolock)
-        {
-            mobject.lockTarget = true;
-        }
-        base.OnUnselect();
-        Utils.LogError(this, "BenInteractable OnUnselect");
     }
     IEnumerator EnableWeightEnumrator(float delayTime)
     {

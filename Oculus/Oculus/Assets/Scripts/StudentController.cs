@@ -69,16 +69,17 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     {
 
         // StartCoroutine(DelayEnableInteraction(0.5f,true));
+        Utils.LogError(this,"Animation Event call" + e.animatorClipInfo.clip.name,delayActiveInteraction);
         if (delayActiveInteraction)
         {
-            Debug.LogError("Animation Event call Enable" + e.animatorClipInfo.clip.name);
+            Utils.LogError(this,"Animation Event call Enable" + e.animatorClipInfo.clip.name);
             StartCoroutine(DelayEnableInteraction(0.1f, true));
             // EnableInteraction(true);
             delayActiveInteraction = false;
         }
         else if (delayInactiveInteraction)
         {
-            Debug.LogError("Animation Event call Disable" + e.animatorClipInfo.clip.name);
+            Utils.LogError(this,"Animation Event call Disable" + e.animatorClipInfo.clip.name);
             StartCoroutine(DelayEnableInteraction(0.1f, false));
             //EnableInteraction(false);
             delayInactiveInteraction = false;
@@ -350,6 +351,12 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
             studentExtensions.ActivateExtension(transformName, active);
         }
 
+
+    }
+    [PunRPC]
+    public void EnableInteractionDelay(bool b) {
+        delayActiveInteraction = b;
+        Utils.Log(this,"Calling EnableInteractionDelay",this,delayActiveInteraction);
     }
     // private IEnumerator StopAnimation()
     // {
