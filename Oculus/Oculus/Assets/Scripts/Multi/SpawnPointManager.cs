@@ -5,15 +5,18 @@ using UnityEngine;
 public class SpawnPointManager : MonoBehaviour
 {
     [SerializeField]
-    private Transform[] studentPoints;
+    private Transform studentPointParent;
     [SerializeField]
     private Transform[] XRPlayerSpawnPoints;
     [SerializeField]
     private Transform[] DesktopPlayerSpawnPoints;
 
     public static SpawnPointManager instance;
+
+    private Transform[] studentPoints;
     private void Awake() {
         instance = this;
+        studentPoints = studentPointParent.GetComponentsInChildren<Transform>();
     }
     public Transform GetStudentSpawnPoint() {
         return studentPoints[Random.Range(0, studentPoints.Length -1)];

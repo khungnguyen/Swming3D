@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.40748647, g: 0.40707633, b: 0.41267133, a: 1}
+  m_IndirectSpecularColor: {r: 0.40748248, g: 0.40707508, b: 0.41266623, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2403,7 +2403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ed7d4f809a8c944bc810effc1c6fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  studentPoints: []
+  studentPointParent: {fileID: 0}
   XRPlayerSpawnPoints:
   - {fileID: 539190780}
   DesktopPlayerSpawnPoints:
@@ -4043,6 +4043,37 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &1432683443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1432683444}
+  m_Layer: 0
+  m_Name: 10_40_Idle_180_rotate_0_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1432683444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432683443}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 21.944, y: 0, z: -0.238}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1705272545}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &1502866972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4270,48 +4301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ed7d4f809a8c944bc810effc1c6fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  studentPoints:
-  - {fileID: 588990673}
-  - {fileID: 1041310788}
-  - {fileID: 5636333717239663998}
-  - {fileID: 543450652302303866}
-  - {fileID: 1207509472}
-  - {fileID: 2053403519}
-  - {fileID: 774581110}
-  - {fileID: 522756351}
-  - {fileID: 6003338360147817264}
-  - {fileID: 2290883805964197486}
-  - {fileID: 5745455237359088931}
-  - {fileID: 225449087}
-  - {fileID: 814595848}
-  - {fileID: 522696524}
-  - {fileID: 665960863}
-  - {fileID: 923434470}
-  - {fileID: 1795639114}
-  - {fileID: 1303870096}
-  - {fileID: 1027026520}
-  - {fileID: 202978043}
-  - {fileID: 1555129615}
-  - {fileID: 621186785}
-  - {fileID: 835935946}
-  - {fileID: 5311459095950440693}
-  - {fileID: 1290444156}
-  - {fileID: 7047755680215440657}
-  - {fileID: 914544925}
-  - {fileID: 6660848075540959562}
-  - {fileID: 8824678826929520595}
-  - {fileID: 8220452423051133179}
-  - {fileID: 2817200788955858248}
-  - {fileID: 356755687}
-  - {fileID: 2105596418}
-  - {fileID: 6850861315829649074}
-  - {fileID: 317935882}
-  - {fileID: 225306265}
-  - {fileID: 87160534}
-  - {fileID: 1590260227}
-  - {fileID: 1745163178}
-  - {fileID: 1388948810}
-  - {fileID: 1870610706}
+  studentPointParent: {fileID: 1705272545}
   XRPlayerSpawnPoints:
   - {fileID: 539190780}
   DesktopPlayerSpawnPoints:
@@ -4745,6 +4735,7 @@ Transform:
   - {fileID: 814595848}
   - {fileID: 665960863}
   - {fileID: 225306265}
+  - {fileID: 1432683444}
   - {fileID: 1745163178}
   - {fileID: 1388948810}
   - {fileID: 923434470}

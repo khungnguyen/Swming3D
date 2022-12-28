@@ -298,28 +298,6 @@
       "showDisplayOrder": 7
     },
     {
-      "name": "LoseControl",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": ["LoseControl"]
-        },
-        {
-          "name": "CorrectTransform",
-          "property": ["10_40_Idle"]
-        },
-        {
-          "name": "EnableBodyMoving",
-          "property": ["True"]
-        },
-        {
-          "name": "EnableInteractable",
-          "property": ["DelayAfterAnim"]
-        }
-      ],
-      "showDisplayOrder": 8
-    },
-    {
       "name": "PlayCorrectAnimSwimOrWalkBackAndFinish",
       "action": [
         {
