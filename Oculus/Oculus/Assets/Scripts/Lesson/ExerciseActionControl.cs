@@ -189,7 +189,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         ButtonActions ac = GetButtonAction(action);
         if (ac != null)
         {
-
+            
             BUTTON_SHOW needToEnableButton = BUTTON_SHOW.KEEP_CURRENT_STATUS;
             foreach (ActionProperty actionProperty in ac.action)
             {
@@ -201,6 +201,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 else if (miniAction == ExaminerAction.TriggerFinalAnimation.ToString())
                 {
                     FinalAnimation();
+                    needToEnableButton =  BUTTON_SHOW.HIDE_BUTTONS;
                 }
                 else if (miniAction == ExaminerAction.NextExercise.ToString())
                 {
@@ -209,6 +210,8 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 else if (miniAction == ExaminerAction.TriggerAnimation.ToString())
                 {
                     StartAnimation(actionProperty.property[0]);
+                    needToEnableButton =  BUTTON_SHOW.HIDE_BUTTONS;
+
                 }
                 else if (miniAction == ExaminerAction.GoToLessonMenu.ToString())
                 {
@@ -273,6 +276,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     if (saveValue != null && saveValue.Length > 0)
                     {
                         StartAnimation(saveValue);
+                        needToEnableButton =  BUTTON_SHOW.HIDE_BUTTONS;
                     }
                     else
                     {
@@ -291,6 +295,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                             if (i != saveValue)
                             {
                                 StartAnimation(i);
+                                needToEnableButton =  BUTTON_SHOW.HIDE_BUTTONS;
                             }
                         }
                     }
@@ -316,6 +321,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 else if (miniAction == ExaminerAction.TriggerAnimationReplaceModel.ToString())
                 {
                     StartAnimation(actionProperty.property[0], true);
+                    needToEnableButton =  BUTTON_SHOW.HIDE_BUTTONS;
                 }
                 else if (miniAction == ExaminerAction.ClearDataSave.ToString())
                 {
@@ -347,6 +353,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 else if (miniAction == ExaminerAction.EnableButtons.ToString())
                 {
                     bool active = actionProperty.property[0] == "True";
+                    Utils.LogError(this,"ExaminerAction.EnableButtons",active);
                     needToEnableButton = active ? BUTTON_SHOW.SHOW_BUTTON : BUTTON_SHOW.HIDE_BUTTONS;
                 }
                 else if (miniAction == ExaminerAction.ChangeModel.ToString())
@@ -463,7 +470,6 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     }
     public void StartAnimation(string name, bool useReplaceModel = false)
     {
-        EnableButtons(false);
         SendActionPlayAnim(name, useReplaceModel);
 
     }
@@ -566,6 +572,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     }
     public void EnableButtons(bool enable)
     {
+        Utils.LogError(this,"who call enable",enable);
         var listButton = lessonUISpace.GetComponentsInChildren<ExerciseButton>();
         foreach (var b in listButton)
         {
