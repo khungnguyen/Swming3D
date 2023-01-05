@@ -31,6 +31,22 @@ public class StudentComponentAssignerEditor : Editor
 
 
         }
+        if (GUILayout.Button("Remove Bone Space"))
+        {
+            RemoveBoneSpace();
+        }
+    }
+    private void RemoveBoneSpace()
+    {
+        var mainComp = (StudentComponentAssigner)target;
+        var allTransforms = mainComp.humanoidBody.GetComponentsInChildren<Transform>();
+        foreach (Transform t in allTransforms)
+        {
+            if (t != null)
+            {
+                t.name = t.name.ReplaceAll(" ","");
+            }
+        }
     }
     private void CloneChildren(StudentComponentAssigner studentComp)
     {

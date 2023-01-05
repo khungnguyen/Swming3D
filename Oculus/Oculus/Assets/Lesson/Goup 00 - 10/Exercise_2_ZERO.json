@@ -13,7 +13,7 @@
       "action": "AllowCoachToCorrect",
       "displayOrder": 2
     },
-    
+
     {
       "name": "Execute Starfish Float Incorrectly",
       "action": "ExecuteIncorrect",
@@ -55,11 +55,11 @@
         {
           "name": "EnableBodyMoving",
           "property": ["True"]
-       },
-       {
+        },
+        {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
-       },
+        },
         {
           "name": "EnableButtons",
           "property": ["True"]
@@ -70,24 +70,28 @@
     {
       "name": "AllowCoachToCorrect",
       "action": [
-       {
+        {
           "name": "EnableBodyMoving",
           "property": ["True"]
-       },
-       {
+        },
+        {
           "name": "EnableInteractable",
           "property": [""]
-       }
+        }
       ],
       "showDisplayOrder": 3
     },
     {
       "name": "ExecuteIncorrect",
       "action": [
-       {
+        {
           "name": "TriggerAnimation",
           "property": ["StarfishIncorrect"]
-       },
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["StarfishFloatBackPointWrong"]
+        },
         {
           "name": "EnableButtons",
           "property": ["True"]
@@ -105,18 +109,18 @@
         {
           "name": "EnableBodyMoving",
           "property": ["True"]
-       },
-       {
+        },
+        {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
-       },
-       {
-        "name": "EnableButtons",
-        "property": ["False"]
-      }
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["False"]
+        }
       ],
       "showDisplayOrder": 5
-    }, 
+    },
     {
       "name": "ExecuteCorrect",
       "action": [
@@ -125,8 +129,8 @@
           "property": ["StarfishCorrect"]
         },
         {
-          "name": "CorrectTransform222",
-          "property": ["StarfishFloatFrontPointCorrect"]
+          "name": "CorrectTransform",
+          "property": ["StarfishFloatBackPointCorrect"]
         },
         {
           "name": "EnableButtons",
@@ -158,10 +162,10 @@
         "name": "",
         "value": true
       },
-      "startPointName": "StarfishFloatBackPoint",
+      "startPointName": "StarfishFloatBackPointIdle",
       "startController": "Case_Three",
       "property": []
     }
   ],
-  "extension" :[]
+  "extension": []
 }

@@ -189,10 +189,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         ButtonActions ac = GetButtonAction(action);
         if (ac != null)
         {
-            if (ac.showDisplayOrder != 0)
-            {
-                CreateButtonDialog(ac.showDisplayOrder);
-            }
+
             BUTTON_SHOW needToEnableButton = BUTTON_SHOW.KEEP_CURRENT_STATUS;
             foreach (ActionProperty actionProperty in ac.action)
             {
@@ -385,7 +382,10 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 // End No Use actions
 
             }
-
+            if (ac.showDisplayOrder != 0)
+            {
+                CreateButtonDialog(ac.showDisplayOrder);
+            }
             if (needToEnableButton != BUTTON_SHOW.KEEP_CURRENT_STATUS)
             {
                 EnableButtons(needToEnableButton == BUTTON_SHOW.SHOW_BUTTON);
