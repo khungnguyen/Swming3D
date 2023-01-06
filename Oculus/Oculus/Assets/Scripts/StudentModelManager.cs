@@ -72,6 +72,9 @@ public class StudentModelManager : MonoBehaviourPunCallbacks, IReceiver, IPunIns
                 if(interact.Equals("DelayAfterAnim")) {
                     photonView.RPC("EnableInteractionDelay", RpcTarget.All,true);
                 }
+                else if(interact.Equals("True")) {
+                    photonView.RPC("EnableInteractionImmediate", RpcTarget.All,true);
+                }
                 photonView.RPC("TriggerAnimation", RpcTarget.All, animation);
                 photonView.RPC("CorrectTransform", RpcTarget.All, pointName);
                 PhotonNetwork.Destroy(preStudent);

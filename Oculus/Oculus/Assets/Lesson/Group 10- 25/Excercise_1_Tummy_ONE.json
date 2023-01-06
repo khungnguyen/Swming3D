@@ -154,16 +154,12 @@
       "name": "MoveStudentToPool",
       "action": [
         {
-          "name": "ChangeModel",
-          "property": ["StudentTummy","Tummy_Board_Idle_180_rotate","Case_Tummy",""]
-        },
-        {
           "name": "GoToExercise",
           "property": ["0"]
         },
         {
-          "name": "EnableInteractable",
-          "property": [""]
+          "name": "ChangeModel",
+          "property": ["StudentTummy","Tummy_Board_Idle_180_rotate","Case_Tummy","","True"]
         }
       ],
       "showDisplayOrder": 2

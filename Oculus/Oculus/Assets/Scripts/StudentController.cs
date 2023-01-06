@@ -358,27 +358,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         delayActiveInteraction = b;
         Utils.Log(this,"Calling EnableInteractionDelay",this,delayActiveInteraction);
     }
-    // private IEnumerator StopAnimation()
-    // {
-    //     var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
-    //     Debug.Log("animator.layerCount" + animator.layerCount);
-    //     Debug.Log("animator.GetLayerName" + animator.GetLayerName(0));
-    //     yield return IsCurrentAnimationPlaying();
-    //     animator.StopPlayback();
-    // }
-    // private IEnumerator IsCurrentAnimationPlaying()
-    // {
-    //     var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-    //     while (true)
-    //     {
-    //         yield return null;
-    //         Debug.Log("stateInfo.normalizedTime" + stateInfo.ToString() + "-" + stateInfo.normalizedTime % 1);
-    //         //  if (stateInfo.normalizedTime % 1.0f == 0f)
-    //         {
-    //             Debug.Log("Anim mation finish");
-    //             break;
-    //         }
-    //     }
-    // }
+     [PunRPC]
+    public void EnableInteractionImmediate(bool b) {
+       StartCoroutine(DelayEnableInteraction(0.1f, b));
+        Utils.Log(this,"Calling EnableInteractionImmediate",b);
+    }
+    
 }
