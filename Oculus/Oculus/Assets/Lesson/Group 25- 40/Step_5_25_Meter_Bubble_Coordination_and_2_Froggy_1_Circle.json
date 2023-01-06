@@ -124,16 +124,12 @@
       "name": "MoveStudentToPool",
       "action": [
         {
-          "name": "ChangeModel",
-          "property": ["StudentCircleBreathe","10_40_Idle","Step 5 (25 Meter Bubble - Coordination and 2 Froggy 1 Circle)",""]
-        },
-        {
           "name": "GoToExercise",
           "property": ["0"]
         },
         {
-          "name": "EnableInteractable",
-          "property": [""]
+          "name": "ChangeModel",
+          "property": ["StudentCircleBreathe","10_40_Idle","Step 5 (25 Meter Bubble - Coordination and 2 Froggy 1 Circle)","","True"]
         }
       ],
       "showDisplayOrder": 2

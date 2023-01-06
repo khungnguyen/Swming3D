@@ -74,20 +74,16 @@
       "name": "MoveStudentToPool",
       "action": [
         {
-          "name": "ChangeModel",
-          "property": ["StudentPinchNoseBreathe","BubbleNoseFaceDown","Step 2 (25 Meter Bubble - Hand Straight Bubble Nose)",""]
-        },
-        {
           "name": "GoToExercise",
           "property": ["0"]
         },
         {
-          "name": "EnableBodyMoving",
-          "property": ["True"]
+          "name": "ChangeModel",
+          "property": ["StudentPinchNoseBreathe","BubbleNoseFaceDown","Step 2 (25 Meter Bubble - Hand Straight Bubble Nose)","","True"]
         },
         {
-          "name": "EnableInteractable",
-          "property": [""]
+          "name": "EnableBodyMoving",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 2

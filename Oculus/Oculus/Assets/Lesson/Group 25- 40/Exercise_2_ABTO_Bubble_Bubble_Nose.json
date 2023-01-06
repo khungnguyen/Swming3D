@@ -74,20 +74,16 @@
       "name": "MoveStudentToPool",
       "action": [
         {
-          "name": "ChangeModel",
-          "property": ["StudentPinchNoseBreathe","PinchNoseBreatheIdle","Exercise 2 (ABTO Bubble - Bubble Nose)",""]
-        },
-        {
           "name": "GoToExercise",
           "property": ["0"]
         },
         {
-          "name": "EnableBodyMoving",
-          "property": ["True"]
+          "name": "ChangeModel",
+          "property": ["StudentPinchNoseBreathe","PinchNoseBreatheIdle","Exercise 2 (ABTO Bubble - Bubble Nose)","","True"]
         },
         {
-          "name": "EnableInteractable",
-          "property": [""]
+          "name": "EnableBodyMoving",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 2

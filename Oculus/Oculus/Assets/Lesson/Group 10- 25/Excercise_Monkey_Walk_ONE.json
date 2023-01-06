@@ -74,20 +74,16 @@
       "name": "MoveStudentToPool",
       "action": [
         {
-          "name": "ChangeModel",
-          "property": ["StudenMonkey","MonkeyWalkIdle","Case_Monkey_Walk",""]
-        },
-        {
           "name": "GoToExercise",
           "property": ["0"]
         },
         {
-          "name": "EnableBodyMoving",
-          "property": ["True"]
+          "name": "ChangeModel",
+          "property": ["StudenMonkey","MonkeyWalkIdle","Case_Monkey_Walk","","True"]
         },
         {
-          "name": "EnableInteractable",
-          "property": [""]
+          "name": "EnableBodyMoving",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 2

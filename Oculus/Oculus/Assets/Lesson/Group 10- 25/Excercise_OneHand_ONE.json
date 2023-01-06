@@ -125,21 +125,18 @@
       "name": "MoveStudentToPool",
       "action": [
         {
+          "name": "GoToExercise",
+          "property": ["0"]
+        },
+        {
           "name": "ChangeModel",
           "property": [
             "StudentOneHand",
             "OneHandIdle",
             "Case_4_Finger_OneHand_Monkey",
-            ""
+            "",
+            "True"
           ]
-        },
-        {
-          "name": "GoToExercise",
-          "property": ["0"]
-        },
-        {
-          "name": "EnableInteractable",
-          "property": [""]
         }
       ],
       "showDisplayOrder": 2
@@ -323,15 +320,6 @@
     {
       "name": "PlayCorrectAnimSwimOrWalkBack",
       "action": [
-        {
-          "name": "ChangeModel222",
-          "property": [
-            "Student4FingerBubbleNoseSwim",
-            "4FingerFroggyBubbleNoseSwim",
-            "RightController",
-            ""
-          ]
-        },
         {
           "name": "ChangeAnimController",
           "property": ["RightController"]

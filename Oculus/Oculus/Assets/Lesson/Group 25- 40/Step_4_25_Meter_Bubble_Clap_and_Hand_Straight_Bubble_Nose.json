@@ -119,16 +119,12 @@
       "name": "MoveStudentToPool",
       "action": [
         {
-          "name": "ChangeModel",
-          "property": ["StudentCircleBreathe","Tummy_Board_Idle","Step 4 (25 Meter Bubble - Clap and Hand Straight Bubble Nose)",""]
-        },
-        {
           "name": "GoToExercise",
           "property": ["0"]
         },
         {
-          "name": "EnableInteractable",
-          "property": [""]
+          "name": "ChangeModel",
+          "property": ["StudentCircleBreathe","Tummy_Board_Idle","Step 4 (25 Meter Bubble - Clap and Hand Straight Bubble Nose)","","True"]
         }
       ],
       "showDisplayOrder": 2

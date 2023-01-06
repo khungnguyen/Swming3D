@@ -140,21 +140,18 @@
       "name": "MoveStudentToPool",
       "action": [
         {
+          "name": "GoToExercise",
+          "property": ["0"]
+        },
+        {
           "name": "ChangeModel",
           "property": [
             "Student4FingerBubbleNose",
             "4FingerFroggyBubbleNoseIdle_180_rotate",
             "Case_4_Finger_Froggy_BubbleNose",
-            ""
+            "",
+            "True"
           ]
-        },
-        {
-          "name": "GoToExercise",
-          "property": ["0"]
-        },
-        {
-          "name": "EnableInteractable",
-          "property": [""]
         }
       ],
       "showDisplayOrder": 2
@@ -179,6 +176,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["NonStopKicking"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["4FingerFroggyBubbleNose_NonStop_180_rotate"]
         },
         {
           "name": "EnableButtons",
@@ -249,6 +250,10 @@
         {
           "name": "TriggerAnimation",
           "property": ["Correct4Finger"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["4FingerFroggyBubbleNoseIdle_180_rotate"]
         },
         {
           "name": "ChangeLessonTitle",
@@ -330,12 +335,8 @@
             "Student4FingerBubbleNoseSwim",
             "4FingerFroggyBubbleNoseSwim",
             "RightController",
-            ""
+            "Key_RightAnimation"
           ]
-        },
-        {
-          "name": "TriggerAnimationWithSaveKey",
-          "property": ["Key_RightAnimation"]
         },
         {
           "name": "EnableButtons",
@@ -415,12 +416,8 @@
             "Student4FingerBubbleNoseSwim",
             "4FingerFroggyBubbleNoseSwim",
             "RightController",
-            ""
+            "Key_RightAnimation"
           ]
-        },
-        {
-          "name": "TriggerAnimationWithSaveKey",
-          "property": ["Key_RightAnimation"]
         },
         {
           "name": "EnableButtons",

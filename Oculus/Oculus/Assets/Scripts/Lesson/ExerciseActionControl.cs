@@ -189,7 +189,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         ButtonActions ac = GetButtonAction(action);
         if (ac != null)
         {
-            
+
             BUTTON_SHOW needToEnableButton = BUTTON_SHOW.KEEP_CURRENT_STATUS;
             foreach (ActionProperty actionProperty in ac.action)
             {
@@ -201,7 +201,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 else if (miniAction == ExaminerAction.TriggerFinalAnimation.ToString())
                 {
                     FinalAnimation();
-                    needToEnableButton =  BUTTON_SHOW.HIDE_BUTTONS;
+                    needToEnableButton = BUTTON_SHOW.HIDE_BUTTONS;
                 }
                 else if (miniAction == ExaminerAction.NextExercise.ToString())
                 {
@@ -210,7 +210,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 else if (miniAction == ExaminerAction.TriggerAnimation.ToString())
                 {
                     StartAnimation(actionProperty.property[0]);
-                    needToEnableButton =  BUTTON_SHOW.HIDE_BUTTONS;
+                    needToEnableButton = BUTTON_SHOW.HIDE_BUTTONS;
 
                 }
                 else if (miniAction == ExaminerAction.GoToLessonMenu.ToString())
@@ -276,7 +276,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     if (saveValue != null && saveValue.Length > 0)
                     {
                         StartAnimation(saveValue);
-                        needToEnableButton =  BUTTON_SHOW.HIDE_BUTTONS;
+                        needToEnableButton = BUTTON_SHOW.HIDE_BUTTONS;
                     }
                     else
                     {
@@ -295,7 +295,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                             if (i != saveValue)
                             {
                                 StartAnimation(i);
-                                needToEnableButton =  BUTTON_SHOW.HIDE_BUTTONS;
+                                needToEnableButton = BUTTON_SHOW.HIDE_BUTTONS;
                             }
                         }
                     }
@@ -321,7 +321,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 else if (miniAction == ExaminerAction.TriggerAnimationReplaceModel.ToString())
                 {
                     StartAnimation(actionProperty.property[0], true);
-                    needToEnableButton =  BUTTON_SHOW.HIDE_BUTTONS;
+                    needToEnableButton = BUTTON_SHOW.HIDE_BUTTONS;
                 }
                 else if (miniAction == ExaminerAction.ClearDataSave.ToString())
                 {
@@ -353,7 +353,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 else if (miniAction == ExaminerAction.EnableButtons.ToString())
                 {
                     bool active = actionProperty.property[0] == "True";
-                    Utils.LogError(this,"ExaminerAction.EnableButtons",active);
+                    Utils.LogError(this, "ExaminerAction.EnableButtons", active);
                     needToEnableButton = active ? BUTTON_SHOW.SHOW_BUTTON : BUTTON_SHOW.HIDE_BUTTONS;
                 }
                 else if (miniAction == ExaminerAction.ChangeModel.ToString())
@@ -563,16 +563,30 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     private void ChangeModel(string model, string pointName, string animator, string animation, string interact = "False")
     {
         object[] packages = new object[5];
+        string targetAnimtion = animation;
+        if (animation.StartsWith("Key_"))
+        {
+            string key = animation;
+            string saveValue = GetDataSaveByKey(key).value;
+            if (saveValue != null && saveValue.Length > 0)
+            {
+                targetAnimtion = saveValue;
+            }
+            else
+            {
+                Debug.LogError(TAG + "Could not find Save Key " + key);
+            }
+        }
         packages[0] = model;
         packages[1] = pointName;
         packages[2] = animator;
-        packages[3] = animation;
+        packages[3] = targetAnimtion;
         packages[4] = interact;
         ConnectionManager.instance.SendAction(EventCodes.ActionChangeModel, packages);
     }
     public void EnableButtons(bool enable)
     {
-        Utils.LogError(this,"who call enable",enable);
+        Utils.LogError(this, "who call enable", enable);
         var listButton = lessonUISpace.GetComponentsInChildren<ExerciseButton>();
         foreach (var b in listButton)
         {
