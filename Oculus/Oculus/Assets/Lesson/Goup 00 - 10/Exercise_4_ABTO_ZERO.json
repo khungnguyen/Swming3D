@@ -154,6 +154,10 @@
       "name": "ExecuteDoggyPaddle5Meters",
       "action": [
         {
+          "name": "CorrectTransform",
+          "property": ["DoggyPaddleinSwim5m"]
+        },
+        {
           "name": "TriggerAnimation",
           "property": ["DoggySwim"]
         },

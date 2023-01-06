@@ -18,7 +18,7 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
-    motionNodeName: <Root Transform>
+    motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
@@ -29,7 +29,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 0
+    importConstraints: 1
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -53,7 +53,7 @@ ModelImporter:
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 0
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
@@ -540,7 +540,7 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: Bip001
       parentName: Doggy Paddle 5 Meters(Clone)
-      position: {x: 0, y: 0, z: 0}
+      position: {x: -0.7363917, y: -0.294815, z: 0.11914795}
       rotation: {x: -0.27059948, y: 0.27059656, z: 0.65328103, w: 0.6532819}
       scale: {x: 1, y: 1, z: 1}
     - name: Bip001Footsteps
@@ -576,7 +576,7 @@ ModelImporter:
     - name: Bip001RUpperArm
       parentName: Bip001RClavicle
       position: {x: -0.10723297, y: -0.000000059604645, z: -0.000000059604645}
-      rotation: {x: -0.011930914, y: -0.03911501, z: -0.0013278368, w: 0.9991627}
+      rotation: {x: -0.0119309155, y: -0.03911501, z: -0.0013278369, w: 0.9991627}
       scale: {x: 1.0000002, y: 1, z: 0.99999994}
     - name: Bip001RForearm
       parentName: Bip001RUpperArm
@@ -721,7 +721,7 @@ ModelImporter:
     - name: Bip001LFinger02
       parentName: Bip001LFinger01
       position: {x: -0.023786902, y: 0, z: -0.000000029802322}
-      rotation: {x: -0.00000033022573, y: -0.0000016512017, z: -0.027568497, w: 0.99961996}
+      rotation: {x: -0.0000003302257, y: -0.0000016512016, z: -0.027568495, w: 0.9996199}
       scale: {x: 1.0000002, y: 0.9999997, z: 1.0000004}
     - name: Bip001LFinger0Nub
       parentName: Bip001LFinger02
