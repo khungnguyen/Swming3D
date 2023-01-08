@@ -40,6 +40,10 @@ public class MPlayerController : MonoBehaviourPunCallbacks
     }
     void Start()
     {
+        if (photonView.IsMine)
+        {
+            Look();
+        }
 
     }
 
@@ -48,7 +52,7 @@ public class MPlayerController : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
             {
                 Cursor.lockState = CursorLockMode.None;
             }
