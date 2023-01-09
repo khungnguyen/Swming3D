@@ -26,7 +26,7 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1101 &-5784824228281975472
+--- !u!1101 &-8593234538194232132
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -38,7 +38,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Walk
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: -4020082570057441530}
+  m_DstState: {fileID: -3841941213916807057}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -51,14 +51,14 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1102 &-4020082570057441530
+--- !u!1102 &-3841941213916807057
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 25 Meters_Walk Back
+  m_Name: 25 Meters_Walk Back_Over Pool_Edit 3
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -71,7 +71,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 8278345205262519617, guid: 2939c9b917c508941b243e27efdc766d,
+  m_Motion: {fileID: -7344971765071908798, guid: eccc2ad0271bef148b00b2a572fbf27f,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -153,8 +153,8 @@ AnimatorStateMachine:
     m_State: {fileID: -9083158310711434184}
     m_Position: {x: 291.5, y: 291, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -4020082570057441530}
-    m_Position: {x: 635.2542, y: 291.04663, z: 0}
+    m_State: {fileID: -3841941213916807057}
+    m_Position: {x: 590, y: 280, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -177,7 +177,7 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 334864041771363172}
-  - {fileID: -5784824228281975472}
+  - {fileID: -8593234538194232132}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
