@@ -147,9 +147,11 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
             Debug.Log("@@RoomInfo" + rooms[i].Name);
             if (rooms[i].PlayerCount != rooms[i].MaxPlayers && !rooms[i].RemovedFromList)
             {
-                GameObject roomObject = Instantiate(RoomItemPrefab);
-                roomObject.transform.SetParent(RoomListMenu.transform.Find("Scroll View/Viewport/Content"));
-                roomObject.transform.localScale = new Vector3(1, 1, 1);
+                var parent = RoomListMenu.transform.Find("Scroll View/Viewport/Content");
+                GameObject roomObject = Instantiate(RoomItemPrefab,parent);
+                // roomObject.transform.SetParent(parent);
+                // roomObject.transform.localScale = new Vector3(1, 1, 1);
+                // roomObject.transform.position = new Vector3(0,0,0);
                 RoomItem item = roomObject.GetComponent<RoomItem>();
                 item.setRoomInfo(rooms[i]);
                 item.setListener(this);
@@ -193,9 +195,10 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
         foreach (Player newPlayer in PhotonNetwork.PlayerList)
         {
             Debug.Log("reach" + newPlayer.NickName);
-            GameObject playerObject = Instantiate(PlayerInfoPrefab);
-            playerObject.transform.SetParent(RoomMenu.transform.Find("Scroll View/Viewport/Content"));
-            playerObject.transform.localScale = new Vector3(1, 1, 1);
+            var parent = RoomMenu.transform.Find("Scroll View/Viewport/Content");
+            GameObject playerObject = Instantiate(PlayerInfoPrefab,parent);
+            // playerObject.transform.SetParent(RoomMenu.transform.Find("Scroll View/Viewport/Content"));
+            // playerObject.transform.localScale = new Vector3(1, 1, 1);
             PlayerInfo comp = playerObject.GetComponent<PlayerInfo>();
             comp.setPlayerInfo(newPlayer);
             playerInfoListCached.Add(comp);
