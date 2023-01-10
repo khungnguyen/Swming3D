@@ -79,7 +79,7 @@
         },
         {
           "name": "ChangeModel",
-          "property": ["StudentPinchNoseBreathe","BubbleNoseFaceDown","Step 2 (25 Meter Bubble - Hand Straight Bubble Nose)","","True"]
+          "property": ["StudentHandStraightBubbleNose","BubbleNoseFaceDownIdle","Step 2 (25 Meter Bubble - Hand Straight Bubble Nose)","","True"]
         },
         {
           "name": "EnableBodyMoving",
@@ -101,7 +101,7 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["BubbleNoseFaceDown"]
+          "property": ["BubbleNoseFaceDownWrong"]
         }
       ],
       "showDisplayOrder": 3
@@ -129,6 +129,10 @@
         {
           "name": "EnableButtons",
           "property": ["True"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["BubbleNoseFaceDownRight"]
         }
       ],
       "showDisplayOrder": 5
@@ -143,6 +147,10 @@
         {
           "name": "EnableButtons",
           "property": ["True"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["BubbleNoseFaceDownSwim"]
         }
       ],
       "showDisplayOrder": 9
@@ -157,6 +165,10 @@
         {
           "name": "EnableButtons",
           "property": ["True"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["BubbleNoseFaceDownSwim"]
         }
       ],
       "showDisplayOrder": 9
@@ -171,6 +183,10 @@
         {
           "name": "EnableButtons",
           "property": ["True"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["BubbleNoseFaceDownSwim"]
         }
       ],
       "showDisplayOrder": 9
@@ -254,42 +270,6 @@
       "showDisplayOrder": 9
     },
     {
-      "name": "NotFollowDistance",
-      "action": [
-        {
-          "name": "ChangeAnimController",
-          "property": ["WrongController"]
-        },
-        {
-          "name": "CorrectTransform",
-          "property": ["SwimStartPoint"]
-        },
-        {
-          "name": "TriggerAnimation",
-          "property": ["Swim"]
-        }
-      ],
-      "showDisplayOrder": 7
-    },
-    {
-      "name": "NotFollowReturn",
-      "action": [
-        {
-          "name": "ChangeAnimController",
-          "property": ["RightController"]
-        },
-        {
-          "name": "CorrectTransform",
-          "property": ["SwimStartPoint"]
-        },
-        {
-          "name": "TriggerAnimationWithOutSaveKey",
-          "property": ["Key_RightAnimation"]
-        }
-      ],
-      "showDisplayOrder": 7
-    },
-    {
       "name": "LoseControl",
       "action": [
         {
@@ -354,50 +334,6 @@
         }
       ],
       "showDisplayOrder": 0
-    },
-    {
-      "name": "BackToExercise",
-      "action": [
-        {
-          "name": "ClearDataSave",
-          "property": [""]
-        },
-        {
-          "name": "DisableInteractable",
-          "property": [""]
-        },
-        {
-          "name": "ChangeAnimController",
-          "property": ["LoseController"]
-        },
-        {
-          "name": "CorrectTransform",
-          "property": ["Lesson_2_Ex_All_Pos"]
-        },
-        {
-          "name": "SettingUpLesson",
-          "property": [""]
-        },
-        {
-          "name": "ChangeLessonTitle",
-          "property": ["Practice In Place"]
-        }
-      ],
-      "showDisplayOrder": 1
-    },
-    {
-      "name": "StopAnimationAndEnableInteraction",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": ["StopAnim"]
-        },
-        {
-          "name": "EnableInteractable",
-          "property": ["DelayAfterAnim"]
-        }
-      ],
-      "showDisplayOrder": 3
     }
   ],
   "ExerciseList": [

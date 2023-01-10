@@ -102,11 +102,12 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["BubbleNoseFaceDown"]
+          "property": ["BubbleNoseFaceDownCheck5sWrong"]
         }
       ],
       "showDisplayOrder": 3
-    }, {
+    }, 
+    {
       "name": "AllowCoachToCorrect",
       "action": [
         {
@@ -130,6 +131,10 @@
         {
           "name": "EnableButtons",
           "property": ["True"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["BubbleNoseFaceDownCheck5sRight"]
         }
       ],
       "showDisplayOrder": 9
