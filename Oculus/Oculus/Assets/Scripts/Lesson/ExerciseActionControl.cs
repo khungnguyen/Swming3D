@@ -586,7 +586,6 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     }
     public void EnableButtons(bool enable)
     {
-        Utils.LogError(this, "who call enable", enable);
         var listButton = lessonUISpace.GetComponentsInChildren<ExerciseButton>();
         foreach (var b in listButton)
         {
