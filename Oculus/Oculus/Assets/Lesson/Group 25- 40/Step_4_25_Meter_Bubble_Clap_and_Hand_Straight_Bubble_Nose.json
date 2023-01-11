@@ -124,7 +124,7 @@
         },
         {
           "name": "ChangeModel",
-          "property": ["StudentCircleBreathe","Tummy_Board_Idle","Step 4 (25 Meter Bubble - Clap and Hand Straight Bubble Nose)","","True"]
+          "property": ["StudentCircleBreathe","25_40_Step_4_Idle","Step 4 (25 Meter Bubble - Clap and Hand Straight Bubble Nose)","","True"]
         }
       ],
       "showDisplayOrder": 2
@@ -142,62 +142,7 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["10_40_Idle_180_rotate"]
-        }
-      ],
-      "showDisplayOrder": 10
-    }, {
-      "name": "CircleSize",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": ["CircleSize"]
-        },
-        {
-          "name": "EnableButtons",
-          "property": ["True"]
-        }
-      ],
-      "showDisplayOrder": 10
-    },
-    {
-      "name": "NotBledingKneesEnough",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": ["NotBledingKneesEnough"]
-        },
-        {
-          "name": "EnableButtons",
-          "property": ["True"]
-        }
-      ],
-      "showDisplayOrder": 10
-    },
-    {
-      "name": "KickAboveWater",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": ["KickAboveWater"]
-        },
-        {
-          "name": "EnableButtons",
-          "property": ["True"]
-        }
-      ],
-      "showDisplayOrder": 10
-    },
-    {
-      "name": "LegsNotOpeningEnough",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": ["LegsNotOpeningEnough"]
-        },
-        {
-          "name": "EnableButtons",
-          "property": ["True"]
+          "property": ["25_40_Step_4_Wrong"]
         }
       ],
       "showDisplayOrder": 10
@@ -219,7 +164,7 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["10_40_Idle_180_rotate"]
+          "property": ["25_40_Step_4_Right"]
         }
       ],
       "showDisplayOrder": 4
@@ -293,7 +238,7 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["Tummy_Board_Swim"]
+          "property": ["25_40_Step_4_Swim"]
         },
         {
           "name": "TriggerAnimationWithSaveKey",
@@ -305,64 +250,6 @@
         }
       ],
       "showDisplayOrder": 9
-    },
-    {
-      "name": "NotFollowDistance",
-      "action": [
-        {
-          "name": "ChangeAnimController",
-          "property": ["WrongController"]
-        },
-        {
-          "name": "CorrectTransform",
-          "property": ["SwimStartPoint"]
-        },
-        {
-          "name": "TriggerAnimation",
-          "property": ["Swim"]
-        }
-      ],
-      "showDisplayOrder": 7
-    },
-    {
-      "name": "NotFollowReturn",
-      "action": [
-        {
-          "name": "ChangeAnimController",
-          "property": ["RightController"]
-        },
-        {
-          "name": "CorrectTransform",
-          "property": ["SwimStartPoint"]
-        },
-        {
-          "name": "TriggerAnimationWithOutSaveKey",
-          "property": ["Key_RightAnimation"]
-        }
-      ],
-      "showDisplayOrder": 7
-    },
-    {
-      "name": "LoseControl",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": ["LoseControl"]
-        },
-        {
-          "name": "CorrectTransform",
-          "property": ["10_40_Idle"]
-        },
-        {
-          "name": "EnableBodyMoving",
-          "property": ["True"]
-        },
-        {
-          "name": "EnableInteractable",
-          "property": ["DelayAfterAnim"]
-        }
-      ],
-      "showDisplayOrder": 8
     },
     {
       "name": "PlayCorrectAnimSwimOrWalkBackAndFinish",
@@ -377,7 +264,7 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["Tummy_Board_Swim"]
+          "property": ["25_40_Step_4_Right"]
         },
         {
           "name": "TriggerAnimationWithSaveKey",
