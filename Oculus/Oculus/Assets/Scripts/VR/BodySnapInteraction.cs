@@ -20,10 +20,11 @@ public class BodySnapInteraction : SnapInteraction
 
     void Awake()
     {
-        if (!VRAppDebug.USE_BODY_MOVING)
-        {
-            gameObject.SetActive(false);
-        }
+        // if (!VRAppDebug.USE_BODY_MOVING)
+        // {
+        //     gameObject.SetActive(false);
+        //     Utils.LogError("Disable body moving");
+        // }
         base.Awake();
         kickBoardPhotonView = GetComponent<PhotonTransformView>();
         newParentOfKickBoard = wholeBody;

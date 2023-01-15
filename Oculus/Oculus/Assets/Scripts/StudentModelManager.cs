@@ -63,8 +63,9 @@ public class StudentModelManager : MonoBehaviourPunCallbacks, IReceiver, IPunIns
                 string animator = (string)packages[2];
                 string animation = (string)packages[3];
                 string interact = (string)packages[4];
+                string moving = (string)packages[5];
                 var point = SpawnPointManager.instance.GetStudentSpawnPointByName(pointName);
-                Utils.Log(this, "ActionChangeModel", model, animator, pointName, animation, point);
+                Utils.Log(this, "ActionChangeModel", model, pointName, animator, animation, interact,moving);
                 curStudent = SpawnStudent(model, point);
                 var photonView = curStudent.GetPhotonView();
 
@@ -80,9 +81,12 @@ public class StudentModelManager : MonoBehaviourPunCallbacks, IReceiver, IPunIns
                 if(!animation.Equals(""))
                 {
                     photonView.RPC("TriggerAnimation", RpcTarget.All, animation);
-                }
-
+                } 
                 photonView.RPC("CorrectTransform", RpcTarget.All, pointName);
+                if(moving.Equals("True"))
+                {
+                    photonView.RPC("ActivateBodyMoving", RpcTarget.All, true);
+                }
                 PhotonNetwork.Destroy(preStudent);
 
             }

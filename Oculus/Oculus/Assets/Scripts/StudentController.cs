@@ -293,9 +293,10 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         lastTrigger = trigger;
     }
 
+    [PunRPC]
     private void ActivateBodyMoving(bool enable)
     {
-        Utils.Log(this, "ActivateBodyMoving", false);
+        Utils.LogError("ActivateBodyMoving",enable);
         IsBodyMovingEnable = enable;
         bodyMovingCube.gameObject.SetActive(enable);
     }

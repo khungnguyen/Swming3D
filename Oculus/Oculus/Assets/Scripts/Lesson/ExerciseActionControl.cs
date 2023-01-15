@@ -363,6 +363,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     string animatorKey = actionProperty.property[2];
                     string animation = actionProperty.property[3];
                     string activeInteraction;
+                    string moving;
                     try
                     {
                         activeInteraction = actionProperty.property[4];
@@ -370,6 +371,14 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     catch (System.Exception)
                     {
                         activeInteraction = "False";
+                    }
+                    try
+                    {
+                        moving = actionProperty.property[5];
+                    }
+                    catch (System.Exception)
+                    {
+                        moving = "False";
                     }
                     List<string> choices = GetExercisePropertiesByName(animatorKey);
                     string animator = "";
@@ -384,7 +393,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                         animator = animatorKey;
                     }
 
-                    ChangeModel(modelName, startPoint, animator, animation, activeInteraction);
+                    ChangeModel(modelName, startPoint, animator, animation, activeInteraction,moving);
                 }
                 // End No Use actions
 
@@ -560,9 +569,9 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         packages[0] = active;
         ConnectionManager.instance.SendAction(EventCodes.ActionBodyMoving, packages);
     }
-    private void ChangeModel(string model, string pointName, string animator, string animation, string interact = "False")
+    private void ChangeModel(string model, string pointName, string animator, string animation, string interact = "False",string moving ="False" )
     {
-        object[] packages = new object[5];
+        object[] packages = new object[6];
         string targetAnimtion = animation;
         if (animation.StartsWith("Key_"))
         {
@@ -582,6 +591,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         packages[2] = animator;
         packages[3] = targetAnimtion;
         packages[4] = interact;
+        packages[5] = moving;
         ConnectionManager.instance.SendAction(EventCodes.ActionChangeModel, packages);
     }
     public void EnableButtons(bool enable)
