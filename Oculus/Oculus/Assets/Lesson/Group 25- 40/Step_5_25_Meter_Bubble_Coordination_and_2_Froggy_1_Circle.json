@@ -129,7 +129,7 @@
         },
         {
           "name": "ChangeModel",
-          "property": ["StudentCircleBreathe","10_40_Idle","Step 5 (25 Meter Bubble - Coordination and 2 Froggy 1 Circle)","","True","True"]
+          "property": ["StudentCircleBreathe","25_40_Step_5","Step 5 (25 Meter Bubble - Coordination and 2 Froggy 1 Circle)","","True","True"]
         }
       ],
       "showDisplayOrder": 2
@@ -144,6 +144,10 @@
         {
           "name": "EnableButtons",
           "property": ["True"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["25_40_Step_5"]
         }
       ],
       "showDisplayOrder": 10
@@ -157,48 +161,10 @@
         {
           "name": "EnableButtons",
           "property": ["True"]
-        }
-      ],
-      "showDisplayOrder": 10
-    },
-    {
-      "name": "NotBledingKneesEnough",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": ["NotBledingKneesEnough"]
         },
         {
-          "name": "EnableButtons",
-          "property": ["True"]
-        }
-      ],
-      "showDisplayOrder": 10
-    },
-    {
-      "name": "KickAboveWater",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": ["KickAboveWater"]
-        },
-        {
-          "name": "EnableButtons",
-          "property": ["True"]
-        }
-      ],
-      "showDisplayOrder": 10
-    },
-    {
-      "name": "LegsNotOpeningEnough",
-      "action": [
-        {
-          "name": "TriggerAnimation",
-          "property": ["LegsNotOpeningEnough"]
-        },
-        {
-          "name": "EnableButtons",
-          "property": ["True"]
+          "name": "CorrectTransform",
+          "property": ["25_40_Step_5"]
         }
       ],
       "showDisplayOrder": 10
@@ -217,6 +183,10 @@
         {
           "name": "EnableButtons",
           "property": ["True"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["25_40_Step_5"]
         }
       ],
       "showDisplayOrder": 4
@@ -348,7 +318,7 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["10_40_Idle"]
+          "property": ["25_40_Step_5"]
         },
         {
           "name": "EnableBodyMoving",
@@ -473,7 +443,7 @@
         "name": "",
         "value": true
       },
-      "startPointName": "10_40_Idle",
+      "startPointName": "25_40_Step_5",
       "startController": "",
       "property": [
         "RightController","Step 5 (25 Meter Bubble - Coordination and 2 Froggy 1 Circle)_5meters",
@@ -491,7 +461,7 @@
         "value": true
       },
       "startController": "",
-      "startPointName": "10_40_Idle",
+      "startPointName": "25_40_Step_5",
       "property": [
         "RightController",
         "Step 5 (25 Meter Bubble - Coordination and 2 Froggy 1 Circle)_15meters",
@@ -509,7 +479,7 @@
         "name": "SlideJump",
         "value": false
       },
-      "startPointName": "10_40_Idle",
+      "startPointName": "25_40_Step_5",
       "property": [
         "RightController",
         "Step 5 (25 Meter Bubble - Coordination and 2 Froggy 1 Circle)_25meters",
