@@ -1,14 +1,14 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1102 &-4716234317066196765
+--- !u!1102 &-7694765214166897007
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Stand in Water Idle
-  m_Speed: 1
+  m_Name: In Water Idle - Face Down
+  m_Speed: 10
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -20,8 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 2169541270895572291, guid: c9cadfb56c7bbc04080992f9a08ed72a,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: 1e201b8ff2e36e941ac350c6bbe2da19, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -46,8 +45,11 @@ AnimatorStateMachine:
     m_State: {fileID: 6432838046719213769}
     m_Position: {x: 460, y: -50, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -4716234317066196765}
-    m_Position: {x: 440, y: -380, z: 0}
+    m_State: {fileID: -7694765214166897007}
+    m_Position: {x: 430, y: -400, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -1112018699127456614}
+    m_Position: {x: 660, y: -520, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -2296871466846526794}
@@ -56,10 +58,10 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 430, y: -300, z: 0}
-  m_EntryPosition: {x: 460, y: -550, z: 0}
+  m_EntryPosition: {x: 450, y: -660, z: 0}
   m_ExitPosition: {x: 880, y: 130, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -4716234317066196765}
+  m_DefaultState: {fileID: -7694765214166897007}
 --- !u!1101 &-2296871466846526794
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -77,14 +79,41 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.530818
   m_TransitionOffset: 0
-  m_ExitTime: 0.75
+  m_ExitTime: 0.93788415
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &-1112018699127456614
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SlideIn_3dmax2023_2022 11 07_No Squat
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -784301045736877754, guid: 7929c466a6ab01348a1d224d7eb535d4,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &-1039243252563372552
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -261,14 +290,14 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 1.1309624
   m_TransitionOffset: 0
-  m_ExitTime: 0.75
-  m_HasExitTime: 0
+  m_ExitTime: 0.8740734
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
-  m_InterruptionSource: 0
+  m_InterruptionSource: 1
   m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
+  m_CanTransitionToSelf: 0
 --- !u!1102 &6432838046719213769
 AnimatorState:
   serializedVersion: 6
