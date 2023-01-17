@@ -1,7 +1,7 @@
 {
   "Exercise": "Step 3 (25 Meter Bubble - Circle and Breathe)",
   "AnimatorController": "Case_One",
-  "startPointName": "Lesson_1_Ex_All_Pos",
+  "startPointName": "25_40_Step_3_Idle_Pos",
   "Buttons": [
     {
       "name": "Have Student Enter Pool",
@@ -129,7 +129,11 @@
         },
         {
           "name": "ChangeModel",
-          "property": ["StudentCircleBreathe","10_40_Idle_Step_3_25m","Step 3 (25 Meter Bubble - Circle and Breathe)","","DelayAfterAnim","True"]
+          "property": ["StudentCircleBreathe","25_40_Step_3_Slide_In_Pos","Step 3 (25 Meter Bubble - Circle and Breathe)","","DelayAfterAnim","True"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["False"]
         }
         
       ],

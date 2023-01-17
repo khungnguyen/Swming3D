@@ -1,7 +1,7 @@
 {
   "Exercise": "Step 5 25 Meter Bubble - Coordination and 2 Froggy 1 Circle",
   "AnimatorController": "Case_One",
-  "startPointName": "Lesson_1_Ex_All_Pos",
+  "startPointName": "25_40_Step_5_Idle_Pos",
   "Buttons": [
     {
       "name": "Have Student Enter Pool",
@@ -130,6 +130,10 @@
         {
           "name": "ChangeModel",
           "property": ["StudentCircleBreathe","25_40_Step_5_Slide_In_Pos","Step 5 (25 Meter Bubble - Coordination and 2 Froggy 1 Circle)","","DelayAfterAnim","True"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["False"]
         }
       ],
       "showDisplayOrder": 2

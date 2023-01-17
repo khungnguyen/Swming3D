@@ -1,7 +1,7 @@
 {
   "Exercise": "Step 1 25 Meter Bubble - Check Bubble Nose 5 Seconds",
   "AnimatorController": "Case_One",
-  "startPointName": "Lesson_1_Ex_All_Pos",
+  "startPointName": "25_40_Step_1_Idle_Pos",
   "Buttons": [
     {
       "name": "Have Student Enter Pool",
@@ -80,6 +80,10 @@
         {
           "name": "ChangeModel",
           "property": ["StudentPinchNoseBreathe","25_40_Step_1_Slide_In_Pos","Step 1 (25 Meter Bubble - Check Bubble Nose 5 Seconds)","","DelayAfterAnim","True"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["False"]
         }
       ],
       "showDisplayOrder": 2

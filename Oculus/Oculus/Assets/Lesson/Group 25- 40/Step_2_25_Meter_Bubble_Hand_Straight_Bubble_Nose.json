@@ -1,7 +1,7 @@
 {
   "Exercise": "Step 2 25 Meter Bubble - Hand Straight Bubble Nose",
   "AnimatorController": "Case_One",
-  "startPointName": "Lesson_1_Ex_All_Pos",
+  "startPointName": "25_40_Step_2_Idle_Pos",
   "Buttons": [
     {
       "name": "Have Student Enter Pool",
@@ -80,6 +80,10 @@
         {
           "name": "ChangeModel",
           "property": ["StudentHandStraightBubbleNose","25_40_Step_2_Slide_In_Pos","Step 2 (25 Meter Bubble - Hand Straight Bubble Nose)","","DelayAfterAnim","True"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["False"]
         }
       ],
       "showDisplayOrder": 2
