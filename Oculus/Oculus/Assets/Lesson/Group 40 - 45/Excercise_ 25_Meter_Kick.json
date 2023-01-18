@@ -19,8 +19,8 @@
       "displayOrder": 3
     },
     {
-      "name": "Execute 5 Meters Properly",
-      "action": "PlayCorrect5Meters",
+      "name": "Execute Properly",
+      "action": "PlayCorrectCircleAndBreathe",
       "displayOrder": 4
     },
     {
@@ -39,29 +39,35 @@
       "displayOrder": 5
     },
     {
-      "name": "Execute 5 Meters Properly",
-      "action": "PlayCorrect5Meters",
+      "name": "Execute Properly",
+      "action": "PlayCorrectCircleAndBreathe",
       "displayOrder": 6
     },
     {
-      "name": "Have Student Enter Pool",
+      "name": "Back To Idle",
       "action": "BackToIdle2",
       "displayOrder": 7
+    }
+    ,  
+    {
+      "name": "Execute 5 Meters 3 Times Properly",
+      "action": "PlayCorrect5Meters",
+      "displayOrder": 8
     },
     {
       "name": "Have Student Enter Pool",
-      "action": "BackToIdle2",
-      "displayOrder": 8
+      "action": "BackToIdle3",
+      "displayOrder": 9
     },
     {
       "name": "Execute 15 Meters Properly",
       "action": "PlayCorrect15Meters",
-      "displayOrder": 9
+      "displayOrder": 10
     },
     {
       "name": "Lesson List",
       "action": "GoToLessonMenu",
-      "displayOrder": 10
+      "displayOrder": 11
     }
   ],
   "Actions": [
@@ -70,7 +76,11 @@
       "action": [
         {
           "name": "ChangeModel",
-          "property": ["Studen25Meters","40-45_Idle","25_Meters_Kick","","DelayAfterAnim","True"]
+          "property": ["Studen25Meters","40-45_25m_Slide_In_Pos","25_Meters_Kick","","DelayAfterAnim","True"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 2
@@ -84,7 +94,7 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["40-45_Idle"]
+          "property": ["40-45_25m_Slide_In_Pos"]
         }
       ],
       "showDisplayOrder": 3
@@ -102,7 +112,7 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["40-45_Idle"]
+          "property": ["40-45_25m_Slide_In_Pos"]
         }
       ],
       "showDisplayOrder": 4
@@ -120,10 +130,28 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["40-45_Idle"]
+          "property": ["40-45_25m_Slide_In_Pos"]
         }
       ],
-      "showDisplayOrder": 9
+      "showDisplayOrder": 8
+    },
+    {
+      "name": "BackToIdle3",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["Walk2Idle"]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": ["DelayAfterAnim"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["25_40_Exercise_2_Slide_In_Pos_2"]
+        }
+      ],
+      "showDisplayOrder": 10
     },
     {
       "name": "PlayCorrect5Meters",
@@ -137,7 +165,7 @@
           "property": ["40-45_Idle"]
         }
       ],
-      "showDisplayOrder": 7
+      "showDisplayOrder": 9
     },
     {
       "name": "PlayCorrect15Meters",
@@ -155,7 +183,7 @@
           "property": ["40-45_Idle"]
         }
       ],
-      "showDisplayOrder": 10
+      "showDisplayOrder": 11
     },
     {
       "name": "PlayClapAndHeadDown",
@@ -166,7 +194,11 @@
         },
         {
           "name": "CorrectTransform",
-          "property": ["40-45_Idle"]
+          "property": ["40-45_25m_Slide_In_Pos"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 5
@@ -181,10 +213,33 @@
         ,
         {
           "name": "CorrectTransform",
-          "property": ["40-45_Idle"]
+          "property": ["40-45_25m_Slide_In_Pos"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
         }
       ],
       "showDisplayOrder": 5
+    },
+    {
+      "name": "PlayCorrectCircleAndBreathe",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["PlayCorectCircelAndBreathe"]
+        }
+        ,
+        {
+          "name": "CorrectTransform",
+          "property": ["40-45_25m_Slide_In_Pos"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        }
+      ],
+      "showDisplayOrder": 7
     },
     {
       "name": "AllowCoachToCorrect",
@@ -195,7 +250,7 @@
         },
         {
           "name": "EnableButtons",
-          "property": ["True"]
+          "property": ["False"]
         },
         {
           "name": "EnableInteractable",
@@ -230,7 +285,7 @@
           "property": ["True"]
         }
       ],
-      "showDisplayOrder": 9
+      "showDisplayOrder": 11
     },
     {
       "name": "MonkeyWalk25meters",
