@@ -33,7 +33,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         StudentModelManager.instance.OnStudentCreate(this);
     }
     public static bool firstTime = false;
-    void Start()
+    protected virtual void Start()
     {
         if (VRAppDebug.USE_DEBUG_VR_SINGLE_PREVIEW)
         {
@@ -70,7 +70,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     /**
     * Event NotifityEndAnimationState would be fired from animation using animation event
     */
-    public void NotifityEndAnimationState(AnimationEvent e)
+    public virtual void NotifityEndAnimationState(AnimationEvent e)
     {
 
         // StartCoroutine(DelayEnableInteraction(0.5f,true));
@@ -299,7 +299,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     }
 
     [PunRPC]
-    private void ActivateBodyMoving(bool enable)
+    public void ActivateBodyMoving(bool enable)
     {
         Utils.LogError("ActivateBodyMoving",enable);
         IsBodyMovingEnable = enable;
