@@ -65,6 +65,11 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     {
         //   CorrectTransform(name);
     } 
+
+
+    /**
+    * Event NotifityEndAnimationState would be fired from animation using animation event
+    */
     public void NotifityEndAnimationState(AnimationEvent e)
     {
 

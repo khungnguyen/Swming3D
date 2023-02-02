@@ -19,7 +19,7 @@
       "displayOrder": 3
     },
     {
-      "name": "Execute Properly",
+      "name": "Bubble Coordination with 2 Froggy 1 Circle Correctly",
       "action": "PlayCorrectCircleAndBreathe",
       "displayOrder": 4
     },
@@ -39,7 +39,7 @@
       "displayOrder": 5
     },
     {
-      "name": "Execute Properly",
+      "name": "Bubble Coordination with 2 Froggy 1 Circle Correctly",
       "action": "PlayCorrectCircleAndBreathe",
       "displayOrder": 6
     },
@@ -68,6 +68,32 @@
       "name": "Lesson List",
       "action": "GoToLessonMenu",
       "displayOrder": 11
+    },
+    {
+      "name": "Execute Bubble Nose Hand Straigth Kick Correctly",
+      "action": "PlayCorrectBubbleNose",
+      "displayOrder": 12
+    },
+    {
+      "name": "Execute Bubble Nose Hand Straigth Kick Incorrectly",
+      "action": "PlayInCorrectBubbleNose",
+      "displayOrder": 12
+    },
+    {
+      "name": "Allow Coach To Correct",
+      "action": "AllowCoachToCorrectHandStraigth",
+      "displayOrder": 13
+    },
+    {
+      "name": "Execute Bubble Nose Hand Straigth Kick Correctly",
+      "action": "PlayCorrectBubbleNose",
+      "displayOrder": 14
+    },
+
+    {
+      "name": "Execute Bubble Nose Hand Straigth 5 Meters",
+      "action": "PlayCorrect5MetersHandStraightKick",
+      "displayOrder": 15
     }
   ],
   "Actions": [
@@ -115,7 +141,7 @@
           "property": ["40-45_25m_Slide_In_Pos"]
         }
       ],
-      "showDisplayOrder": 4
+      "showDisplayOrder": 12
     },
     {
       "name": "BackToIdle2",
@@ -414,48 +440,78 @@
       "showDisplayOrder": 0
     },
     {
-      "name": "BackToExercise",
-      "action": [
-        {
-          "name": "ClearDataSave",
-          "property": [""]
-        },
-        {
-          "name": "DisableInteractable",
-          "property": [""]
-        },
-        {
-          "name": "ChangeAnimController",
-          "property": ["LoseController"]
-        },
-        {
-          "name": "CorrectTransform",
-          "property": ["Lesson_2_Ex_All_Pos"]
-        },
-        {
-          "name": "SettingUpLesson",
-          "property": [""]
-        },
-        {
-          "name": "ChangeLessonTitle",
-          "property": ["Practice In Place"]
-        }
-      ],
-      "showDisplayOrder": 1
-    },
-    {
-      "name": "StopAnimationAndEnableInteraction",
+      "name": "PlayCorrectBubbleNose",
       "action": [
         {
           "name": "TriggerAnimation",
-          "property": ["StopAnim"]
+          "property": ["PlayCorrectBubbleNose"]
+        }
+        ,
+        {
+          "name": "CorrectTransform",
+          "property": ["40-45_25m_HandStraight_Correct"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        }
+      ],
+      "showDisplayOrder": 15
+    },
+    {
+      "name": "PlayInCorrectBubbleNose",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["PlayInCorrectBubbleNose"]
+        }
+        ,
+        {
+          "name": "CorrectTransform",
+          "property": ["40-45_25m_HandStraight_Incorrect"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        }
+      ],
+      "showDisplayOrder": 13
+    } ,
+    {
+      "name": "AllowCoachToCorrectHandStraigth",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["AllowToCorrect"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["False"]
         },
         {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
         }
       ],
-      "showDisplayOrder": 3
+      "showDisplayOrder": 14
+    },
+    {
+      "name": "PlayCorrect5MetersHandStraightKick",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["PlayCorrect5MetersHandStraightKick"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["40-45_25m_HandStraight_Correct"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        }
+      ],
+      "showDisplayOrder": 4
     }
   ],
   "ExerciseList": [
