@@ -30,11 +30,12 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     // Start is called before the first frame update
     void Awake()
     {
-        StudentModelManager.instance.OnStudentCreate(this);
+        StudentModelManager.instance?.OnStudentCreate(this);
     }
     public static bool firstTime = false;
     protected virtual void Start()
     {
+        Utils.LogError(this,"Start were call");
         if (VRAppDebug.USE_DEBUG_VR_SINGLE_PREVIEW)
         {
             StartCoroutine(DelayEnableInteraction(2, true));

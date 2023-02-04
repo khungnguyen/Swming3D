@@ -11,9 +11,15 @@ public class MatchManager : MonoBehaviour
     private SCREEN StartScene = SCREEN.MainMenu;
     void Start()
     {
-        if(!PhotonNetwork.IsConnected) {
-            ScenesManager.instance.GoTo(StartScene);
-            Debug.Log("GO TO MAIN MENU");
+        if (!VRAppDebug.USE_DEBUG_VR_SINGLE_PREVIEW)
+        {
+            if (!PhotonNetwork.IsConnected)
+            {
+                ScenesManager.instance.GoTo(StartScene);
+                Debug.Log("GO TO MAIN MENU");
+            }
+
+
         }
     }
 }

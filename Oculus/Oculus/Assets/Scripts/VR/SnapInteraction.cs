@@ -5,8 +5,20 @@ using System;
 using Photon.Pun;
 using System.Collections;
 
+
 public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IInteraction
 {
+
+    public enum BONE_TYPE {
+        NONE,
+        HEAD,
+        WAIST,
+        LEFT_ARM_ELBOW,
+        LEFT_ARM_HAND,
+        RIGH_ARM_ELBOW,
+        RIGH_ARM_HAND
+
+    }
 
     const string TAG = "[SnapInteraction]";
     public MonoBehaviour constraintComp;
@@ -29,6 +41,7 @@ public class SnapInteraction : MonoBehaviourPunCallbacks, IPointableElement, IIn
 
     public event Action<PointerEvent> WhenPointerEventRaised;
 
+    public BONE_TYPE boneType = BONE_TYPE.NONE;
 
     private Vector3 originalRotation;
     private Vector3 originalPosition;
