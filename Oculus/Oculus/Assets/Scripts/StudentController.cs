@@ -64,10 +64,19 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
 
     public void RepositionNexAnim(string name)
     {
-        //   CorrectTransform(name);
+          
     } 
 
-
+    public void RepositionEvent(string name) {
+        Utils.LogError(this, "RepositionEvent",name);
+        StartCoroutine(DelayCorrectTransform(0.01f,name));
+        
+    }
+    IEnumerator DelayCorrectTransform(float second,string name)
+    {
+        yield return new WaitForSeconds(second);
+        CorrectTransform(name);
+    }
     /**
     * Event NotifityEndAnimationState would be fired from animation using animation event
     */
@@ -336,7 +345,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         currentTransform = name;
         if (init != null)
         {
-            Debug.Log(TAG + "CorrectTransform" + name);
+            Debug.Log(TAG + "CorrectTransform " + name);
             transform.SetPositionAndRotation(init.position, init.rotation);
             transform.localScale =init.localScale;
         }
