@@ -160,6 +160,10 @@
           "property": ["EnableKickBoard"]
         },
         {
+          "name": "EnableBodyMoving",
+          "property": ["True"]
+        },
+        {
           "name": "EnableInteractable",
           "property": [""]
         }
@@ -222,6 +226,10 @@
         {
           "name": "EnableButtons",
           "property": ["True"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["4FingerFlutterKickIdle"]
         }
       ],
       "showDisplayOrder": 4
