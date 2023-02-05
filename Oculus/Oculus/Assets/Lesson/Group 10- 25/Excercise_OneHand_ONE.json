@@ -135,6 +135,7 @@
             "OneHandIdle",
             "Case_4_Finger_OneHand_Monkey",
             "",
+            "True",
             "True"
           ]
         }
@@ -242,6 +243,10 @@
     {
       "name": "PlayCorrectOneHandKick",
       "action": [
+        {
+          "name": "CorrectTransform",
+          "property": ["OneHandIdle"]
+        },
         {
           "name": "TriggerAnimation",
           "property": ["CorrectKick"]
@@ -380,20 +385,14 @@
             "StudentOneHandLoseControl",
             "OneHandLoseControl",
             "Case_4_Finger_OneHand_Monkey_LoseControl",
-            "LoseControl"
+            "LoseControl",
+            "DelayAfterAnim",
+            "True"
           ]
-        },
-        {
-          "name": "EnableBodyMoving",
-          "property": ["True"]
         },
         {
           "name": "EnableButtons",
           "property": ["False"]
-        },
-        {
-          "name": "EnableInteractable",
-          "property": ["DelayAfterAnim"]
         }
       ],
       "showDisplayOrder": 8

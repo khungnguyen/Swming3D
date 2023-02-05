@@ -1,7 +1,7 @@
 {
   "Exercise": "Starfish Float on Back",
-  "AnimatorController": "Case_One",
-  "startPointName": "Lesson_1_Ex_All_Pos",
+  "AnimatorController": "Case_Three",
+  "startPointName": "ExerciseStarStarfishBackStart",
   "Buttons": [
     {
       "name": "Have Student Enter Pool",
@@ -49,6 +49,10 @@
           "property": ["0"]
         },
         {
+          "name": "TriggerAnimation",
+          "property": ["SlideIn"]
+        },
+        {
           "name": "ActivateExtension",
           "property": ["BackFloat", "True"]
         },
@@ -59,10 +63,6 @@
         {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
-        },
-        {
-          "name": "EnableButtons",
-          "property": ["True"]
         }
       ],
       "showDisplayOrder": 3
@@ -162,8 +162,8 @@
         "name": "",
         "value": true
       },
-      "startPointName": "StarfishFloatBackPointIdle",
-      "startController": "Case_Three",
+      "startPointName": "",
+      "startController": "",
       "property": []
     }
   ],

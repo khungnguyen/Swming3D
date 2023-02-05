@@ -159,7 +159,7 @@
         },
         {
           "name": "ChangeModel",
-          "property": ["StudentTummy","Tummy_Board_Idle_180_rotate","Case_Tummy","","True"]
+          "property": ["StudentTummy","Tummy_Board_Idle_180_rotate","Case_Tummy","","True","True"]
         }
       ],
       "showDisplayOrder": 2
@@ -247,6 +247,10 @@
         {
           "name": "EnableButtons",
           "property": ["True"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["Tummy_Board_Idle_180_rotate"]
         }
       ],
       "showDisplayOrder": 4
