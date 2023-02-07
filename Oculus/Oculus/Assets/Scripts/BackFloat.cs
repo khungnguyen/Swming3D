@@ -11,12 +11,16 @@ public class BackFloat : MonoBehaviour
     public Action OnInteraction;
     private void OnTriggerEnter(Collider collider)
     {
-        Utils.LogError(this, "BackFloat Trigger Collider Enter");
-        gameObject.GetPhotonView().RPC("InActiveItself", RpcTarget.All);
+        if (gameObject.activeSelf)
+        {
+            //Utils.LogError(this, "BackFloat Trigger Collider Enter");
+            gameObject.GetPhotonView().RPC("InActiveItself", RpcTarget.All);
+        }
+
     }
     private void OnTriggerExit(Collider collider)
     {
-        Utils.LogError(this, "BackFloat Trigger Collider Exit");
+       // Utils.LogError(this, "BackFloat Trigger Collider Exit");
     }
     [PunRPC]
     public void InActiveItself()
