@@ -379,5 +379,12 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
        StartCoroutine(DelayEnableInteraction(0.1f, b));
         Utils.Log(this,"Calling EnableInteractionImmediate",b);
     }
+    void OnDestroy()
+    {
+        Debug.Log("OnDestroy1");
+        if(studentExtensions != null) {
+            studentExtensions.DestroyAll();
+        }
+    }
     
 }

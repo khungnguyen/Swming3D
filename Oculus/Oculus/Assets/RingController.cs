@@ -10,6 +10,13 @@ public class RingController : MonoBehaviour
     [SerializeField] Transform signToPutRing;
     [SerializeField] RingCollisonDetecter collisionDetecter;
 
+    [SerializeField] Transform parent;
+    [SerializeField] Transform ringLayer;
+    [SerializeField] GameObject bodyMoving;
+
+    void Start() {
+       ringLayer.parent = parent.parent; 
+    }
     private bool onCollision = false;
     public void OnSelect()
     {
@@ -30,6 +37,7 @@ public class RingController : MonoBehaviour
         actualRing.gameObject.SetActive(true);
         signToPutRing.gameObject.SetActive(false);
         gameObject.SetActive(false);
+        Destroy(bodyMoving);
     }
 
     void CollisionDectectEvent(Transform t, bool onEnter)

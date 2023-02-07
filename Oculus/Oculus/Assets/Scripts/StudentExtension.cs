@@ -64,4 +64,10 @@ public class StudentExtension : MonoBehaviour
             e.gameObject.SetActive(false);
         });
     }
+    public void DestroyAll() {
+         extensionTransforms.ForEach(e =>
+        {
+           Destroy(e.gameObject);//.SetActive(false);
+        });
+    }
 }

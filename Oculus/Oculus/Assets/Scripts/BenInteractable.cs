@@ -14,11 +14,9 @@ public class BenInteractable : SnapInteraction
     void Start()
     {
         var rootNode = transform.parent.parent.parent;
-        Utils.LogError(this,"Root name",rootNode.name);
         interactionList = new List<SnapInteraction>(rootNode.GetComponentsInChildren<SnapInteraction>()).FindAll(e => e != this);
         nolock = interactionList.FindAll(e => e.lockTarget);
         headInteraction = interactionList.Find(e => e.transform.parent.parent.name == "Head");
-        Utils.LogError(this,"RheadInteraction",headInteraction.transform.name);
     }
     public override void OnSelect()
     {
@@ -26,7 +24,11 @@ public class BenInteractable : SnapInteraction
         {
             foreach (var mobject in nolock)
             {
-                mobject.lockTarget = false;
+                if (mobject != null)
+                {
+                    mobject.lockTarget = false;
+                }
+
             }
             if (headInteraction != null)
             {
@@ -34,15 +36,22 @@ public class BenInteractable : SnapInteraction
             }
             foreach (var mobject in interactionList)
             {
-                if(mobject.transform.name == "BodyMoving") {
-                    mobject.gameObject.SetActive(false);
-                }
-                else {
-                    if(mobject.transform.parent.parent.TryGetComponent<Rig>(out var rig)) {
-                        rig.gameObject.SetActive(false);
-                        
+                if (mobject != null)
+                {
+                    if (mobject.transform.name == "BodyMoving")
+                    {
+                        mobject.gameObject.SetActive(false);
                     }
-                }  
+                    else
+                    {
+                        if (mobject.transform.parent.parent.TryGetComponent<Rig>(out var rig))
+                        {
+                            rig.gameObject.SetActive(false);
+
+                        }
+                    }
+                }
+
             }
             base.OnSelect();//ooooo
 
@@ -55,19 +64,30 @@ public class BenInteractable : SnapInteraction
         {
             foreach (var mobject in interactionList)
             {
-               if(mobject.transform.name == "BodyMoving") {
-                    mobject.gameObject.SetActive(true);
-                }
-                else {
-                    if(mobject.transform.parent.parent.TryGetComponent<Rig>(out var rig)) {
-                        rig.gameObject.SetActive(true);
-                        mobject.EnableInteraction(true);
+                if (mobject != null)
+                {
+                    if (mobject.transform.name == "BodyMoving")
+                    {
+                        mobject.gameObject.SetActive(true);
                     }
-                }  
+                    else
+                    {
+                        if (mobject.transform.parent.parent.TryGetComponent<Rig>(out var rig))
+                        {
+                            rig.gameObject.SetActive(true);
+                            mobject.EnableInteraction(true);
+                        }
+                    }
+                }
+
             }
             foreach (var mobject in nolock)
             {
-                 mobject.lockTarget = true;
+                if (mobject != null)
+                {
+                    mobject.lockTarget = true;
+                }
+
             }
             if (headInteraction != null)
             {
