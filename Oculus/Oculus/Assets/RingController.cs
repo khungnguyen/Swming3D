@@ -14,7 +14,11 @@ public class RingController : MonoBehaviour
     [SerializeField] Transform ringLayer;
     [SerializeField] GameObject bodyMoving;
 
+    private Vector3 parentPosition;
+    private Quaternion quaternion;
     void Start() {
+       parentPosition = parent.position;
+       quaternion= parent.rotation;
        ringLayer.parent = parent.parent; 
     }
     private bool onCollision = false;
@@ -37,6 +41,7 @@ public class RingController : MonoBehaviour
         actualRing.gameObject.SetActive(true);
         signToPutRing.gameObject.SetActive(false);
         gameObject.SetActive(false);
+        parent.SetPositionAndRotation(parentPosition,quaternion);
         Destroy(bodyMoving);
     }
 
@@ -44,6 +49,9 @@ public class RingController : MonoBehaviour
     {
         Utils.Log(this, "Collider", t.name, onEnter);
         onCollision = onEnter;
+        // if(onEnter)
+        // PutTheRing();
+
     }
     void OnEnable()
     {
