@@ -1737,7 +1737,7 @@ Transform:
   - {fileID: 5617122224460044180}
   - {fileID: 5617122225846223286}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &2062247645010794219
 Animator:
@@ -1899,6 +1899,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RigLayers:
+  - m_Rig: {fileID: 767839158545725410}
+    m_Active: 1
+  - m_Rig: {fileID: 5372099497947050004}
+    m_Active: 1
   - m_Rig: {fileID: 5617122226224901659}
     m_Active: 1
   - m_Rig: {fileID: 5617122225147778908}
