@@ -28,7 +28,8 @@ ModelImporter:
     animationImportWarnings: "\nClip 'Cycle Kicks' has import animation warnings
       that might lower retargeting quality:\nNote: Activate translation DOF on avatar
       to improve retargeting quality.\n\t'Bip001Spine' has translation animation
-      that will be discarded.\n"
+      that will be discarded.\nEvent NotifityEndAnimationState has a time (3.240000)
+      outside the clip's valid range (0.000000..3.200000). It will never be fired"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -75,7 +76,7 @@ ModelImporter:
       takeName: Cycle Kicks
       internalID: 0
       firstFrame: 0
-      lastFrame: 81
+      lastFrame: 12
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

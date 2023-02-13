@@ -28,7 +28,8 @@ ModelImporter:
     animationImportWarnings: "\nClip 'Splash Kicks_' has import animation warnings
       that might lower retargeting quality:\nNote: Activate translation DOF on avatar
       to improve retargeting quality.\n\t'Bip001Spine' has translation animation
-      that will be discarded.\n"
+      that will be discarded.\nEvent NotifityEndAnimationState has a time (3.200000)
+      outside the clip's valid range (0.000000..3.200000). It will never be fired"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -75,7 +76,7 @@ ModelImporter:
       takeName: Splash Kicks_
       internalID: 0
       firstFrame: 0
-      lastFrame: 80
+      lastFrame: 18
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
