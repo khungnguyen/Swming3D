@@ -361,6 +361,28 @@
       "showDisplayOrder": 0
     },
     {
+      "name": "GoToExerciseMenu",
+      "action": [
+        {
+          "name": "GoToExerciseMenu",
+          "property": [""]
+        },
+        {
+          "name": "ClearDataSave",
+          "property": [""]
+        },
+        {
+          "name": "DisableInteractable",
+          "property": [""]
+        },
+        {
+          "name": "ChangeModel",
+          "property": ["StudentFullter","Lesson_1_Ex_All_Pos","Case_One",""]
+        }
+      ],
+      "showDisplayOrder": 0
+    },
+    {
       "name": "BackToExercise",
       "action": [
         {

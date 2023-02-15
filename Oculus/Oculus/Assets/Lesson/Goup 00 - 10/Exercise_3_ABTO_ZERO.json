@@ -99,6 +99,24 @@
         }
       ],
       "showDisplayOrder": 0
+    },
+    {
+      "name": "GoToExerciseMenu",
+      "action": [
+        {
+          "name": "GoToExerciseMenu",
+          "property": [""]
+        },
+        {
+          "name": "DisableInteractable",
+          "property": [""]
+        },
+        {
+          "name": "ChangeModel",
+          "property": ["StudentFullter","ExerciseStarStarfishBackStart_No_Rotate","Case_Five",""]
+        }
+      ],
+      "showDisplayOrder": 0
     }
   ],
   "ExerciseList": [

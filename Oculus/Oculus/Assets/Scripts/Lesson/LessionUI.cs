@@ -13,6 +13,10 @@ public class LessionUI : MonoBehaviour, IButtonAction
     public Transform scrollContent;
     public Transform dialogParent;
 
+    private bool goToExerciseInstedOfChapter = false;
+
+    private LessonGroupType previousGroup;
+
     private bool useNewUI = VRAppDebug.USE_NEW_MENU_DESIGN;
     enum Action
     {
@@ -35,7 +39,8 @@ public class LessionUI : MonoBehaviour, IButtonAction
                 OnLessonSelected(Utils.String2Enum<LessonGroupType>(types[1]), int.Parse(types[2]));
                 break;
             case Action.SelectGroup:
-                CreateLessonMenu(Utils.String2Enum<LessonGroupType>(types[1]));
+                previousGroup = Utils.String2Enum<LessonGroupType>(types[1]);
+                CreateLessonMenu(previousGroup);
                 break;
         }
     }
@@ -49,7 +54,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
     }
     private void ClearScrollContent()
     {
-            Utils.DestroyTransformChildren(scrollContent);
+        Utils.DestroyTransformChildren(scrollContent);
     }
     // Start is called before the first frame update
     void Start()
@@ -151,6 +156,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
     }
     private void OnLessonSelected(LessonGroupType groupType, int i)
     {
+
         var lessonList = LessonManager.instance.GetLessons(groupType);
         var lessonIndex = i;
         SendActionInitLesson(groupType, lessonIndex);
@@ -167,7 +173,27 @@ public class LessionUI : MonoBehaviour, IButtonAction
     }
     public void OnEnable()
     {
-        CreateLessonGroupMenu();
+        if (goToExerciseInstedOfChapter)
+        {
+            goToExerciseInstedOfChapter = false;
+            if (!useNewUI)
+            {
+                ClearScrollContent();
+            }
+            Utils.Log(this,"Call me here OnEnable");
+            CreateLessonMenu(previousGroup);
+
+        }
+        else
+        {
+            CreateLessonGroupMenu();
+        }
+
     }
-   
+
+    public void EnableToGoToExercis()
+    {
+        goToExerciseInstedOfChapter = true;
+    }
+
 }

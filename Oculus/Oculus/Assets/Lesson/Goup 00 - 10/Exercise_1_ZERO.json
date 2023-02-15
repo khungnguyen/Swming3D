@@ -26,7 +26,7 @@
     },
     {
       "name": "Lesson List",
-      "action": "LessonList",
+      "action": "GoToLessonMenu",
       "parent": "Yes",
       "displayOrder": 3
     }
@@ -67,10 +67,20 @@
       "showDisplayOrder": 3
     },
     {
-      "name": "LessonList",
+      "name": "GoToLessonMenu",
       "action": [
         {
           "name": "GoToLessonMenu",
+          "property": [""]
+        }
+      ],
+      "showDisplayOrder": 0
+    },
+    {
+      "name": "GoToExerciseMenu",
+      "action": [
+        {
+          "name": "GoToExerciseMenu",
           "property": [""]
         }
       ],

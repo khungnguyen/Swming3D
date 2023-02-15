@@ -145,6 +145,24 @@
         }
       ],
       "showDisplayOrder": 0
+    },
+    {
+      "name": "GoToExerciseMenu",
+      "action": [
+        {
+          "name": "GoToExerciseMenu",
+          "property": [""]
+        },
+        {
+          "name": "DisableInteractable",
+          "property": [""]
+        },
+        {
+          "name": "ChangeModel",
+          "property": ["StudentFullter","StandinWaterIdle","Case_Seven",""]
+        }
+      ],
+      "showDisplayOrder": 0
     }
   ],
   "ExerciseList": [
