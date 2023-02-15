@@ -18,6 +18,8 @@ public class LessionUI : MonoBehaviour, IButtonAction
     private LessonGroupType previousGroup;
 
     private bool useNewUI = VRAppDebug.USE_NEW_MENU_DESIGN;
+
+    private bool useBackButotn = true;
     enum Action
     {
         SelectGroup,
@@ -65,8 +67,9 @@ public class LessionUI : MonoBehaviour, IButtonAction
         }
 
     }
-    private void CreateLessonGroupMenu()
+    private void CreateLessonGroupMenu(string a = null)
     {
+
 
         if (useNewUI)
         {
@@ -96,6 +99,8 @@ public class LessionUI : MonoBehaviour, IButtonAction
         }
         else
         {
+
+            ClearScrollContent();
             for (var i = 0; i < LessonManager.instance.GetLessonGroups().Count; i++)
             {
                 var item = LessonManager.instance.GetLessonGroups()[i];
@@ -150,9 +155,18 @@ public class LessionUI : MonoBehaviour, IButtonAction
                 comp.OnClicked += OnClicked;
 
             }
+            //adding button back to Lession
+            if (useBackButotn)
+            {
+                var go = Instantiate(lessonButtonPrefab, scrollContent);
+                var comp = go.GetComponent<LessonButton>();
+                comp.SetText("Back To Lesson List");
+                comp.SetButtonInfo(Action.SelectLesson.ToString() + "_" + groupType.ToString() + "_");
+                comp.OnClicked += CreateLessonGroupMenu;
+            }
+
             StartCoroutine(AddContentFitter());
         }
-
     }
     private void OnLessonSelected(LessonGroupType groupType, int i)
     {
@@ -180,7 +194,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
             {
                 ClearScrollContent();
             }
-            Utils.Log(this,"Call me here OnEnable");
+            Utils.Log(this, "Call me here OnEnable");
             CreateLessonMenu(previousGroup);
 
         }
