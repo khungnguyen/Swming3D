@@ -13,6 +13,7 @@ public enum EventCodes : byte
     ActionDisableInteractable,
     ActionSwimDistance,
     ActionInitLesson,
+    ActionResetLesson,
     ActionInitStartPoint,
     ActionSettingUpLesson,
     ActionReplaceModel,

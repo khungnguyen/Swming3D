@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using TMPro;
 
-public class TvBoard : MonoBehaviourPunCallbacks, IReceiver
+public class TvBoard : MonoBehaviourPunCallbacks, IReceiver,IOnExerciseLoaded
 {
     public TMP_Text lessonTitle;
     public TMP_Text ExcerciseTitle;
@@ -21,8 +21,12 @@ public class TvBoard : MonoBehaviourPunCallbacks, IReceiver
                 var index = (int)packages[1];
                 Utils.LogError(this,"Init Lesson Index" + index);
                 lessonTitle.SetText(LessonManager.LessonGroupName[(int)group]);
+                Utils.LogError(this,"ExerciseManager.instance.exercises.Exercise" + ExerciseManager.instance.exercises.Exercise);
                 ExcerciseTitle.SetText(ExerciseManager.instance.exercises.Exercise);
-                //ExerciseManager.instance.SetExercises(LessonManager.instance.GetLessons((LessonGroupType)group)[index], index);
+                break; 
+            case EventCodes.ActionResetLesson:
+                lessonTitle.SetText("----");
+                ExcerciseTitle.SetText("----");
                 break;
 
         }
@@ -31,9 +35,8 @@ public class TvBoard : MonoBehaviourPunCallbacks, IReceiver
     // Start is called before the first frame update
     void Start()
     {
-
+       
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -43,9 +46,17 @@ public class TvBoard : MonoBehaviourPunCallbacks, IReceiver
     public override void OnEnable()
     {
         ConnectionManager.AddCallbackTarget(this);
+        ExerciseManager.AddCallbackTarget(this);
+    
     }
     public override void OnDisable()
     {
         ConnectionManager.RemoveCallBackTarget(this);
+        ExerciseManager.RemoveCallBackTarget(this);
+    }
+
+    public void OnLoaded(int lessonIndex)
+    {
+        ExcerciseTitle.SetText(ExerciseManager.instance.exercises.Exercise);
     }
 }

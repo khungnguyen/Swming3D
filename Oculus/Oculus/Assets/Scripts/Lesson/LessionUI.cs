@@ -70,7 +70,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
     private void CreateLessonGroupMenu(string a = null)
     {
 
-
+        SendActionResetLesson();
         if (useNewUI)
         {
             // var dialogGO = Instantiate(lessonDialog, dialogParent);
@@ -183,7 +183,12 @@ public class LessionUI : MonoBehaviour, IButtonAction
         object[] packages = new object[2];
         packages[0] = (int)groupType;
         packages[1] = index;
-        ConnectionManager.instance.SendAction(EventCodes.ActionInitLesson, packages, ReceiverGroup.Others);
+        ConnectionManager.instance.SendAction(EventCodes.ActionInitLesson, packages, ReceiverGroup.All);
+    }
+     public void SendActionResetLesson()
+    {
+        object[] packages = new object[1];
+        ConnectionManager.instance.SendAction(EventCodes.ActionResetLesson, packages, ReceiverGroup.All);
     }
     public void OnEnable()
     {
