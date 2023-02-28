@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Realtime;
 using UnityEngine.UI;
+using TMPro;
 
 public class LessionUI : MonoBehaviour, IButtonAction
 {
     public GameObject lessonButtonPrefab;
 
     public GameObject PanleUserDecison;
+    public GameObject panelChapter;
 
     public Transform scrollContent;
     public Transform dialogParent;
+
+    public TMP_Text chapterName;
+    public Transform lessonListTransform;
 
     private bool goToExerciseInstedOfChapter = false;
 
@@ -65,11 +70,12 @@ public class LessionUI : MonoBehaviour, IButtonAction
         {
             Utils.DestroyTransformChildren(transform);
         }
+        EnableTextAtChapter(false);
 
     }
-    private void CreateLessonGroupMenu(string a = null)
+    private void CreateChapterMenu(string a = null)
     {
-
+        EnableTextAtChapter(false);
         SendActionResetLesson();
         if (useNewUI)
         {
@@ -86,7 +92,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
 
             }, null, (object cancel) =>
             {
-                CreateLessonGroupMenu();
+                CreateChapterMenu();
             }).Show();
             for (var i = 0; i < LessonManager.instance.GetLessonGroups().Count; i++)
             {
@@ -108,6 +114,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
                 var comp = go.GetComponent<LessonButton>();
                 comp.SetText(LessonManager.LessonGroupName[(int)item.groupType]);
                 comp.SetButtonInfo(Action.SelectGroup.ToString() + "_" + item.groupType.ToString());
+                comp.SetTextSize(18);
                 comp.OnClicked += OnClicked;
 
             }
@@ -117,6 +124,8 @@ public class LessionUI : MonoBehaviour, IButtonAction
     }
     private void CreateLessonMenu(LessonGroupType groupType)
     {
+        EnableTextAtChapter(true);
+        chapterName.text = LessonManager.LessonGroupName[(int)groupType];
         var data = LessonManager.instance.GetLessons(groupType);
         if (useNewUI)
         {
@@ -158,11 +167,11 @@ public class LessionUI : MonoBehaviour, IButtonAction
             //adding button back to Lession
             if (useBackButotn)
             {
-                var go = Instantiate(lessonButtonPrefab, scrollContent);
+                var go = Instantiate(lessonButtonPrefab, transform);
                 var comp = go.GetComponent<LessonButton>();
                 comp.SetText("Back To Lesson List");
                 comp.SetButtonInfo(Action.SelectLesson.ToString() + "_" + groupType.ToString() + "_");
-                comp.OnClicked += CreateLessonGroupMenu;
+                comp.OnClicked += CreateChapterMenu;
             }
 
             StartCoroutine(AddContentFitter());
@@ -177,6 +186,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
         PanleUserDecison.SetActive(true);
         ExerciseManager.instance.SetExercises(lessonList[lessonIndex], lessonIndex);
         transform.gameObject.SetActive(false);
+        
     }
     public void SendActionInitLesson(LessonGroupType groupType, int index)
     {
@@ -205,7 +215,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
         }
         else
         {
-            CreateLessonGroupMenu();
+            CreateChapterMenu();
         }
 
     }
@@ -213,6 +223,10 @@ public class LessionUI : MonoBehaviour, IButtonAction
     public void EnableToGoToExercis()
     {
         goToExerciseInstedOfChapter = true;
+    }
+    private void EnableTextAtChapter(bool b) {
+        chapterName.gameObject.SetActive(b);
+        lessonListTransform.gameObject.SetActive(b);
     }
 
 }

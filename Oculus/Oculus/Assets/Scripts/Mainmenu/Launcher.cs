@@ -27,7 +27,7 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
 
     [SerializeField]
     private GameObject Loading;
-    const string ROOM_NAME = "SWIM";
+    const string ROOM_NAME = "ROOM";
 
     [SerializeField]
     GameObject RoomItemPrefab;
@@ -59,7 +59,7 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
         if (!PhotonNetwork.IsConnected)
         {
             PhotonNetwork.ConnectUsingSettings();
-            PhotonNetwork.NickName = "Guest" + Random.Range(1, 100);
+            PhotonNetwork.NickName = "User " + Random.Range(1, 100);
             ActivateMenu(MENU.All, false, MENU.MainMenu);
             ActivateMenu(MENU.Loading, true);
         }
@@ -89,7 +89,7 @@ public class Launcher : MonoBehaviourPunCallbacks, RoomButtonCallback, IButtonEv
         RoomOptions room = new RoomOptions();
         room.MaxPlayers = 2;
         room.IsVisible = true;
-        PhotonNetwork.CreateRoom(ROOM_NAME + Random.Range(0, 1000), room);
+        PhotonNetwork.CreateRoom(ROOM_NAME +" " + Random.Range(0, 1000), room);
     }
     public override void OnJoinedRoom()
     {
