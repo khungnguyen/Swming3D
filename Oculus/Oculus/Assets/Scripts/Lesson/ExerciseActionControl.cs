@@ -68,9 +68,12 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     [SerializeField]
     private Transform dialogParent;
 
+    public Transform layoutButtonNav;
+
     public TMP_Text lessonName;
 
     public TMP_Text exerciseName;
+    public TMP_Text chapterName;
     private bool useNewUI = VRAppDebug.USE_NEW_MENU_DESIGN;
 
     private ExerciseUnit curExercise;
@@ -93,12 +96,12 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         }
 
     }
-    public void OnLoaded(int lesson)
+    public void OnLoaded(int lesson, LessonGroupType groupType)
     {
         curExercise = ExerciseManager.instance.GetCurExercise();
         currentLessonIndex = lesson;
         CreateButtonDialog();
-        UpdateLessonName(curExercise.lessonName);
+        UpdateLessonName(ExerciseManager.instance.exercises.Exercise, groupType);
         SettingUpLesson(lesson);
         string startAction = ExerciseManager.instance.exercises.startAction;
         if (!string.IsNullOrEmpty(startAction))
@@ -147,11 +150,13 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         }
         else
         {
-            for (int g = 0; g < lessonUISpace.transform.childCount; g++)
-            {
-                Destroy(lessonUISpace.transform.GetChild(g).gameObject);
-            }
-            bool hasBackButton = false;
+            // for (int g = 0; g < lessonUISpace.transform.childCount; g++)
+            // {
+            //     Destroy(lessonUISpace.transform.GetChild(g).gameObject);
+            // }
+            Utils.DestroyTransformChildren(lessonUISpace.transform);
+            Utils.DestroyTransformChildren(layoutButtonNav);
+            bool hasBackButton = true;
             foreach (var bt in buttons)
             {
                 if (bt.displayOrder == level)
@@ -165,42 +170,48 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                             continue;
                         }
                     }
+                    if (bt.action == BACK_TO_LESSION_ACTION_STRING)
+                    {
+                       // hasBackButton = true;
+                        continue;
+                    }
                     GameObject newbt = Instantiate(buttonPrefab, lessonUISpace.transform);
                     newbt.name = bt.name;
                     newbt.GetComponent<ExerciseButton>().SetButtonInfo(bt);
                     newbt.GetComponent<ExerciseButton>().OnClicked += HandlerAction;
-                    if (bt.action == BACK_TO_LESSION_ACTION_STRING)
-                    {
-                        hasBackButton = true;
-                    }
+                   
                 }
             }
-           
+
             if (useBackToExerciseList)
             {
-                GameObject newbt = Instantiate(buttonPrefab, lessonUISpace.transform);
-                newbt.name = "Back To Exercise List";
+                GameObject newbt = Instantiate(buttonPrefab, layoutButtonNav);
+                newbt.name = "BACK To LESSON List";
                 UIButton infor = new()
                 {
-                    name = "Back To Exercise List",
+                    name = "BACK To LESSON List",
                     action = ExaminerAction.GoToExerciseMenu.ToString(),
                     displayOrder = 0
                 };
                 newbt.GetComponent<ExerciseButton>().SetButtonInfo(infor);
                 newbt.GetComponent<ExerciseButton>().OnClicked += HandlerAction;
+                newbt.GetComponent<ExerciseButton>().SetTextSize(16);
+                newbt.GetComponent<ExerciseButton>().EnableBold();
             }
-             if (!hasBackButton)
+            if (hasBackButton)
             {
-                GameObject newbt = Instantiate(buttonPrefab, lessonUISpace.transform);
-                newbt.name = "Back To Lesson List";
+                GameObject newbt = Instantiate(buttonPrefab, layoutButtonNav);
+                newbt.name = "BACK To CHAPTER List";
                 UIButton infor = new()
                 {
-                    name = "Back To Lesson List",
+                    name = "BACK To CHAPTER List",
                     action = BACK_TO_LESSION_ACTION_STRING,
                     displayOrder = 0
                 };
                 newbt.GetComponent<ExerciseButton>().SetButtonInfo(infor);
                 newbt.GetComponent<ExerciseButton>().OnClicked += HandlerAction;
+                newbt.GetComponent<ExerciseButton>().SetTextSize(16);
+                newbt.GetComponent<ExerciseButton>().EnableBold();
             }
             StartCoroutine(AddContentFitter());
         }
@@ -208,11 +219,18 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     }
     IEnumerator AddContentFitter()
     {
+        // lessonUISpace.GetComponent<VerticalLayoutGroup>().enabled = false;
+        // lessonUISpace.GetComponent<VerticalLayoutGroup>().enabled = true;
+        // layoutButtonNav.GetComponent<VerticalLayoutGroup>().enabled = false;
+        // layoutButtonNav.GetComponent<VerticalLayoutGroup>().enabled = true;
+        // GetComponent<VerticalLayoutGroup>().enabled = false;
+        // GetComponent<VerticalLayoutGroup>().enabled = true;
+        layoutButtonNav.gameObject.SetActive(false);
         yield return new WaitForEndOfFrame();
-        lessonUISpace.GetComponent<VerticalLayoutGroup>().enabled = false;
-        lessonUISpace.GetComponent<VerticalLayoutGroup>().enabled = true;
         GetComponent<VerticalLayoutGroup>().enabled = false;
         GetComponent<VerticalLayoutGroup>().enabled = true;
+        layoutButtonNav.gameObject.SetActive(true);
+        
     }
     enum BUTTON_SHOW
     {
@@ -373,7 +391,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 }
                 else if (miniAction == ExaminerAction.ChangeLessonTitle.ToString())
                 {
-                    UpdateLessonName(actionProperty.property[0]);
+                    // UpdateLessonName(actionProperty.property[0]);
                 }
                 else if (miniAction == ExaminerAction.StopAnimation.ToString())
                 {
@@ -510,7 +528,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         packages[0] = PhotonNetwork.NickName;
         packages[1] = ExerciseManager.instance.GetExerciseIndex();
         ConnectionManager.instance.SendAction(EventCodes.ActionStartExercise, packages);
-        UpdateLessonName(ExerciseManager.instance.GetCurExercise().lessonName);
+        //UpdateLessonName(ExerciseManager.instance.GetCurExercise().lessonName);
     }
 
     public void SettingUpLesson(int lessonIndex)
@@ -544,7 +562,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         object[] packages = new object[1];
         packages[0] = ExerciseManager.instance.GetExerciseIndex();
         ConnectionManager.instance.SendAction(EventCodes.ActionNextExercise, packages);
-        UpdateLessonName(curExercise.lessonName);
+        // UpdateLessonName(curExercise.lessonName);
     }
     public void SendActionPlayAnim(string trigger, bool forReplaceModel)
     {
@@ -553,9 +571,10 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         packages[1] = trigger;
         ConnectionManager.instance.SendAction(EventCodes.ActionPlayAnimation, packages);
     }
-    public void UpdateLessonName(string title)
+    public void UpdateLessonName(string title, LessonGroupType groupType)
     {
         exerciseName.text = title;
+        chapterName.text = LessonManager.LessonGroupName[(int)groupType];
     }
 
     public void OnClicked(string action)

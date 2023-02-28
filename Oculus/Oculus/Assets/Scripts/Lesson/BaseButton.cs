@@ -22,4 +22,12 @@ public class BaseButton : MonoBehaviour
             OnClicked(action);
         }
     }
+    public void SetTextSize(int size)
+    {
+        label.fontSize = size;
+    }
+    public void EnableBold()
+    {
+        label.fontStyle = FontStyles.Bold;
+    }
 }

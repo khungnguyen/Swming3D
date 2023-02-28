@@ -55,7 +55,7 @@ public class TvBoard : MonoBehaviourPunCallbacks, IReceiver,IOnExerciseLoaded
         ExerciseManager.RemoveCallBackTarget(this);
     }
 
-    public void OnLoaded(int lessonIndex)
+    public void OnLoaded(int lessonIndex,LessonGroupType groupType)
     {
         ExcerciseTitle.SetText(ExerciseManager.instance.exercises.Exercise);
     }

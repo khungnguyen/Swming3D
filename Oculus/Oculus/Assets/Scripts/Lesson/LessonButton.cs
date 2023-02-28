@@ -16,8 +16,6 @@ public class LessonButton : BaseButton
     {
         Click(lessonIndex.ToString());
     }
-    public void SetTextSize(int size) {
-        label.fontSize = size;
-    }
+  
 }
 

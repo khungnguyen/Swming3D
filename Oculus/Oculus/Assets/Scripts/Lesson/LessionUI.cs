@@ -16,7 +16,11 @@ public class LessionUI : MonoBehaviour, IButtonAction
     public Transform dialogParent;
 
     public TMP_Text chapterName;
+    public TMP_Text chapterTitle;
+
     public Transform lessonListTransform;
+
+    public Transform layoutButton;
 
     private bool goToExerciseInstedOfChapter = false;
 
@@ -62,6 +66,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
     private void ClearScrollContent()
     {
         Utils.DestroyTransformChildren(scrollContent);
+        Utils.DestroyTransformChildren(layoutButton);
     }
     // Start is called before the first frame update
     void Start()
@@ -167,11 +172,13 @@ public class LessionUI : MonoBehaviour, IButtonAction
             //adding button back to Lession
             if (useBackButotn)
             {
-                var go = Instantiate(lessonButtonPrefab, transform);
+                var go = Instantiate(lessonButtonPrefab, layoutButton);
                 var comp = go.GetComponent<LessonButton>();
-                comp.SetText("Back To Lesson List");
+                comp.SetText("BACK To CHAPTER List");
                 comp.SetButtonInfo(Action.SelectLesson.ToString() + "_" + groupType.ToString() + "_");
                 comp.OnClicked += CreateChapterMenu;
+                comp.SetTextSize(16);
+                comp.EnableBold();
             }
 
             StartCoroutine(AddContentFitter());
@@ -184,7 +191,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
         var lessonIndex = i;
         SendActionInitLesson(groupType, lessonIndex);
         PanleUserDecison.SetActive(true);
-        ExerciseManager.instance.SetExercises(lessonList[lessonIndex], lessonIndex);
+        ExerciseManager.instance.SetExercises(lessonList[lessonIndex], lessonIndex,groupType);
         transform.gameObject.SetActive(false);
         
     }
@@ -227,6 +234,12 @@ public class LessionUI : MonoBehaviour, IButtonAction
     private void EnableTextAtChapter(bool b) {
         chapterName.gameObject.SetActive(b);
         lessonListTransform.gameObject.SetActive(b);
+        if(!b) {
+            chapterTitle.text = "CHAPTER LIST";
+        }
+        else {
+           chapterTitle.text = "CHAPTER"; 
+        }
     }
 
 }

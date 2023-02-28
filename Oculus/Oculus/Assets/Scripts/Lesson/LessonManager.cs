@@ -37,10 +37,10 @@ public class LessonItem
 public class LessonManager : MonoBehaviour, IReceiver
 {
     public static string[] LessonGroupName = {
-    "Time 00 - 10 minutes",
-    "Time 10 - 25 minutes",
-    "Time 25 - 40 minutes",
-    "Time 40 - 45 minutes",
+    "TIME 00-10 Minutes",
+    "TIME 10-25 Minutes",
+    "TIME 25-40 Minutes",
+    "TIME 40-45 Minutes",
     };
 
     [SerializeField]
@@ -95,7 +95,7 @@ public class LessonManager : MonoBehaviour, IReceiver
                 var group = (int)packages[0];
                 var index = (int)packages[1];
                 Debug.LogError("Init Lesson Index" + index);
-                ExerciseManager.instance.SetExercises(GetLessons((LessonGroupType)group)[index], index);
+                ExerciseManager.instance.SetExercises(GetLessons((LessonGroupType)group)[index], index,(LessonGroupType)group);
                 break;
 
         }

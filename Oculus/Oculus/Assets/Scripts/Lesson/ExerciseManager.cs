@@ -5,7 +5,7 @@ using UnityEngine;
 
 public interface IOnExerciseLoaded
 {
-    void OnLoaded(int lessonIndex);
+    void OnLoaded(int lessonIndex,LessonGroupType groupType);
 }
 public class ExerciseManager : MonoBehaviour
 {
@@ -23,12 +23,12 @@ public class ExerciseManager : MonoBehaviour
         instance = this;
         exercises = new Exercises();
     }
-    public void SetExercises(Exercises ex,int lessonIndex)
+    public void SetExercises(Exercises ex,int lessonIndex,LessonGroupType groupType)
     {
         exercises = ex;
         curLesson = lessonIndex;
         curExercise = 0;
-        TriggerCallback();
+        TriggerCallback(groupType);
     }
     // Start is called before the first frame update
     void Start()
@@ -97,11 +97,11 @@ public class ExerciseManager : MonoBehaviour
             OnLoadCallbacks.RemoveAt(index);
         }
     }
-    public void TriggerCallback()
+    public void TriggerCallback(LessonGroupType groupType)
     {
         foreach (var re in OnLoadCallbacks)
         {
-            re.OnLoaded(curLesson);
+            re.OnLoaded(curLesson,groupType);
         }
     }
 }
