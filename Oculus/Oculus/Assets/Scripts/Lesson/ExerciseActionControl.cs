@@ -74,6 +74,10 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
 
     public TMP_Text exerciseName;
     public TMP_Text chapterName;
+
+    [SerializeField]
+    private BoundInAndOut boundAnimation;
+
     private bool useNewUI = VRAppDebug.USE_NEW_MENU_DESIGN;
 
     private ExerciseUnit curExercise;
@@ -100,6 +104,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     {
         curExercise = ExerciseManager.instance.GetCurExercise();
         currentLessonIndex = lesson;
+
         CreateButtonDialog();
         UpdateLessonName(ExerciseManager.instance.exercises.Exercise, groupType);
         SettingUpLesson(lesson);
@@ -150,12 +155,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         }
         else
         {
-            // for (int g = 0; g < lessonUISpace.transform.childCount; g++)
-            // {
-            //     Destroy(lessonUISpace.transform.GetChild(g).gameObject);
-            // }
             Utils.DestroyTransformChildren(lessonUISpace.transform);
-            Utils.DestroyTransformChildren(layoutButtonNav);
             bool hasBackButton = true;
             foreach (var bt in buttons)
             {
@@ -172,46 +172,48 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     }
                     if (bt.action == BACK_TO_LESSION_ACTION_STRING)
                     {
-                       // hasBackButton = true;
+                        // hasBackButton = true;
                         continue;
                     }
                     GameObject newbt = Instantiate(buttonPrefab, lessonUISpace.transform);
                     newbt.name = bt.name;
                     newbt.GetComponent<ExerciseButton>().SetButtonInfo(bt);
                     newbt.GetComponent<ExerciseButton>().OnClicked += HandlerAction;
-                   
+
                 }
             }
-
-            if (useBackToExerciseList)
+            if (layoutButtonNav.childCount == 0)
             {
-                GameObject newbt = Instantiate(buttonPrefab, layoutButtonNav);
-                newbt.name = "BACK To LESSON List";
-                UIButton infor = new()
+                if (useBackToExerciseList)
                 {
-                    name = "BACK To LESSON List",
-                    action = ExaminerAction.GoToExerciseMenu.ToString(),
-                    displayOrder = 0
-                };
-                newbt.GetComponent<ExerciseButton>().SetButtonInfo(infor);
-                newbt.GetComponent<ExerciseButton>().OnClicked += HandlerAction;
-                newbt.GetComponent<ExerciseButton>().SetTextSize(16);
-                newbt.GetComponent<ExerciseButton>().EnableBold();
-            }
-            if (hasBackButton)
-            {
-                GameObject newbt = Instantiate(buttonPrefab, layoutButtonNav);
-                newbt.name = "BACK To CHAPTER List";
-                UIButton infor = new()
+                    GameObject newbt = Instantiate(buttonPrefab, layoutButtonNav);
+                    newbt.name = "BACK To LESSON List";
+                    UIButton infor = new()
+                    {
+                        name = "BACK To LESSON List",
+                        action = ExaminerAction.GoToExerciseMenu.ToString(),
+                        displayOrder = 0
+                    };
+                    newbt.GetComponent<ExerciseButton>().SetButtonInfo(infor);
+                    newbt.GetComponent<ExerciseButton>().OnClicked += HandlerAction;
+                    newbt.GetComponent<ExerciseButton>().SetTextSize(16);
+                    newbt.GetComponent<ExerciseButton>().EnableBold();
+                }
+                if (hasBackButton)
                 {
-                    name = "BACK To CHAPTER List",
-                    action = BACK_TO_LESSION_ACTION_STRING,
-                    displayOrder = 0
-                };
-                newbt.GetComponent<ExerciseButton>().SetButtonInfo(infor);
-                newbt.GetComponent<ExerciseButton>().OnClicked += HandlerAction;
-                newbt.GetComponent<ExerciseButton>().SetTextSize(16);
-                newbt.GetComponent<ExerciseButton>().EnableBold();
+                    GameObject newbt = Instantiate(buttonPrefab, layoutButtonNav);
+                    newbt.name = "BACK To CHAPTER List";
+                    UIButton infor = new()
+                    {
+                        name = "BACK To CHAPTER List",
+                        action = BACK_TO_LESSION_ACTION_STRING,
+                        displayOrder = 0
+                    };
+                    newbt.GetComponent<ExerciseButton>().SetButtonInfo(infor);
+                    newbt.GetComponent<ExerciseButton>().OnClicked += HandlerAction;
+                    newbt.GetComponent<ExerciseButton>().SetTextSize(16);
+                    newbt.GetComponent<ExerciseButton>().EnableBold();
+                }
             }
             StartCoroutine(AddContentFitter());
         }
@@ -226,11 +228,13 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         // GetComponent<VerticalLayoutGroup>().enabled = false;
         // GetComponent<VerticalLayoutGroup>().enabled = true;
         layoutButtonNav.gameObject.SetActive(false);
-        yield return new WaitForEndOfFrame();
         GetComponent<VerticalLayoutGroup>().enabled = false;
+        yield return new WaitForEndOfFrame();
+
         GetComponent<VerticalLayoutGroup>().enabled = true;
         layoutButtonNav.gameObject.SetActive(true);
-        
+
+
     }
     enum BUTTON_SHOW
     {
@@ -459,6 +463,8 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
             if (ac.showDisplayOrder != 0)
             {
                 CreateButtonDialog(ac.showDisplayOrder);
+                boundAnimation.PlayBoundEffect();
+
             }
             if (needToEnableButton != BUTTON_SHOW.KEEP_CURRENT_STATUS)
             {
@@ -469,18 +475,18 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     }
     public void CloseUI()
     {
-        transform.gameObject.SetActive(false);
+        //transform.gameObject.SetActive(false);
+        Hide();
     }
     public void GotoExerciseUI()
     {
         CloseUI();
         lessonPanel.GetComponent<LessionUI>().EnableToGoToExercis();
-        lessonPanel.SetActive(true);
+
     }
     public void GoToLessonUI()
     {
         CloseUI();
-        lessonPanel.SetActive(true);
     }
     public ButtonActions GetButtonAction(string name)
     {
@@ -666,5 +672,22 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         {
             b.GetComponent<Button>().interactable = enable;
         }
+    }
+    public void Show()
+    {
+        gameObject.SetActive(true);
+        boundAnimation.PlayBoundEffect();
+    }
+    public void Hide()
+    {
+        boundAnimation.PlayBoundOutEffect(() =>
+        {
+            gameObject.SetActive(false);
+            if (layoutButtonNav.childCount != 0)
+            {
+                Utils.DestroyTransformChildren(layoutButtonNav);
+            }
+            lessonPanel.SetActive(true);
+        });
     }
 }

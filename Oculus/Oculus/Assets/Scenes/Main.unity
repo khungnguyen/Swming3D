@@ -4480,6 +4480,8 @@ GameObject:
   - component: {fileID: 1324052905}
   - component: {fileID: 1324052906}
   - component: {fileID: 1324052907}
+  - component: {fileID: 1324052908}
+  - component: {fileID: 1324052909}
   m_Layer: 5
   m_Name: PanelUserDecison
   m_TagString: Untagged
@@ -4539,6 +4541,7 @@ MonoBehaviour:
   lessonName: {fileID: 1133671849}
   exerciseName: {fileID: 1133671849}
   chapterName: {fileID: 1814629799}
+  boundAnimation: {fileID: 1324052908}
   useBackToExerciseList: 1
 --- !u!114 &1324052906
 MonoBehaviour:
@@ -4580,6 +4583,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &1324052908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324052901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56295ddf6aed1e340845c4ebb28fe33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxBoundSize: 1.1
+  minBoundSize: 0.9
+  startBound: 0
+  originalBound: 1
+  mTransform: {fileID: 1324052902}
+--- !u!114 &1324052909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324052901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56295ddf6aed1e340845c4ebb28fe33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxBoundSize: 1.1
+  minBoundSize: 0.9
+  startBound: 0
+  originalBound: 1
+  mTransform: {fileID: 1904033980}
 --- !u!1001 &1333460604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7319,6 +7356,7 @@ GameObject:
   - component: {fileID: 1904033984}
   - component: {fileID: 1904033986}
   - component: {fileID: 1904033985}
+  - component: {fileID: 1904033987}
   m_Layer: 5
   m_Name: PanelChapter
   m_TagString: Untagged
@@ -7378,6 +7416,7 @@ MonoBehaviour:
   chapterTitle: {fileID: 605209160}
   lessonListTransform: {fileID: 1714056514}
   layoutButton: {fileID: 527941230}
+  boundAnimation: {fileID: 1904033987}
 --- !u!114 &1904033985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7418,6 +7457,23 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1904033987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904033979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56295ddf6aed1e340845c4ebb28fe33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxBoundSize: 1.1
+  minBoundSize: 0.9
+  startBound: 0
+  originalBound: 1
+  mTransform: {fileID: 1904033980}
 --- !u!4 &1924841077 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 597150848084594623, guid: 1ce2b43521a065141ab63409889b5be5,

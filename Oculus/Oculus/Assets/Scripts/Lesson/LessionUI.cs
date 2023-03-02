@@ -22,6 +22,9 @@ public class LessionUI : MonoBehaviour, IButtonAction
 
     public Transform layoutButton;
 
+    [SerializeField]
+    private BoundInAndOut boundAnimation;
+
     private bool goToExerciseInstedOfChapter = false;
 
     private LessonGroupType previousGroup;
@@ -54,6 +57,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
                 CreateLessonMenu(previousGroup);
                 break;
         }
+        
     }
     IEnumerator AddContentFitter()
     {
@@ -80,6 +84,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
     }
     private void CreateChapterMenu(string a = null)
     {
+        boundAnimation.PlayBoundEffect();
         EnableTextAtChapter(false);
         SendActionResetLesson();
         if (useNewUI)
@@ -129,6 +134,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
     }
     private void CreateLessonMenu(LessonGroupType groupType)
     {
+        boundAnimation.PlayBoundEffect();
         EnableTextAtChapter(true);
         chapterName.text = LessonManager.LessonGroupName[(int)groupType];
         var data = LessonManager.instance.GetLessons(groupType);
@@ -186,13 +192,13 @@ public class LessionUI : MonoBehaviour, IButtonAction
     }
     private void OnLessonSelected(LessonGroupType groupType, int i)
     {
-
+        transform.gameObject.SetActive(false);
         var lessonList = LessonManager.instance.GetLessons(groupType);
         var lessonIndex = i;
         SendActionInitLesson(groupType, lessonIndex);
-        PanleUserDecison.SetActive(true);
+        PanleUserDecison.GetComponent<ExerciseActionControl>().Show();
         ExerciseManager.instance.SetExercises(lessonList[lessonIndex], lessonIndex,groupType);
-        transform.gameObject.SetActive(false);
+
         
     }
     public void SendActionInitLesson(LessonGroupType groupType, int index)
@@ -224,6 +230,8 @@ public class LessionUI : MonoBehaviour, IButtonAction
         {
             CreateChapterMenu();
         }
+        gameObject.SetActive(true);
+        boundAnimation.PlayBoundEffect();
 
     }
 
