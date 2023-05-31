@@ -1379,6 +1379,7 @@ MonoBehaviour:
   enableWeight: 0
   lockRotation: 0
   lockMovement: 0
+  boneType: 0
 --- !u!114 &3745389145818960724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1838,6 +1839,7 @@ MonoBehaviour:
   enableWeight: 0
   lockRotation: 0
   lockMovement: 1
+  boneType: 0
 --- !u!114 &1799004766070442249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4219,6 +4221,7 @@ MonoBehaviour:
   enableWeight: 0
   lockRotation: 0
   lockMovement: 0
+  boneType: 0
   wholeBody: {fileID: 6634791779886709450}
   kickBoard: {fileID: 7888124546680988611}
 --- !u!1 &2053550345333950797
@@ -5473,6 +5476,7 @@ MonoBehaviour:
   enableWeight: 0
   lockRotation: 0
   lockMovement: 1
+  boneType: 0
 --- !u!114 &2159803808233961750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6148,6 +6152,7 @@ MonoBehaviour:
   enableWeight: 0
   lockRotation: 0
   lockMovement: 0
+  boneType: 0
 --- !u!114 &836489044795381011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7231,18 +7236,18 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4427394405292297522, guid: a3385751f404f6d49ac1533a2565c8f2, type: 3}
-  - {fileID: 2100000, guid: 130da33b97b179b46b01705c7c9b1ade, type: 2}
-  - {fileID: 2100000, guid: f1410969e832b40449bf01902fc517f3, type: 2}
-  - {fileID: 2100000, guid: c4515158b2694d94287a38a4834269d2, type: 2}
-  - {fileID: 2100000, guid: 1c763115095fb1d46921a3e29d16f1f1, type: 2}
-  - {fileID: 7361142571328244463, guid: a3385751f404f6d49ac1533a2565c8f2, type: 3}
-  - {fileID: -8757510605255195007, guid: a3385751f404f6d49ac1533a2565c8f2, type: 3}
-  - {fileID: 2100000, guid: e9d0c919f905f0547a8ad96872f5c0cc, type: 2}
-  - {fileID: 2100000, guid: e9d0c919f905f0547a8ad96872f5c0cc, type: 2}
-  - {fileID: 6036109035531164381, guid: a3385751f404f6d49ac1533a2565c8f2, type: 3}
-  - {fileID: -7621992812897208050, guid: a3385751f404f6d49ac1533a2565c8f2, type: 3}
-  - {fileID: 6044726008863606537, guid: a3385751f404f6d49ac1533a2565c8f2, type: 3}
+  - {fileID: 2100000, guid: 16a714e0a3b9a1647a34aefbce59c343, type: 2}
+  - {fileID: 2100000, guid: 7c655f72eafe8bc4bb48b6619376d249, type: 2}
+  - {fileID: 2100000, guid: 05cf50d770a981f448598d169bbd8c00, type: 2}
+  - {fileID: 2100000, guid: 94b804f9091a8994386e83c1d79bbd25, type: 2}
+  - {fileID: 2100000, guid: 05159ac286304ac4ca8b10ec4816583e, type: 2}
+  - {fileID: 2100000, guid: 48e3e8a7b9ebb124cbe07ac03be4794c, type: 2}
+  - {fileID: 2100000, guid: b6796996df4ad3547b33f43b47c948aa, type: 2}
+  - {fileID: 2100000, guid: 567f824194b59ef4dad9a5216909a1a9, type: 2}
+  - {fileID: 2100000, guid: 567f824194b59ef4dad9a5216909a1a9, type: 2}
+  - {fileID: 2100000, guid: abe3f514e639f2a4fa3a5099548205a9, type: 2}
+  - {fileID: 2100000, guid: de4527c8e3290004f94db9f01e840edc, type: 2}
+  - {fileID: 2100000, guid: a5b2ed94b0fd62642ac492c0e61786fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9488,6 +9493,7 @@ MonoBehaviour:
   enableWeight: 0
   lockRotation: 0
   lockMovement: 0
+  boneType: 0
 --- !u!114 &4445135737289851504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10986,6 +10992,7 @@ MonoBehaviour:
   enableWeight: 0
   lockRotation: 0
   lockMovement: 0
+  boneType: 0
 --- !u!114 &296019612897220203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11430,6 +11437,7 @@ MonoBehaviour:
   enableWeight: 0
   lockRotation: 0
   lockMovement: 0
+  boneType: 0
 --- !u!114 &772331207872396291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13008,6 +13016,7 @@ MonoBehaviour:
   enableWeight: 0
   lockRotation: 0
   lockMovement: 0
+  boneType: 0
 --- !u!114 &7418796917353376274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13590,6 +13599,7 @@ MonoBehaviour:
   enableWeight: 0
   lockRotation: 0
   lockMovement: 0
+  boneType: 0
 --- !u!114 &5843032468744245530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15121,6 +15131,7 @@ MonoBehaviour:
   enableWeight: 0
   lockRotation: 0
   lockMovement: 0
+  boneType: 0
 --- !u!114 &7264402375013509489
 MonoBehaviour:
   m_ObjectHideFlags: 0
