@@ -1,0 +1,471 @@
+fileFormatVersion: 2
+guid: ffd0e40b464ef5b458c0c8a3ff8f9c2c
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 01 - Default
+    second: {fileID: 2100000, guid: f354d0507691f1447ab779a31c42d0b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 02 - Default
+    second: {fileID: 2100000, guid: cb7d0bb987cf7034da75aeb13ffa60ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 05 - Default
+    second: {fileID: 2100000, guid: d652d2ad364afd74ebe11e54fe6fb1ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 11 - Default
+    second: {fileID: 2100000, guid: ceda906645ab23a4aa7c8b96c1a42809, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 16 - Matte Plastic
+    second: {fileID: 2100000, guid: daf86ca7915e6714e92d25fbc940a633, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 17 - Old Copper #1
+    second: {fileID: 2100000, guid: e8c3c00ba1dd273459cf8f71d8fa48e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 19 - Glass (Thin wall)
+    second: {fileID: 2100000, guid: c19b2713aca4f744a96435a26ca857b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 20 - Polished Aluminum
+    second: {fileID: 2100000, guid: ccf963aee9cc4c74ba71d192c4a51bc3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 21 - Default
+    second: {fileID: 2100000, guid: 5da07bc8e69984941abe9efc0d23d42a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 22 - Default
+    second: {fileID: 2100000, guid: 9db779dad445c684199e0bef6fd4ea62, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 23 - Default
+    second: {fileID: 2100000, guid: 133d2bd157efddf4e9f8ccf5cded511e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CityHorizon001
+    second: {fileID: 2100000, guid: dafdb8ebf1b179b42bc43f22f284ad6b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CityHorizon002
+    second: {fileID: 2100000, guid: 5dd644190a020dd44a83853c7bb6fb4b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drain
+    second: {fileID: 2100000, guid: 86d91f4c196f0f749ab0da9ac542198a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: F_Lights
+    second: {fileID: 2100000, guid: 3673677f15e389e41b1695c9d666fbbe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grass
+    second: {fileID: 2100000, guid: c6b5ae03b56930f4499dda14bcc9649b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grate
+    second: {fileID: 2100000, guid: 870c8b1cb79d3ad43b9939543cb7344f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grate2
+    second: {fileID: 2100000, guid: 699a9ab81db2b454da62c50e5e3493a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leaves_Mat
+    second: {fileID: 2100000, guid: eb0d532658ff51e4683931c672411092, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: c64ed538a4c6a9c46a69d0c9d3dd6583, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #32
+    second: {fileID: 2100000, guid: 764a6bc0581921546a2c8c9ebdacf43d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #35
+    second: {fileID: 2100000, guid: 2b75340023d150b4b9771f38aa11d278, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #38
+    second: {fileID: 2100000, guid: 8887ad81d58937648bae58565d4f4f3f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: c2e6b4a554847e143b8e0c3f6b037389, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ModelSubmesh_0_1_Material023
+    second: {fileID: 2100000, guid: 500ebda4f7087944198ca7165db0656d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Money_Leaves_Mat
+    second: {fileID: 2100000, guid: ead0e306fcedcc84ca5f80a37e9904d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Money_Trunk_Mat
+    second: {fileID: 2100000, guid: 2ad0dd808e34e9e4aae7286bcc7344a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T1
+    second: {fileID: 2100000, guid: 018024494e4d195479a994964b058385, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tree Branch
+    second: {fileID: 2100000, guid: 34567e93406c1d34287c5a075972a532, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Umbrella
+    second: {fileID: 2100000, guid: a83e9bee7cfaaec41939c875dda292e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White Wall
+    second: {fileID: 2100000, guid: e44b9065f5c6c22438f3eb0293a9743a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chrome
+    second: {fileID: 2100000, guid: ff58e9cb8e6b9b84e80887cd7a1f134d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cone_black
+    second: {fileID: 2100000, guid: aac11076673135e4e88eef5036f5ac6d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cone_orange
+    second: {fileID: 2100000, guid: 5cf781b5e4b62624dbdc14bd3f949a53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor3
+    second: {fileID: 2100000, guid: d5964aeea578b8346b87ea0b4a08f2d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pebble
+    second: {fileID: 2100000, guid: 2435c997004b19e46a2d6deddb81a156, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pool_tiles
+    second: {fileID: 2100000, guid: 3b96566e9666f3341b7f679c3826660b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stem_Mat
+    second: {fileID: 2100000, guid: 8a872aaf787141a45ac874200b6e8200, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 2K-pool_tiles-diffuse
+    second: {fileID: 2800000, guid: 4ee394a87fcd8514a9c5ec213c791d83, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 2K-pool_tiles-normal
+    second: {fileID: 2800000, guid: 7c4b43315011028468b6523c1a91fae0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: AE19_005_environment
+    second: {fileID: 2800000, guid: 25b64c0150f02df4e9d34309ae55b032, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: AE19_005_environment_mask
+    second: {fileID: 2800000, guid: b4f470d64936bcc4ea9068e07084febe, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: BarkDecidious0143_5_S
+    second: {fileID: 2800000, guid: dc3b22d4a5ed0d34aadf613e96f5d7fe, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: BarkDecidious0194_7_S
+    second: {fileID: 2800000, guid: 3ac989800245c1a4b81d5c4dcae4a37c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Black Tiles
+    second: {fileID: 2800000, guid: 02810e8736aeedd43adad9697115f5bf, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Brown_Brick_Wall
+    second: {fileID: 2800000, guid: c7e686bfed525b0489d1ec445a8b5646, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: CityHorizon001
+    second: {fileID: 2800000, guid: ddfe6069afa5ac7409a2077d42b9ffa5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: CityHorizon002
+    second: {fileID: 2800000, guid: 02a8181487a3e0c408721a9921f6fdf4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Drain2
+    second: {fileID: 2800000, guid: e5c914196bff521498cd8e9d641a035f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: F_Lights
+    second: {fileID: 2800000, guid: 03fdefdf0ffd90149b6ebc8d3d69fa92, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Grass_Texture_
+    second: {fileID: 2800000, guid: b421aae0e5684ae478f2058ac22b6434, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Leaves
+    second: {fileID: 2800000, guid: 3e94e9f39fae30a428f9349ce8459ce9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Maroon_Wall
+    second: {fileID: 2800000, guid: 85419288ca342d24886a130f8245a642, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Money_Leaves
+    second: {fileID: 2800000, guid: db2f6554361ffec4090612e59fffa401, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Money_Leaves_Opacity
+    second: {fileID: 2800000, guid: c6d6946ac609e8946b8e7350d6e9ba8e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Money_Trunk
+    second: {fileID: 2800000, guid: e5be8dc1b2e109545a6249cd9db9a2be, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Palm_Leaves_2
+    second: {fileID: 2800000, guid: 9ebdf6008a8eec849ad255756e4452d4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Palm_Leaves_2_Opacity
+    second: {fileID: 2800000, guid: 1c62b90552645f845bf5266085e4bb43, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pool_Ext_Tile
+    second: {fileID: 2800000, guid: f3eae12889b804b42950b4787d6098af, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pool_Ext_Tile 2
+    second: {fileID: 2800000, guid: 1edfab85b1a505b499456cf692e4d4ab, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Rocks006_2K_Color
+    second: {fileID: 2800000, guid: af7d4d580fb7e3f48a3af9cff26e858b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Tree Branch
+    second: {fileID: 2800000, guid: 691613b65a592f34e856458ff85d9a9c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: White_Wall
+    second: {fileID: 2800000, guid: 601c47dc59d88584486f6b531afcaa53, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: floor_tiles_02_diff_2k
+    second: {fileID: 2800000, guid: da98892a3c36888449d6f868984c3360, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: floor_tiles_02_disp_2k
+    second: {fileID: 2800000, guid: a523e8ab44074454f8a3de7f3dda47ba, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: floor_tiles_02_nor_gl_2k
+    second: {fileID: 2800000, guid: d9ad5cf2b49e4934fa8f652c5bb5b8e1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: floor_tiles_02_rough_2k
+    second: {fileID: 2800000, guid: 0c0585ac3d9394a40a3c123378a36cfe, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: istockphoto-922759926-612x612 copy
+    second: {fileID: 2800000, guid: 71397b57d4ac5e34b977c0a1af173682, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pebble_cemented_floor_diff_2k
+    second: {fileID: 2800000, guid: 4c828e2b2d3059a4f86e822dcd90144e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pebble_cemented_floor_disp_2k
+    second: {fileID: 2800000, guid: 906aeca135a7e1049ae946bfa0b66595, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pebble_cemented_floor_nor_gl_2k
+    second: {fileID: 2800000, guid: 0dd7a49d5035e894fb7441925d82049f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pebble_cemented_floor_rough_2k
+    second: {fileID: 2800000, guid: b4f9c4013064fb048be84d6f4dced6fb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: stem
+    second: {fileID: 2800000, guid: a961856b49958954eaed3ce50d14d061, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
