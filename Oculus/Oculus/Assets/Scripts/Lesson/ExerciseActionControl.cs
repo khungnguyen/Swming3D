@@ -187,10 +187,10 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 if (useBackToExerciseList)
                 {
                     GameObject newbt = Instantiate(buttonPrefab, layoutButtonNav);
-                    newbt.name = "BACK To LESSON List";
+                    newbt.name = "BACK To EXERCISE List";
                     UIButton infor = new()
                     {
-                        name = "BACK To LESSON List",
+                        name = "BACK To EXERCISE List",
                         action = ExaminerAction.GoToExerciseMenu.ToString(),
                         displayOrder = 0
                     };
@@ -202,10 +202,10 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 if (hasBackButton)
                 {
                     GameObject newbt = Instantiate(buttonPrefab, layoutButtonNav);
-                    newbt.name = "BACK To CHAPTER List";
+                    newbt.name = "BACK To LESSON List";
                     UIButton infor = new()
                     {
-                        name = "BACK To CHAPTER List",
+                        name = "BACK To LESSON List",
                         action = BACK_TO_LESSION_ACTION_STRING,
                         displayOrder = 0
                     };

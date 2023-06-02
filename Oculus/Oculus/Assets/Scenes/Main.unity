@@ -629,7 +629,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LESSON
+  m_text: EXERCISE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fe1a09fa01c5851489835ce6a772b13e, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 175743172cc9ff748826999c8667276c, type: 2}
@@ -1167,7 +1167,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CHAPTER
+  m_text: LESSON
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f2f4db87386cf7a4ab406ae5232c86fb, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 2a1c4748626f5b54f90c1a97403d3cd2, type: 2}
@@ -2071,7 +2071,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CHAPTER
+  m_text: LESSON
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f2f4db87386cf7a4ab406ae5232c86fb, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 2a1c4748626f5b54f90c1a97403d3cd2, type: 2}
@@ -2187,8 +2187,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175, y: -119.83815}
-  m_SizeDelta: {x: 350, y: 229.6763}
+  m_AnchoredPosition: {x: 175, y: -129.7362}
+  m_SizeDelta: {x: 350, y: 249.47241}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &691620668
 MonoBehaviour:
@@ -2898,8 +2898,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175, y: -107.33815}
-  m_SizeDelta: {x: 220, y: 184.6763}
+  m_AnchoredPosition: {x: 175, y: -117.2362}
+  m_SizeDelta: {x: 220, y: 204.4724}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1044273158
 MonoBehaviour:
@@ -3121,8 +3121,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 110, y: -162.1763}
-  m_SizeDelta: {x: 299.9998, y: 45}
+  m_AnchoredPosition: {x: 110, y: -172.07434}
+  m_SizeDelta: {x: 346.638, y: 64.7961}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1133671849
 MonoBehaviour:
@@ -3171,8 +3171,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3430,7 +3430,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175, y: -264.6763}
+  m_AnchoredPosition: {x: 175, y: -284.4724}
   m_SizeDelta: {x: 320, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1271932524
@@ -3704,7 +3704,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175, y: -214.6763}
+  m_AnchoredPosition: {x: 175, y: -234.4724}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1304718300
@@ -3864,7 +3864,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 186.1, y: 39}
-  m_SizeDelta: {x: 350, y: 269.6763}
+  m_SizeDelta: {x: 350, y: 289.4724}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1324052904
 CanvasRenderer:
@@ -4595,7 +4595,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1624978010
 Transform:
   m_ObjectHideFlags: 0
@@ -4725,7 +4725,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LESSON LIST
+  m_text: EXERCISE  LIST
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fe1a09fa01c5851489835ce6a772b13e, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 175743172cc9ff748826999c8667276c, type: 2}
@@ -5864,7 +5864,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1814629800
@@ -6831,11 +6831,6 @@ PrefabInstance:
         type: 3}
       propertyPath: sceneViewId
       value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132147955205076, guid: 1ce2b43521a065141ab63409889b5be5,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1885492524268301829, guid: 1ce2b43521a065141ab63409889b5be5,
         type: 3}

@@ -180,7 +180,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
             {
                 var go = Instantiate(lessonButtonPrefab, layoutButton);
                 var comp = go.GetComponent<LessonButton>();
-                comp.SetText("BACK To CHAPTER List");
+                comp.SetText("BACK To LESSON List");
                 comp.SetButtonInfo(Action.SelectLesson.ToString() + "_" + groupType.ToString() + "_");
                 comp.OnClicked += CreateChapterMenu;
                 comp.SetTextSize(16);
@@ -243,10 +243,10 @@ public class LessionUI : MonoBehaviour, IButtonAction
         chapterName.gameObject.SetActive(b);
         lessonListTransform.gameObject.SetActive(b);
         if(!b) {
-            chapterTitle.text = "CHAPTER LIST";
+            chapterTitle.text = "LESSON LIST";
         }
         else {
-           chapterTitle.text = "CHAPTER"; 
+           chapterTitle.text = "LESSON"; 
         }
     }
 
