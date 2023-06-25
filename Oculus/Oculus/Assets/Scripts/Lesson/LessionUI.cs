@@ -55,12 +55,12 @@ public class LessionUI : MonoBehaviour, IButtonAction
                 break;
             case Action.SelectChapter:
                 previousGroup = Utils.String2Enum<LessonGroupType>(types[1]);
-                CreateMenuLessonGroup(previousGroup);
+                CreateExerciseGroup(previousGroup);
                 break;
             case Action.SelectLessonGroup:
                 previousGroup = Utils.String2Enum<LessonGroupType>(types[1]);
                 var previousLessonGoup = Utils.String2Enum<ExerciseGroupEnum>(types[2]);
-                CreateLessonMenu(previousGroup, previousLessonGoup);
+                CreateExerciseMenu(previousGroup, previousLessonGoup);
                 break;
         }
 
@@ -140,11 +140,12 @@ public class LessionUI : MonoBehaviour, IButtonAction
         }
 
     }
-    private void CreateLessonMenu(LessonGroupType groupType, ExerciseGroupEnum groupExercise = ExerciseGroupEnum.NA)
+    private void CreateExerciseMenu(LessonGroupType groupType, ExerciseGroupEnum groupExercise = ExerciseGroupEnum.NA)
     {
         boundAnimation.PlayBoundEffect();
         EnableTextAtChapter(true);
         chapterName.text = LessonManager.LessonGroupName[(int)groupType];
+        var allLessons = LessonManager.instance.GetExerciseList(groupType);
         var lessonList = LessonManager.instance.GetLessons(groupType);
         var groups = lessonList.FindAll(e => e.groupInfo.Group == groupExercise);
         List<Exercises> avalableExercise = new();
@@ -162,7 +163,8 @@ public class LessionUI : MonoBehaviour, IButtonAction
             var comp = go.GetComponent<LessonButton>();
             Utils.Log(this, item.Exercise);
             comp.SetText(item.Exercise);
-            comp.SetButtonInfo(Action.SelectLesson.ToString() + "_" + groupType.ToString() + "_" + i);
+            int actualIndex = allLessons.FindIndex(e=>e.Exercise.Equals(item.Exercise));
+            comp.SetButtonInfo(Action.SelectLesson.ToString() + "_" + groupType.ToString() + "_" + actualIndex);
             comp.OnClicked += OnClicked;
 
         }
@@ -180,7 +182,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
 
         StartCoroutine(AddContentFitter());
     }
-    private void CreateMenuLessonGroup(LessonGroupType groupType)
+    private void CreateExerciseGroup(LessonGroupType groupType)
     {
         boundAnimation.PlayBoundEffect();
         EnableTextAtChapter(true);
@@ -194,49 +196,46 @@ public class LessionUI : MonoBehaviour, IButtonAction
         }
         if (hasManyGroup)
         {
+            List<ExerciseGroupStruct> groupEnum = new();
+            for (int i = 0; i < System.Enum.GetValues(typeof(ExerciseGroupEnum)).Length; i++)
+            {
+                if (i == (int)ExerciseGroupEnum.NA) continue;
+                var _g = lessonList.FindAll(e => (int)(e.groupInfo.Group) == i);
+                if (_g.Count > 0)
+                {
+                    groupEnum.Add(_g.Find(e => (e.groupInfo.GroupButtonName != null && !e.groupInfo.GroupButtonName.Equals(""))).groupInfo);
+                }
+            }
+            for (var i = 0; i < groupEnum.Count; i++)
+            {
+                var item = groupEnum[i];
+                var go = Instantiate(lessonButtonPrefab, scrollContent);
+                var comp = go.GetComponent<LessonButton>();
+                Utils.Log(this, item.GroupButtonName);
+                comp.SetText(item.GroupButtonName);
+                comp.SetButtonInfo(Action.SelectLessonGroup.ToString() + "_" + groupType.ToString() + "_" + (int)item.Group + "_" + i);
+                comp.OnClicked += OnClicked;
 
+            }
+            //adding button back to Lession
+            if (useBackButton)
+            {
+                var go = Instantiate(lessonButtonPrefab, layoutButton);
+                var comp = go.GetComponent<LessonButton>();
+                comp.SetText("BACK To LESSON List");
+                comp.SetButtonInfo(Action.SelectLesson.ToString() + "_" + groupType.ToString() + "_");
+                comp.OnClicked += CreateChapterMenu;
+                comp.SetTextSize(16);
+                comp.EnableBold();
+            }
+
+            StartCoroutine(AddContentFitter());
         }
         else
         {
-            CreateLessonMenu(groupType);
-            return;
-        }
-        List<ExerciseGroupStruct> groupEnum = new();
-        Debug.LogError("System.Enum.GetValues(typeof(ExerciseGroupEnum)).Lengt" + System.Enum.GetValues(typeof(ExerciseGroupEnum)).Length);
-        for (int i = 0; i < System.Enum.GetValues(typeof(ExerciseGroupEnum)).Length; i++)
-        {
-            if (i == (int)ExerciseGroupEnum.NA) continue;
-            var _g = lessonList.FindAll(e => (int)(e.groupInfo.Group) == i);
-            if (_g.Count > 0)
-            {
-                Debug.LogError("ExerciseGroupStruct" + _g);
-                groupEnum.Add(_g.Find(e => (e.groupInfo.GroupButtonName != null && !e.groupInfo.GroupButtonName.Equals(""))).groupInfo);
-            }
-        }
-        for (var i = 0; i < groupEnum.Count; i++)
-        {
-            var item = groupEnum[i];
-            var go = Instantiate(lessonButtonPrefab, scrollContent);
-            var comp = go.GetComponent<LessonButton>();
-            Utils.Log(this, item.GroupButtonName);
-            comp.SetText(item.GroupButtonName);
-            comp.SetButtonInfo(Action.SelectLessonGroup.ToString() + "_" + groupType.ToString() + "_" + (int)item.Group + "_" + i);
-            comp.OnClicked += OnClicked;
-
-        }
-        //adding button back to Lession
-        if (useBackButton)
-        {
-            var go = Instantiate(lessonButtonPrefab, layoutButton);
-            var comp = go.GetComponent<LessonButton>();
-            comp.SetText("BACK To LESSON List");
-            comp.SetButtonInfo(Action.SelectLesson.ToString() + "_" + groupType.ToString() + "_");
-            comp.OnClicked += CreateChapterMenu;
-            comp.SetTextSize(16);
-            comp.EnableBold();
+            CreateExerciseMenu(groupType);
         }
 
-        StartCoroutine(AddContentFitter());
     }
     private void OnLessonGroupSelected()
     {
@@ -275,7 +274,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
                 ClearScrollContent();
             }
             Utils.Log(this, "Call me here OnEnable");
-            CreateMenuLessonGroup(previousGroup);
+            CreateExerciseGroup(previousGroup);
 
         }
         else
