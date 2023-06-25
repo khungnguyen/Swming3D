@@ -15,9 +15,24 @@
       "displayOrder": 2
     },
     {
-      "name": "Bubble Nose",
-      "action": "ExecuteBubbleNose",
+      "name": "Execute Bubble Nose Correctly",
+      "action": "ExecuteBubbleNoseCorrect",
       "displayOrder": 3
+    },
+    {
+      "name": "Execute Bubble Nose Incorrectly",
+      "action": "ExecuteBubbleNoseIncorrect",
+      "displayOrder": 3
+    },
+    {
+      "name": "Allow Coach To Correct",
+      "action": "AllowCoachToCorrect",
+      "displayOrder": 4
+    },
+    {
+      "name": "Execute Bubble Nose Correctly",
+      "action": "ExecuteBubbleNoseCorrect_2",
+      "displayOrder": 5
     },
     {
       "name": "Back To Lesson List",
@@ -73,14 +88,60 @@
       "showDisplayOrder": 3
     },
     {
-      "name": "ExecuteBubbleNose",
+      "name": "ExecuteBubbleNoseCorrect",
       "action": [
         {
           "name": "ChangeModel",
-          "property": ["StudentBubbleNose","BubbleNosePoint","Case_Five_v2",""]
+          "property": ["StudentBubbleNose","00-10_Bubble_Nose_Correct","Case_Five_v2","Correct"]
         }
       ],
       "showDisplayOrder": 400
+    },
+    {
+      "name": "ExecuteBubbleNoseCorrect_2",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["Correct"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["00-10_Bubble_Nose_Correct_AfterCoach"]
+        }
+      ],
+      "showDisplayOrder": 400
+    },
+    {
+      "name": "ExecuteBubbleNoseIncorrect",
+      "action": [
+        {
+          "name": "ChangeModel",
+          "property": ["StudentBubbleNose","00-10_Bubble_Nose_Correct","Case_Five_v2","Incorrect"]
+        }
+      ],
+      "showDisplayOrder": 4
+    },
+    {
+      "name": "AllowCoachToCorrect",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["StopAnim"]
+        },
+        {
+          "name": "EnableBodyMoving",
+          "property": ["True"]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": ["DelayAfterAnim"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["False"]
+        }
+      ],
+      "showDisplayOrder": 5
     },
     {
       "name": "GoToLessonMenu",
