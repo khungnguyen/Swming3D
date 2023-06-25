@@ -2148,6 +2148,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605209158}
   m_CullTransparentMesh: 1
+--- !u!1 &656250817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 656250818}
+  m_Layer: 0
+  m_Name: StarfishFloatBackPointCorrect_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &656250818
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656250817}
+  m_LocalRotation: {x: 0, y: -0.00000015529952, z: -0, w: 1}
+  m_LocalPosition: {x: 21.644, y: 0.047386598, z: -0.28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4576680637761457350}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &691620666
 GameObject:
   m_ObjectHideFlags: 0
@@ -6069,7 +6100,7 @@ MonoBehaviour:
       groupInfo:
         Group: 1
         GroupButtonName: ABTO Kicks
-    - jsonData: {fileID: 4900000, guid: f9e5a37d01d8aa04eb7d3ed551de7433, type: 3}
+    - jsonData: {fileID: 4900000, guid: 93a937e0cc3d48d419c1b3410c7fbc58, type: 3}
       lesson:
         ExerciseList: []
         Exercise: 
@@ -6114,7 +6145,7 @@ MonoBehaviour:
       groupInfo:
         Group: 1
         GroupButtonName: 
-    - jsonData: {fileID: 4900000, guid: f874785ac5cdbab4aa1e6abc59a8fd29, type: 3}
+    - jsonData: {fileID: 4900000, guid: bd349a76e36d92c4891d05d73fde71ff, type: 3}
       lesson:
         ExerciseList: []
         Exercise: 
@@ -6129,7 +6160,7 @@ MonoBehaviour:
       groupInfo:
         Group: 2
         GroupButtonName: 25 Meter Kicks
-    - jsonData: {fileID: 4900000, guid: ee81d0c956ff99642a0e86ba5d26c762, type: 3}
+    - jsonData: {fileID: 4900000, guid: f9e5a37d01d8aa04eb7d3ed551de7433, type: 3}
       lesson:
         ExerciseList: []
         Exercise: 
@@ -7984,6 +8015,7 @@ Transform:
   - {fileID: 1574140532}
   - {fileID: 1542156527}
   - {fileID: 1776161594}
+  - {fileID: 656250818}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9097,7 +9129,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4576680638758472804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.544, y: 0.0749, z: 0.366}
+  m_LocalPosition: {x: 21.544, y: 0.0749, z: 0.027}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

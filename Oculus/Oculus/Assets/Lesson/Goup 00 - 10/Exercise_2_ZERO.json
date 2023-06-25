@@ -31,7 +31,7 @@
     },
     {
       "name": "Execute Starfish Float Correctly",
-      "action": "ExecuteCorrect",
+      "action": "ExecuteCorrect_2",
       "displayOrder": 5
     },
     {
@@ -131,6 +131,24 @@
         {
           "name": "CorrectTransform",
           "property": ["StarfishFloatBackPointCorrect"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        }
+      ],
+      "showDisplayOrder": 400
+    },
+    {
+      "name": "ExecuteCorrect_2",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["StarfishCorrect"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["StarfishFloatBackPointCorrect_2"]
         },
         {
           "name": "EnableButtons",
