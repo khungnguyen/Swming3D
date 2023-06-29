@@ -20,6 +20,11 @@
       "displayOrder": 3
     },
     {
+      "name": "Student Refuses To Get Ring",
+      "action": "Refuse",
+      "displayOrder": 3
+    },
+    {
       "name": "Back To Lesson List",
       "action": "GoToLessonMenu",
       "displayOrder": 400
@@ -79,6 +84,24 @@
         {
           "name": "TriggerAnimation",
           "property": ["GetTheRing"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        }
+      ],
+      "showDisplayOrder": 400
+    },
+    {
+      "name": "Refuse",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["Refuse"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["StandinWaterIdle_Feet"]
         },
         {
           "name": "EnableButtons",
