@@ -35,7 +35,7 @@
       "displayOrder": 5
     },
     {
-      "name": "Swim 5 Meters And Back",
+      "name": "Swim 1 Meter And Back",
       "action": "ExecuteDoggyPaddle5Meters",
       "displayOrder": 6
     },
@@ -153,10 +153,6 @@
     {
       "name": "ExecuteDoggyPaddle5Meters",
       "action": [
-        {
-          "name": "CorrectTransform",
-          "property": ["DoggyPaddleinSwim5m"]
-        },
         {
           "name": "TriggerAnimation",
           "property": ["DoggySwim"]
