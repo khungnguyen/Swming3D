@@ -179,7 +179,20 @@ public class LessionUI : MonoBehaviour, IButtonAction
             comp.SetTextSize(16);
             comp.EnableBold();
         }
-
+        var hasManyGroups = lessonList.FindAll(e => e.groupInfo.Group == ExerciseGroupEnum.NA);
+        if (hasManyGroups.Count == 0)
+        {
+            if(groups.Count >1) {
+            var go = Instantiate(lessonButtonPrefab, layoutButton);
+            var comp = go.GetComponent<LessonButton>();
+            comp.SetText("BACK To EXCERCISE List");
+            comp.SetButtonInfo(Action.SelectChapter.ToString() + "_" + groupType.ToString());
+            comp.OnClicked += OnClicked;
+            comp.SetTextSize(16);
+            comp.EnableBold();
+        }
+        }
+       
         StartCoroutine(AddContentFitter());
     }
     private void CreateExerciseGroup(LessonGroupType groupType)
