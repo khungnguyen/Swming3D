@@ -163,7 +163,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
             var comp = go.GetComponent<LessonButton>();
             Utils.Log(this, item.Exercise);
             comp.SetText(item.Exercise);
-            int actualIndex = allLessons.FindIndex(e=>e.Exercise.Equals(item.Exercise));
+            int actualIndex = allLessons.FindIndex(e => e.Exercise.Equals(item.Exercise));
             comp.SetButtonInfo(Action.SelectLesson.ToString() + "_" + groupType.ToString() + "_" + actualIndex);
             comp.OnClicked += OnClicked;
 
@@ -179,20 +179,21 @@ public class LessionUI : MonoBehaviour, IButtonAction
             comp.SetTextSize(16);
             comp.EnableBold();
         }
-        var hasManyGroups = lessonList.FindAll(e => e.groupInfo.Group == ExerciseGroupEnum.NA);
-        if (hasManyGroups.Count == 0)
+        var hasManyGroups = lessonList.FindAll(e => e.groupInfo.Group != ExerciseGroupEnum.NA);
+        if (hasManyGroups.Count != 0)
         {
-            if(groups.Count >1) {
-            var go = Instantiate(lessonButtonPrefab, layoutButton);
-            var comp = go.GetComponent<LessonButton>();
-            comp.SetText("BACK To EXCERCISE List");
-            comp.SetButtonInfo(Action.SelectChapter.ToString() + "_" + groupType.ToString());
-            comp.OnClicked += OnClicked;
-            comp.SetTextSize(16);
-            comp.EnableBold();
+            if (groups.Count > 1)
+            {
+                var go = Instantiate(lessonButtonPrefab, layoutButton);
+                var comp = go.GetComponent<LessonButton>();
+                comp.SetText("BACK To EXCERCISE List");
+                comp.SetButtonInfo(Action.SelectChapter.ToString() + "_" + groupType.ToString());
+                comp.OnClicked += OnClicked;
+                comp.SetTextSize(16);
+                comp.EnableBold();
+            }
         }
-        }
-       
+
         StartCoroutine(AddContentFitter());
     }
     private void CreateExerciseGroup(LessonGroupType groupType)
@@ -201,36 +202,47 @@ public class LessionUI : MonoBehaviour, IButtonAction
         EnableTextAtChapter(true);
         chapterName.text = LessonManager.LessonGroupName[(int)groupType];
         var lessonList = LessonManager.instance.GetLessons(groupType);
-        var hasManyGroup = false;
-        var groups = lessonList.FindAll(e => e.groupInfo.Group == ExerciseGroupEnum.NA);
-        if (groups.Count == 0)
+        var hasGroup = false;
+        var groups = lessonList.FindAll(e => e.groupInfo.Group != ExerciseGroupEnum.NA);
+        if (groups.Count != 0)
         {
-            hasManyGroup = true;
+            hasGroup = true;
         }
-        if (hasManyGroup)
+        if (hasGroup)
         {
-            List<ExerciseGroupStruct> groupEnum = new();
-            for (int i = 0; i < System.Enum.GetValues(typeof(ExerciseGroupEnum)).Length; i++)
+            var CloneList = new List<LessonItem>(lessonList);
+            var allLessons = LessonManager.instance.GetExerciseList(groupType);
+            while (CloneList.Count > 0)
             {
-                if (i == (int)ExerciseGroupEnum.NA) continue;
-                var _g = lessonList.FindAll(e => (int)(e.groupInfo.Group) == i);
-                if (_g.Count > 0)
+                var item = CloneList[0];
+                if (item.groupInfo.Group == ExerciseGroupEnum.NA)
                 {
-                    groupEnum.Add(_g.Find(e => (e.groupInfo.GroupButtonName != null && !e.groupInfo.GroupButtonName.Equals(""))).groupInfo);
+                    var lesson = item.lesson;
+                    var go = Instantiate(lessonButtonPrefab, scrollContent);
+                    var comp = go.GetComponent<LessonButton>();
+                    Utils.Log(this, lesson.Exercise);
+                    comp.SetText(lesson.Exercise);
+                    int actualIndex = allLessons.FindIndex(e => e.Exercise.Equals(lesson.Exercise));
+                    comp.SetButtonInfo(Action.SelectLesson.ToString() + "_" + groupType.ToString() + "_" + actualIndex);
+                    comp.OnClicked += OnClicked;
+                    CloneList.Remove(item);
+                }
+                else
+                {
+                    var g = item.groupInfo.Group;
+                    var allGroup = CloneList.FindAll(e => e.groupInfo.Group == g);
+                    if (allGroup.Count > 0)
+                    {
+                        var go = Instantiate(lessonButtonPrefab, scrollContent);
+                        var comp = go.GetComponent<LessonButton>();
+                        Utils.Log(this, allGroup[0].groupInfo.GroupButtonName);
+                        comp.SetText(allGroup[0].groupInfo.GroupButtonName);
+                        comp.SetButtonInfo(Action.SelectLessonGroup.ToString() + "_" + groupType.ToString() + "_" + (int)g);
+                        comp.OnClicked += OnClicked;
+                    }
+                    allGroup.ForEach(e=>CloneList.Remove(e));
                 }
             }
-            for (var i = 0; i < groupEnum.Count; i++)
-            {
-                var item = groupEnum[i];
-                var go = Instantiate(lessonButtonPrefab, scrollContent);
-                var comp = go.GetComponent<LessonButton>();
-                Utils.Log(this, item.GroupButtonName);
-                comp.SetText(item.GroupButtonName);
-                comp.SetButtonInfo(Action.SelectLessonGroup.ToString() + "_" + groupType.ToString() + "_" + (int)item.Group + "_" + i);
-                comp.OnClicked += OnClicked;
-
-            }
-            //adding button back to Lession
             if (useBackButton)
             {
                 var go = Instantiate(lessonButtonPrefab, layoutButton);
@@ -241,7 +253,6 @@ public class LessionUI : MonoBehaviour, IButtonAction
                 comp.SetTextSize(16);
                 comp.EnableBold();
             }
-
             StartCoroutine(AddContentFitter());
         }
         else
