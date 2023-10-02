@@ -1,0 +1,84 @@
+{
+     "Exercise": "Standing Jump",
+     "AnimatorController": "Case_One",
+     "modelPrefab": "StudentFullter",
+     "startPointName": "Lesson_1_Ex_All_Pos",
+     "Buttons": [
+          {
+               "name": "Allow Coach To Correct",
+               "action": "StartExercise",
+               "displayOrder": 1
+          },
+          {
+               "name": "Execute Action",
+               "action": "ActionPlayAnimation",
+               "displayOrder": 2
+          }
+     ],
+     "Actions": [
+          {
+               "name": "StartExercise",
+               "action": [
+                    {
+                         "name": "StartExercise",
+                         "property": [""]
+                    },
+                    {
+                         "name": "EnableInteractable",
+                         "property": [""]
+                    }
+               ],
+               "showDisplayOrder": 2
+          },
+          {
+               "name": "ActionPlayAnimation",
+               "action": [
+                    {
+                         "name": "TriggerFinalAnimation",
+                         "property": [""]
+                    }
+               ],
+               "showDisplayOrder": 3
+          },
+          {
+               "name": "GoToLessonMenu",
+               "action": [
+                    {
+                         "name": "GoToLessonMenu",
+                         "property": [""]
+                    },
+                    {
+                         "name": "DisableInteractable",
+                         "property": [""]
+                    }
+               ],
+               "showDisplayOrder": 0
+          },
+          {
+               "name": "GoToExerciseMenu",
+               "action": [
+                    {
+                         "name": "GoToExerciseMenu",
+                         "property": [""]
+                    },
+                    {
+                         "name": "DisableInteractable",
+                         "property": [""]
+                    }
+               ],
+               "showDisplayOrder": 0
+          }
+     ],
+     "ExerciseList": [
+          {
+               "lessonName": "Standing Jump Entry",
+               "startAnimation": "StandIdle",
+               "conditionTrigger": {
+                    "name": "StandJump",
+                    "value": true
+               },
+               "startPointName": "Lesson_1_Ex_All_Pos"
+          }
+     ],
+     "extension": ["BackFloat"]
+}

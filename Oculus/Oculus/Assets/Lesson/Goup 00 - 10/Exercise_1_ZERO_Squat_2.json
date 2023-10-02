@@ -1,0 +1,84 @@
+{
+     "Exercise": "Squat Jump",
+     "AnimatorController": "Case_One",
+     "modelPrefab": "StudentFullter",
+     "startPointName": "Lesson_1_Ex_All_Pos",
+     "Buttons": [
+          {
+               "name": "Allow Student to Execute",
+               "action": "SquatAction",
+               "displayOrder": 1
+          },
+          {
+               "name": "Execute Action",
+               "action": "ActionPlayAnimation",
+               "displayOrder": 2
+          }
+     ],
+     "Actions": [
+          {
+               "name": "SquatAction",
+               "action": [
+                    {
+                         "name": "TriggerAnimation",
+                         "property": ["SquatIdle"]
+                    },
+                    {
+                         "name": "EnableInteractable",
+                         "property": ["DelayAfterAnim"]
+                    }
+               ],
+               "showDisplayOrder": 2
+          },
+          {
+               "name": "ActionPlayAnimation",
+               "action": [
+                    {
+                         "name": "TriggerFinalAnimation",
+                         "property": ["SquatJump"]
+                    }
+               ],
+               "showDisplayOrder": 3
+          },
+          {
+               "name": "GoToLessonMenu",
+               "action": [
+                    {
+                         "name": "GoToLessonMenu",
+                         "property": [""]
+                    },
+                    {
+                         "name": "DisableInteractable",
+                         "property": [""]
+                    }
+               ],
+               "showDisplayOrder": 0
+          },
+          {
+               "name": "GoToExerciseMenu",
+               "action": [
+                    {
+                         "name": "GoToExerciseMenu",
+                         "property": [""]
+                    },
+                    {
+                         "name": "DisableInteractable",
+                         "property": [""]
+                    }
+               ],
+               "showDisplayOrder": 0
+          }
+     ],
+     "ExerciseList": [
+          {
+               "lessonName": "Squat Jump Entry",
+               "startAnimation": "SquatIdle",
+               "conditionTrigger": {
+                    "name": "SquatJump",
+                    "value": true
+               },
+               "startPointName": "Lesson_1_Ex_All_Pos"
+          }
+     ],
+     "extension": ["BackFloat"]
+}

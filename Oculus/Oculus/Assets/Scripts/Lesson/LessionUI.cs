@@ -168,17 +168,6 @@ public class LessionUI : MonoBehaviour, IButtonAction
             comp.OnClicked += OnClicked;
 
         }
-        //adding button back to Lession
-        if (useBackButton)
-        {
-            var go = Instantiate(lessonButtonPrefab, layoutButton);
-            var comp = go.GetComponent<LessonButton>();
-            comp.SetText("BACK To LESSON List");
-            comp.SetButtonInfo(Action.SelectLesson.ToString() + "_" + groupType.ToString() + "_");
-            comp.OnClicked += CreateChapterMenu;
-            comp.SetTextSize(16);
-            comp.EnableBold();
-        }
         var hasManyGroups = lessonList.FindAll(e => e.groupInfo.Group != ExerciseGroupEnum.NA);
         if (hasManyGroups.Count != 0)
         {
@@ -193,7 +182,17 @@ public class LessionUI : MonoBehaviour, IButtonAction
                 comp.EnableBold();
             }
         }
-
+        //adding button back to Lession
+        if (useBackButton)
+        {
+            var go = Instantiate(lessonButtonPrefab, layoutButton);
+            var comp = go.GetComponent<LessonButton>();
+            comp.SetText("BACK To LESSON List");
+            comp.SetButtonInfo(Action.SelectLesson.ToString() + "_" + groupType.ToString() + "_");
+            comp.OnClicked += CreateChapterMenu;
+            comp.SetTextSize(16);
+            comp.EnableBold();
+        }
         StartCoroutine(AddContentFitter());
     }
     private void CreateExerciseGroup(LessonGroupType groupType)

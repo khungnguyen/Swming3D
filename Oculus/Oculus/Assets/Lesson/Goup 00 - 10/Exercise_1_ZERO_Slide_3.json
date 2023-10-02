@@ -1,0 +1,76 @@
+{
+     "Exercise": "Slide in Entry",
+     "AnimatorController": "Case_One",
+     "modelPrefab": "StudentFullter",
+     "startPointName": "Lesson_1_Ex_All_Pos",
+     "Buttons": [
+          {
+               "name": "Allow Student to Execute",
+               "action": "StartExercise",
+               "displayOrder": 1
+          },
+          {
+               "name": "Execute Action",
+               "action": "ActionPlayAnimation",
+               "displayOrder": 2
+          }
+     ],
+     "Actions": [
+          {
+               "name": "StartExercise",
+               "action": [
+                    {
+                         "name": "TriggerAnimation",
+                         "property": ["SlideIdle"]
+                    },
+                    {
+                         "name": "EnableInteractable",
+                         "property": ["DelayAfterAnim"]
+                    }
+               ],
+               "showDisplayOrder": 2
+          },
+          {
+               "name": "ActionPlayAnimation",
+               "action": [
+                    {
+                         "name": "TriggerFinalAnimation",
+                         "property": [""]
+                    }
+               ],
+               "showDisplayOrder": 3
+          },
+          {
+               "name": "GoToLessonMenu",
+               "action": [
+                    {
+                         "name": "GoToLessonMenu",
+                         "property": [""]
+                    }
+               ],
+               "showDisplayOrder": 0
+          },
+          {
+               "name": "GoToExerciseMenu",
+               "action": [
+                    {
+                         "name": "GoToExerciseMenu",
+                         "property": [""]
+                    }
+               ],
+               "showDisplayOrder": 0
+          }
+     ],
+     "ExerciseList": [
+          {
+               "lessonName": "Slide In Entry",
+               "startAnimation": "SlideIdle",
+               "conditionTrigger": {
+                    "name": "SlideJump",
+                    "value": false
+               },
+               "startPointName": "Lesson_1_Ex_All_Pos"
+          }
+     ],
+     "extension": ["BackFloat"]
+}

@@ -60,9 +60,9 @@ public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback
         {
             EventCodes theEvent = (EventCodes)photonEvent.Code;
             object[] data = (object[])photonEvent.CustomData;
-            foreach (var re in receivers)
+            foreach (var re in receivers.ToArray())
             {
-                re.OnActionReceiver(theEvent, data);
+                re?.OnActionReceiver(theEvent, data);
             }
         }
     }

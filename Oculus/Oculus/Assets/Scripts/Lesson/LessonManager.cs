@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,9 @@ public enum ExerciseGroupEnum
     NA,
     G1,
     G2,
+    G3,
+    G4,
+    G5,
 }
 [System.Serializable]
 public struct LessonGroup
@@ -37,6 +41,7 @@ public struct LessonGroup
 public class LessonItem
 {
     public TextAsset jsonData;
+    [NonSerialized]
     public Exercises lesson;
 
     public bool enable = true;
