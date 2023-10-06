@@ -17,6 +17,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
 
     public TMP_Text chapterName;
     public TMP_Text chapterTitle;
+    public TMP_Text exerciseListText;
 
     public Transform lessonListTransform;
 
@@ -24,6 +25,9 @@ public class LessionUI : MonoBehaviour, IButtonAction
 
     [SerializeField]
     private BoundInAndOut boundAnimation;
+
+    [SerializeField]
+    private FadeEffect fadeEffect;
 
     private bool goToExerciseInstedOfChapter = false;
 
@@ -63,6 +67,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
             case Action.SelectLessonGroup:
                 previousGroup = Utils.String2Enum<LessonGroupType>(types[1]);
                 previousExerciseGroup = Utils.String2Enum<ExerciseGroupEnum>(types[2]);
+                Debug.Log("[QUY]Current Group" + previousExerciseGroup.ToString());
                 CreateExerciseMenu(previousGroup, previousExerciseGroup);
                 break;
         }
@@ -98,6 +103,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
     private void CreateChapterMenu(string a = null)
     {
         boundAnimation.PlayBoundEffect();
+        fadeEffect.StartFade();
         EnableTextAtChapter(false);
         SendActionResetLesson();
         if (useNewUI)
@@ -165,11 +171,13 @@ public class LessionUI : MonoBehaviour, IButtonAction
     )
     {
         boundAnimation.PlayBoundEffect();
+        fadeEffect.StartFade();
         EnableTextAtChapter(true);
         chapterName.text = LessonManager.LessonGroupName[(int)groupType];
         var allLessons = LessonManager.instance.GetExerciseList(groupType);
         var lessonList = LessonManager.instance.GetLessons(groupType);
         var groups = lessonList.FindAll(e => e.groupInfo.Group == groupExercise);
+        exerciseListText.text = groups[0].groupInfo.GroupButtonName.ToUpper();
         List<Exercises> avalableExercise = new();
         if (groups != null)
         {
@@ -194,7 +202,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
         var hasManyGroups = lessonList.FindAll(e => e.groupInfo.Group != ExerciseGroupEnum.NA);
         if (hasManyGroups.Count != 0)
         {
-            if (groups.Count > 1)
+            if (groups.Count >= 1)
             {
                 var go = Instantiate(lessonButtonPrefab, layoutButton);
                 var comp = go.GetComponent<LessonButton>();
@@ -221,8 +229,11 @@ public class LessionUI : MonoBehaviour, IButtonAction
 
     private void CreateExerciseGroup(LessonGroupType groupType)
     {
+        previousExerciseGroup = ExerciseGroupEnum.NA;
         boundAnimation.PlayBoundEffect();
+        fadeEffect.StartFade();
         EnableTextAtChapter(true);
+        exerciseListText.text = "EXERCISE LIST";
         chapterName.text = LessonManager.LessonGroupName[(int)groupType];
         var lessonList = LessonManager.instance.GetLessons(groupType);
         var hasGroup = false;
@@ -302,12 +313,16 @@ public class LessionUI : MonoBehaviour, IButtonAction
 
     private void OnLessonSelected(LessonGroupType groupType, int i)
     {
-        transform.gameObject.SetActive(false);
-        var lessonList = LessonManager.instance.GetExerciseList(groupType);
-        var lessonIndex = i;
-        SendActionInitLesson(groupType, lessonIndex);
-        PanleUserDecison.GetComponent<ExerciseActionControl>().Show();
-        ExerciseManager.instance.SetExercises(lessonList[lessonIndex], lessonIndex, groupType);
+        //
+        boundAnimation.PlayBoundOutEffect(() =>
+        {
+            transform.gameObject.SetActive(false);
+            PanleUserDecison.GetComponent<ExerciseActionControl>().Show();
+            var lessonList = LessonManager.instance.GetExerciseList(groupType);
+            var lessonIndex = i;
+            SendActionInitLesson(groupType, lessonIndex);
+            ExerciseManager.instance.SetExercises(lessonList[lessonIndex], lessonIndex, groupType);
+        });
     }
 
     public void SendActionInitLesson(LessonGroupType groupType, int index)
@@ -341,7 +356,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
             {
                 ClearScrollContent();
             }
-            Utils.Log(this, "Call me here OnEnable");
+            Utils.Log(this, "[QUY] Call me here OnEnable" + previousExerciseGroup.ToString());
             if (previousExerciseGroup != ExerciseGroupEnum.NA)
             {
                 CreateExerciseMenu(previousGroup, previousExerciseGroup);
@@ -350,6 +365,8 @@ public class LessionUI : MonoBehaviour, IButtonAction
             {
                 CreateExerciseGroup(previousGroup);
             }
+
+            // jkjh
         }
         else
         {
@@ -357,6 +374,7 @@ public class LessionUI : MonoBehaviour, IButtonAction
         }
         gameObject.SetActive(true);
         boundAnimation.PlayBoundEffect();
+        fadeEffect.StartFade();
     }
 
     public void EnableToGoToExercis()

@@ -78,6 +78,9 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     [SerializeField]
     private BoundInAndOut boundAnimation;
 
+    [SerializeField]
+    private FadeEffect fadeEffect;
+
     private bool useNewUI = VRAppDebug.USE_NEW_MENU_DESIGN;
 
     private ExerciseUnit curExercise;
@@ -104,7 +107,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     {
         curExercise = ExerciseManager.instance.GetCurExercise();
         currentLessonIndex = lesson;
-
+        Debug.Log("[QUY] ExerciseActionControl OnLoaded");
         CreateButtonDialog();
         UpdateLessonName(ExerciseManager.instance.exercises.Exercise, groupType);
         SettingUpLesson(lesson);
@@ -148,7 +151,6 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     }
                     ButtonBaseRoom butt = (ButtonBaseRoom)examinerDialog.AddButton();
                     butt.SetText(bt.name);
-                    //butt.SetDescription("");
                     butt.SetData(bt.action);
                 }
             }
@@ -230,7 +232,6 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         layoutButtonNav.gameObject.SetActive(false);
         GetComponent<VerticalLayoutGroup>().enabled = false;
         yield return new WaitForEndOfFrame();
-
         GetComponent<VerticalLayoutGroup>().enabled = true;
         layoutButtonNav.gameObject.SetActive(true);
 
@@ -464,6 +465,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
             {
                 CreateButtonDialog(ac.showDisplayOrder);
                 boundAnimation.PlayBoundEffect();
+                fadeEffect.StartFade();
 
             }
             if (needToEnableButton != BUTTON_SHOW.KEEP_CURRENT_STATUS)
@@ -677,6 +679,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     {
         gameObject.SetActive(true);
         boundAnimation.PlayBoundEffect();
+        fadeEffect.StartFade();
     }
     public void Hide()
     {

@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Oculus.Interaction.PoseDetection;
 using UnityEngine;
+
 [System.Serializable]
 public enum LessonGroupType
 {
@@ -11,11 +13,14 @@ public enum LessonGroupType
     THREE,
     FOUR
 }
+
 [System.Serializable]
-public struct ExerciseGroupStruct {
+public struct ExerciseGroupStruct
+{
     public ExerciseGroupEnum Group;
     public string GroupButtonName;
 }
+
 [System.Serializable]
 public enum ExerciseGroupEnum
 {
@@ -26,6 +31,7 @@ public enum ExerciseGroupEnum
     G4,
     G5,
 }
+
 [System.Serializable]
 public struct LessonGroup
 {
@@ -37,50 +43,62 @@ public struct LessonGroup
         return listLesson;
     }
 }
+
 [System.Serializable]
 public class LessonItem
 {
     public TextAsset jsonData;
+
     [NonSerialized]
     public Exercises lesson;
 
     public bool enable = true;
+
     public void Init()
     {
         lesson = JsonUtility.FromJson<Exercises>(jsonData.text);
     }
+
     public ExerciseGroupStruct groupInfo;
 }
+
 public class LessonManager : MonoBehaviour, IReceiver
 {
-    public static string[] LessonGroupName = {
-    "TIME 00-10 Minutes",
-    "TIME 10-25 Minutes",
-    "TIME 25-40 Minutes",
-    "TIME 40-45 Minutes",
+    public static string[] LessonGroupName =
+    {
+        "TIME 00-10 Minutes",
+        "TIME 10-25 Minutes",
+        "TIME 25-40 Minutes",
+        "TIME 40-45 Minutes",
     };
 
     [SerializeField]
     private List<LessonGroup> lessonGroupData;
     public static LessonManager instance;
+
     private void Awake()
     {
         instance = this;
         lessonGroupData.ForEach(e =>
         {
-            e.GetLessonItems().ForEach(i =>
-            {
-                i.lesson = JsonUtility.FromJson<Exercises>(i.jsonData.text);
-            });
+            e.GetLessonItems()
+                .ForEach(i =>
+                {
+                    i.lesson = JsonUtility.FromJson<Exercises>(i.jsonData.text);
+                });
         });
     }
+
     public List<LessonGroup> GetLessonGroups()
     {
         return lessonGroupData;
     }
+
     public List<Exercises> GetExerciseList(LessonGroupType group = LessonGroupType.ZERO)
     {
-        List<LessonItem> list = (lessonGroupData.Find(e => e.groupType == group).listLesson).FindAll(i => i.enable == true);
+        List<LessonItem> list = (
+            lessonGroupData.Find(e => e.groupType == group).listLesson
+        ).FindAll(i => i.enable == true);
         if (list != null)
         {
             List<Exercises> lessons = new();
@@ -91,20 +109,22 @@ public class LessonManager : MonoBehaviour, IReceiver
             return lessons;
         }
         return null;
-
     }
-     public List<LessonItem> GetLessons(LessonGroupType group = LessonGroupType.ZERO)
+
+    public List<LessonItem> GetLessons(LessonGroupType group = LessonGroupType.ZERO)
     {
-        List<LessonItem> list = (lessonGroupData.Find(e => e.groupType == group).listLesson).FindAll(i => i.enable == true);
-       
-        return list;
+        List<LessonItem> list = (
+            lessonGroupData.Find(e => e.groupType == group).listLesson
+        ).FindAll(i => i.enable == true);
 
+        return list;
     }
+
     public void OnEnable()
     {
         ConnectionManager.AddCallbackTarget(this);
-
     }
+
     public void OnDisable()
     {
         ConnectionManager.RemoveCallBackTarget(this);
@@ -112,17 +132,22 @@ public class LessonManager : MonoBehaviour, IReceiver
 
     public void OnActionReceiver(EventCodes theEvent, object[] packages)
     {
-        switch (theEvent)
+        if (DectectVR.instancne.isVR)
         {
-            case EventCodes.ActionInitLesson:
+            switch (theEvent)
+            {
+                case EventCodes.ActionInitLesson:
 
-                var group = (int)packages[0];
-                var index = (int)packages[1];
-                Debug.LogError("Init Lesson Index" + index);
-                ExerciseManager.instance.SetExercises(GetExerciseList((LessonGroupType)group)[index], index, (LessonGroupType)group);
-                break;
-
+                    var group = (int)packages[0];
+                    var index = (int)packages[1];
+                    Debug.LogError("Init Lesson Index" + index);
+                    ExerciseManager.instance.SetExercises(
+                        GetExerciseList((LessonGroupType)group)[index],
+                        index,
+                        (LessonGroupType)group
+                    );
+                    break;
+            }
         }
     }
-
 }

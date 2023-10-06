@@ -1323,10 +1323,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3928,6 +3928,7 @@ MonoBehaviour:
   exerciseName: {fileID: 1133671849}
   chapterName: {fileID: 1814629799}
   boundAnimation: {fileID: 1324052908}
+  fadeEffect: {fileID: 1324052909}
   useBackToExerciseList: 1
 --- !u!114 &1324052906
 MonoBehaviour:
@@ -3995,14 +3996,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1324052901}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56295ddf6aed1e340845c4ebb28fe33a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b1458a3071886e438e595e4c8d9c76b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBoundSize: 1.1
-  minBoundSize: 0.9
-  startBound: 0
-  originalBound: 1
-  mTransform: {fileID: 1904033980}
+  _canvasGroup: {fileID: 0}
+  _fadeType: 0
+  _fadeTime: 0.5
+  _autoStart: 0
 --- !u!1001 &1333460604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6012,48 +6012,48 @@ MonoBehaviour:
     - jsonData: {fileID: 4900000, guid: 0649eb2ef7bc59541944498351e95631, type: 3}
       enable: 1
       groupInfo:
-        Group: 3
-        GroupButtonName: Exerise 1
+        Group: 1
+        GroupButtonName: Exercise 1
     - jsonData: {fileID: 4900000, guid: 0d1612e3164be374cac6f448801fda57, type: 3}
       enable: 1
       groupInfo:
-        Group: 3
+        Group: 1
         GroupButtonName: 
     - jsonData: {fileID: 4900000, guid: 1208d7bc2a3cb4e4e9e752141740208a, type: 3}
       enable: 1
       groupInfo:
-        Group: 3
+        Group: 1
         GroupButtonName: 
     - jsonData: {fileID: 4900000, guid: 55ed8ed16b5aebe49ac5e3bbf5abe64d, type: 3}
       enable: 1
       groupInfo:
-        Group: 0
-        GroupButtonName: 
+        Group: 2
+        GroupButtonName: Exercise 2
     - jsonData: {fileID: 4900000, guid: 17ee8124067b357418c38065ae4c5554, type: 3}
       enable: 1
       groupInfo:
-        Group: 1
+        Group: 3
         GroupButtonName: Exercise 3
     - jsonData: {fileID: 4900000, guid: c9e51712f7bcb934bb52a7e378ad7873, type: 3}
       enable: 1
       groupInfo:
-        Group: 1
+        Group: 3
         GroupButtonName: Exercise 3
     - jsonData: {fileID: 4900000, guid: fc1257e4dc92a6847808c879f63f1880, type: 3}
       enable: 1
       groupInfo:
-        Group: 2
+        Group: 4
         GroupButtonName: Exercise 4
     - jsonData: {fileID: 4900000, guid: d29b1716e31934d4bb0b9d71dba63c72, type: 3}
       enable: 1
       groupInfo:
-        Group: 2
+        Group: 4
         GroupButtonName: Exercise 4
     - jsonData: {fileID: 4900000, guid: b5db4a217237b6c45af4fd9b16af2dcb, type: 3}
       enable: 1
       groupInfo:
-        Group: 0
-        GroupButtonName: 
+        Group: 5
+        GroupButtonName: Exercise 5
   - groupType: 1
     listLesson:
     - jsonData: {fileID: 4900000, guid: ee81d0c956ff99642a0e86ba5d26c762, type: 3}
@@ -6328,6 +6328,7 @@ GameObject:
   - component: {fileID: 1904033986}
   - component: {fileID: 1904033985}
   - component: {fileID: 1904033987}
+  - component: {fileID: 1904033988}
   m_Layer: 5
   m_Name: PanelChapter
   m_TagString: Untagged
@@ -6352,9 +6353,9 @@ RectTransform:
   m_Father: {fileID: 433542659}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 186.1, y: -472}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 186.1, y: 0}
   m_SizeDelta: {x: 350, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1904033983
@@ -6385,9 +6386,11 @@ MonoBehaviour:
   dialogParent: {fileID: 1127197219}
   chapterName: {fileID: 499471532}
   chapterTitle: {fileID: 605209160}
+  exerciseListText: {fileID: 1714056515}
   lessonListTransform: {fileID: 1714056514}
   layoutButton: {fileID: 527941230}
   boundAnimation: {fileID: 1904033987}
+  fadeEffect: {fileID: 1904033988}
 --- !u!114 &1904033985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6445,6 +6448,22 @@ MonoBehaviour:
   startBound: 0
   originalBound: 1
   mTransform: {fileID: 1904033980}
+--- !u!114 &1904033988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904033979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1458a3071886e438e595e4c8d9c76b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 0}
+  _fadeType: 0
+  _fadeTime: 0.5
+  _autoStart: 0
 --- !u!1 &1925186474
 GameObject:
   m_ObjectHideFlags: 0
