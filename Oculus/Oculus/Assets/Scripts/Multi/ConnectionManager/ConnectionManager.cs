@@ -27,6 +27,7 @@ public enum EventCodes : byte
     ActionActivateExtension,
     ActionBodyMoving,
     ActionChangeModel,
+    ActionRotate,
     
 }
 public class ConnectionManager : MonoBehaviourPunCallbacks,IOnEventCallback

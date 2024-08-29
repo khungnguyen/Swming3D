@@ -19,6 +19,7 @@ public enum ExaminerAction
     SaveDataValue,
     ChangeAnimController,
     CorrectTransform,
+    CorrectTransformDelay,
     TriggerAnimationWithSaveKey,
     TriggerAnimationWithOutSaveKey,
     ClearDataSave,
@@ -32,7 +33,8 @@ public enum ExaminerAction
     EnableBodyMoving,
     ChangeModel,
     EnableButtons,
-    GoToExerciseMenu
+    GoToExerciseMenu,
+    Rotate
 }
 public enum ActionPropertyType
 {
@@ -372,6 +374,11 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     string key = actionProperty.property[0];
                     CorrectTransform(key);
                 }
+                else if (miniAction == ExaminerAction.CorrectTransformDelay.ToString())
+                {
+                    string key = actionProperty.property[0];
+                    CorrectTransform(key, true);
+                }
                 // We not use any more action
                 else if (miniAction == ExaminerAction.ReplaceModel.ToString())
                 {
@@ -418,6 +425,12 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                     bool active = actionProperty.property[0] == "True";
                     Utils.LogError(this, "ExaminerAction.EnableButtons", active);
                     needToEnableButton = active ? BUTTON_SHOW.SHOW_BUTTON : BUTTON_SHOW.HIDE_BUTTONS;
+                }
+                else if (miniAction == ExaminerAction.Rotate.ToString())
+                {
+                    int targetRotation = int.Parse(actionProperty.property[0]);
+                    bool delay =  actionProperty.property[1] == "True";
+                    Rotate(targetRotation,delay);
                 }
                 else if (miniAction == ExaminerAction.ChangeModel.ToString())
                 {
@@ -509,10 +522,11 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         packages[0] = controllerName;
         ConnectionManager.instance.SendAction(EventCodes.ActionChangeController, packages);
     }
-    public void CorrectTransform(string snapToTransform)
+    public void CorrectTransform(string snapToTransform, bool delay = false)
     {
-        object[] packages = new object[1];
+        object[] packages = new object[2];
         packages[0] = snapToTransform;
+        packages[1] = delay;
         ConnectionManager.instance.SendAction(EventCodes.ActionCorrectTransform, packages);
     }
     public void EnableInteractable(bool OnlyAfterAnim)
@@ -559,7 +573,6 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         if (index == -1)
         {
             ExerciseManager.instance.ChangeNextExercise();
-
         }
         else
         {
@@ -641,6 +654,13 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         object[] packages = new object[1];
         packages[0] = active;
         ConnectionManager.instance.SendAction(EventCodes.ActionBodyMoving, packages);
+    }
+    private void Rotate(int target,bool delay)
+    {
+        object[] packages = new object[2];
+        packages[0] = target;
+        packages[1] = delay;
+        ConnectionManager.instance.SendAction(EventCodes.ActionRotate, packages);
     }
     private void ChangeModel(string model, string pointName, string animator, string animation, string interact = "False", string moving = "False")
     {

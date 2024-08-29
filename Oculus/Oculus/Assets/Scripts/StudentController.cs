@@ -26,6 +26,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         public Vector3 position;
         public Quaternion rotation;
     }
+    private int targetRotation = -1;
     // public bool useF
     // Start is called before the first frame update
     void Awake()
@@ -35,15 +36,13 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     public static bool firstTime = false;
     protected virtual void Start()
     {
-        Utils.LogError(this,"Start were call");
+        Utils.LogError(this, "Start were call");
         if (VRAppDebug.USE_DEBUG_VR_SINGLE_PREVIEW)
         {
             StartCoroutine(DelayEnableInteraction(2, true));
         }
         else
         {
-
-            //   InitFirstPose();
         }
     }
     [PunRPC]
@@ -64,15 +63,16 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
 
     public void RepositionNexAnim(string name)
     {
-          
-    } 
 
-    public void RepositionEvent(string name) {
-        Utils.LogError(this, "RepositionEvent",name);
-        StartCoroutine(DelayCorrectTransform(0.01f,name));
-        
     }
-    IEnumerator DelayCorrectTransform(float second,string name)
+
+    public void RepositionEvent(string name)
+    {
+        Utils.LogError(this, "RepositionEvent", name);
+        StartCoroutine(DelayCorrectTransform(0.01f, name));
+
+    }
+    IEnumerator DelayCorrectTransform(float second, string name)
     {
         yield return new WaitForSeconds(second);
         CorrectTransform(name);
@@ -84,22 +84,27 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     {
 
         // StartCoroutine(DelayEnableInteraction(0.5f,true));
-        Utils.LogError(this,"Animation Event call" + e.animatorClipInfo.clip.name,delayActiveInteraction);
+        Utils.LogError(this, "Animation Event call" + e.animatorClipInfo.clip.name, delayActiveInteraction);
         if (delayActiveInteraction)
         {
-            Utils.LogError(this,"Animation Event call Enable" + e.animatorClipInfo.clip.name);
+            Utils.LogError(this, "Animation Event call Enable" + e.animatorClipInfo.clip.name);
             StartCoroutine(DelayEnableInteraction(0.1f, true));
             // EnableInteraction(true);
             delayActiveInteraction = false;
         }
         else if (delayInactiveInteraction)
         {
-            Utils.LogError(this,"Animation Event call Disable" + e.animatorClipInfo.clip.name);
+            Utils.LogError(this, "Animation Event call Disable" + e.animatorClipInfo.clip.name);
             StartCoroutine(DelayEnableInteraction(0.1f, false));
             //EnableInteraction(false);
             delayInactiveInteraction = false;
         }
         OnAnimationStateComplete?.Invoke(true);
+        if (targetRotation != -1)
+        {
+            Rotate(targetRotation);
+            targetRotation = -1;
+        }
     }
     public void EnableInteraction(bool enable)
     {
@@ -201,7 +206,16 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 break;
             case EventCodes.ActionCorrectTransform:
                 Debug.Log(TAG + "ActionCorrectTransform" + (string)packages[0]);
-                CorrectTransform((string)packages[0]);
+                Debug.Log(TAG + "ActionCorrectTransform" + (string)packages[0]);
+                if ((bool)packages[1])
+                {
+                    StartCoroutine(DelayCorrectTransform(0.01f, (string)packages[0]));
+                }
+                else
+                {
+                    CorrectTransform((string)packages[0]);
+                }
+
                 break;
             // case EventCodes.ActionStopAnimation:
             //     Debug.Log(TAG + "ActionStopAnimation");
@@ -218,6 +232,18 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 ActivateBodyMoving(enable);
                 break;
             case EventCodes.ActionChangeModel:
+
+                break;
+            case EventCodes.ActionRotate:
+                Debug.Log(TAG + "ActionRotate");
+                if ((bool)packages[1])
+                {
+                    targetRotation = (int)packages[0];
+                }
+                else
+                {
+                    Rotate((int)packages[0]);
+                }
 
                 break;
 
@@ -278,7 +304,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     {
         if (trigger != null && trigger.Length > 0)
         {
-//            Utils.Log(this, "TriggerAnimation", "IsBodyMovingEnable", IsBodyMovingEnable);
+            //            Utils.Log(this, "TriggerAnimation", "IsBodyMovingEnable", IsBodyMovingEnable);
             if (IsBodyMovingEnable)
             {
                 // reset transform before playing animaiton
@@ -311,7 +337,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
     [PunRPC]
     public void ActivateBodyMoving(bool enable)
     {
-        Utils.LogError("ActivateBodyMoving",enable);
+        Utils.LogError("ActivateBodyMoving", enable);
         IsBodyMovingEnable = enable;
         bodyMovingCube.gameObject.SetActive(enable);
     }
@@ -347,7 +373,7 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         {
             Debug.Log(TAG + "CorrectTransform " + name);
             transform.SetPositionAndRotation(init.position, init.rotation);
-            transform.localScale =init.localScale;
+            transform.localScale = init.localScale;
         }
     }
     private void ResetAnimatorTriggers()
@@ -370,21 +396,40 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
 
     }
     [PunRPC]
-    public void EnableInteractionDelay(bool b) {
+    public void EnableInteractionDelay(bool b)
+    {
         delayActiveInteraction = b;
-        Utils.Log(this,"Calling EnableInteractionDelay",this,delayActiveInteraction);
+        Utils.Log(this, "Calling EnableInteractionDelay", this, delayActiveInteraction);
     }
-     [PunRPC]
-    public void EnableInteractionImmediate(bool b) {
-       StartCoroutine(DelayEnableInteraction(0.1f, b));
-        Utils.Log(this,"Calling EnableInteractionImmediate",b);
+    [PunRPC]
+    public void EnableInteractionImmediate(bool b)
+    {
+        StartCoroutine(DelayEnableInteraction(0.1f, b));
+        Utils.Log(this, "Calling EnableInteractionImmediate", b);
     }
     void OnDestroy()
     {
         Debug.Log("OnDestroy1");
-        if(studentExtensions != null) {
+        if (studentExtensions != null)
+        {
             studentExtensions.DestroyAll();
         }
     }
-    
+    public void Rotate(float degree)
+    {
+        StartCoroutine(RotateCoroutine(degree));
+    }
+    private IEnumerator RotateCoroutine(float degree)
+    {
+        var targetRotationY = degree;
+        float time = 0f;
+        float duration = 0.5f;
+        while (!Mathf.Approximately(transform.rotation.eulerAngles.y,targetRotationY))
+        {
+            time += Time.deltaTime;
+            var y = Mathf.Lerp(transform.rotation.eulerAngles.y, targetRotationY, time / duration);
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, y, transform.rotation.eulerAngles.z);
+            yield return null;
+        }
+    }
 }
