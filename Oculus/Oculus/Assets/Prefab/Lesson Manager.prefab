@@ -1,0 +1,195 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4734352255670470014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4734352255670470008}
+  - component: {fileID: 4734352255670470009}
+  - component: {fileID: 4734352255670470015}
+  m_Layer: 0
+  m_Name: Lesson Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4734352255670470008
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4734352255670470014}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8486899, y: 0.63685614, z: 2.3372514}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4734352255670470009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4734352255670470014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fff54ea09549bdd448997d770f679dba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lessonGroupData:
+  - groupType: 0
+    listLesson:
+    - jsonData: {fileID: 4900000, guid: 0649eb2ef7bc59541944498351e95631, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 1
+        GroupButtonName: Exercise 1
+    - jsonData: {fileID: 4900000, guid: 0d1612e3164be374cac6f448801fda57, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 1
+        GroupButtonName: 
+    - jsonData: {fileID: 4900000, guid: 1208d7bc2a3cb4e4e9e752141740208a, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 1
+        GroupButtonName: 
+    - jsonData: {fileID: 4900000, guid: 55ed8ed16b5aebe49ac5e3bbf5abe64d, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 2
+        GroupButtonName: Exercise 2
+    - jsonData: {fileID: 4900000, guid: 17ee8124067b357418c38065ae4c5554, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 3
+        GroupButtonName: Exercise 3
+    - jsonData: {fileID: 4900000, guid: c9e51712f7bcb934bb52a7e378ad7873, type: 3}
+      enable: 0
+      groupInfo:
+        Group: 3
+        GroupButtonName: Exercise 3
+    - jsonData: {fileID: 4900000, guid: fc1257e4dc92a6847808c879f63f1880, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 4
+        GroupButtonName: Exercise 4
+    - jsonData: {fileID: 4900000, guid: d29b1716e31934d4bb0b9d71dba63c72, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 4
+        GroupButtonName: Exercise 4
+    - jsonData: {fileID: 4900000, guid: b5db4a217237b6c45af4fd9b16af2dcb, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 5
+        GroupButtonName: Exercise 5
+  - groupType: 1
+    listLesson:
+    - jsonData: {fileID: 4900000, guid: ee81d0c956ff99642a0e86ba5d26c762, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 1
+        GroupButtonName: ABTO Kicks
+    - jsonData: {fileID: 4900000, guid: 93a937e0cc3d48d419c1b3410c7fbc58, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 1
+        GroupButtonName: 
+    - jsonData: {fileID: 4900000, guid: f874785ac5cdbab4aa1e6abc59a8fd29, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 1
+        GroupButtonName: 
+    - jsonData: {fileID: 4900000, guid: 63d2b2761d3d84c4ba51f4889376afcb, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 1
+        GroupButtonName: 
+    - jsonData: {fileID: 4900000, guid: bd349a76e36d92c4891d05d73fde71ff, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 2
+        GroupButtonName: 25 Meter Kicks
+    - jsonData: {fileID: 4900000, guid: f9e5a37d01d8aa04eb7d3ed551de7433, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 2
+        GroupButtonName: 
+  - groupType: 2
+    listLesson:
+    - jsonData: {fileID: 4900000, guid: e0f1d8a011e2cd5438a7f55e907ef4c9, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 1
+        GroupButtonName: ABTO Bubble
+    - jsonData: {fileID: 4900000, guid: d8c8c394b8baee94daa5fe1e8ab96fcc, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 1
+        GroupButtonName: ABTO Bubble
+    - jsonData: {fileID: 4900000, guid: 07888af51089a374abd1ddedc480f5d3, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 2
+        GroupButtonName: 25 Meter Bubble
+    - jsonData: {fileID: 4900000, guid: 0bd4aef95dd005e4889ba4abf5470c1a, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 2
+        GroupButtonName: 
+    - jsonData: {fileID: 4900000, guid: 857dd20a60ab06b4f9a1ec2122c7a084, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 2
+        GroupButtonName: 
+    - jsonData: {fileID: 4900000, guid: 52ba7d38045b08b4892cc1e2b7b8f64c, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 2
+        GroupButtonName: 
+    - jsonData: {fileID: 4900000, guid: 9b68f4837dfa2984fbdc22a254d1c733, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 2
+        GroupButtonName: 
+  - groupType: 3
+    listLesson:
+    - jsonData: {fileID: 4900000, guid: 23a4f83a67dfdeb479db263b3b3fbe31, type: 3}
+      enable: 1
+      groupInfo:
+        Group: 0
+        GroupButtonName: 
+--- !u!114 &4734352255670470015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4734352255670470014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dceba866b144e7149b4ced2fe2c371c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exercises:
+    ExerciseList: []
+    Exercise: 
+    Buttons: []
+    Actions: []
+    modelPrefab: 
+    AnimatorController: 
+    startPointName: 
+    startAction: 
+    extension: []
+  curLesson: 0
+  curExercise: 0
