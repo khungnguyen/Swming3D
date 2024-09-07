@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5673101128092911914}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.9454318, y: 0.69471496, z: 6.3169746}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -89,9 +89,9 @@ MonoBehaviour:
   - controller: {fileID: 9100000, guid: 3153726f391e5424a97d359959293c07, type: 2}
     avatar: {fileID: 9000000, guid: 1fc4ce217b0707d4aa19ff745534cb5d, type: 3}
   - controller: {fileID: 9100000, guid: d6f4850a4eb41ed4592d8400fa950aff, type: 2}
-    avatar: {fileID: 9000000, guid: 20e55509a6b6f814eb6964cf063c7080, type: 3}
+    avatar: {fileID: 9000000, guid: b2de93e17d140fc48b7771f6ea2bcb5b, type: 3}
   - controller: {fileID: 9100000, guid: c590b38b3684fc446b97d3d8b75f6493, type: 2}
-    avatar: {fileID: 9000000, guid: c6fa235949d63b748b2a1a06c715ddc9, type: 3}
+    avatar: {fileID: 9000000, guid: d32fe10080e4bf84c93a83750537fd9d, type: 3}
   - controller: {fileID: 9100000, guid: 86f5a43c1376a634d870b266073b9ca7, type: 2}
     avatar: {fileID: 9000000, guid: b3d0e4ea37f3bb941a86d4a7738a2bcb, type: 3}
   - controller: {fileID: 9100000, guid: 97f2a076604907c4c9e82330cbcc1b58, type: 2}
@@ -162,3 +162,5 @@ MonoBehaviour:
     avatar: {fileID: 9000000, guid: b2cea6b235ffd5345a751bfc45bc6fcf, type: 3}
   - controller: {fileID: 9100000, guid: e4de0079d56e8464693c303b11841248, type: 2}
     avatar: {fileID: 9000000, guid: b2cea6b235ffd5345a751bfc45bc6fcf, type: 3}
+  - controller: {fileID: 9100000, guid: 0eaa37dc0811a8740a0d54a0b0cb3bd2, type: 2}
+    avatar: {fileID: 9000000, guid: b2de93e17d140fc48b7771f6ea2bcb5b, type: 3}

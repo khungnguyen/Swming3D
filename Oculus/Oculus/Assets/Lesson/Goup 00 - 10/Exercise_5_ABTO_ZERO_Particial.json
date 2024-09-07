@@ -1,0 +1,164 @@
+{
+  "Exercise": "Partial Head Submersion",
+  "AnimatorController": "Case_Eight",
+  "startPointName": "StandinWaterIdle_Feet",
+  "startAction": "StartAction",
+  "Buttons": [
+    {
+      "name": "Allow Coach To Correct",
+      "action": "AllowCoachToCorrect_Stand",
+      "displayOrder": 1
+    },
+    {
+      "name": "Submerge : Coach Puts The Ring",
+      "action": "CoachHandleTheRing",
+      "displayOrder": 2
+    },
+    {
+      "name": "Student Submerges To Get Ring",
+      "action": "SubmergeTheRing",
+      "displayOrder": 3
+    },
+    {
+      "name": "Student Refuses To Get Ring",
+      "action": "Refuse",
+      "displayOrder": 3
+    },
+    {
+      "name": "Back To Lesson List",
+      "action": "GoToLessonMenu",
+      "displayOrder": 400
+    }
+  ],
+  "Actions": [
+    {
+      "name": "StartAction",
+      "action": [
+        {
+          "name": "ChangeModel",
+          "property": [
+            "StudentSubmergeRing",
+            "StandinWaterIdle_Feet",
+            "Case_Eight",
+            ""
+          ]
+        }
+      ],
+      "showDisplayOrder": 0
+    },
+    {
+      "name": "AllowCoachToCorrect_Stand",
+      "action": [
+        {
+          "name": "GoToExercise",
+          "property": ["0"]
+        },
+        {
+          "name": "EnableBodyMoving",
+          "property": ["True"]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": [""]
+        }
+      ],
+      "showDisplayOrder": 3
+    },
+    {
+      "name": "CoachHandleTheRing",
+      "action": [
+      ],
+      "showDisplayOrder": 3
+    },
+    {
+      "name": "SubmergeTheRing",
+      "action": [
+        {
+          "name": "CorrectTransform",
+          "property": ["SubmergetoGetRing"]
+        },
+        {
+          "name": "ChangeAnimController",
+          "property": ["Case_Eight_NoHumanoid"]
+        },
+        {
+          "name": "TriggerAnimation",
+          "property": ["Partial"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        }
+      ],
+      "showDisplayOrder": 400
+    },
+    {
+      "name": "Refuse",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["Refuse"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["StandinWaterIdle_Feet"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        }
+      ],
+      "showDisplayOrder": 400
+    },
+    {
+      "name": "GoToLessonMenu",
+      "action": [
+        {
+          "name": "GoToLessonMenu",
+          "property": [""]
+        },
+        {
+          "name": "DisableInteractable",
+          "property": [""]
+        },
+        {
+          "name": "ChangeModel",
+          "property": ["StudentFullter", "StandinWaterIdle", "Case_Seven", ""]
+        }
+      ],
+      "showDisplayOrder": 0
+    },
+    {
+      "name": "GoToExerciseMenu",
+      "action": [
+        {
+          "name": "GoToExerciseMenu",
+          "property": [""]
+        },
+        {
+          "name": "DisableInteractable",
+          "property": [""]
+        },
+        {
+          "name": "ChangeModel",
+          "property": ["StudentFullter", "StandinWaterIdle", "Case_Seven", ""]
+        }
+      ],
+      "showDisplayOrder": 0
+    }
+  ],
+  "ExerciseList": [
+    {
+      "lessonName": "Submerge The Ring",
+      "starAnimation": "",
+      "conditionTrigger": {
+        "name": "",
+        "value": true
+      },
+      "startPointName": "",
+      "startController": "",
+      "property": []
+    }
+  ],
+  "extension": []
+}

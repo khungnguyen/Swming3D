@@ -1,5 +1,5 @@
 {
-  "Exercise": "Full/No Submersion And Retrieve Ring",
+  "Exercise": "Full Head Submersion",
   "AnimatorController": "Case_Eight",
   "startPointName": "StandinWaterIdle_Feet",
   "startAction": "StartAction",
@@ -22,7 +22,7 @@
     {
       "name": "Student Refuses To Get Ring",
       "action": "Refuse",
-      "displayOrder": 3
+      "displayOrder": 300
     },
     {
       "name": "Back To Lesson List",
@@ -83,7 +83,7 @@
         },
         {
           "name": "TriggerAnimation",
-          "property": ["GetTheRing"]
+          "property": ["Full"]
         },
         {
           "name": "EnableButtons",
