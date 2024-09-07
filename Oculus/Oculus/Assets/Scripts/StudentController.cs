@@ -206,7 +206,6 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 break;
             case EventCodes.ActionCorrectTransform:
                 Debug.Log(TAG + "ActionCorrectTransform" + (string)packages[0]);
-                Debug.Log(TAG + "ActionCorrectTransform" + (string)packages[0]);
                 if ((bool)packages[1])
                 {
                     StartCoroutine(DelayCorrectTransform(0.01f, (string)packages[0]));

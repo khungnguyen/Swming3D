@@ -148,6 +148,10 @@
                     {
                          "name": "EnableButtons",
                          "property": ["True"]
+                    },
+                    {
+                         "name": "CorrectTransform",
+                         "property": ["StarfishFrontFloatWrongPos"]
                     }
                ],
                "showDisplayOrder": 5
@@ -244,6 +248,10 @@
                     {
                          "name": "TriggerAnimation",
                          "property": ["Rotate"]
+                    },
+                    {
+                         "name": "EnableInteractable",
+                         "property": ["DelayAfterAnim"]
                     }
                ],
                "showDisplayOrder": 4
@@ -334,6 +342,10 @@
                     {
                          "name": "Rotate-Remove",
                          "property": ["180", "False","0"]
+                    },
+                    {
+                         "name": "EnableInteractable",
+                         "property": ["DelayAfterAnim"]
                     }
                ],
                "showDisplayOrder": 4
