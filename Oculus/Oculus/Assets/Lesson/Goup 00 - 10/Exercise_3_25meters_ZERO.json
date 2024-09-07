@@ -65,6 +65,11 @@
                "displayOrder": 9
           },
           {
+               "name": "Starfish Front Float",
+               "action": "FromBubbleNose2StarFish",
+               "displayOrder": 10
+          },
+          {
                "name": "Back To Lesson List",
                "action": "GoToLessonMenu",
                "displayOrder": 400
@@ -103,6 +108,10 @@
                "name": "SlideIn",
                "action": [
                     {
+                         "name": "CorrectTransform-REMOVE",
+                         "property": ["00-10-BubbleNose_SlideInPos"]
+                    },
+                    {
                          "name": "GoToExercise",
                          "property": ["1"]
                     },
@@ -115,11 +124,11 @@
                          "property": ["True"]
                     },
                     {
-                         "name": "EnableInteractable",
+                         "name": "EnableInteractable-REMOVE",
                          "property": ["DelayAfterAnim"]
                     },
                     {
-                         "name": "Rotate",
+                         "name": "Rotate-REMOVED",
                          "property": ["180", "True"]
                     }
                ],
@@ -229,8 +238,12 @@
                "name": "ChangeMenuStarfish",
                "action": [
                     {
-                         "name": "Rotate",
+                         "name": "Rotate-REMOVE",
                          "property": ["0", "False"]
+                    },
+                    {
+                         "name": "TriggerAnimation",
+                         "property": ["Rotate"]
                     }
                ],
                "showDisplayOrder": 4
@@ -241,9 +254,13 @@
                     {
                          "name": "ChangeModel",
                          "property": ["StudentBubbleNose", "00-10_Bubble_Nose_Correct", "Case_Five_v2", "Correct"]
+                    },
+                    {
+                         "name": "ActivateExtension",
+                         "property": ["BackFloat", "True"]
                     }
                ],
-               "showDisplayOrder": 400
+               "showDisplayOrder": 10
           },
           {
                "name": "ExecuteBubbleNoseCorrect_2",
@@ -255,9 +272,13 @@
                     {
                          "name": "CorrectTransform",
                          "property": ["00-10_Bubble_Nose_Correct_AfterCoach"]
+                    },
+                    {
+                         "name": "EnableButtons",
+                         "property": ["True"]
                     }
                ],
-               "showDisplayOrder": 400
+               "showDisplayOrder": 10
           },
           {
                "name": "ExecuteBubbleNoseIncorrect",
@@ -265,6 +286,10 @@
                     {
                          "name": "ChangeModel",
                          "property": ["StudentBubbleNose", "00-10_Bubble_Nose_Correct", "Case_Five_v2", "Incorrect"]
+                    },
+                    {
+                         "name": "ActivateExtension",
+                         "property": ["BackFloat", "True"]
                     }
                ],
                "showDisplayOrder": 8
@@ -290,6 +315,28 @@
                     }
                ],
                "showDisplayOrder": 9
+          },
+          {
+               "name": "FromBubbleNose2StarFish",
+               "action": [
+                    {
+                         "name": "ChangeModel",
+                         "property": ["StudentFrontFloat", "00-10-StarFishIdlePos", "Case_Four",""]
+                    },
+                    {
+                         "name": "ActivateExtension",
+                         "property": ["BackFloat", "True"]
+                    },
+                    {
+                         "name": "TriggerAnimation",
+                         "property": ["IdleToRotate"]
+                    },
+                    {
+                         "name": "Rotate-Remove",
+                         "property": ["180", "False","0"]
+                    }
+               ],
+               "showDisplayOrder": 4
           }
      ],
      "ExerciseList": [

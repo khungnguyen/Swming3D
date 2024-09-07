@@ -236,13 +236,16 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 break;
             case EventCodes.ActionRotate:
                 Debug.Log(TAG + "ActionRotate");
-                if ((bool)packages[1])
+                var delay = (bool)packages[1];
+                var angle = (int)packages[0];
+                var time = (int)packages[2];
+                if (delay)
                 {
-                    targetRotation = (int)packages[0];
+                    targetRotation = angle;
                 }
                 else
                 {
-                    Rotate((int)packages[0]);
+                    Rotate(angle, time);
                 }
 
                 break;
@@ -415,16 +418,20 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
             studentExtensions.DestroyAll();
         }
     }
-    public void Rotate(float degree)
+    public void Rotate(float degree, float duration = 0.5f)
     {
-        StartCoroutine(RotateCoroutine(degree));
+        StartCoroutine(RotateCoroutine(degree, duration));
     }
-    private IEnumerator RotateCoroutine(float degree)
+    private IEnumerator RotateCoroutine(float degree, float duration = 0.5f)
     {
         var targetRotationY = degree;
         float time = 0f;
-        float duration = 0.5f;
-        while (!Mathf.Approximately(transform.rotation.eulerAngles.y,targetRotationY))
+        if (duration == 0)
+        {
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, targetRotationY, transform.rotation.eulerAngles.z);
+            yield break;
+        }
+        while (!Mathf.Approximately(transform.rotation.eulerAngles.y, targetRotationY))
         {
             time += Time.deltaTime;
             var y = Mathf.Lerp(transform.rotation.eulerAngles.y, targetRotationY, time / duration);

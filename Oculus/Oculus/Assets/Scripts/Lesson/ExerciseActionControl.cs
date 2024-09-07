@@ -655,11 +655,12 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         packages[0] = active;
         ConnectionManager.instance.SendAction(EventCodes.ActionBodyMoving, packages);
     }
-    private void Rotate(int target,bool delay)
+    private void Rotate(int target,bool delay,float time = 0)
     {
-        object[] packages = new object[2];
+        object[] packages = new object[3];
         packages[0] = target;
         packages[1] = delay;
+        packages[2] = 0;
         ConnectionManager.instance.SendAction(EventCodes.ActionRotate, packages);
     }
     private void ChangeModel(string model, string pointName, string animator, string animation, string interact = "False", string moving = "False")
