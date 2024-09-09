@@ -329,15 +329,11 @@
                "action": [
                     {
                          "name": "ChangeModel",
-                         "property": ["StudentFrontFloat", "00-10-StarFishIdlePos", "Case_Four",""]
+                         "property": ["StudentFrontFloat", "00-10-StarFishIdlePos", "Case_Four","IdleToRotate"]
                     },
                     {
                          "name": "ActivateExtension",
                          "property": ["BackFloat", "True"]
-                    },
-                    {
-                         "name": "TriggerAnimation",
-                         "property": ["IdleToRotate"]
                     },
                     {
                          "name": "Rotate-Remove",
