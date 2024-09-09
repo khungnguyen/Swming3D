@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using System;
+using System.Linq;
+using OVR;
 public class StudentController : MonoBehaviourPunCallbacks, IReceiver
 {
     const string TAG = "[StudentController] ";
@@ -27,11 +29,23 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         public Quaternion rotation;
     }
     private int targetRotation = -1;
+
+
+    List<Renderer> allRenderers = new();
     // public bool useF
     // Start is called before the first frame update
     void Awake()
     {
         StudentModelManager.instance?.OnStudentCreate(this);
+        // allRenderers = GetComponentsInChildren<Renderer>().ToList();
+        // allRenderers.ForEach(e =>
+        //    {
+        //        foreach (var mat in e.materials)
+        //        {
+        //            MakeMaterialTransparent(mat);
+        //        }
+        //    });
+        // Fade(FADE.IN);
     }
     public static bool firstTime = false;
     protected virtual void Start()
@@ -437,5 +451,90 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, y, transform.rotation.eulerAngles.z);
             yield return null;
         }
+    }
+    public enum FADE
+    {
+        IN,
+        OUT
+    }
+    public void Fade(FADE fade, float duration = 4f)
+    {
+        StartCoroutine(FadeCoroutine(fade, duration));
+    }
+    private IEnumerator FadeCoroutine(FADE fade, float duration = 4f)
+    {
+        var targetAlpha = fade == FADE.IN ? 1 : 0;
+        float time = 0f;
+        if (FADE.IN == fade)
+        {
+            SetAlphaForModel(0f);
+        }
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            allRenderers.ForEach(e =>
+            {
+                foreach (var mat in e.materials)
+                {
+                    var color = mat.color;
+                    var alpha = Mathf.Lerp(mat.color.a, targetAlpha, time / duration);
+                    color.a = alpha;
+                    mat.color = color;
+                }
+            });
+            yield return null;
+        }
+    }
+    private void SetAlphaForModel(float alpha)
+    {
+        allRenderers.ForEach(e =>
+           {
+               foreach (var mat in e.materials)
+               {
+                   var color = mat.color;
+                   color.a = alpha;
+                   mat.color = color;
+               }
+           });
+    }
+    public void MakeMaterialTransparent(Material material)
+    {
+        // Set the material's rendering mode to Transparent
+        material.SetFloat("_Mode", 3); // 3 corresponds to Transparent mode in Standard Shader
+
+        // Enable blending and disable z-writing for transparency
+        material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+        material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+        material.SetInt("_ZWrite", 0);
+        material.DisableKeyword("_ALPHATEST_ON");
+        material.EnableKeyword("_ALPHABLEND_ON");
+        material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+        material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
+
+        // Change the material's color and alpha (transparency)
+        // Color newColor = material.color;
+        // newColor.a = 0.5f; // Set alpha to 50% transparency
+        // material.color = newColor;
+    }
+
+    // Optionally, call this method to reset the material to opaque
+    public void MakeMaterialOpaque(Material material)
+    {
+        // Reset to Opaque mode
+        material.SetFloat("_Mode", 0); // 0 corresponds to Opaque mode in Standard Shader
+
+        // Reset blending and z-writing
+        material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+        material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+        material.SetInt("_ZWrite", 1);
+        material.DisableKeyword("_ALPHATEST_ON");
+        material.DisableKeyword("_ALPHABLEND_ON");
+        material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+        material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Geometry;
+
+        // // Set alpha back to 1 for opaque
+        // Color newColor = material.color;
+        // newColor.a = 1.0f;
+        // material.color = newColor;
     }
 }
