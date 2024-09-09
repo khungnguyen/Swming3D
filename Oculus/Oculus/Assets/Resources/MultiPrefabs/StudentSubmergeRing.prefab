@@ -350,15 +350,15 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4427394405292297522, guid: b2de93e17d140fc48b7771f6ea2bcb5b, type: 3}
-  - {fileID: 5244794397207834549, guid: b2de93e17d140fc48b7771f6ea2bcb5b, type: 3}
-  - {fileID: 2787077813069540900, guid: b2de93e17d140fc48b7771f6ea2bcb5b, type: 3}
-  - {fileID: 4497628284502966209, guid: b2de93e17d140fc48b7771f6ea2bcb5b, type: 3}
-  - {fileID: -8145408169447611014, guid: b2de93e17d140fc48b7771f6ea2bcb5b, type: 3}
-  - {fileID: 7361142571328244463, guid: b2de93e17d140fc48b7771f6ea2bcb5b, type: 3}
-  - {fileID: -8757510605255195007, guid: b2de93e17d140fc48b7771f6ea2bcb5b, type: 3}
-  - {fileID: 8575313940150268894, guid: b2de93e17d140fc48b7771f6ea2bcb5b, type: 3}
-  - {fileID: 6127770074666916595, guid: b2de93e17d140fc48b7771f6ea2bcb5b, type: 3}
+  - {fileID: 2100000, guid: 5baa63713785efa4daeb2050dba87df6, type: 2}
+  - {fileID: 2100000, guid: 5ea251c459bcf5a4dbdc30edb5e3035f, type: 2}
+  - {fileID: 2100000, guid: 1e1338f4289e0fd4eae7b88edbd87d7c, type: 2}
+  - {fileID: 2100000, guid: a26db6180e6ad5b4d96b0bc7c45e7d77, type: 2}
+  - {fileID: 2100000, guid: 138ed40b84152134e88c76cdbdecac21, type: 2}
+  - {fileID: 2100000, guid: afae297259400f2418ecacae6e989fd1, type: 2}
+  - {fileID: 2100000, guid: 4c5d649c405cbaa4a9664dd3a4af3506, type: 2}
+  - {fileID: 2100000, guid: b71cc781ad99423499e1c341c5bcc860, type: 2}
+  - {fileID: 2100000, guid: 49a651fd88fd5cf41bdee7e5cc3b73eb, type: 2}
   - {fileID: 6036109035531164381, guid: b2de93e17d140fc48b7771f6ea2bcb5b, type: 3}
   - {fileID: -7621992812897208050, guid: b2de93e17d140fc48b7771f6ea2bcb5b, type: 3}
   - {fileID: 6044726008863606537, guid: b2de93e17d140fc48b7771f6ea2bcb5b, type: 3}
@@ -14425,7 +14425,7 @@ Transform:
   - {fileID: 7105355400616178215}
   - {fileID: 5209324939885322218}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3661726967843796730
 Animator:
