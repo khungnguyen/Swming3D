@@ -583,7 +583,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         object[] packages = new object[1];
         packages[0] = ExerciseManager.instance.GetExerciseIndex();
         ConnectionManager.instance.SendAction(EventCodes.ActionNextExercise, packages);
-        // UpdateLessonName(curExercise.lessonName);
+        UpdateLessonName(curExercise.lessonName);
     }
     public void SendActionPlayAnim(string trigger, bool forReplaceModel)
     {
@@ -597,7 +597,10 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         exerciseName.text = title;
         chapterName.text = LessonManager.LessonGroupName[(int)groupType];
     }
-
+     public void UpdateLessonName(string title)
+    {
+        exerciseName.text = title;
+    }
     public void OnClicked(string action)
     {
         throw new System.NotImplementedException();

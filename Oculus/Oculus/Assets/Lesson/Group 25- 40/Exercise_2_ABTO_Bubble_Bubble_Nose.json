@@ -41,7 +41,7 @@
       "displayOrder": 4
     },
     {
-      "name": "Execute Bubble Nose with MMM Correctly",
+      "name": "Execute Bubble Nose Correctly",
       "action": "CorrectAnimation",
       "displayOrder": 5
     },
@@ -91,10 +91,6 @@
       "name": "MoveStudentToPool",
       "action": [
         {
-          "name": "GoToExercise",
-          "property": ["0"]
-        },
-        {
           "name": "ChangeModel",
           "property": ["StudentPinchNoseBreathe","MonkeyWalkIdle","25-40-BubbleNose_1Second","","","True"]
         },
@@ -119,6 +115,10 @@
         {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
+        },
+        {
+          "name": "GoToExercise",
+          "property": ["0"]
         }
       ],
       "showDisplayOrder": 3
@@ -137,6 +137,10 @@
         {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
+        },
+        {
+          "name": "GoToExercise",
+          "property": ["1"]
         }
       ],
       "showDisplayOrder": 3
@@ -155,6 +159,10 @@
         {
           "name": "EnableInteractable",
           "property": ["DelayAfterAnim"]
+        },
+        {
+          "name": "GoToExercise",
+          "property": ["2"]
         }
       ],
       "showDisplayOrder": 3
@@ -500,7 +508,7 @@
   ],
   "ExerciseList": [
     {
-      "lessonName": "Practice in Place",
+      "lessonName": "Bubble Nose 1 Second",
       "starAnimation": "",
       "conditionTrigger": {
         "name": "",
@@ -511,40 +519,28 @@
       "property": []
     },
     {
-      "lessonName": "Swim and Return",
+      "lessonName": "Bubble Nose 3 Seconds",
       "starAnimation": "",
       "conditionTrigger": {
         "name": "",
         "value": true
       },
-      "startPointName": "10_40_Idle",
+      "startPointName": "",
       "startController": "",
       "property": [
-        "RightController","Case_Tummy_5meters",
-        "TriggerName",
-        "Swim",
-        "TriggerName",
-        "Walk"
       ]
     },
     {
-      "lessonName": "Swim and Return",
+      "lessonName": "Bubble Nose 5 Seconds",
       "starAnimation": "",
       "conditionTrigger": {
-        "name": "SquatJump",
+        "name": "",
         "value": true
       },
       "startController": "",
-      "startPointName": "10_40_Idle",
+      "startPointName": "",
       "property": [
-        "LoseController",
-        "Case_Two",
-        "RightController",
-        "Case_Tummy_15meters",
-        "TriggerName",
-        "Swim",
-        "TriggerName",
-        "Walk"
+       
       ]
     },
     {
