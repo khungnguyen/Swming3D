@@ -7,36 +7,53 @@
       "name": "Have Student Enter Pool",
       "action": "MoveStudentToPool",
       "displayOrder": 1
+    }
+    ,
+    {
+      "name": "Bubble Nose 1 Second",
+      "action": "ChangeTo1Second",
+      "displayOrder": 2
+    }
+    ,
+    {
+      "name": "Bubble Nose 3 Seconds",
+      "action": "ChangeTo3Second",
+      "displayOrder": 2
     },
     {
-      "name": "Execute Bubble Nose with MMM InCorrectly",
+      "name": "Bubble Nose 5 Seconds",
+      "action": "ChangeTo5Second",
+      "displayOrder": 2
+    },
+    {
+      "name": "Execute Bubble Nose InCorrectly",
       "action": "IncorrectAnimation",
-      "displayOrder": 2
+      "displayOrder": 3
     },
     {
-      "name": "Execute Bubble Nose with MMM Correctly",
+      "name": "Execute Bubble Nose Correctly",
       "action": "CorrectAnimation",
-      "displayOrder": 2
+      "displayOrder": 3
     },
     {
       "name": "Allow Coach To Correct",
       "action": "AllowCoachToCorrect",
-      "displayOrder": 3
+      "displayOrder": 4
     },
     {
       "name": "Execute Bubble Nose with MMM Correctly",
       "action": "CorrectAnimation",
-      "displayOrder": 4
+      "displayOrder": 5
     },
     {
-      "name": "Monkey Walk With Bubble Nose with MMM 5 Meters and Return",
+      "name": "Monkey Walk With Bubble Nose 5 meters and Return",
       "action": "MonkeyWalk5meters",
-      "displayOrder": 5
+      "displayOrder": 6
     },
     {
-      "name": "Monkey Walk With Bubble Nose with MMM 15 Meters and Return",
+      "name": "Monkey Walk With Bubble Nose 15 meters and Return",
       "action": "MonkeyWalk15meters",
-      "displayOrder": 5
+      "displayOrder": 6
     },
     {
       "name": "Monkey Walk With Bubble Nose with MMM 25 Meters and Return",
@@ -46,27 +63,27 @@
     {
       "name": "Swim Back",
       "action": "SwimBack",
-      "displayOrder": 6
+      "displayOrder": 7
     },
     {
       "name": "Walk Back",
       "action": "WalkBack",
-      "displayOrder": 6
+      "displayOrder": 7
     },
     {
       "name": "Student Will Lose Control",
       "action": "LoseControl",
-      "displayOrder": 7
+      "displayOrder": 8
     },
     {
       "name": "Execute Properly",
       "action": "PlayCorrectAnimSwimOrWalkBackAndFinish",
-      "displayOrder": 8
+      "displayOrder": 9
     },
     {
       "name": "Back To Lesson List",
       "action": "GoToLessonMenu",
-      "displayOrder": 9
+      "displayOrder": 10
     }
   ],
   "Actions": [
@@ -79,7 +96,7 @@
         },
         {
           "name": "ChangeModel",
-          "property": ["StudentPinchNoseBreathe","25_40_Exercise_2_Slide_In_Pos","Exercise 2 (ABTO Bubble - Bubble Nose)","","DelayAfterAnim","True"]
+          "property": ["StudentPinchNoseBreathe","MonkeyWalkIdle","25-40-BubbleNose_1Second","","","True"]
         },
         {
           "name": "EnableButtons",
@@ -88,6 +105,61 @@
       ],
       "showDisplayOrder": 2
     },
+    {
+      "name": "ChangeTo1Second",
+      "action": [
+        {
+          "name": "ChangeAnimController-No",
+          "property": ["25-40-BubbleNose_1Second"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": ["DelayAfterAnim"]
+        }
+      ],
+      "showDisplayOrder": 3
+    },
+    {
+      "name": "ChangeTo3Second",
+      "action": [
+        {
+          "name": "ChangeAnimController",
+          "property": ["25-40-BubbleNose_3Second"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": ["DelayAfterAnim"]
+        }
+      ],
+      "showDisplayOrder": 3
+    },
+    {
+      "name": "ChangeTo5Second",
+      "action": [
+        {
+          "name": "ChangeAnimController",
+          "property": ["25-40-BubbleNose_5Second"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": ["DelayAfterAnim"]
+        }
+      ],
+      "showDisplayOrder": 3
+    }
+    ,
     {
       "name": "IncorrectAnimation",
       "action": [
@@ -104,7 +176,7 @@
           "property": ["PinchNoseBreatheIWrongPos"]
         }
       ],
-      "showDisplayOrder": 3
+      "showDisplayOrder": 4
     }, {
       "name": "AllowCoachToCorrect",
       "action": [
@@ -117,7 +189,7 @@
           "property": ["DelayAfterAnim"]
         }
       ],
-      "showDisplayOrder": 4
+      "showDisplayOrder": 5
     },
     {
       "name": "CorrectAnimation",
@@ -135,7 +207,7 @@
           "property": ["PinchNoseBreatheIWrongPos"]
         }
       ],
-      "showDisplayOrder": 5
+      "showDisplayOrder": 6
     },
     {
       "name": "MonkeyWalk5meters",
@@ -149,7 +221,7 @@
           "property": ["True"]
         }
       ],
-      "showDisplayOrder": 9
+      "showDisplayOrder": 10
     },
     {
       "name": "MonkeyWalk15meters",
@@ -163,7 +235,7 @@
           "property": ["True"]
         }
       ],
-      "showDisplayOrder": 9
+      "showDisplayOrder": 10
     },
     {
       "name": "MonkeyWalk25meters",
@@ -177,7 +249,7 @@
           "property": ["True"]
         }
       ],
-      "showDisplayOrder": 9
+      "showDisplayOrder": 10
     },
     {
       "name": "MoveToMenuExercise",
@@ -187,7 +259,7 @@
           "property": ["Swim and Return"]
         }
       ],
-      "showDisplayOrder": 5
+      "showDisplayOrder": 6
     },
     {
       "name": "GoToExercise_1",
@@ -197,7 +269,7 @@
           "property": ["1"]
         }
       ],
-      "showDisplayOrder": 6
+      "showDisplayOrder": 7
     },
     {
       "name": "GoToExercise_2",
@@ -207,7 +279,7 @@
           "property": ["2"]
         }
       ],
-      "showDisplayOrder": 6
+      "showDisplayOrder": 7
     },
     {
       "name": "GoToExercise_3",
@@ -217,7 +289,7 @@
           "property": ["3"]
         }
       ],
-      "showDisplayOrder": 6
+      "showDisplayOrder": 7
     },
     {
       "name": "SwimBack",
@@ -227,7 +299,7 @@
           "property": ["Key_RightAnimation", "Swim"]
         }
       ],
-      "showDisplayOrder": 7
+      "showDisplayOrder": 8
     },
     {
       "name": "WalkBack",
@@ -237,7 +309,7 @@
           "property": ["Key_RightAnimation", "Walk"]
         }
       ],
-      "showDisplayOrder": 7
+      "showDisplayOrder": 8
     },
     {
       "name": "PlayCorrectAnimSwimOrWalkBack",
@@ -255,7 +327,7 @@
           "property": ["Key_RightAnimation"]
         }
       ],
-      "showDisplayOrder": 9
+      "showDisplayOrder": 10
     },
     {
       "name": "NotFollowDistance",
@@ -273,7 +345,7 @@
           "property": ["Swim"]
         }
       ],
-      "showDisplayOrder": 7
+      "showDisplayOrder": 8
     },
     {
       "name": "NotFollowReturn",
@@ -291,7 +363,7 @@
           "property": ["Key_RightAnimation"]
         }
       ],
-      "showDisplayOrder": 7
+      "showDisplayOrder": 8
     },
     {
       "name": "LoseControl",
@@ -313,7 +385,7 @@
           "property": ["DelayAfterAnim"]
         }
       ],
-      "showDisplayOrder": 8
+      "showDisplayOrder": 9
     },
     {
       "name": "PlayCorrectAnimSwimOrWalkBackAndFinish",
@@ -335,7 +407,7 @@
           "property": ["Key_RightAnimation"]
         }
       ],
-      "showDisplayOrder": 9
+      "showDisplayOrder": 10
     },
     {
       "name": "GoToLessonMenu",
