@@ -1,0 +1,456 @@
+{
+  "Exercise": "Pinch Nose And Hold Breath",
+  "AnimatorController": "Case_One",
+  "startPointName": "25_40_Exercise_2_Idle_Pos",
+  "Buttons": [
+    {
+      "name": "Have Student Enter Pool",
+      "action": "MoveStudentToPool",
+      "displayOrder": 1
+    },
+    {
+      "name": "Execute Pinch Nose Nose Hold Breath InCorrectly",
+      "action": "PlayCorrectMonkeyWalkIncorrect",
+      "displayOrder": 2
+    },
+    {
+      "name": "Execute Pinch Nose Nose Hold Breath Correctly",
+      "action": "PlayCorrectMonkeyWalk",
+      "displayOrder": 2
+    },
+    {
+      "name": "Allow Coach To Correct",
+      "action": "AllowCoachToCorrect",
+      "displayOrder": 3
+    },
+    {
+      "name": "Execute Properly",
+      "action": "PlayCorrectMonkeyWalk",
+      "displayOrder": 4
+    },
+    {
+      "name": "Pinche Nose 5 Meters and Return",
+      "action": "MonkeyWalk5meters",
+      "displayOrder": 5
+    },
+    {
+      "name": "Pinche Nose 15 Meters and Return",
+      "action": "MonkeyWalk15meters",
+      "displayOrder": 5
+    },
+    {
+      "name": "Monkey Walk With Pinched Nose 25 Meters and Return",
+      "action": "MonkeyWalk25meters",
+      "displayOrder": 5000
+    },
+    {
+      "name": "Back To Lesson List",
+      "action": "GoToLessonMenu",
+      "displayOrder": 9
+    }
+  ],
+  "Actions": [
+    {
+      "name": "MoveStudentToPool",
+      "action": [
+        {
+          "name": "GoToExercise",
+          "property": ["0"]
+        },
+        {
+          "name": "ChangeModel",
+          "property": ["StudentPinchNoseBreathe","25_40_Exercise_1_Slide_In_Pos","Case_ABTO Bubble - Pinch Nose Hold Breath","","DelayAfterAnim","True"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["False"]
+        }
+      ],
+      "showDisplayOrder": 2
+    },
+    {
+      "name": "PlayCorrectMonkeyWalkIncorrect",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["IncorrectMonkeyWalk"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["PinchNoseBreatheIWrongPos"]
+        }
+      ],
+      "showDisplayOrder": 3
+    }, {
+      "name": "AllowCoachToCorrect",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["StopAnim"]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": ["DelayAfterAnim"]
+        }
+      ],
+      "showDisplayOrder": 4
+    },
+    {
+      "name": "PlayCorrectMonkeyWalk",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["CorrectMonkeyWalk"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["PinchNoseBreatheIWrongPos"]
+        }
+      ],
+      "showDisplayOrder": 5
+    },
+    {
+      "name": "MonkeyWalk5meters",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["MonkeyWalk5m"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        }
+      ],
+      "showDisplayOrder": 9
+    },
+    {
+      "name": "MonkeyWalk15meters",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["MonkeyWalk15m"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        }
+      ],
+      "showDisplayOrder": 9
+    },
+    {
+      "name": "MonkeyWalk25meters",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["MonkeyWalk25m"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        }
+      ],
+      "showDisplayOrder": 9
+    },
+    {
+      "name": "MoveToMenuExercise",
+      "action": [
+        {
+          "name": "ChangeLessonTitle",
+          "property": ["Swim and Return"]
+        }
+      ],
+      "showDisplayOrder": 5
+    },
+    {
+      "name": "GoToExercise_1",
+      "action": [
+        {
+          "name": "GoToExercise",
+          "property": ["1"]
+        }
+      ],
+      "showDisplayOrder": 6
+    },
+    {
+      "name": "GoToExercise_2",
+      "action": [
+        {
+          "name": "GoToExercise",
+          "property": ["2"]
+        }
+      ],
+      "showDisplayOrder": 6
+    },
+    {
+      "name": "GoToExercise_3",
+      "action": [
+        {
+          "name": "GoToExercise",
+          "property": ["3"]
+        }
+      ],
+      "showDisplayOrder": 6
+    },
+    {
+      "name": "SwimBack",
+      "action": [
+        {
+          "name": "SaveDataValue",
+          "property": ["Key_RightAnimation", "Swim"]
+        }
+      ],
+      "showDisplayOrder": 7
+    },
+    {
+      "name": "WalkBack",
+      "action": [
+        {
+          "name": "SaveDataValue",
+          "property": ["Key_RightAnimation", "Walk"]
+        }
+      ],
+      "showDisplayOrder": 7
+    },
+    {
+      "name": "PlayCorrectAnimSwimOrWalkBack",
+      "action": [
+        {
+          "name": "ChangeAnimController",
+          "property": ["RightController"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["Tummy_Board_Swim"]
+        },
+        {
+          "name": "TriggerAnimationWithSaveKey",
+          "property": ["Key_RightAnimation"]
+        }
+      ],
+      "showDisplayOrder": 9
+    },
+    {
+      "name": "NotFollowDistance",
+      "action": [
+        {
+          "name": "ChangeAnimController",
+          "property": ["WrongController"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["SwimStartPoint"]
+        },
+        {
+          "name": "TriggerAnimation",
+          "property": ["Swim"]
+        }
+      ],
+      "showDisplayOrder": 7
+    },
+    {
+      "name": "NotFollowReturn",
+      "action": [
+        {
+          "name": "ChangeAnimController",
+          "property": ["RightController"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["SwimStartPoint"]
+        },
+        {
+          "name": "TriggerAnimationWithOutSaveKey",
+          "property": ["Key_RightAnimation"]
+        }
+      ],
+      "showDisplayOrder": 7
+    },
+    {
+      "name": "PlayCorrectAnimSwimOrWalkBackAndFinish",
+      "action": [
+        {
+          "name": "EnableBodyMoving",
+          "property": ["False"]
+        },
+        {
+          "name": "ChangeAnimController",
+          "property": ["RightController"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["Tummy_Board_Swim"]
+        },
+        {
+          "name": "TriggerAnimationWithSaveKey",
+          "property": ["Key_RightAnimation"]
+        }
+      ],
+      "showDisplayOrder": 9
+    },
+    {
+      "name": "GoToLessonMenu",
+      "action": [
+        {
+          "name": "GoToLessonMenu",
+          "property": [""]
+        },
+        {
+          "name": "ClearDataSave",
+          "property": [""]
+        },
+        {
+          "name": "DisableInteractable",
+          "property": [""]
+        },
+        {
+          "name": "ChangeModel",
+          "property": ["StudentFullter","Lesson_1_Ex_All_Pos","Case_One",""]
+        }
+      ],
+      "showDisplayOrder": 0
+    },
+    {
+      "name": "GoToExerciseMenu",
+      "action": [
+        {
+          "name": "GoToExerciseMenu",
+          "property": [""]
+        },
+        {
+          "name": "ClearDataSave",
+          "property": [""]
+        },
+        {
+          "name": "DisableInteractable",
+          "property": [""]
+        },
+        {
+          "name": "ChangeModel",
+          "property": ["StudentFullter","Lesson_1_Ex_All_Pos","Case_One",""]
+        }
+      ],
+      "showDisplayOrder": 0
+    },
+    {
+      "name": "BackToExercise",
+      "action": [
+        {
+          "name": "ClearDataSave",
+          "property": [""]
+        },
+        {
+          "name": "DisableInteractable",
+          "property": [""]
+        },
+        {
+          "name": "ChangeAnimController",
+          "property": ["LoseController"]
+        },
+        {
+          "name": "CorrectTransform",
+          "property": ["Lesson_2_Ex_All_Pos"]
+        },
+        {
+          "name": "SettingUpLesson",
+          "property": [""]
+        },
+        {
+          "name": "ChangeLessonTitle",
+          "property": ["Practice In Place"]
+        }
+      ],
+      "showDisplayOrder": 1
+    },
+    {
+      "name": "StopAnimationAndEnableInteraction",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["StopAnim"]
+        },
+        {
+          "name": "EnableInteractable",
+          "property": ["DelayAfterAnim"]
+        }
+      ],
+      "showDisplayOrder": 3
+    }
+  ],
+  "ExerciseList": [
+    {
+      "lessonName": "Practice in Place",
+      "starAnimation": "",
+      "conditionTrigger": {
+        "name": "",
+        "value": true
+      },
+      "startPointName": "",
+      "startController": "",
+      "property": []
+    },
+    {
+      "lessonName": "Swim and Return",
+      "starAnimation": "",
+      "conditionTrigger": {
+        "name": "",
+        "value": true
+      },
+      "startPointName": "10_40_Idle",
+      "startController": "",
+      "property": [
+        "RightController","Case_Tummy_5meters",
+        "TriggerName",
+        "Swim",
+        "TriggerName",
+        "Walk"
+      ]
+    },
+    {
+      "lessonName": "Swim and Return",
+      "starAnimation": "",
+      "conditionTrigger": {
+        "name": "SquatJump",
+        "value": true
+      },
+      "startController": "",
+      "startPointName": "10_40_Idle",
+      "property": [
+        "LoseController",
+        "Case_Two",
+        "RightController",
+        "Case_Tummy_15meters",
+        "TriggerName",
+        "Swim",
+        "TriggerName",
+        "Walk"
+      ]
+    },
+    {
+      "lessonName": "Swim and Return",
+      "starAnimation": "",
+      "startController": "",
+      "conditionTrigger": {
+        "name": "SlideJump",
+        "value": false
+      },
+      "startPointName": "10_40_Idle",
+      "property": [
+        "RightController",
+        "Case_Tummy_25meters",
+        "TriggerName",
+        "Swim",
+        "TriggerName",
+        "Walk"
+      ]
+    }
+  ],
+  "extension" :["KickBoardExtension"]
+}
