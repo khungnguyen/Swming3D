@@ -6,6 +6,7 @@ using UnityEngine.Animations.Rigging;
 using System;
 using System.Linq;
 using OVR;
+using UnityEngine.Events;
 public class StudentController : MonoBehaviourPunCallbacks, IReceiver
 {
     const string TAG = "[StudentController] ";
@@ -91,6 +92,11 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         yield return new WaitForSeconds(second);
         CorrectTransform(name);
     }
+    IEnumerator Delay(float second, UnityAction OnDone)
+    {
+        yield return new WaitForSeconds(second);
+        OnDone?.Invoke();
+    }
     /**
     * Event NotifityEndAnimationState would be fired from animation using animation event
     */
@@ -160,10 +166,14 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 Debug.LogError(TAG + "ActionSettingUpLesson " + curLesson);
                 break;
             case EventCodes.ActionPlayAnimation:
-                string animation = (string)packages[1];
+                string animation = (string)packages[0];
+                bool enableInteract = (bool)packages[1];
                 Debug.Log(TAG + "ActionPlayAnimation " + animation);
                 StopAllCoroutines();
-                EnableInteraction(false);
+                if (!enableInteract)
+                {
+                    EnableInteraction(false);
+                }
                 TriggerAnimation(animation);
                 break;
             case EventCodes.ActionStartExercise:
@@ -287,7 +297,6 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                         animator.runtimeAnimatorController = find.controller;
                         Debug.Log(TAG + "Reset Animator to" + animatorName);
                     }
-                    //  Debug.Log(TAG + "Reset Avatar to" + find.avatar.name);
                     if (find.avatar != null)
                     {
                         Debug.Log(TAG + "Reset Avatar to" + find.avatar);
@@ -301,7 +310,6 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         }
         if (IsBodyMovingEnable)
         {
-            // reset transform before playing animaiton
             ResetTransformAfterBodyMove();
             IsBodyMovingEnable = false;
         }
@@ -328,7 +336,15 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
                 IsBodyMovingEnable = false;
             }
             BeforeTriggerAnim(trigger);
-            animator.SetTrigger(trigger);
+            if (HasTrigger(trigger))
+            {
+                animator.SetTrigger(trigger);
+            }
+            else if (HasBool(trigger))
+            {
+                animator.SetBool(trigger, true);
+            }
+
         }
 
     }
@@ -349,7 +365,28 @@ public class StudentController : MonoBehaviourPunCallbacks, IReceiver
         }
         lastTrigger = trigger;
     }
-
+    private bool HasTrigger(string name)
+    {
+        foreach (AnimatorControllerParameter param in animator.parameters)
+        {
+            if (param.type == AnimatorControllerParameterType.Trigger && param.name == name)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    private bool HasBool(string name)
+    {
+        foreach (AnimatorControllerParameter param in animator.parameters)
+        {
+            if (param.type == AnimatorControllerParameterType.Bool && param.name == name)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     [PunRPC]
     public void ActivateBodyMoving(bool enable)
     {

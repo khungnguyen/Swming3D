@@ -270,7 +270,19 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 }
                 else if (miniAction == ExaminerAction.TriggerAnimation.ToString())
                 {
-                    StartAnimation(actionProperty.property[0]);
+                    var enableInteract = false;
+                    try
+                    {
+                        if (actionProperty.property.Length > 1)
+                        {
+                            enableInteract = actionProperty.property[1] == "True";
+                        }
+                    }
+                    catch (System.Exception ex)
+                    {
+
+                    }
+                    StartAnimation(actionProperty.property[0], enableInteract);
                     needToEnableButton = BUTTON_SHOW.HIDE_BUTTONS;
 
                 }
@@ -429,8 +441,8 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
                 else if (miniAction == ExaminerAction.Rotate.ToString())
                 {
                     int targetRotation = int.Parse(actionProperty.property[0]);
-                    bool delay =  actionProperty.property[1] == "True";
-                    Rotate(targetRotation,delay);
+                    bool delay = actionProperty.property[1] == "True";
+                    Rotate(targetRotation, delay);
                 }
                 else if (miniAction == ExaminerAction.ChangeModel.ToString())
                 {
@@ -563,9 +575,9 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
     {
         StartAnimation(curExercise.conditionTrigger.name);
     }
-    public void StartAnimation(string name, bool useReplaceModel = false)
+    public void StartAnimation(string name, bool enableInteract = false)
     {
-        SendActionPlayAnim(name, useReplaceModel);
+        SendActionPlayAnim(name, enableInteract);
 
     }
     public void NextExercise(int index = -1)
@@ -585,11 +597,11 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         ConnectionManager.instance.SendAction(EventCodes.ActionNextExercise, packages);
         UpdateLessonName(curExercise.lessonName);
     }
-    public void SendActionPlayAnim(string trigger, bool forReplaceModel)
+    public void SendActionPlayAnim(string trigger, bool enableInteract)
     {
         object[] packages = new object[2];
-        packages[0] = forReplaceModel;
-        packages[1] = trigger;
+        packages[0] = trigger;
+        packages[1] = enableInteract;
         ConnectionManager.instance.SendAction(EventCodes.ActionPlayAnimation, packages);
     }
     public void UpdateLessonName(string title, LessonGroupType groupType)
@@ -597,7 +609,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         exerciseName.text = title;
         chapterName.text = LessonManager.LessonGroupName[(int)groupType];
     }
-     public void UpdateLessonName(string title)
+    public void UpdateLessonName(string title)
     {
         exerciseName.text = title;
     }
@@ -658,7 +670,7 @@ public class ExerciseActionControl : MonoBehaviour, IButtonAction, IOnExerciseLo
         packages[0] = active;
         ConnectionManager.instance.SendAction(EventCodes.ActionBodyMoving, packages);
     }
-    private void Rotate(int target,bool delay,float time = 0)
+    private void Rotate(int target, bool delay, float time = 0)
     {
         object[] packages = new object[3];
         packages[0] = target;
