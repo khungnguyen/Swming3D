@@ -34,6 +34,11 @@
       "displayOrder": 4
     },
     {
+      "name": "Execute Too Deep In The Water To Breath Correctly",
+      "action": "PlayToDeepBreathe",
+      "displayOrder": 4
+    },
+    {
       "name": "Allow Coach To Correct",
       "action": "AllowCoachToCorrect",
       "displayOrder": 5
@@ -243,6 +248,24 @@
         {
           "name": "TriggerAnimation",
           "property": ["PlayCircelAndBreathe"]
+        }
+        ,
+        {
+          "name": "CorrectTransform",
+          "property": ["40-45_25m_Slide_In_Pos"]
+        },
+        {
+          "name": "EnableButtons",
+          "property": ["True"]
+        }
+      ],
+      "showDisplayOrder": 5
+    },{
+      "name": "PlayToDeepBreathe",
+      "action": [
+        {
+          "name": "TriggerAnimation",
+          "property": ["PlayToDeepBreathe"]
         }
         ,
         {
